@@ -115,8 +115,7 @@
                 <div class="phone-mockup">
                     <div class="phone-screen">
                         <div class="call-interface">
-                            <div class="caller-avatar"><span>🤖</span></div>
-                            <div class="caller-name">AI Asistan</div>
+                            <div class="caller-avatar"><img src="images/logo2.png" alt="Aspalo" class="caller-logo"></div>
                             <div class="call-status" id="phone-call-status">Görüşme devam ediyor...</div>
                             <div class="call-timer">02:34</div>
                             <div class="call-transcript">
@@ -706,8 +705,6 @@
         }, 300);
       };
       (function (d, t) {
-        var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobileDevice) return;
         var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
         g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
         g.defer = true;
@@ -725,29 +722,13 @@
           });
           for (var j = 1; j < list.length; j++) { try { list[j].remove(); } catch (e) {} }
         }
-        function hideVapiOnMobile() {
-          if (window.innerWidth > 900) return;
-          document.querySelectorAll('body > div').forEach(function (el) {
-            var s = window.getComputedStyle(el);
-            if (s.position === 'fixed' && (s.bottom !== 'auto' || s.right !== 'auto')) {
-              el.classList.add('vapi-floating-widget');
-            }
-          });
-        }
         g.onload = function () {
-          var isMobile = window.innerWidth <= 900;
-          if (!isMobile) {
-            vapiInstance = initVapiWidget(buttonConfig);
-            window.vapiInstance = vapiInstance;
-            setTimeout(tagVapiWidget, 800);
-            setTimeout(tagVapiWidget, 1800);
-            setTimeout(tagVapiWidget, 3000);
-          }
-          hideVapiOnMobile();
+          vapiInstance = initVapiWidget(buttonConfig);
+          window.vapiInstance = vapiInstance;
+          setTimeout(tagVapiWidget, 800);
+          setTimeout(tagVapiWidget, 1800);
+          setTimeout(tagVapiWidget, 3000);
         };
-        window.addEventListener('resize', function () {
-          hideVapiOnMobile();
-        });
       })(document, "script");
     </script>
 </body>

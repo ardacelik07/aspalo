@@ -538,7 +538,7 @@ img { max-width: 100%; }
 .caller-avatar {
     width: 72px;
     height: 72px;
-    background: var(--gradient-hero);
+    background: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -547,14 +547,19 @@ img { max-width: 100%; }
     margin-bottom: 12px;
     flex-shrink: 0;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+    padding: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+}
+.caller-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .caller-name {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--text);
-    text-align: center;
+    display: none;
 }
 
 .call-status {
@@ -780,13 +785,8 @@ img { max-width: 100%; }
     .hero-visual { min-height: 420px; }
     .phone-mockup { width: 220px; height: 440px; }
     .integration-logos-right { left: 50%; transform: translate(80px, -50%); }
-    /* Telefon/tablet görünümünde "Hemen Konuş" VAPI butonu gizle */
-    .vapi-floating-widget { display: none !important; }
 }
 
-@media (max-width: 1024px) {
-    .vapi-floating-widget { display: none !important; }
-}
 
 @media (max-width: 600px) {
     .hero-visual { min-height: 380px; }
