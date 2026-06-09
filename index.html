@@ -18,24 +18,32 @@
                 <img src="images/logo2.png" alt="Aspalo" class="logo-img">
             </a>
             <div class="nav-links">
-                <a href="#what">Ne Sunuyoruz</a>
-                <a href="#how-it-works">Nasıl Çalışır</a>
-                <a href="#features">Özellikler</a>
-                <a href="#pricing">Planlar</a>
-                <a href="#" class="btn btn-nav" id="demo-request-btn">Demo İste</a>
+                <a href="#what" data-i18n="nav_what">Ne Sunuyoruz</a>
+                <a href="#how-it-works" data-i18n="nav_how">Nasıl Çalışır</a>
+                <a href="#features" data-i18n="nav_features">Özellikler</a>
+                <a href="#pricing" data-i18n="nav_plans">Planlar</a>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="#" class="btn btn-nav" id="demo-request-btn" data-i18n="nav_demo">Demo İste</a>
             </div>
-            <button class="mobile-menu-btn" aria-label="Menü">
+            <button class="mobile-menu-btn" data-i18n-aria="menu_aria" aria-label="Menü">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
         <div class="mobile-nav">
-            <a href="#what">Ne Sunuyoruz</a>
-            <a href="#how-it-works">Nasıl Çalışır</a>
-            <a href="#features">Özellikler</a>
-            <a href="#pricing">Planlar</a>
-            <a href="#" class="btn btn-nav" id="demo-request-btn-mobile">Demo İste</a>
+            <a href="#what" data-i18n="nav_what">Ne Sunuyoruz</a>
+            <a href="#how-it-works" data-i18n="nav_how">Nasıl Çalışır</a>
+            <a href="#features" data-i18n="nav_features">Özellikler</a>
+            <a href="#pricing" data-i18n="nav_plans">Planlar</a>
+            <div class="lang-switch lang-switch--mobile" role="group" aria-label="Language">
+                <button type="button" class="lang-btn active" data-lang="tr">TR</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <a href="#" class="btn btn-nav" id="demo-request-btn-mobile" data-i18n="nav_demo">Demo İste</a>
         </div>
     </nav>
 
@@ -48,58 +56,57 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <!-- Sektör seçicileri: sektörünüze önceden uyumlu -->
-                <p class="hero-badge hero-badge-industry">Sektörünüze önceden uyumlu</p>
-                <div class="sector-badges" id="sector-badges" aria-label="Sektörler">
-                    <span class="sector-badge" data-sector="Emlak">Emlak</span>
-                    <span class="sector-badge" data-sector="Otomotiv">Otomotiv</span>
-                    <span class="sector-badge" data-sector="Sağlık">Sağlık</span>
-                    <span class="sector-badge" data-sector="Lojistik">Lojistik</span>
-                    <span class="sector-badge" data-sector="E-Ticaret">E-Ticaret</span>
-                    <span class="sector-badge" data-sector="Otel Konaklama">Otel Konaklama</span>
+                <p class="hero-badge hero-badge-industry" data-i18n="hero_badge">Sektörünüze önceden uyumlu</p>
+                <div class="sector-badges" id="sector-badges" data-i18n-aria="sectors_aria" aria-label="Sektörler">
+                    <span class="sector-badge" data-sector="Emlak" data-i18n="sector_emlak">Emlak</span>
+                    <span class="sector-badge" data-sector="Otomotiv" data-i18n="sector_otomotiv">Otomotiv</span>
+                    <span class="sector-badge" data-sector="Sağlık" data-i18n="sector_saglik">Sağlık</span>
+                    <span class="sector-badge" data-sector="Lojistik" data-i18n="sector_lojistik">Lojistik</span>
+                    <span class="sector-badge" data-sector="E-Ticaret" data-i18n="sector_eticaret">E-Ticaret</span>
+                    <span class="sector-badge" data-sector="Otel Konaklama" data-i18n="sector_otel">Otel Konaklama</span>
                 </div>
-                <h2 class="hero-title">
+                <h2 class="hero-title" data-i18n-html="hero_title_html">
                     Hiçbir Çağrıyı Kaçırmayın, <span class="gradient-text">Tüm Müşteri Görüşmelerini Yapay Zeka ile Yönetin.</span>
                 </h2>
-                <p class="hero-sub">
+                <p class="hero-sub" data-i18n="hero_sub">
                     Her çağrıyı anında yanıtlayan, potansiyel müşterileri analiz eden, randevu planlayan ve süreci satışa taşıyan yapay zeka telefon asistanı. 7/24, çok dilli altyapı ile.
                 </p>
                 <div class="hero-cta">
                     <a href="#" class="btn btn-primary btn-large btn-glow hero-cta-primary" id="hero-demo-btn">
-                        <span>Ücretsiz Demo Başlat</span>
+                        <span data-i18n="hero_cta_demo">Ücretsiz Demo Başlat</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     <a href="#call" class="btn btn-ghost btn-small hero-cta-secondary" id="hero-call-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
-                        <span>Canlı Örnek Dinle</span>
+                        <span data-i18n="hero_cta_listen">Canlı Örnek Dinle</span>
                     </a>
                 </div>
-                <!-- Nasıl çalışır (3 adım) - hemen hero altında -->
-                <div class="hero-how" aria-label="Nasıl çalışır">
+                <div class="hero-how" data-i18n-aria="hero_how_aria" aria-label="Nasıl çalışır">
                     <ol class="hero-how-steps">
-                        <li><strong>AI gelen ve giden aramaları</strong> yanıtlar ve yapar.</li>
-                        <li><strong>Görüşmeyi analiz eder</strong>, lead skorlar.</li>
-                        <li><strong>Lead ve özet</strong> panelinizde takip edilir.</li>
+                        <li data-i18n-html="hero_how_1"><strong>AI gelen ve giden aramaları</strong> yanıtlar ve yapar.</li>
+                        <li data-i18n-html="hero_how_2"><strong>Görüşmeyi analiz eder</strong>, lead skorlar.</li>
+                        <li data-i18n-html="hero_how_3"><strong>Lead ve özet</strong> panelinizde takip edilir.</li>
                     </ol>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-num">%100</span>
-                        <span class="stat-label">yanıtlanan arama</span>
+                        <span class="stat-label" data-i18n="stat_answered">yanıtlanan arama</span>
                     </div>
                     <div class="stat-sep"></div>
                     <div class="stat">
                         <span class="stat-num">%65</span>
-                        <span class="stat-label">maliyet azaltımı</span>
+                        <span class="stat-label" data-i18n="stat_cost">maliyet azaltımı</span>
                     </div>
                     <div class="stat-sep"></div>
                     <div class="stat">
                         <span class="stat-num">+$35k</span>
-                        <span class="stat-label">aylık getiri</span>
+                        <span class="stat-label" data-i18n="stat_revenue">aylık getiri</span>
                     </div>
                     <div class="stat-sep"></div>
                     <div class="stat">
                         <span class="stat-num">%40</span>
-                        <span class="stat-label">Daha fazla randevu</span>
+                        <span class="stat-label" data-i18n="stat_appointments">Daha fazla randevu</span>
                     </div>
                 </div>
             </div>
@@ -109,20 +116,20 @@
                     <div class="phone-screen">
                         <div class="call-interface">
                             <div class="caller-avatar"><img src="images/logo2.png" alt="Aspalo" class="caller-logo"></div>
-                            <div class="call-status" id="phone-call-status">Görüşme devam ediyor...</div>
+                            <div class="call-status" id="phone-call-status" data-i18n="phone_status">Görüşme devam ediyor...</div>
                             <div class="call-timer">02:34</div>
                             <div class="call-transcript">
                                 <div class="message ai">
                                     <span class="speaker" id="phone-speaker-ai">AI:</span>
-                                    <span id="phone-msg-1">Merhaba, size nasıl yardımcı olabilirim?</span>
+                                    <span id="phone-msg-1" data-i18n="phone_msg_1">Merhaba, size nasıl yardımcı olabilirim?</span>
                                 </div>
                                 <div class="message customer">
-                                    <span class="speaker" id="phone-speaker-customer">Arayan:</span>
-                                    <span id="phone-msg-2">Randevu almak istiyorum.</span>
+                                    <span class="speaker" id="phone-speaker-customer" data-i18n="phone_speaker_customer">Arayan:</span>
+                                    <span id="phone-msg-2" data-i18n="phone_msg_2">Randevu almak istiyorum.</span>
                                 </div>
                                 <div class="message ai">
                                     <span class="speaker">AI:</span>
-                                    <span id="phone-msg-3">Tabii, hangi gün uygun?</span>
+                                    <span id="phone-msg-3" data-i18n="phone_msg_3">Tabii, hangi gün uygun?</span>
                                 </div>
                             </div>
                             <div class="call-controls">
@@ -134,7 +141,7 @@
                     </div>
                 </div>
                 <div class="integration-logos-right">
-                    <p class="connection-label">Bağlantı yapılıyor</p>
+                    <p class="connection-label" data-i18n="connecting">Bağlantı yapılıyor</p>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" loading="eager" />
@@ -174,9 +181,9 @@
     <!-- Dashboard Önizlemesi - landing-page / frontend benzeri -->
     <section id="dashboard" class="dashboard-section">
         <div class="container">
-            <p class="section-badge">Dashboard</p>
-            <h2 class="section-title">Tüm Veriler <span class="gradient-text">Tek Ekranda</span></h2>
-            <p class="section-desc">Görüşmeler, randevular ve lead skorlarını anlık takip edin. Şirketinizin bilgilerine göre çalışan, kurumunuza uygun yanıt veren AI asistanınız.</p>
+            <p class="section-badge" data-i18n="dash_badge">Dashboard</p>
+            <h2 class="section-title" data-i18n-html="dash_title_html">Tüm Veriler <span class="gradient-text">Tek Ekranda</span></h2>
+            <p class="section-desc" data-i18n="dash_desc">Görüşmeler, randevular ve lead skorlarını anlık takip edin. Şirketinizin bilgilerine göre çalışan, kurumunuza uygun yanıt veren AI asistanınız.</p>
             <div class="dashboard-mockup">
                 <div class="dashboard-frame">
                     <div class="dashboard-header">
@@ -192,32 +199,32 @@
                             <div class="dash-logo">Aspalo</div>
                             <nav class="dash-menu" aria-label="Dashboard menü">
                                 <div class="dash-menu-item active">Dashboard</div>
-                                <div class="dash-menu-item">Görüşmeler</div>
-                                <div class="dash-menu-item">Randevular</div>
+                                <div class="dash-menu-item" data-i18n="dash_menu_calls">Görüşmeler</div>
+                                <div class="dash-menu-item" data-i18n="dash_menu_appts">Randevular</div>
                                 <div class="dash-menu-item">WhatsApp</div>
                             </nav>
                             <div class="dash-features">
-                                <p class="dash-features-title">Özellikler</p>
+                                <p class="dash-features-title" data-i18n="dash_features_title">Özellikler</p>
                                 <ul class="dash-features-list">
-                                    <li>Lead skorlaması</li>
-                                    <li>Görüşme özeti</li>
-                                    <li>Şirketinizin bilgilerine göre çalışır</li>
-                                    <li>Aramadan sonra isteğe bağlı WhatsApp takibi</li>
+                                    <li data-i18n="dash_f1">Lead skorlaması</li>
+                                    <li data-i18n="dash_f2">Görüşme özeti</li>
+                                    <li data-i18n="dash_f3">Şirketinizin bilgilerine göre çalışır</li>
+                                    <li data-i18n="dash_f4">Aramadan sonra isteğe bağlı WhatsApp takibi</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="dash-main">
                             <div class="dash-cards">
                                 <div class="dash-card">
-                                    <div class="dash-card-title">Toplam Arama</div>
+                                    <div class="dash-card-title" data-i18n="dash_card_calls">Toplam Arama</div>
                                     <div class="dash-card-value">156</div>
                                 </div>
                                 <div class="dash-card">
-                                    <div class="dash-card-title">Randevu</div>
+                                    <div class="dash-card-title" data-i18n="dash_card_appts">Randevu</div>
                                     <div class="dash-card-value">24</div>
                                 </div>
                                 <div class="dash-card">
-                                    <div class="dash-card-title">Ort. Lead Skoru</div>
+                                    <div class="dash-card-title" data-i18n="dash_card_score">Ort. Lead Skoru</div>
                                     <div class="dash-card-value">68</div>
                                 </div>
                             </div>
@@ -233,9 +240,9 @@
                                 </div>
                             </div>
                             <div class="dash-lead-tags">
-                                <span class="lead-tag hot">Sıcak 12</span>
-                                <span class="lead-tag warm">Ilımlı 8</span>
-                                <span class="lead-tag cold">Soğuk 4</span>
+                                <span class="lead-tag hot" data-i18n="lead_hot">Sıcak 12</span>
+                                <span class="lead-tag warm" data-i18n="lead_warm">Ilımlı 8</span>
+                                <span class="lead-tag cold" data-i18n="lead_cold">Soğuk 4</span>
                             </div>
                         </div>
                     </div>
@@ -247,39 +254,39 @@
     <!-- Sektörel Uyumluluk Kartları -->
     <section id="what" class="sectors">
         <div class="container">
-            <p class="section-badge">Sektörel uyum</p>
-            <h2 class="section-title">Sektörel Uyumluluk Kartları</h2>
-            <p class="section-desc">Hangi sektörü seçerseniz (veya üzerine gelirseniz) o sektöre özel kullanım senaryosu görünür.</p>
+            <p class="section-badge" data-i18n="sectors_badge">Sektörel uyum</p>
+            <h2 class="section-title" data-i18n="sectors_title">Sektörel Uyumluluk Kartları</h2>
+            <p class="section-desc" data-i18n="sectors_desc">Hangi sektörü seçerseniz (veya üzerine gelirseniz) o sektöre özel kullanım senaryosu görünür.</p>
             <div class="sector-cards-grid" id="sector-cards">
                 <article class="sector-compat-card" data-sector="Emlak">
                     <span class="sector-card-icon" aria-hidden="true">🏠</span>
-                    <h3>Emlak</h3>
-                    <p class="sector-scenario">Portföy Bilgisi & Görüşme Randevusu</p>
+                    <h3 data-i18n="sector_emlak">Emlak</h3>
+                    <p class="sector-scenario" data-i18n="scen_emlak">Portföy Bilgisi & Görüşme Randevusu</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Otomotiv">
                     <span class="sector-card-icon" aria-hidden="true">🚗</span>
-                    <h3>Otomotiv</h3>
-                    <p class="sector-scenario">Servis Randevusu & Test Sürüşü</p>
+                    <h3 data-i18n="sector_otomotiv">Otomotiv</h3>
+                    <p class="sector-scenario" data-i18n="scen_otomotiv">Servis Randevusu & Test Sürüşü</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Sağlık">
                     <span class="sector-card-icon" aria-hidden="true">🏥</span>
-                    <h3>Sağlık</h3>
-                    <p class="sector-scenario">Hasta Kaydı & Randevu Hatırlatma</p>
+                    <h3 data-i18n="sector_saglik">Sağlık</h3>
+                    <p class="sector-scenario" data-i18n="scen_saglik">Hasta Kaydı & Randevu Hatırlatma</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Lojistik">
                     <span class="sector-card-icon" aria-hidden="true">📦</span>
-                    <h3>Lojistik</h3>
-                    <p class="sector-scenario">Kargo Takibi & Müşteri Hizmetleri</p>
+                    <h3 data-i18n="sector_lojistik">Lojistik</h3>
+                    <p class="sector-scenario" data-i18n="scen_lojistik">Kargo Takibi & Müşteri Hizmetleri</p>
                 </article>
                 <article class="sector-compat-card" data-sector="E-Ticaret">
                     <span class="sector-card-icon" aria-hidden="true">🛒</span>
-                    <h3>E-Ticaret</h3>
-                    <p class="sector-scenario">Sipariş Desteği & İade Yönetimi</p>
+                    <h3 data-i18n="sector_eticaret">E-Ticaret</h3>
+                    <p class="sector-scenario" data-i18n="scen_eticaret">Sipariş Desteği & İade Yönetimi</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Otel Konaklama">
                     <span class="sector-card-icon" aria-hidden="true">🏨</span>
-                    <h3>Otel Konaklama</h3>
-                    <p class="sector-scenario">Rezervasyon & Misafir Hizmetleri</p>
+                    <h3 data-i18n="sector_otel">Otel Konaklama</h3>
+                    <p class="sector-scenario" data-i18n="scen_otel">Rezervasyon & Misafir Hizmetleri</p>
                 </article>
             </div>
             <div class="sector-benefit-panel" id="sector-benefit-panel" aria-live="polite">
@@ -288,7 +295,7 @@
                         <span class="sector-benefit-icon" id="sector-benefit-icon">🏠</span>
                         <div>
                             <h3 class="sector-benefit-title" id="sector-benefit-title">Emlak</h3>
-                            <p class="sector-benefit-subtitle" id="sector-benefit-subtitle">Aspalo bu sektörde nasıl fayda sağlar?</p>
+                            <p class="sector-benefit-subtitle" id="sector-benefit-subtitle" data-i18n="benefit_subtitle">Aspalo bu sektörde nasıl fayda sağlar?</p>
                         </div>
                     </div>
                     <ul class="sector-benefit-list" id="sector-benefit-list">
@@ -305,61 +312,61 @@
     <!-- İnsan vs AI Karşılaştırma -->
     <section id="comparison" class="comparison">
         <div class="container">
-            <p class="section-badge">Karşılaştırma</p>
-            <h2 class="section-title">İnsan mı, <span class="gradient-text">Aspalo mı?</span></h2>
-            <p class="section-desc">Aynı işi yaparken insan operatörle Aspalo arasındaki fark. Daha fazla satış, kaçırılmayan çağrılar, artan gelir.</p>
+            <p class="section-badge" data-i18n="cmp_badge">Karşılaştırma</p>
+            <h2 class="section-title" data-i18n-html="cmp_title_html">İnsan mı, <span class="gradient-text">Aspalo mı?</span></h2>
+            <p class="section-desc" data-i18n="cmp_desc">Aynı işi yaparken insan operatörle Aspalo arasındaki fark. Daha fazla satış, kaçırılmayan çağrılar, artan gelir.</p>
             <div class="comparison-grid">
                 <div class="comparison-card">
                     <div class="comparison-metric">
                         <span class="comparison-value comparison-value--up">%40</span>
-                        <span class="comparison-label">Satış artışı</span>
+                        <span class="comparison-label" data-i18n="cmp_sales">Satış artışı</span>
                     </div>
-                    <p class="comparison-desc">Aspalo kullanan ekiplerde ortalama satış artışı (insan ekibine kıyasla).</p>
+                    <p class="comparison-desc" data-i18n="cmp_sales_desc">Aspalo kullanan ekiplerde ortalama satış artışı (insan ekibine kıyasla).</p>
                 </div>
                 <div class="comparison-card">
                     <div class="comparison-metric">
                         <span class="comparison-value comparison-value--zero">0</span>
-                        <span class="comparison-label">Kaçırılan çağrı</span>
+                        <span class="comparison-label" data-i18n="cmp_missed">Kaçırılan çağrı</span>
                     </div>
-                    <p class="comparison-desc">İnsan mesai dışı veya meşgulken çağrı kaçırır; Aspalo 7/24 açar, hiçbir aramayı kaçırmaz.</p>
+                    <p class="comparison-desc" data-i18n="cmp_missed_desc">İnsan mesai dışı veya meşgulken çağrı kaçırır; Aspalo 7/24 açar, hiçbir aramayı kaçırmaz.</p>
                 </div>
                 <div class="comparison-card">
                     <div class="comparison-metric">
-                        <span class="comparison-value comparison-value--up">+Gelir</span>
-                        <span class="comparison-label">Artan gelir</span>
+                        <span class="comparison-value comparison-value--up" data-i18n="cmp_revenue_val">+Gelir</span>
+                        <span class="comparison-label" data-i18n="cmp_revenue">Artan gelir</span>
                     </div>
-                    <p class="comparison-desc">Kaçırılmayan her çağrı potansiyel satış; insana kıyasla daha yüksek dönüşüm ve ek gelir.</p>
+                    <p class="comparison-desc" data-i18n="cmp_revenue_desc">Kaçırılmayan her çağrı potansiyel satış; insana kıyasla daha yüksek dönüşüm ve ek gelir.</p>
                 </div>
             </div>
             <div class="comparison-table-wrap">
-                <table class="comparison-table" aria-label="İnsan ve Aspalo karşılaştırması">
+                <table class="comparison-table" data-i18n-aria="cmp_table_aria" aria-label="İnsan ve Aspalo karşılaştırması">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>İnsan operatör</th>
+                            <th data-i18n="cmp_th_human">İnsan operatör</th>
                             <th>Aspalo</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Kaçırılan çağrı</td>
-                            <td><span class="comparison-bad">Mesai dışı / meşgulken kaçırır</span></td>
-                            <td><span class="comparison-good">7/24 açar, kaçırmaz</span></td>
+                            <td data-i18n="cmp_row_missed">Kaçırılan çağrı</td>
+                            <td><span class="comparison-bad" data-i18n="cmp_bad_missed">Mesai dışı / meşgulken kaçırır</span></td>
+                            <td><span class="comparison-good" data-i18n="cmp_good_missed">7/24 açar, kaçırmaz</span></td>
                         </tr>
                         <tr>
-                            <td>Eşzamanlı görüşme</td>
-                            <td><span class="comparison-bad">Tek çağrı</span></td>
-                            <td><span class="comparison-good">Sınırsız paralel çağrı</span></td>
+                            <td data-i18n="cmp_row_concurrent">Eşzamanlı görüşme</td>
+                            <td><span class="comparison-bad" data-i18n="cmp_bad_one">Tek çağrı</span></td>
+                            <td><span class="comparison-good" data-i18n="cmp_good_unlimited">Sınırsız paralel çağrı</span></td>
                         </tr>
                         <tr>
-                            <td>Satış & dönüşüm</td>
-                            <td><span class="comparison-ok">İnsan performansına bağlı</span></td>
-                            <td><span class="comparison-good">Tutarlı, şirket bilgisine göre</span></td>
+                            <td data-i18n="cmp_row_sales">Satış & dönüşüm</td>
+                            <td><span class="comparison-ok" data-i18n="cmp_ok_human">İnsan performansına bağlı</span></td>
+                            <td><span class="comparison-good" data-i18n="cmp_good_consistent">Tutarlı, şirket bilgisine göre</span></td>
                         </tr>
                         <tr>
-                            <td>Çalışma saatleri</td>
-                            <td><span class="comparison-bad">Mesai saatleri</span></td>
-                            <td><span class="comparison-good">7/24 kesintisiz</span></td>
+                            <td data-i18n="cmp_row_hours">Çalışma saatleri</td>
+                            <td><span class="comparison-bad" data-i18n="cmp_bad_hours">Mesai saatleri</span></td>
+                            <td><span class="comparison-good" data-i18n="cmp_good_hours">7/24 kesintisiz</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -371,15 +378,15 @@
     <section id="how-it-works" class="how how-it-works">
         <div class="container">
             <div class="section-header">
-                <p class="section-badge">Nasıl Çalışır?</p>
-                <h2 class="section-title">3 Adımda Kurulum ve <span class="gradient-text">Aspalo 48 Saatte Aktif</span></h2>
+                <p class="section-badge" data-i18n="how_badge">Nasıl Çalışır?</p>
+                <h2 class="section-title" data-i18n-html="how_title_html">3 Adımda Kurulum ve <span class="gradient-text">Aspalo 48 Saatte Aktif</span></h2>
             </div>
             <div class="steps steps-vertical">
                 <div class="step step-row">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3>Altyapı Bağlantısı</h3>
-                        <p>Mevcut telefon hattınız veya santral altyapınız Aspalo'ya entegre edilir. Ek donanım gerektirmez, mevcut sistemle çalışır.</p>
+                        <h3 data-i18n="how_s1_t">Altyapı Bağlantısı</h3>
+                        <p data-i18n="how_s1_p">Mevcut telefon hattınız veya santral altyapınız Aspalo'ya entegre edilir. Ek donanım gerektirmez, mevcut sistemle çalışır.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-icon">🔌</div>
@@ -388,8 +395,8 @@
                 <div class="step step-row">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Kuruma Özel Bilgi ve Senaryo Tanımlama</h3>
-                        <p>Fiyat listeleri, kampanyalar, hizmet detayları ve konuşma akışları sisteme tanımlanır. Aspalo, işletmenize özel yapılandırılır.</p>
+                        <h3 data-i18n="how_s2_t">Kuruma Özel Bilgi ve Senaryo Tanımlama</h3>
+                        <p data-i18n="how_s2_p">Fiyat listeleri, kampanyalar, hizmet detayları ve konuşma akışları sisteme tanımlanır. Aspalo, işletmenize özel yapılandırılır.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-icon">📚</div>
@@ -398,8 +405,8 @@
                 <div class="step step-row">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3>CRM ve Süreç Entegrasyonu</h3>
-                        <p>HubSpot, Salesforce veya mevcut CRM sisteminizle veri senkronizasyonu sağlanır. Tüm görüşmeler kayıt altına alınır ve otomatik olarak işlenir.</p>
+                        <h3 data-i18n="how_s3_t">CRM ve Süreç Entegrasyonu</h3>
+                        <p data-i18n="how_s3_p">HubSpot, Salesforce veya mevcut CRM sisteminizle veri senkronizasyonu sağlanır. Tüm görüşmeler kayıt altına alınır ve otomatik olarak işlenir.</p>
                     </div>
                     <div class="step-visual">
                         <div class="step-icon">🔗</div>
@@ -412,29 +419,29 @@
     <!-- Features -->
     <section id="features" class="features">
         <div class="container">
-            <p class="section-badge">Özellikler</p>
-            <h2 class="section-title">Neden Aspalo?</h2>
-            <p class="section-desc">Kurumsal ölçek için tasarlanmış çağrı otomasyonu.</p>
+            <p class="section-badge" data-i18n="feat_badge">Özellikler</p>
+            <h2 class="section-title" data-i18n="feat_title">Neden Aspalo?</h2>
+            <p class="section-desc" data-i18n="feat_desc">Kurumsal ölçek için tasarlanmış çağrı otomasyonu.</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <span class="feature-icon">🎯</span>
-                    <h3>Tek Platform, Tüm Süreç</h3>
-                    <p>Randevu, bilgi aktarımı, kampanya duyuruları ve destek görüşmeleri tek altyapı üzerinden yönetilir. Dağınık sistemler yerine merkezi kontrol.</p>
+                    <h3 data-i18n="feat_1_t">Tek Platform, Tüm Süreç</h3>
+                    <p data-i18n="feat_1_p">Randevu, bilgi aktarımı, kampanya duyuruları ve destek görüşmeleri tek altyapı üzerinden yönetilir. Dağınık sistemler yerine merkezi kontrol.</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">💰</span>
-                    <h3>Ölçeklenebilir Gelir Artışı</h3>
-                    <p>Yeni personel maliyeti olmadan çağrı kapasitenizi artırın. Aynı ekip, daha fazla satış fırsatı.</p>
+                    <h3 data-i18n="feat_2_t">Ölçeklenebilir Gelir Artışı</h3>
+                    <p data-i18n="feat_2_p">Yeni personel maliyeti olmadan çağrı kapasitenizi artırın. Aynı ekip, daha fazla satış fırsatı.</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">🔗</span>
-                    <h3>Kolay entegrasyon</h3>
-                    <p>Mevcut telefon altyapınız ve CRM’inizle uyumlu çalışır.</p>
+                    <h3 data-i18n="feat_3_t">Kolay entegrasyon</h3>
+                    <p data-i18n="feat_3_p">Mevcut telefon altyapınız ve CRM'inizle uyumlu çalışır.</p>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">📊</span>
-                    <h3>Ölçülebilir Performans</h3>
-                    <p>Hangi kampanya kaç satış getirdi? Hangi saatlerde daha çok dönüşüm var? Gelirinizi veriyle yönetin.</p>
+                    <h3 data-i18n="feat_4_t">Ölçülebilir Performans</h3>
+                    <p data-i18n="feat_4_p">Hangi kampanya kaç satış getirdi? Hangi saatlerde daha çok dönüşüm var? Gelirinizi veriyle yönetin.</p>
                 </div>
             </div>
         </div>
@@ -444,55 +451,55 @@
     <section id="pricing" class="pricing">
         <div class="container">
             <div class="pricing-header">
-                <p class="section-badge">Planlar</p>
-                <h2 class="section-title">İşletmenize Uygun AI Çağrı Planı</h2>
-                <p class="section-desc pricing-subheadline">Çağrı hacminize göre size en uygun paketi birlikte belirleyelim. Demo randevusu için hemen iletişime geçin.</p>
+                <p class="section-badge" data-i18n="plans_badge">Planlar</p>
+                <h2 class="section-title" data-i18n="plans_title">İşletmenize Uygun AI Çağrı Planı</h2>
+                <p class="section-desc pricing-subheadline" data-i18n="plans_desc">Çağrı hacminize göre size en uygun paketi birlikte belirleyelim. Demo randevusu için hemen iletişime geçin.</p>
             </div>
             <div class="pricing-cards">
                 <article class="pricing-card">
                     <h3 class="pricing-plan-name">Basic</h3>
                     <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom">Size özel teklif için bizimle görüşün</span>
+                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
                     </div>
                     <ul class="pricing-features">
-                        <li>1.000 dakika dahil</li>
-                        <li>Gelen arama AI yanıtı</li>
-                        <li>Kayıt & transkript</li>
-                        <li>Randevu alma</li>
-                        <li>Anlık dashboard analitiği</li>
+                        <li data-i18n="plan_b1">1.000 dakika dahil</li>
+                        <li data-i18n="plan_b2">Gelen arama AI yanıtı</li>
+                        <li data-i18n="plan_b3">Kayıt & transkript</li>
+                        <li data-i18n="plan_b4">Randevu alma</li>
+                        <li data-i18n="plan_b5">Anlık dashboard analitiği</li>
                     </ul>
-                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-basic-btn">Bizimle İletişime Geç</a>
+                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-basic-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
                 </article>
                 <article class="pricing-card pricing-card--popular">
-                    <span class="pricing-badge">En Popüler</span>
+                    <span class="pricing-badge" data-i18n="plan_popular">En Popüler</span>
                     <h3 class="pricing-plan-name">Growth</h3>
                     <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom">Size özel teklif için bizimle görüşün</span>
+                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
                     </div>
                     <ul class="pricing-features">
-                        <li>2.000 dakika dahil</li>
-                        <li>Gelen + giden AI aramaları</li>
-                        <li>Lead skorlama</li>
-                        <li>CRM entegrasyonları</li>
-                        <li>WhatsApp takibi</li>
-                        <li>Gelişmiş analitik dashboard</li>
+                        <li data-i18n="plan_g1">2.000 dakika dahil</li>
+                        <li data-i18n="plan_g2">Gelen + giden AI aramaları</li>
+                        <li data-i18n="plan_g3">Lead skorlama</li>
+                        <li data-i18n="plan_g4">CRM entegrasyonları</li>
+                        <li data-i18n="plan_g5">WhatsApp takibi</li>
+                        <li data-i18n="plan_g6">Gelişmiş analitik dashboard</li>
                     </ul>
-                    <p class="pricing-plus">Basic'deki her şey dahil</p>
-                    <a href="#" class="btn btn-primary pricing-cta pricing-cta--primary" id="pricing-growth-btn">Bizimle İletişime Geç</a>
+                    <p class="pricing-plus" data-i18n="plan_plus">Basic'deki her şey dahil</p>
+                    <a href="#" class="btn btn-primary pricing-cta pricing-cta--primary" id="pricing-growth-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
                 </article>
                 <article class="pricing-card">
                     <h3 class="pricing-plan-name">Pro</h3>
                     <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom">Size özel teklif için bizimle görüşün</span>
+                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
                     </div>
                     <ul class="pricing-features">
-                        <li>Özel dakika paketleri</li>
-                        <li>Çoklu ajan yönlendirme</li>
-                        <li>Özel iş akışları</li>
-                        <li>API erişimi</li>
-                        <li>Özel destek</li>
+                        <li data-i18n="plan_p1">Özel dakika paketleri</li>
+                        <li data-i18n="plan_p2">Çoklu ajan yönlendirme</li>
+                        <li data-i18n="plan_p3">Özel iş akışları</li>
+                        <li data-i18n="plan_p4">API erişimi</li>
+                        <li data-i18n="plan_p5">Özel destek</li>
                     </ul>
-                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-pro-btn">Bizimle İletişime Geç</a>
+                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-pro-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
                 </article>
             </div>
         </div>
@@ -505,15 +512,15 @@
                 <a href="#" class="logo">
                     <img src="images/logo2.png" alt="Aspalo" class="logo-img">
                 </a>
-                <p class="footer-tagline">Her türlü çağrıyı karşılayan AI.</p>
+                <p class="footer-tagline" data-i18n="footer_tag">Her türlü çağrıyı karşılayan AI.</p>
                 <div class="footer-links">
-                    <a href="#what">Ne Sunuyoruz</a>
-                    <a href="#how-it-works">Nasıl Çalışır</a>
-                    <a href="#features">Özellikler</a>
-                    <a href="#pricing">Planlar</a>
-                    <a href="#" id="demo-request-footer">Demo</a>
+                    <a href="#what" data-i18n="nav_what">Ne Sunuyoruz</a>
+                    <a href="#how-it-works" data-i18n="nav_how">Nasıl Çalışır</a>
+                    <a href="#features" data-i18n="nav_features">Özellikler</a>
+                    <a href="#pricing" data-i18n="nav_plans">Planlar</a>
+                    <a href="#" id="demo-request-footer" data-i18n="footer_demo">Demo</a>
                 </div>
-                <p class="footer-copy">© Aspalo. Tüm hakları saklıdır.</p>
+                <p class="footer-copy" data-i18n="footer_copy">© Aspalo. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
@@ -522,7 +529,7 @@
     <div id="demo-modal" class="demo-modal">
         <div class="demo-modal-overlay"></div>
         <div class="demo-modal-content">
-            <button class="demo-modal-close" aria-label="Kapat">
+            <button class="demo-modal-close" data-i18n-aria="modal_close" aria-label="Kapat">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
             <div class="demo-modal-body">
@@ -530,13 +537,13 @@
                     <div class="demo-brand">
                         <img src="images/logo2.png" alt="Aspalo" class="demo-logo-img">
                     </div>
-                    <h2 class="demo-title">Aspalo Canlı Demo</h2>
-                    <p class="demo-description">Sesli AI asistanın nasıl arama yanıtladığını, lead skorladığını ve görüşmeyi özetlediğini canlı izleyin.</p>
+                    <h2 class="demo-title" data-i18n="modal_title">Aspalo Canlı Demo</h2>
+                    <p class="demo-description" data-i18n="modal_desc">Sesli AI asistanın nasıl arama yanıtladığını, lead skorladığını ve görüşmeyi özetlediğini canlı izleyin.</p>
                     <div class="demo-details" id="demo-details">
-                        <div class="demo-detail-item"><span class="demo-detail-icon">✓</span><span>Onay gerekli</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🕒</span><span>30 dakika</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🔗</span><span>Organizatörün varsayılan uygulaması</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🌍</span><span>Europe/Istanbul</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon">✓</span><span data-i18n="modal_confirm">Onay gerekli</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon">🕒</span><span data-i18n="modal_duration">30 dakika</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon">🔗</span><span data-i18n="modal_app">Organizatörün varsayılan uygulaması</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon">🌍</span><span data-i18n="modal_tz">Europe/Istanbul</span></div>
                     </div>
                 </div>
                 <div class="demo-calendar-panel">
@@ -545,25 +552,25 @@
                         <h3 class="calendar-month-year" id="calendar-month-year">Ocak 2026</h3>
                         <button class="calendar-nav-btn" id="next-month">›</button>
                     </div>
-                    <div class="calendar-weekdays">
+                    <div class="calendar-weekdays" id="calendar-weekdays">
                         <div>PAZ</div><div>PZT</div><div>SAL</div><div>ÇAR</div><div>PER</div><div>CUM</div><div>CMT</div>
                     </div>
                     <div class="calendar-days" id="calendar-days"></div>
                 </div>
                 <div class="demo-form-panel">
                     <div class="selected-date-info" id="selected-date-info">
-                        <span id="selected-date-text">Tarih seçin</span>
+                        <span id="selected-date-text" data-i18n="cal_pick_date">Tarih seçin</span>
                     </div>
                     <div class="time-format-toggle">
                         <button class="time-toggle-btn" data-format="12">12 sa</button>
                         <button class="time-toggle-btn active" data-format="24">24 sa</button>
                     </div>
                     <div class="time-slots" id="time-slots">
-                        <p class="no-date-selected" id="no-date-selected-p">Lütfen önce bir tarih seçin</p>
+                        <p class="no-date-selected" id="no-date-selected-p" data-i18n="cal_pick_first">Lütfen önce bir tarih seçin</p>
                     </div>
                     <div class="demo-form-inner" id="demo-form-inner" style="display: none;">
                         <div class="form-group">
-                            <label for="demo-name">Adınız *</label>
+                            <label for="demo-name" data-i18n="form_name">Adınız *</label>
                             <input type="text" id="demo-name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -571,13 +578,13 @@
                             <input type="email" id="demo-email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="demo-company">Şirket ismi</label>
+                            <label for="demo-company" data-i18n="form_company">Şirket ismi</label>
                             <input type="text" id="demo-company" name="company">
                         </div>
-                        <p class="form-disclaimer">Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.</p>
+                        <p class="form-disclaimer" data-i18n-html="form_disclaimer_html">Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.</p>
                         <div class="form-actions">
-                            <button type="button" class="btn-back" id="btn-back">Geri</button>
-                            <button type="button" class="btn-confirm" id="btn-confirm">Onayla</button>
+                            <button type="button" class="btn-back" id="btn-back" data-i18n="form_back">Geri</button>
+                            <button type="button" class="btn-confirm" id="btn-confirm" data-i18n="form_confirm">Onayla</button>
                         </div>
                     </div>
                 </div>
@@ -585,6 +592,7 @@
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
@@ -603,32 +611,39 @@
       var vapiInstance = null;
       var assistant = "056c49fc-6999-46e0-88ee-235392642f7a";
       var apiKey = "76473afb-6fd2-44d8-affc-6b040bd924d3";
-      var buttonConfig = {
-        position: "bottom-right",
-        offset: "40px",
-        width: "60px",
-        height: "60px",
-        idle: {
-          color: "rgb(15, 23, 42)",
-          type: "pill",
-          title: "Hemen Konuş",
-          subtitle: "Aspalo ile konuş",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
-        },
-        loading: {
-          color: "rgb(51, 65, 85)",
-          type: "pill",
-          title: "Bağlanıyor...",
-          subtitle: "Lütfen bekleyin",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
-        },
-        active: {
-          color: "rgb(239, 68, 68)",
-          type: "pill",
-          title: "Görüşme Aktif",
-          subtitle: "Kapatmak için tıklayın",
-          icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
-        },
+      function buildVapiButtonConfig() {
+        var t = window.AspaloI18n ? window.AspaloI18n.t.bind(window.AspaloI18n) : function (k) { return k; };
+        return {
+          position: "bottom-right",
+          offset: "40px",
+          width: "60px",
+          height: "60px",
+          idle: {
+            color: "rgb(15, 23, 42)",
+            type: "pill",
+            title: t("vapi_idle_title"),
+            subtitle: t("vapi_idle_sub"),
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg",
+          },
+          loading: {
+            color: "rgb(51, 65, 85)",
+            type: "pill",
+            title: t("vapi_load_title"),
+            subtitle: t("vapi_load_sub"),
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg",
+          },
+          active: {
+            color: "rgb(239, 68, 68)",
+            type: "pill",
+            title: t("vapi_active_title"),
+            subtitle: t("vapi_active_sub"),
+            icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg",
+          },
+        };
+      }
+      var buttonConfig = buildVapiButtonConfig();
+      window.refreshVapiLabels = function () {
+        buttonConfig = buildVapiButtonConfig();
       };
       function initVapiWidget(config) {
         if (!window.vapiSDK || typeof window.vapiSDK.run !== "function") return null;
@@ -640,7 +655,10 @@
             console.error("Vapi error:", err);
             var msg = (err && err.message) ? String(err.message) : "";
             if (msg.indexOf("Permission") !== -1 || msg.indexOf("NotAllowed") !== -1 || msg.indexOf("denied") !== -1) {
-              try { alert("Mikrofon erişimi reddedildi. Lütfen tarayıcıda bu site için mikrofon iznini verin ve tekrar deneyin."); } catch (e) {}
+              try {
+                var micMsg = window.AspaloI18n ? window.AspaloI18n.t("vapi_mic_err") : "Mikrofon erişimi reddedildi.";
+                alert(micMsg);
+              } catch (e) {}
             }
           });
           return instance;

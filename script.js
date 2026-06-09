@@ -4,6 +4,38 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+    var activeSectorKey = 'Emlak';
+    var renderCalendarRef = null;
+    var updateSelectedDateInfoRef = null;
+    var renderTimeSlotsRef = null;
+
+    function i18n(key) {
+        return window.AspaloI18n ? window.AspaloI18n.t(key) : key;
+    }
+
+    function updateCalendarWeekdayHeaders() {
+        var wrap = document.getElementById('calendar-weekdays');
+        if (!wrap || !window.AspaloI18n) return;
+        var days = window.AspaloI18n.getWeekdaysShort();
+        var cells = wrap.querySelectorAll('div');
+        days.forEach(function (label, i) {
+            if (cells[i]) cells[i].textContent = label;
+        });
+    }
+
+    window.onAspaloLanguageChange = function () {
+        updateCalendarWeekdayHeaders();
+        if (renderCalendarRef) renderCalendarRef();
+        if (updateSelectedDateInfoRef) updateSelectedDateInfoRef();
+        if (renderTimeSlotsRef) renderTimeSlotsRef();
+        var activeCard = document.querySelector('#sector-cards .sector-compat-card.active');
+        if (activeCard) {
+            showSectorBenefit(activeCard.getAttribute('data-sector'), false, activeCard);
+        } else {
+            showSectorBenefit(activeSectorKey, false, null);
+        }
+        if (typeof window.refreshVapiLabels === 'function') window.refreshVapiLabels();
+    };
     // Mobile menu
     var menuBtn = document.querySelector('.mobile-menu-btn');
     var nav = document.querySelector('.navbar');
@@ -28,80 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Sektör kartı tıklanınca: fayda paneli göster, hero badge ile senkron
-    var sectorBenefits = {
-        'Emlak': {
-            icon: '🏠',
-            title: 'Emlak',
-            subtitle: 'Aspalo emlak sektöründe nasıl fayda sağlar?',
-            benefits: [
-                '7/24 emlak bilgisi ve fiyat sunumu',
-                'Görüşme ve ev gezisi randevusu alma',
-                'Lead nitelendirme (sıcak / ılık müşteri)',
-                'Portföy özeti ve kampanya bilgisi',
-                'Kaçırılan aramaları geri dönüşümle değerlendirme'
-            ]
-        },
-        'Otomotiv': {
-            icon: '🚗',
-            title: 'Otomotiv',
-            subtitle: 'Aspalo otomotiv sektöründe nasıl fayda sağlar?',
-            benefits: [
-                'Servis randevusu ve test sürüşü planlama',
-                'Model, fiyat ve kampanya bilgisi 7/24',
-                'Müşteri geri arama ve takip',
-                'Bayi stok ve teslimat süresi bilgisi',
-                'Satış sonrası hizmet yönlendirme'
-            ]
-        },
-        'Sağlık': {
-            icon: '🏥',
-            title: 'Sağlık',
-            subtitle: 'Aspalo sağlık sektöründe nasıl fayda sağlar?',
-            benefits: [
-                'Randevu alma ve hatırlatma aramaları',
-                'Hasta kaydı ve ön bilgi toplama',
-                'Poliklinik ve doktor bilgisi',
-                'Acil olmayan sorularda yönlendirme',
-                'Randevu iptal ve erteletme'
-            ]
-        },
-        'Lojistik': {
-            icon: '📦',
-            title: 'Lojistik',
-            subtitle: 'Aspalo lojistik sektöründe nasıl fayda sağlar?',
-            benefits: [
-                'Kargo takip bilgisi 7/24',
-                'Teslimat erteletme ve adres güncelleme',
-                'Şikayet ve kayıp bildirimi alma',
-                'Müşteri hizmetleri ön eleme',
-                'Geri arama talebi kaydı'
-            ]
-        },
-        'E-Ticaret': {
-            icon: '🛒',
-            title: 'E-Ticaret',
-            subtitle: 'Aspalo e-ticaret sektöründe nasıl fayda sağlar?',
-            benefits: [
-                'Sipariş durumu ve kargo bilgisi',
-                'İade ve değişim talebi alma',
-                'Ürün bilgisi ve stok sorgulama',
-                'Kampanya ve kupon bilgisi',
-                'Müşteri memnuniyeti ölçümü'
-            ]
-        },
-        'Otel Konaklama': {
-            icon: '🏨',
-            title: 'Otel Konaklama',
-            subtitle: 'Aspalo otel ve konaklama sektöründe nasıl fayda sağlar?',
-            benefits: [
-                'Oda rezervasyonu ve fiyat bilgisi',
-                'Check-in / check-out ve hizmet sorguları',
-                'Erken rezervasyon ve grup talepleri',
-                'Misafir istekleri ve yönlendirme',
-                '7/24 rezervasyon merkezi desteği'
-            ]
-        }
-    };
     var sectorCards = document.querySelectorAll('#sector-cards .sector-compat-card');
     var sectorBenefitIcon = document.getElementById('sector-benefit-icon');
     var sectorBenefitTitle = document.getElementById('sector-benefit-title');
@@ -113,7 +71,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return window.innerWidth <= 900;
     }
     function showSectorBenefit(sectorKey, fromUserClick, clickedCard) {
-        var data = sectorBenefits[sectorKey];
+        if (!sectorKey) return;
+        activeSectorKey = sectorKey;
+        var data = window.AspaloI18n ? window.AspaloI18n.getSectorBenefits(sectorKey) : null;
         if (!data) return;
         sectorCards.forEach(function (card) {
             card.classList.toggle('active', card.getAttribute('data-sector') === sectorKey);
@@ -165,38 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Telefon mockup: mesajlaşma dili döngüsü (TR, DE, EN, AR)
-    var phoneTranscripts = [
-        { status: 'Görüşme devam ediyor...', speakerAi: 'AI:', speakerCustomer: 'Arayan:', msg1: 'Merhaba, size nasıl yardımcı olabilirim?', msg2: 'Randevu almak istiyorum.', msg3: 'Tabii, hangi gün uygun?', rtl: false },
-        { status: 'Anruf läuft...', speakerAi: 'AI:', speakerCustomer: 'Anrufer:', msg1: 'Hallo, wie kann ich Ihnen helfen?', msg2: 'Ich möchte einen Termin vereinbaren.', msg3: 'Natürlich, welcher Tag passt Ihnen?', rtl: false },
-        { status: 'Call in progress...', speakerAi: 'AI:', speakerCustomer: 'Caller:', msg1: 'Hello, how can I help you?', msg2: "I'd like to make an appointment.", msg3: 'Sure, which day works for you?', rtl: false },
-        { status: 'المكالمة جارية...', speakerAi: 'AI:', speakerCustomer: 'المتصل:', msg1: 'مرحبا، كيف يمكنني مساعدتك؟', msg2: 'أود حجز موعد.', msg3: 'بالتأكيد، أي يوم يناسبك؟', rtl: true }
-    ];
-    var phoneStatusEl = document.getElementById('phone-call-status');
-    var phoneSpeakerAi = document.getElementById('phone-speaker-ai');
-    var phoneSpeakerCustomer = document.getElementById('phone-speaker-customer');
-    var phoneMsg1 = document.getElementById('phone-msg-1');
-    var phoneMsg2 = document.getElementById('phone-msg-2');
-    var phoneMsg3 = document.getElementById('phone-msg-3');
-    var phoneTranscriptWrap = document.querySelector('.call-transcript');
-    var phoneLangIndex = 0;
-    function setPhoneLanguage(index) {
-        var L = phoneTranscripts[index];
-        if (!L) return;
-        if (phoneStatusEl) phoneStatusEl.textContent = L.status;
-        if (phoneSpeakerAi) phoneSpeakerAi.textContent = L.speakerAi;
-        if (phoneSpeakerCustomer) phoneSpeakerCustomer.textContent = L.speakerCustomer;
-        if (phoneMsg1) phoneMsg1.textContent = L.msg1;
-        if (phoneMsg2) phoneMsg2.textContent = L.msg2;
-        if (phoneMsg3) phoneMsg3.textContent = L.msg3;
-        if (phoneTranscriptWrap) phoneTranscriptWrap.setAttribute('dir', L.rtl ? 'rtl' : 'ltr');
-    }
-    if (phoneMsg1 && phoneMsg2 && phoneMsg3) {
-        setInterval(function () {
-            phoneLangIndex = (phoneLangIndex + 1) % phoneTranscripts.length;
-            setPhoneLanguage(phoneLangIndex);
-        }, 3500);
-    }
-
     // --- Demo talep modalı (takvim + saat + form) ---
     var demoModal = document.getElementById('demo-modal');
     var demoRequestBtn = document.getElementById('demo-request-btn');
@@ -242,8 +170,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var selectedDate = null;
     var selectedTime = null;
     var timeFormat = '24';
-    var monthNames = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
-    var weekdaysFull = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+    function monthNames() {
+        return window.AspaloI18n ? window.AspaloI18n.getMonths() : ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+    }
+    function weekdaysFull() {
+        return window.AspaloI18n ? window.AspaloI18n.getWeekdaysFull() : ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+    }
+    function weekdaysShort() {
+        return window.AspaloI18n ? window.AspaloI18n.getWeekdaysShort() : ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'];
+    }
 
     function initCalendar() {
         renderCalendar();
@@ -257,7 +192,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!calendarDays || !monthYear) return;
         var year = currentDate.getFullYear();
         var month = currentDate.getMonth();
-        monthYear.textContent = monthNames[month] + ' ' + year;
+        var months = monthNames();
+        monthYear.textContent = months[month] + ' ' + year;
         var firstDay = new Date(year, month, 1).getDay();
         var daysInMonth = new Date(year, month + 1, 0).getDate();
         var today = new Date();
@@ -308,18 +244,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedDateText = document.getElementById('selected-date-text');
         if (!selectedDateText) return;
         if (selectedDate) {
-            var dayNames = ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'];
+            var dayNames = weekdaysShort();
             selectedDateText.textContent = dayNames[selectedDate.getDay()] + ' ' + selectedDate.getDate();
         } else {
-            selectedDateText.textContent = 'Tarih seçin';
+            selectedDateText.textContent = i18n('cal_pick_date');
         }
     }
+    updateSelectedDateInfoRef = updateSelectedDateInfo;
 
     function renderTimeSlots() {
         var timeSlots = document.getElementById('time-slots');
         if (!timeSlots) return;
         if (!selectedDate) {
-            timeSlots.innerHTML = '<p class="no-date-selected" id="no-date-selected-p">Lütfen önce bir tarih seçin</p>';
+            timeSlots.innerHTML = '<p class="no-date-selected" id="no-date-selected-p">' + i18n('cal_pick_first') + '</p>';
             return;
         }
         var slots = [];
@@ -385,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formData.append('company', payload.company || '');
         formData.append('date', payload.date);
         formData.append('time', payload.time);
-        formData.append('_subject', 'Yeni Demo Talebi: ' + payload.name);
+        formData.append('_subject', i18n('form_subject') + payload.name);
         return fetch('https://formspree.io/f/' + config.formspreeId, {
             method: 'POST',
             body: formData,
@@ -413,19 +350,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 var email = (emailEl && emailEl.value) ? emailEl.value.trim() : '';
                 var company = (companyEl && companyEl.value) ? companyEl.value.trim() : '';
                 if (!name || !email) {
-                    alert('Lütfen ad ve email alanlarını doldurun.');
+                    alert(i18n('form_err_fields'));
                     return;
                 }
                 var dateStr = '';
-                if (selectedDate && monthNames && weekdaysFull) {
-                    dateStr = selectedDate.getDate() + ' ' + monthNames[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear() + ' ' + weekdaysFull[selectedDate.getDay()];
+                if (selectedDate) {
+                    var m = monthNames();
+                    var w = weekdaysFull();
+                    dateStr = selectedDate.getDate() + ' ' + m[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear() + ' ' + w[selectedDate.getDay()];
                 }
-                var payload = { name: name, email: email, company: company, date: dateStr, time: selectedTime || '', language: 'tr' };
+                var payload = { name: name, email: email, company: company, date: dateStr, time: selectedTime || '', language: window.AspaloI18n ? window.AspaloI18n.getLang() : 'tr' };
                 var origText = btnConfirm.textContent;
                 btnConfirm.disabled = true;
-                btnConfirm.textContent = 'Gönderiliyor...';
+                btnConfirm.textContent = i18n('form_sending');
                 submitDemoRequest(payload).then(function () {
-                    btnConfirm.textContent = '✓ Talebiniz alındı';
+                    btnConfirm.textContent = i18n('form_success');
                     btnConfirm.style.background = 'linear-gradient(135deg, #15803d 0%, #166534 100%)';
                     setTimeout(function () {
                         if (nameEl) nameEl.value = '';
@@ -447,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.error(err);
                     btnConfirm.disabled = false;
                     btnConfirm.textContent = origText;
-                    alert('Gönderilemedi. Lütfen tekrar deneyin veya doğrudan iletişime geçin.');
+                    alert(i18n('form_err_send'));
                 });
             });
         }
@@ -458,5 +397,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var nextBtn = document.getElementById('next-month');
     if (prevBtn) prevBtn.addEventListener('click', function () { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); });
     if (nextBtn) nextBtn.addEventListener('click', function () { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); });
+
+    renderCalendarRef = renderCalendar;
+    renderTimeSlotsRef = renderTimeSlots;
+    updateCalendarWeekdayHeaders();
 
 });
