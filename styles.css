@@ -442,7 +442,7 @@ img { max-width: 100%; }
 
 .hero-stats {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
     flex-wrap: nowrap;
     animation: fade-in-up 0.6s ease-out 0.4s both;
@@ -451,14 +451,32 @@ img { max-width: 100%; }
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 6px;
+    min-height: 60px;
+    justify-content: flex-start;
 }
-.stat-icon {
-    font-size: 20px;
-    margin-bottom: 2px;
+.stat-num { 
+    font-weight: 800; 
+    font-size: 28px; 
+    color: var(--text); 
+    line-height: 1;
+    height: 34px;
+    display: flex;
+    align-items: flex-end;
+    text-shadow: 0 2px 8px rgba(15, 23, 42, 0.15), 0 1px 3px rgba(15, 23, 42, 0.1);
+    letter-spacing: -0.02em;
 }
-.stat-num { font-weight: 700; font-size: 18px; color: var(--text); }
-.stat-label { font-size: 13px; color: var(--text-dim); }
+.stat-label { 
+    font-size: 14px; 
+    color: var(--text); 
+    line-height: 1.4;
+    height: 20px;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+    letter-spacing: 0.01em;
+}
 .stat-sep {
     width: 1px;
     height: 32px;
@@ -1169,8 +1187,11 @@ img { max-width: 100%; }
     background-size: contain;
 }
 @media (max-width: 640px) {
-    .sector-benefit-panel { padding: 24px 20px; }
+    .sector-benefit-panel { padding: 24px 20px; margin-top: 16px; }
     .sector-benefit-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+    .sector-benefit-panel { margin-top: 16px; }
 }
 
 @media (max-width: 768px) {

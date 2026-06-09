@@ -107,7 +107,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var sectorBenefitTitle = document.getElementById('sector-benefit-title');
     var sectorBenefitSubtitle = document.getElementById('sector-benefit-subtitle');
     var sectorBenefitList = document.getElementById('sector-benefit-list');
-    function showSectorBenefit(sectorKey, fromUserClick) {
+    var sectorBenefitPanel = document.getElementById('sector-benefit-panel');
+    var sectorCardsGrid = document.getElementById('sector-cards');
+    function isMobileView() {
+        return window.innerWidth <= 900;
+    }
+    function showSectorBenefit(sectorKey, fromUserClick, clickedCard) {
         var data = sectorBenefits[sectorKey];
         if (!data) return;
         sectorCards.forEach(function (card) {
@@ -128,16 +133,36 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sectorBenefitList && data.benefits) {
             sectorBenefitList.innerHTML = data.benefits.map(function (b) { return '<li>' + b + '</li>'; }).join('');
         }
+        if (isMobileView() && clickedCard && sectorBenefitPanel && sectorCardsGrid) {
+            var existingPanel = clickedCard.nextElementSibling;
+            if (existingPanel && existingPanel.id === 'sector-benefit-panel') {
+                return;
+            }
+            if (sectorBenefitPanel.parentNode) {
+                sectorBenefitPanel.parentNode.removeChild(sectorBenefitPanel);
+            }
+            clickedCard.parentNode.insertBefore(sectorBenefitPanel, clickedCard.nextSibling);
+            sectorBenefitPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     }
     sectorCards.forEach(function (card) {
         card.addEventListener('click', function () {
             var sector = card.getAttribute('data-sector');
-            if (sector) showSectorBenefit(sector, true);
+            if (sector) showSectorBenefit(sector, true, card);
         });
     });
     if (sectorCards.length) {
-        showSectorBenefit(sectorCards[0].getAttribute('data-sector'), false);
+        var firstCard = sectorCards[0];
+        showSectorBenefit(firstCard.getAttribute('data-sector'), false, firstCard);
     }
+    window.addEventListener('resize', function () {
+        if (!isMobileView() && sectorBenefitPanel && sectorCardsGrid) {
+            var container = sectorCardsGrid.parentNode;
+            if (sectorBenefitPanel.parentNode !== container) {
+                container.appendChild(sectorBenefitPanel);
+            }
+        }
+    });
 
     // Telefon mockup: mesajlaşma dili döngüsü (TR, DE, EN, AR)
     var phoneTranscripts = [
@@ -211,25 +236,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (pricingProBtn) pricingProBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     if (demoModalClose) demoModalClose.addEventListener('click', closeDemoModal);
     if (demoModalOverlay) demoModalOverlay.addEventListener('click', closeDemoModal);
-
-    // Fiyatlandırma: Aylık / Yıllık toggle
-    var pricingToggleMonthly = document.getElementById('pricing-toggle-monthly');
-    var pricingToggleAnnual = document.getElementById('pricing-toggle-annual');
-    var pricingPriceSpans = document.querySelectorAll('.pricing-card .pricing-price[data-monthly][data-annual]');
-    var pricingSavingsBasic = document.getElementById('pricing-savings-basic');
-    var pricingSavingsGrowth = document.getElementById('pricing-savings-growth');
-    function setPricingPeriod(period) {
-        var isAnnual = period === 'annual';
-        if (pricingToggleMonthly) pricingToggleMonthly.classList.toggle('active', !isAnnual);
-        if (pricingToggleAnnual) pricingToggleAnnual.classList.toggle('active', isAnnual);
-        pricingPriceSpans.forEach(function (el) {
-            el.textContent = isAnnual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
-        });
-        if (pricingSavingsBasic) pricingSavingsBasic.hidden = !isAnnual;
-        if (pricingSavingsGrowth) pricingSavingsGrowth.hidden = !isAnnual;
-    }
-    if (pricingToggleMonthly) pricingToggleMonthly.addEventListener('click', function () { setPricingPeriod('monthly'); });
-    if (pricingToggleAnnual) pricingToggleAnnual.addEventListener('click', function () { setPricingPeriod('annual'); });
 
     // Takvim
     var currentDate = new Date();
