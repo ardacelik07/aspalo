@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260614">
-    <link rel="stylesheet" href="premium.css?v=20260614">
+    <link rel="stylesheet" href="styles.css?v=20260706d">
+    <link rel="stylesheet" href="premium.css?v=20260706d">
 </head>
 <body class="premium-site">
     <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
@@ -67,8 +67,18 @@
         </div>
         <div class="container hero-container">
             <div class="hero-content">
-                <!-- Sektör seçicileri: sektörünüze önceden uyumlu -->
-                <p class="hero-badge hero-badge-industry" data-i18n="hero_badge">Sektörünüze önceden uyumlu</p>
+                <div class="hero-badges-row">
+                    <!-- KVKK uyumluluk vurgusu: güven rozeti -->
+                    <p class="hero-badge hero-badge-kvkk">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span data-i18n="hero_kvkk_badge">KVKK Uyumlu Veri İşleme</span>
+                    </p>
+                    <!-- Sektör seçicileri: sektörünüze önceden uyumlu -->
+                    <p class="hero-badge hero-badge-industry">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+                        <span data-i18n="hero_badge">Sektörünüze önceden uyumlu</span>
+                    </p>
+                </div>
                 <div class="sector-badges" id="sector-badges" data-i18n-aria="sectors_aria" aria-label="Sektörler">
                     <span class="sector-badge" data-sector="Emlak" data-i18n="sector_emlak">Emlak</span>
                     <span class="sector-badge" data-sector="Otomotiv" data-i18n="sector_otomotiv">Otomotiv</span>
@@ -209,7 +219,6 @@
     <!-- References -->
     <section id="references" class="references">
         <div class="container">
-            <p class="section-badge" data-i18n="ref_badge">Referanslarımız</p>
             <h2 class="section-title" data-i18n="ref_title">Bize Güvenen Markalar</h2>
             <p class="section-desc" data-i18n="ref_desc">Sağlık, turizm ve kurumsal hizmet sektörlerinden lider işletmeler Aspalo ile çalışıyor.</p>
             <div class="references-marquee" role="group" aria-label="Referans markaları">
@@ -708,9 +717,9 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="i18n.js?v=20260614"></script>
-    <script src="script.js?v=20260614"></script>
-    <script src="premium.js?v=20260614"></script>
+    <script src="i18n.js?v=20260706d"></script>
+    <script src="script.js?v=20260706d"></script>
+    <script src="premium.js?v=20260706d"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
       (function () {

@@ -456,6 +456,23 @@
                 onUpdate: function () { el.textContent = fmtCounter(p, obj.v); }
             });
         });
+
+        /* Güvenlik ağı: herhangi bir sebeple (yavaş/engellenen script, hata vb.)
+           giriş animasyonu tamamlanmazsa hero içeriği görünmez kalmasın. */
+        setTimeout(function () {
+            var selectors = [
+                '.navbar', '.logo-img', '.nav-links > a', '.nav-links .lang-switch', '.nav-links .btn-nav',
+                '.hero-badge', '.sector-badges .sector-badge', '.hero-sub', '.hero-cta > *',
+                '.hero-how-steps li', '.hero-stats .stat', '.phone-stage',
+                '.integration-logos-right .integration-logo-item', '.hero-line-inner'
+            ];
+            document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+                var cs = window.getComputedStyle(el);
+                if (parseFloat(cs.opacity) < 1) {
+                    gsap.set(el, { clearProps: 'opacity,transform,filter' });
+                }
+            });
+        }, 2500);
     }
 
     function initParallax() {

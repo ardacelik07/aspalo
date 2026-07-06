@@ -356,6 +356,13 @@ img { max-width: 100%; }
     border-color: transparent;
     box-shadow: 0 2px 12px rgba(30, 58, 95, 0.35);
 }
+.hero-badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -367,13 +374,12 @@ img { max-width: 100%; }
     font-size: 14px;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 24px;
+    margin-bottom: 0;
     animation: fade-in-up 0.6s ease-out;
     box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
 }
-.hero-badge::before {
-    content: '✦';
-    font-size: 12px;
+.hero-badge svg {
+    flex-shrink: 0;
     opacity: 0.9;
 }
 
@@ -523,7 +529,6 @@ img { max-width: 100%; }
     background: var(--primary);
 }
 .hero-how-steps strong { color: var(--text); font-weight: 600; }
-.hero-badge-industry { margin-bottom: 12px; }
 .sector-badges { margin-bottom: 20px; }
 
 .hero-stats {
@@ -1570,10 +1575,13 @@ img { max-width: 100%; }
 
 /* References */
 .references {
-    padding: 48px 0;
+    padding: 8px 0 40px;
+}
+.references .section-title {
+    margin-bottom: 8px;
 }
 .references .section-desc {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .references-grid {
@@ -1605,11 +1613,6 @@ img { max-width: 100%; }
     max-height: 130px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(1) opacity(0.65);
-    transition: filter 0.35s ease;
-}
-.reference-card:hover img {
-    filter: grayscale(0) opacity(1);
 }
 .reference-card--yasam img { max-height: 145px; }
 
@@ -1999,6 +2002,10 @@ img { max-width: 100%; }
 .footer-logo {
     display: inline-flex;
     margin-bottom: 16px;
+}
+
+.footer-logo .logo-img {
+    filter: brightness(0) invert(1);
 }
 
 .footer .logo {
