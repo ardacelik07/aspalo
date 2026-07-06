@@ -6,11 +6,11 @@
     <title>Aspalo — Her Sektör İçin AI Çağrı Merkezi</title>
     <meta name="description" content="Gelen ve giden her türlü aramayı 7/24 karşılayan AI çağrı merkezi. Randevu, bilgi, kampanya, müşteri hizmetleri — tek platform.">
     <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260614">
     <link rel="stylesheet" href="premium.css?v=20260614">
 </head>
@@ -161,9 +161,9 @@
                                 </div>
                             </div>
                             <div class="call-controls">
-                                <div class="control-btn mute">🎤</div>
-                                <div class="control-btn end">📞</div>
-                                <div class="control-btn speaker">🔊</div>
+                                <div class="control-btn mute"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg></div>
+                                <div class="control-btn end"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91" /><line x1="22" x2="2" y1="2" y2="22" /></svg></div>
+                                <div class="control-btn speaker"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14" /></svg></div>
                             </div>
                         </div>
                     </div>
@@ -212,15 +212,26 @@
             <p class="section-badge" data-i18n="ref_badge">Referanslarımız</p>
             <h2 class="section-title" data-i18n="ref_title">Bize Güvenen Markalar</h2>
             <p class="section-desc" data-i18n="ref_desc">Sağlık, turizm ve kurumsal hizmet sektörlerinden lider işletmeler Aspalo ile çalışıyor.</p>
-            <div class="references-grid">
-                <div class="reference-card reference-card--yasam">
-                    <img src="images/ref-yasam.jpg" alt="Yaşam Hastaneler Grubu" loading="lazy">
-                </div>
-                <div class="reference-card reference-card--ofb">
-                    <img src="images/ref-ofb.png" alt="OFB Kurumsal Kokulandırma" loading="lazy">
-                </div>
-                <div class="reference-card reference-card--mng">
-                    <img src="images/ref-mng.jpg" alt="MNG Turizm" loading="lazy">
+            <div class="references-marquee" role="group" aria-label="Referans markaları">
+                <div class="references-track">
+                    <div class="reference-card reference-card--yasam">
+                        <img src="images/ref-yasam.jpg" alt="Yaşam Hastaneler Grubu" loading="lazy">
+                    </div>
+                    <div class="reference-card reference-card--ofb">
+                        <img src="images/ref-ofb.png" alt="OFB Kurumsal Kokulandırma" loading="lazy">
+                    </div>
+                    <div class="reference-card reference-card--mng">
+                        <img src="images/ref-mng.jpg" alt="MNG Turizm" loading="lazy">
+                    </div>
+                    <div class="reference-card reference-card--yasam" aria-hidden="true">
+                        <img src="images/ref-yasam.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="reference-card reference-card--ofb" aria-hidden="true">
+                        <img src="images/ref-ofb.png" alt="" loading="lazy">
+                    </div>
+                    <div class="reference-card reference-card--mng" aria-hidden="true">
+                        <img src="images/ref-mng.jpg" alt="" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -307,32 +318,32 @@
             <p class="section-desc" data-i18n="sectors_desc">Hangi sektörü seçerseniz (veya üzerine gelirseniz) o sektöre özel kullanım senaryosu görünür.</p>
             <div class="sector-cards-grid" id="sector-cards">
                 <article class="sector-compat-card" data-sector="Emlak">
-                    <span class="sector-card-icon" aria-hidden="true">🏠</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg></span>
                     <h3 data-i18n="sector_emlak">Emlak</h3>
                     <p class="sector-scenario" data-i18n="scen_emlak">Portföy Bilgisi & Görüşme Randevusu</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Otomotiv">
-                    <span class="sector-card-icon" aria-hidden="true">🚗</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" /><circle cx="7" cy="17" r="2" /><path d="M9 17h6" /><circle cx="17" cy="17" r="2" /></svg></span>
                     <h3 data-i18n="sector_otomotiv">Otomotiv</h3>
                     <p class="sector-scenario" data-i18n="scen_otomotiv">Servis Randevusu & Test Sürüşü</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Sağlık">
-                    <span class="sector-card-icon" aria-hidden="true">🏥</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" /></svg></span>
                     <h3 data-i18n="sector_saglik">Sağlık</h3>
                     <p class="sector-scenario" data-i18n="scen_saglik">Hasta Kaydı & Randevu Hatırlatma</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Lojistik">
-                    <span class="sector-card-icon" aria-hidden="true">📦</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15" /><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>
                     <h3 data-i18n="sector_lojistik">Lojistik</h3>
                     <p class="sector-scenario" data-i18n="scen_lojistik">Kargo Takibi & Müşteri Hizmetleri</p>
                 </article>
                 <article class="sector-compat-card" data-sector="E-Ticaret">
-                    <span class="sector-card-icon" aria-hidden="true">🛒</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" /></svg></span>
                     <h3 data-i18n="sector_eticaret">E-Ticaret</h3>
                     <p class="sector-scenario" data-i18n="scen_eticaret">Sipariş Desteği & İade Yönetimi</p>
                 </article>
                 <article class="sector-compat-card" data-sector="Otel Konaklama">
-                    <span class="sector-card-icon" aria-hidden="true">🏨</span>
+                    <span class="sector-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg></span>
                     <h3 data-i18n="sector_otel">Otel Konaklama</h3>
                     <p class="sector-scenario" data-i18n="scen_otel">Rezervasyon & Misafir Hizmetleri</p>
                 </article>
@@ -340,7 +351,7 @@
             <div class="sector-benefit-panel" id="sector-benefit-panel" aria-live="polite">
                 <div class="sector-benefit-panel-inner">
                     <div class="sector-benefit-header">
-                        <span class="sector-benefit-icon" id="sector-benefit-icon">🏠</span>
+                        <span class="sector-benefit-icon" id="sector-benefit-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg></span>
                         <div>
                             <h3 class="sector-benefit-title" id="sector-benefit-title">Emlak</h3>
                             <p class="sector-benefit-subtitle" id="sector-benefit-subtitle" data-i18n="benefit_subtitle">Aspalo bu sektörde nasıl fayda sağlar?</p>
@@ -437,7 +448,7 @@
                         <p data-i18n="how_s1_p">Mevcut telefon hattınız veya santral altyapınız Aspalo'ya entegre edilir. Ek donanım gerektirmez, mevcut sistemle çalışır.</p>
                     </div>
                     <div class="step-visual">
-                        <div class="step-icon">🔌</div>
+                        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5" /><path d="M9 8V2" /><path d="M15 8V2" /><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></svg></div>
                     </div>
                 </div>
                 <div class="step step-row">
@@ -447,7 +458,7 @@
                         <p data-i18n="how_s2_p">Fiyat listeleri, kampanyalar, hizmet detayları ve konuşma akışları sisteme tanımlanır. Aspalo, işletmenize özel yapılandırılır.</p>
                     </div>
                     <div class="step-visual">
-                        <div class="step-icon">📚</div>
+                        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg></div>
                     </div>
                 </div>
                 <div class="step step-row">
@@ -457,7 +468,7 @@
                         <p data-i18n="how_s3_p">HubSpot, Salesforce veya mevcut CRM sisteminizle veri senkronizasyonu sağlanır. Tüm görüşmeler kayıt altına alınır ve otomatik olarak işlenir.</p>
                     </div>
                     <div class="step-visual">
-                        <div class="step-icon">🔗</div>
+                        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></div>
                     </div>
                 </div>
             </div>
@@ -466,28 +477,34 @@
 
     <!-- Features -->
     <section id="features" class="features">
+        <div class="features-divider features-divider--top" aria-hidden="true">
+            <svg viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0,90 L0,40 C 200,90 400,0 600,30 C 800,60 1000,10 1200,50 L1200,90 Z" fill="#fff"/></svg>
+        </div>
+        <div class="features-divider features-divider--bottom" aria-hidden="true">
+            <svg viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0,90 L0,40 C 200,90 400,0 600,30 C 800,60 1000,10 1200,50 L1200,90 Z" fill="#f8f5f0"/></svg>
+        </div>
         <div class="container">
             <p class="section-badge" data-i18n="feat_badge">Özellikler</p>
             <h2 class="section-title" data-i18n="feat_title">Neden Aspalo?</h2>
             <p class="section-desc" data-i18n="feat_desc">Kurumsal ölçek için tasarlanmış çağrı otomasyonu.</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
+                    <span class="feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg></span>
                     <h3 data-i18n="feat_1_t">Tek Platform, Tüm Süreç</h3>
                     <p data-i18n="feat_1_p">Randevu, bilgi aktarımı, kampanya duyuruları ve destek görüşmeleri tek altyapı üzerinden yönetilir. Dağınık sistemler yerine merkezi kontrol.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">💰</span>
+                    <span class="feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg></span>
                     <h3 data-i18n="feat_2_t">Ölçeklenebilir Gelir Artışı</h3>
                     <p data-i18n="feat_2_p">Yeni personel maliyeti olmadan çağrı kapasitenizi artırın. Aynı ekip, daha fazla satış fırsatı.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">🔗</span>
+                    <span class="feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></span>
                     <h3 data-i18n="feat_3_t">Kolay entegrasyon</h3>
                     <p data-i18n="feat_3_p">Mevcut telefon altyapınız ve CRM'inizle uyumlu çalışır.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">📊</span>
+                    <span class="feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg></span>
                     <h3 data-i18n="feat_4_t">Ölçülebilir Performans</h3>
                     <p data-i18n="feat_4_p">Hangi kampanya kaç satış getirdi? Hangi saatlerde daha çok dönüşüm var? Gelirinizi veriyle yönetin.</p>
                 </div>
@@ -636,10 +653,10 @@
                     <h2 class="demo-title" data-i18n="modal_title">Aspalo Canlı Demo</h2>
                     <p class="demo-description" data-i18n="modal_desc">Sesli AI asistanın nasıl arama yanıtladığını, lead skorladığını ve görüşmeyi özetlediğini canlı izleyin.</p>
                     <div class="demo-details" id="demo-details">
-                        <div class="demo-detail-item"><span class="demo-detail-icon">✓</span><span data-i18n="modal_confirm">Onay gerekli</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🕒</span><span data-i18n="modal_duration">30 dakika</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🔗</span><span data-i18n="modal_app">Organizatörün varsayılan uygulaması</span></div>
-                        <div class="demo-detail-item"><span class="demo-detail-icon">🌍</span><span data-i18n="modal_tz">Europe/Istanbul</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span><span data-i18n="modal_confirm">Onay gerekli</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg></span><span data-i18n="modal_duration">30 dakika</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg></span><span data-i18n="modal_app">Organizatörün varsayılan uygulaması</span></div>
+                        <div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg></span><span data-i18n="modal_tz">Europe/Istanbul</span></div>
                     </div>
                 </div>
                 <div class="demo-calendar-panel">
