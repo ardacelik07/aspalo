@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(openDemoModal, 200);
     });
     if (heroDemoBtn) heroDemoBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
-    var demoRequestFooter = document.getElementById('demo-request-footer');
+    var demoRequestFooter = document.getElementById('demo-request-footer-brand');
     if (demoRequestFooter) demoRequestFooter.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     var pricingBasicBtn = document.getElementById('pricing-basic-btn');
     var pricingGrowthBtn = document.getElementById('pricing-growth-btn');

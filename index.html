@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aspalo — Her Sektör İçin AI Çağrı Merkezi</title>
     <meta name="description" content="Gelen ve giden her türlü aramayı 7/24 karşılayan AI çağrı merkezi. Randevu, bilgi, kampanya, müşteri hizmetleri — tek platform.">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260614">
+    <link rel="stylesheet" href="premium.css?v=20260614">
 </head>
-<body>
+<body class="premium-site">
+    <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -50,8 +56,14 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-bg">
+            <canvas id="aurora-canvas" class="aurora-canvas" aria-hidden="true"></canvas>
+            <div class="hero-aurora hero-aurora--1" aria-hidden="true"></div>
+            <div class="hero-aurora hero-aurora--2" aria-hidden="true"></div>
+            <div class="hero-aurora hero-aurora--3" aria-hidden="true"></div>
             <div class="hero-gradient"></div>
             <div class="hero-mesh"></div>
+            <div class="hero-noise" aria-hidden="true"></div>
+            <div class="hero-fade-bottom" aria-hidden="true"></div>
         </div>
         <div class="container hero-container">
             <div class="hero-content">
@@ -76,9 +88,12 @@
                         <span data-i18n="hero_cta_demo">Ücretsiz Demo Başlat</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="#call" class="btn btn-ghost btn-small hero-cta-secondary" id="hero-call-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
-                        <span data-i18n="hero_cta_listen">Canlı Örnek Dinle</span>
+                    <a href="#call" class="btn hero-cta-secondary hero-cta-listen" id="hero-call-btn">
+                        <span class="hero-cta-listen__play" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"/></svg>
+                        </span>
+                        <span class="hero-cta-listen__dot" aria-hidden="true"></span>
+                        <span class="hero-cta-listen__label" data-i18n="hero_cta_listen">Canlı Örnek Dinle</span>
                     </a>
                 </div>
                 <div class="hero-how" data-i18n-aria="hero_how_aria" aria-label="Nasıl çalışır">
@@ -115,21 +130,34 @@
                 <div class="phone-mockup">
                     <div class="phone-screen">
                         <div class="call-interface">
-                            <div class="caller-avatar"><img src="images/logo2.png" alt="Aspalo" class="caller-logo"></div>
+                            <div class="caller-avatar-wrap">
+                                <span class="call-wave call-wave--1" aria-hidden="true"></span>
+                                <span class="call-wave call-wave--2" aria-hidden="true"></span>
+                                <span class="call-wave call-wave--3" aria-hidden="true"></span>
+                                <div class="call-voice-bars" aria-hidden="true">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <div class="caller-avatar"><img src="images/logo2.png" alt="Aspalo" class="caller-logo"></div>
+                            </div>
                             <div class="call-status" id="phone-call-status" data-i18n="phone_status">Görüşme devam ediyor...</div>
-                            <div class="call-timer">02:34</div>
-                            <div class="call-transcript">
-                                <div class="message ai">
+                            <div class="call-timer" id="phone-call-timer">02:34</div>
+                            <div class="call-transcript" id="phone-transcript">
+                                <div class="message ai phone-msg-item">
                                     <span class="speaker" id="phone-speaker-ai">AI:</span>
                                     <span id="phone-msg-1" data-i18n="phone_msg_1">Merhaba, size nasıl yardımcı olabilirim?</span>
                                 </div>
-                                <div class="message customer">
+                                <div class="message customer phone-msg-item">
                                     <span class="speaker" id="phone-speaker-customer" data-i18n="phone_speaker_customer">Arayan:</span>
                                     <span id="phone-msg-2" data-i18n="phone_msg_2">Randevu almak istiyorum.</span>
                                 </div>
-                                <div class="message ai">
+                                <div class="message ai phone-msg-item">
                                     <span class="speaker">AI:</span>
                                     <span id="phone-msg-3" data-i18n="phone_msg_3">Tabii, hangi gün uygun?</span>
+                                </div>
+                                <div class="message typing-indicator" id="phone-typing" aria-hidden="true">
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
+                                    <span class="typing-dot"></span>
                                 </div>
                             </div>
                             <div class="call-controls">
@@ -173,6 +201,26 @@
                         <span class="logo-label">Teams</span>
                     </div>
                 </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section id="references" class="references">
+        <div class="container">
+            <p class="section-badge" data-i18n="ref_badge">Referanslarımız</p>
+            <h2 class="section-title" data-i18n="ref_title">Bize Güvenen Markalar</h2>
+            <p class="section-desc" data-i18n="ref_desc">Sağlık, turizm ve kurumsal hizmet sektörlerinden lider işletmeler Aspalo ile çalışıyor.</p>
+            <div class="references-grid">
+                <div class="reference-card reference-card--yasam">
+                    <img src="images/ref-yasam.jpg" alt="Yaşam Hastaneler Grubu" loading="lazy">
+                </div>
+                <div class="reference-card reference-card--ofb">
+                    <img src="images/ref-ofb.png" alt="OFB Kurumsal Kokulandırma" loading="lazy">
+                </div>
+                <div class="reference-card reference-card--mng">
+                    <img src="images/ref-mng.jpg" alt="MNG Turizm" loading="lazy">
                 </div>
             </div>
         </div>
@@ -507,19 +555,67 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-glow" aria-hidden="true"></div>
         <div class="container">
-            <div class="footer-inner">
-                <a href="#" class="logo">
-                    <img src="images/logo2.png" alt="Aspalo" class="logo-img">
-                </a>
-                <p class="footer-tagline" data-i18n="footer_tag">Her türlü çağrıyı karşılayan AI.</p>
-                <div class="footer-links">
-                    <a href="#what" data-i18n="nav_what">Ne Sunuyoruz</a>
-                    <a href="#how-it-works" data-i18n="nav_how">Nasıl Çalışır</a>
-                    <a href="#features" data-i18n="nav_features">Özellikler</a>
-                    <a href="#pricing" data-i18n="nav_plans">Planlar</a>
-                    <a href="#" id="demo-request-footer" data-i18n="footer_demo">Demo</a>
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a href="#" class="logo footer-logo">
+                        <img src="images/logo2.png" alt="Aspalo" class="logo-img">
+                    </a>
+                    <p class="footer-tagline" data-i18n="footer_tag">Her türlü çağrıyı karşılayan AI.</p>
+                    <a href="#" class="btn btn-primary btn-sm footer-demo-btn" id="demo-request-footer-brand" data-i18n="footer_demo">Demo İste</a>
                 </div>
+                <div class="footer-col footer-col--links">
+                    <p class="footer-col-title" data-i18n="footer_links_title">Bağlantılar</p>
+                    <nav class="footer-links" aria-label="Footer">
+                        <a href="#what" data-i18n="nav_what">Ne Sunuyoruz</a>
+                        <a href="#how-it-works" data-i18n="nav_how">Nasıl Çalışır</a>
+                        <a href="#features" data-i18n="nav_features">Özellikler</a>
+                        <a href="#references" data-i18n="ref_badge">Referanslarımız</a>
+                        <a href="#pricing" data-i18n="nav_plans">Planlar</a>
+                    </nav>
+                </div>
+                <div class="footer-col footer-col--contact">
+                    <p class="footer-col-title" data-i18n="footer_contact_title">İletişim</p>
+                    <p class="footer-contact-lead" data-i18n="footer_contact_lead">Sorularınız ve demo talepleri için bize ulaşın.</p>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <a href="mailto:info@aspalo.com" class="footer-contact-card">
+                                <span class="footer-contact-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+                                </span>
+                                <span class="footer-contact-text">
+                                    <span class="footer-contact-label" data-i18n="footer_email_label">E-posta</span>
+                                    <span class="footer-contact-value">info@aspalo.com</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+905071424155" class="footer-contact-card">
+                                <span class="footer-contact-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                                </span>
+                                <span class="footer-contact-text">
+                                    <span class="footer-contact-label" data-i18n="footer_phone_label">Telefon</span>
+                                    <span class="footer-contact-value">+90 507 142 41 55</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+905427820043" class="footer-contact-card">
+                                <span class="footer-contact-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                                </span>
+                                <span class="footer-contact-text">
+                                    <span class="footer-contact-label" data-i18n="footer_phone_alt_label">Telefon (2)</span>
+                                    <span class="footer-contact-value">0542 782 00 43</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p class="footer-copy" data-i18n="footer_copy">© Aspalo. Tüm hakları saklıdır.</p>
             </div>
         </div>
@@ -592,8 +688,12 @@
         </div>
     </div>
 
-    <script src="i18n.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="i18n.js?v=20260614"></script>
+    <script src="script.js?v=20260614"></script>
+    <script src="premium.js?v=20260614"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
       (function () {
