@@ -391,6 +391,7 @@
 
             if (title && title.classList.contains('title--split')) {
                 var inners = title.querySelectorAll('.hero-line-inner');
+                gsap.set(title, { opacity: 1 });
                 gsap.set(inners, { yPercent: 110, opacity: 0 });
                 tl.to(inners, {
                     yPercent: 0,
@@ -438,11 +439,8 @@
             .from('.hero-how-steps li', { x: -12, opacity: 0, stagger: 0.07, duration: 0.4 }, '-=0.25')
             .from('.hero-stats .stat', { y: 18, opacity: 0, stagger: 0.06, duration: 0.45 }, '-=0.25')
             .from('.phone-stage', {
-                y: 40, opacity: 0, scale: 0.92, duration: 0.85, ease: EASE
-            }, '-=0.65')
-            .from('.integration-logos-right .integration-logo-item', {
-                x: 20, opacity: 0, stagger: 0.06, duration: 0.4
-            }, '-=0.55');
+                y: 40, opacity: 0, scale: 0.92, duration: 0.85, ease: EASE, clearProps: 'opacity,transform'
+            }, '-=0.65');
 
         document.querySelectorAll('.hero-stats .stat-num').forEach(function (el) {
             var p = parseCounter(el.textContent);
@@ -456,6 +454,23 @@
                 onUpdate: function () { el.textContent = fmtCounter(p, obj.v); }
             });
         });
+
+        /* Güvenlik ağı: herhangi bir sebeple (yavaş/engellenen script, hata vb.)
+           giriş animasyonu tamamlanmazsa hero içeriği görünmez kalmasın. */
+        setTimeout(function () {
+            var selectors = [
+                '.navbar', '.logo-img', '.nav-links > a', '.nav-links .lang-switch', '.nav-links .btn-nav',
+                '.hero-badge', '.sector-badges .sector-badge', '.hero-sub', '.hero-cta > *',
+                '.hero-how-steps li', '.hero-stats .stat', '.phone-stage',
+                '.integration-logos-right .integration-logo-item', '.hero-line-inner'
+            ];
+            document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+                var cs = window.getComputedStyle(el);
+                if (parseFloat(cs.opacity) < 1) {
+                    gsap.set(el, { clearProps: 'opacity,transform,filter' });
+                }
+            });
+        }, 2500);
     }
 
     function initParallax() {
