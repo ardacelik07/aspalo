@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260706d">
-    <link rel="stylesheet" href="premium.css?v=20260706d">
+    <link rel="stylesheet" href="styles.css?v=20260708g">
+    <link rel="stylesheet" href="premium.css?v=20260708g">
 </head>
 <body class="premium-site">
     <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
@@ -138,6 +138,9 @@
             <div class="hero-visual">
                 <div class="phone-stage" aria-hidden="true">
                 <div class="phone-mockup">
+                    <span class="phone-btn phone-btn--power"></span>
+                    <span class="phone-btn phone-btn--vol-up"></span>
+                    <span class="phone-btn phone-btn--vol-down"></span>
                     <div class="phone-screen">
                         <div class="call-interface">
                             <div class="caller-avatar-wrap">
@@ -182,31 +185,31 @@
                     <p class="connection-label" data-i18n="connecting">Bağlantı yapılıyor</p>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" loading="eager" />
+                            <img src="images/hubspot.svg" alt="HubSpot" loading="eager" />
                         </div>
                         <span class="logo-label">HubSpot</span>
                     </div>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/salesforce.svg" alt="Salesforce" loading="eager" />
+                            <img src="images/salesforce.svg" alt="Salesforce" loading="eager" />
                         </div>
                         <span class="logo-label">Salesforce</span>
                     </div>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlesheets.svg" alt="Google Sheets" loading="eager" />
+                            <img src="images/googlesheets.svg" alt="Google Sheets" loading="eager" />
                         </div>
                         <span class="logo-label">Sheets</span>
                     </div>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" alt="Slack" loading="eager" />
+                            <img src="images/slack.svg" alt="Slack" loading="eager" />
                         </div>
                         <span class="logo-label">Slack</span>
                     </div>
                     <div class="integration-logo-item">
                         <div class="logo-container logo-pulse">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftteams.svg" alt="Teams" loading="eager" />
+                            <img src="images/microsoftteams.svg" alt="Teams" loading="eager" />
                         </div>
                         <span class="logo-label">Teams</span>
                     </div>
@@ -249,7 +252,6 @@
     <!-- Dashboard Önizlemesi - landing-page / frontend benzeri -->
     <section id="dashboard" class="dashboard-section">
         <div class="container">
-            <p class="section-badge" data-i18n="dash_badge">Dashboard</p>
             <h2 class="section-title" data-i18n-html="dash_title_html">Tüm Veriler <span class="gradient-text">Tek Ekranda</span></h2>
             <p class="section-desc" data-i18n="dash_desc">Görüşmeler, randevular ve lead skorlarını anlık takip edin. Şirketinizin bilgilerine göre çalışan, kurumunuza uygun yanıt veren AI asistanınız.</p>
             <div class="dashboard-mockup">
@@ -322,7 +324,6 @@
     <!-- Sektörel Uyumluluk Kartları -->
     <section id="what" class="sectors">
         <div class="container">
-            <p class="section-badge" data-i18n="sectors_badge">Sektörel uyum</p>
             <h2 class="section-title" data-i18n="sectors_title">Sektörel Uyumluluk Kartları</h2>
             <p class="section-desc" data-i18n="sectors_desc">Hangi sektörü seçerseniz (veya üzerine gelirseniz) o sektöre özel kullanım senaryosu görünür.</p>
             <div class="sector-cards-grid" id="sector-cards">
@@ -380,7 +381,6 @@
     <!-- İnsan vs AI Karşılaştırma -->
     <section id="comparison" class="comparison">
         <div class="container">
-            <p class="section-badge" data-i18n="cmp_badge">Karşılaştırma</p>
             <h2 class="section-title" data-i18n-html="cmp_title_html">İnsan mı, <span class="gradient-text">Aspalo mı?</span></h2>
             <p class="section-desc" data-i18n="cmp_desc">Aynı işi yaparken insan operatörle Aspalo arasındaki fark. Daha fazla satış, kaçırılmayan çağrılar, artan gelir.</p>
             <div class="comparison-grid">
@@ -446,7 +446,6 @@
     <section id="how-it-works" class="how how-it-works">
         <div class="container">
             <div class="section-header">
-                <p class="section-badge" data-i18n="how_badge">Nasıl Çalışır?</p>
                 <h2 class="section-title" data-i18n-html="how_title_html">3 Adımda Kurulum ve <span class="gradient-text">Aspalo 48 Saatte Aktif</span></h2>
             </div>
             <div class="steps steps-vertical">
@@ -493,7 +492,6 @@
             <svg viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0,90 L0,40 C 200,90 400,0 600,30 C 800,60 1000,10 1200,50 L1200,90 Z" fill="#f8f5f0"/></svg>
         </div>
         <div class="container">
-            <p class="section-badge" data-i18n="feat_badge">Özellikler</p>
             <h2 class="section-title" data-i18n="feat_title">Neden Aspalo?</h2>
             <p class="section-desc" data-i18n="feat_desc">Kurumsal ölçek için tasarlanmış çağrı otomasyonu.</p>
             <div class="features-grid">
@@ -521,11 +519,108 @@
         </div>
     </section>
 
+    <!-- Kayıp Hesaplama (gömülü araç) -->
+    <section id="calc" class="calc-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n-html="calc_title_html">Kaçırılan çağrı = <span class="gradient-text calc-loss-text">kaybedilen gelir</span></h2>
+            <p class="section-desc" data-i18n="calc_desc">İşletmenizin yılda ne kadar kaybettiğini hesaplayın. Sektörünüzü seçin, rakamları girin — sonuç sizi şaşırtabilir.</p>
+
+            <div class="calc-card">
+                <p class="calc-label" data-i18n="calc_pick_sector">Sektörünüzü seçin</p>
+                <div class="calc-sector-grid">
+                    <button class="calc-sector-btn active" onclick="setCalcSector(this,'klinik',800,15)" aria-pressed="true">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" /></svg></span>
+                        <span data-i18n="calc_sector_klinik">Klinik</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'hukuk',1200,10)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>
+                        <span data-i18n="calc_sector_hukuk">Hukuk bürosu</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'emlak',2500,8)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg></span>
+                        <span data-i18n="calc_sector_emlak">Emlak ofisi</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'salon',400,12)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /><path d="M8.12 8.12 12 12" /><path d="M20 4 8.12 15.88" /><circle cx="6" cy="18" r="3" /><path d="M14.8 14.8 20 20" /></svg></span>
+                        <span data-i18n="calc_sector_salon">Salon &amp; Spa</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'restoran',350,20)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg></span>
+                        <span data-i18n="calc_sector_restoran">Restoran</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'diger',600,10)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg></span>
+                        <span data-i18n="calc_sector_diger">Diğer</span>
+                    </button>
+                </div>
+
+                <div class="calc-slider-block">
+                    <div class="calc-slider-top">
+                        <span class="calc-slider-name" data-i18n="calc_calls_label">Günlük kaçırılan çağrı sayısı</span>
+                        <span class="calc-slider-value" id="calc-calls-out">15</span>
+                    </div>
+                    <input type="range" id="calc-calls" min="1" max="50" value="15" step="1" oninput="calcCompute()" aria-label="Günlük kaçırılan çağrı sayısı">
+                </div>
+
+                <div class="calc-slider-block">
+                    <div class="calc-slider-top">
+                        <span class="calc-slider-name" data-i18n="calc_value_label">Ortalama işlem / randevu değeri</span>
+                        <span class="calc-slider-value" id="calc-value-out">800 ₺</span>
+                    </div>
+                    <input type="range" id="calc-val" min="100" max="5000" value="800" step="50" oninput="calcCompute()" aria-label="Ortalama işlem değeri">
+                </div>
+
+                <div class="calc-slider-block">
+                    <div class="calc-slider-top">
+                        <span class="calc-slider-name" data-i18n="calc_conv_label">Çağrıdan müşteriye dönüşüm oranı</span>
+                        <span class="calc-slider-value" id="calc-conv-out">%30</span>
+                    </div>
+                    <input type="range" id="calc-conv" min="5" max="80" value="30" step="5" oninput="calcCompute()" aria-label="Dönüşüm oranı">
+                </div>
+            </div>
+
+            <div class="calc-result-hero" role="status" aria-live="polite">
+                <p class="calc-result-label" data-i18n="calc_result_label">Tahmini yıllık kayıp</p>
+                <p class="calc-result-amount" id="calc-annual">0 ₺</p>
+                <p class="calc-result-period" id="calc-result-sub">hesaplanıyor...</p>
+            </div>
+
+            <div class="calc-breakdown-grid">
+                <div class="calc-b-card">
+                    <p class="calc-b-num" id="calc-b-daily">0 ₺</p>
+                    <p class="calc-b-label" data-i18n="calc_b_daily">Günlük kayıp</p>
+                </div>
+                <div class="calc-b-card">
+                    <p class="calc-b-num" id="calc-b-monthly">0 ₺</p>
+                    <p class="calc-b-label" data-i18n="calc_b_monthly">Aylık kayıp</p>
+                </div>
+                <div class="calc-b-card">
+                    <p class="calc-b-num" id="calc-b-missed">0</p>
+                    <p class="calc-b-label" data-i18n="calc_b_missed">Yıllık kaçan fırsat</p>
+                </div>
+            </div>
+
+            <div class="calc-insight-box" id="calc-insight-box" role="note" data-i18n="calc_insight_default">
+                Sektörünüzü seçin ve değerleri girin.
+            </div>
+
+            <div class="calc-cta-block">
+                <div class="calc-cta-text">
+                    <p class="calc-cta-title" data-i18n="calc_cta_title">Bu kaybı sıfırlamak ister misiniz?</p>
+                    <p class="calc-cta-sub" data-i18n="calc_cta_sub">Aspalo AI — 7/24 Türkçe sesli asistan. Ücretsiz demo alın.</p>
+                </div>
+                <a href="#" class="btn btn-primary calc-cta-btn" id="calc-demo-btn">
+                    <span data-i18n="calc_promo_cta">Ücretsiz Demo Al</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing -->
     <section id="pricing" class="pricing">
         <div class="container">
             <div class="pricing-header">
-                <p class="section-badge" data-i18n="plans_badge">Planlar</p>
                 <h2 class="section-title" data-i18n="plans_title">İşletmenize Uygun AI Çağrı Planı</h2>
                 <p class="section-desc pricing-subheadline" data-i18n="plans_desc">Çağrı hacminize göre size en uygun paketi birlikte belirleyelim. Demo randevusu için hemen iletişime geçin.</p>
             </div>
@@ -717,9 +812,9 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="i18n.js?v=20260706d"></script>
-    <script src="script.js?v=20260706d"></script>
-    <script src="premium.js?v=20260706d"></script>
+    <script src="i18n.js?v=20260708g"></script>
+    <script src="script.js?v=20260708g"></script>
+    <script src="premium.js?v=20260708g"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
       (function () {

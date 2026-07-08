@@ -171,8 +171,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (pricingBasicBtn) pricingBasicBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     if (pricingGrowthBtn) pricingGrowthBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     if (pricingProBtn) pricingProBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
+    var calcDemoBtn = document.getElementById('calc-demo-btn');
+    if (calcDemoBtn) calcDemoBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     if (demoModalClose) demoModalClose.addEventListener('click', closeDemoModal);
     if (demoModalOverlay) demoModalOverlay.addEventListener('click', closeDemoModal);
+
+    // Dış sayfalardan (ör. hesaplama.html) ?demo=1 ile gelindiyse demo modalını otomatik aç
+    if (window.location.search.indexOf('demo=1') !== -1) {
+        setTimeout(openDemoModal, 400);
+    }
 
     // Takvim
     var currentDate = new Date();
@@ -412,3 +419,95 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCalendarWeekdayHeaders();
 
 });
+
+/**
+ * Kayıp Hesaplama — anasayfaya gömülü hesap makinesi
+ */
+(function () {
+    var calcCurrentSector = 'klinik';
+    var calcPrevAnnual = 0;
+
+    var calcInsights = {
+        klinik: function (missed) { return 'Bu yıl <strong>' + calcFmt(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Kliniğinizin doluluk oranı her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
+        hukuk: function (missed) { return '<strong>' + calcFmt(missed) + ' potansiyel müvekkil</strong> bu yıl ilk aramada ulaşamadı. Hukuk sektöründe ilk temas kritiktir — cevap veremezseniz rakibinize gidiyorlar.'; },
+        emlak: function (missed) { return '<strong>' + calcFmt(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
+        salon: function (missed) { return '<strong>' + calcFmt(missed) + ' randevu talebi</strong> bu yıl meşgul hatta ya da cevapsız kaldı. Müşteri bir sonraki salonu arıyor, sadakat beklemeniz zorlaşıyor.'; },
+        restoran: function (missed) { return '<strong>' + calcFmt(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Yoğun saatlerde telefona bakacak kimse yok — asistan her çağrıyı anında karşılayabilir.'; },
+        diger: function (missed) { return '<strong>' + calcFmt(missed) + ' fırsat</strong> bu yıl cevaplanmayan telefon yüzünden gitti. Her kaçırılan çağrı, rakibinize giden bir müşteridir.'; }
+    };
+
+    function calcFmt(n) {
+        if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.', ',') + ' M₺';
+        return Math.round(n).toLocaleString('tr-TR') + ' ₺';
+    }
+    function calcFmtNum(n) {
+        return Math.round(n).toLocaleString('tr-TR');
+    }
+    function calcAnimateValue(el, newVal, formatter) {
+        var start = calcPrevAnnual;
+        var end = newVal;
+        var duration = 400;
+        var startTime = performance.now();
+        function update(now) {
+            var progress = Math.min((now - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = formatter(start + (end - start) * ease);
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    window.calcCompute = function () {
+        var callsEl = document.getElementById('calc-calls');
+        var valEl = document.getElementById('calc-val');
+        var convEl = document.getElementById('calc-conv');
+        if (!callsEl || !valEl || !convEl) return;
+        var calls = +callsEl.value;
+        var val = +valEl.value;
+        var conv = +convEl.value;
+
+        document.getElementById('calc-calls-out').textContent = calls;
+        document.getElementById('calc-value-out').textContent = Math.round(val).toLocaleString('tr-TR') + ' ₺';
+        document.getElementById('calc-conv-out').textContent = '%' + conv;
+
+        var daily = calls * (conv / 100) * val;
+        var monthly = daily * 30;
+        var annual = daily * 365;
+        var missed = calls * 365;
+
+        document.getElementById('calc-b-daily').textContent = calcFmt(daily);
+        document.getElementById('calc-b-monthly').textContent = calcFmt(monthly);
+        document.getElementById('calc-b-missed').textContent = calcFmtNum(missed) + ' çağrı';
+
+        var annualEl = document.getElementById('calc-annual');
+        calcAnimateValue(annualEl, annual, function (v) {
+            if (v >= 1000000) return (v / 1000000).toFixed(2).replace('.', ',') + ' M₺';
+            return Math.round(v).toLocaleString('tr-TR') + ' ₺';
+        });
+        calcPrevAnnual = annual;
+
+        document.getElementById('calc-result-sub').textContent =
+            '= ' + calcFmt(monthly) + ' / ay  ·  ' + calcFmtNum(missed) + ' fırsat / yıl';
+
+        var insightFn = calcInsights[calcCurrentSector] || calcInsights.diger;
+        document.getElementById('calc-insight-box').innerHTML = insightFn(missed);
+    };
+
+    window.setCalcSector = function (el, sector, val, calls) {
+        document.querySelectorAll('.calc-sector-btn').forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+        });
+        el.classList.add('active');
+        el.setAttribute('aria-pressed', 'true');
+        calcCurrentSector = sector;
+        document.getElementById('calc-val').value = val;
+        document.getElementById('calc-calls').value = calls;
+        calcPrevAnnual = 0;
+        window.calcCompute();
+    };
+
+    if (document.getElementById('calc-calls')) {
+        window.calcCompute();
+    }
+})();

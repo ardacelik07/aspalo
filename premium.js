@@ -391,6 +391,7 @@
 
             if (title && title.classList.contains('title--split')) {
                 var inners = title.querySelectorAll('.hero-line-inner');
+                gsap.set(title, { opacity: 1 });
                 gsap.set(inners, { yPercent: 110, opacity: 0 });
                 tl.to(inners, {
                     yPercent: 0,
@@ -438,11 +439,8 @@
             .from('.hero-how-steps li', { x: -12, opacity: 0, stagger: 0.07, duration: 0.4 }, '-=0.25')
             .from('.hero-stats .stat', { y: 18, opacity: 0, stagger: 0.06, duration: 0.45 }, '-=0.25')
             .from('.phone-stage', {
-                y: 40, opacity: 0, scale: 0.92, duration: 0.85, ease: EASE
-            }, '-=0.65')
-            .from('.integration-logos-right .integration-logo-item', {
-                x: 20, opacity: 0, stagger: 0.06, duration: 0.4
-            }, '-=0.55');
+                y: 40, opacity: 0, scale: 0.92, duration: 0.85, ease: EASE, clearProps: 'opacity,transform'
+            }, '-=0.65');
 
         document.querySelectorAll('.hero-stats .stat-num').forEach(function (el) {
             var p = parseCounter(el.textContent);

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaçırılan Çağrı Hesap Makinesi — Aspalo AI</title>
+<meta name="description" content="İşletmenizin kaçırılan çağrılar yüzünden yılda ne kadar gelir kaybettiğini hesaplayın.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260708b">
+<link rel="stylesheet" href="premium.css?v=20260708b">
+<style>
+  :root {
+    --c-bg2: #ffffff;
+    --c-bg3: #f8fafc;
+    --c-border: rgba(15, 23, 42, 0.08);
+    --c-border-hover: rgba(15, 23, 42, 0.18);
+    --c-text2: #475569;
+    --c-text3: #94a3b8;
+    --c-accent: #6366f1;
+    --c-accent2: #4338ca;
+    --c-danger: #b91c1c;
+    --c-danger-dim: rgba(185, 28, 28, 0.05);
+    --c-radius: 12px;
+    --c-radius-lg: 24px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body.premium-site {
+    background: #ffffff;
+    padding: 0;
+    display: block;
+  }
+
+  .calc-page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 160px 20px 80px;
+  }
+
+  .calc-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .calc-eyebrow {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--c-accent2);
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: rgba(99, 102, 241, 0.06);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  .calc-title {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-size: clamp(2rem, 4.6vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    color: var(--primary);
+    margin-bottom: 14px;
+  }
+
+  .calc-title span {
+    color: var(--c-danger);
+  }
+
+  .calc-sub {
+    font-size: 16px;
+    color: var(--c-text2);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .calc-card {
+    background: var(--c-bg2);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-lg);
+    padding: 2rem;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 24px -8px rgba(15, 23, 42, 0.06);
+  }
+
+  .section-label {
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--c-text3);
+    margin-bottom: 14px;
+  }
+
+  .sector-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .sector-btn {
+    background: var(--c-bg3);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius);
+    padding: 12px 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s;
+    color: var(--c-text2);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    outline: none;
+  }
+
+  .sector-btn:hover {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.3);
+    color: var(--primary);
+  }
+
+  .sector-btn.active {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--c-accent);
+    color: var(--c-accent2);
+  }
+
+  .sector-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .slider-block {
+    margin-bottom: 22px;
+  }
+
+  .slider-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .slider-name {
+    font-size: 14px;
+    color: var(--c-text2);
+    font-weight: 400;
+  }
+
+  .slider-value {
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 80px;
+    text-align: right;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--c-bg3);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid var(--c-border);
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px var(--c-accent), 0 2px 8px rgba(99, 102, 241, 0.35);
+    transition: transform .15s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    cursor: pointer;
+    border: 3px solid #fff;
+  }
+
+  .result-hero {
+    background: var(--c-danger-dim);
+    border: 1px solid rgba(185, 28, 28, 0.18);
+    border-radius: var(--c-radius-lg);
+    padding: 1.75rem 2rem;
+    text-align: center;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(185,28,28,0.35), transparent);
+  }
+
+  .result-label {
+    font-size: 12px;
+    color: var(--c-text3);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-family: var(--font);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .result-amount {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-size: clamp(36px, 8vw, 52px);
+    font-weight: 600;
+    color: var(--c-danger);
+    line-height: 1;
+    margin-bottom: 8px;
+    transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  .result-period {
+    font-size: 13px;
+    color: var(--c-text3);
+  }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .b-card {
+    background: var(--c-bg3);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius);
+    padding: 14px 12px;
+    text-align: center;
+  }
+
+  .b-num {
+    font-family: var(--font);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .b-label {
+    font-size: 11px;
+    color: var(--c-text3);
+    line-height: 1.4;
+  }
+
+  .insight-box {
+    background: var(--c-bg3);
+    border: 1px solid var(--c-border);
+    border-left: 3px solid var(--c-accent);
+    border-radius: 0 var(--c-radius) var(--c-radius) 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--c-text2);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .insight-box strong {
+    color: var(--c-danger);
+    font-weight: 600;
+  }
+
+  .cta-block {
+    background: linear-gradient(135deg, rgba(99,102,241,0.07) 0%, rgba(99,102,241,0.02) 100%);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--c-radius-lg);
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-text-block { flex: 1; min-width: 200px; }
+
+  .cta-title {
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: var(--c-text2);
+  }
+
+  .cta-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 13px 26px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(79, 70, 229, 0.38);
+  }
+
+  .cta-btn:active {
+    transform: translateY(0);
+  }
+
+  .cta-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--c-text3);
+    margin-top: 1.5rem;
+  }
+
+  .footer-note a {
+    color: var(--c-accent2);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-note a:hover { text-decoration: underline; }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+  }
+
+  .pop { animation: pop .3s cubic-bezier(.34,1.56,.64,1); }
+
+  @media (max-width: 520px) {
+    .calc-page { padding-top: 130px; }
+    .calc-card { padding: 1.25rem; }
+    .sector-grid { grid-template-columns: repeat(2, 1fr); }
+    .breakdown-grid { grid-template-columns: 1fr 1fr; }
+    .breakdown-grid .b-card:last-child { grid-column: 1 / -1; }
+    .cta-block { flex-direction: column; text-align: center; }
+    .cta-btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body class="premium-site">
+
+<!-- Navigation (ana site ile birebir aynı) -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo2.png" alt="Aspalo" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="index.html#what">Ne Sunuyoruz</a>
+            <a href="index.html#how-it-works">Nasıl Çalışır</a>
+            <a href="index.html#features">Özellikler</a>
+            <a href="index.html#pricing">Planlar</a>
+            <a href="index.html?demo=1" class="btn btn-nav">Demo İste</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menü" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html#what">Ne Sunuyoruz</a>
+        <a href="index.html#how-it-works">Nasıl Çalışır</a>
+        <a href="index.html#features">Özellikler</a>
+        <a href="index.html#pricing">Planlar</a>
+        <a href="index.html?demo=1" class="btn btn-nav">Demo İste</a>
+    </div>
+</nav>
+
+<div class="calc-page">
+
+  <div class="calc-header">
+    <p class="calc-eyebrow">Aspalo AI — Ücretsiz Hesaplama</p>
+    <h1 class="calc-title">Kaçırılan çağrı =<br><span>kaybedilen gelir</span></h1>
+    <p class="calc-sub">İşletmenizin yılda ne kadar kaybettiğini hesaplayın. Sektörünüzü seçin, rakamları girin — sonuç sizi şaşırtabilir.</p>
+  </div>
+
+  <div class="calc-card">
+
+    <p class="section-label">Sektörünüzü seçin</p>
+    <div class="sector-grid">
+      <button class="sector-btn active" onclick="setSector(this,'klinik',800,15)" aria-pressed="true">
+        <span class="sector-icon">🏥</span>Klinik
+      </button>
+      <button class="sector-btn" onclick="setSector(this,'hukuk',1200,10)" aria-pressed="false">
+        <span class="sector-icon">⚖️</span>Hukuk bürosu
+      </button>
+      <button class="sector-btn" onclick="setSector(this,'emlak',2500,8)" aria-pressed="false">
+        <span class="sector-icon">🏠</span>Emlak ofisi
+      </button>
+      <button class="sector-btn" onclick="setSector(this,'salon',400,12)" aria-pressed="false">
+        <span class="sector-icon">✂️</span>Salon & Spa
+      </button>
+      <button class="sector-btn" onclick="setSector(this,'restoran',350,20)" aria-pressed="false">
+        <span class="sector-icon">🍽️</span>Restoran
+      </button>
+      <button class="sector-btn" onclick="setSector(this,'diger',600,10)" aria-pressed="false">
+        <span class="sector-icon">💼</span>Diğer
+      </button>
+    </div>
+
+    <div class="slider-block">
+      <div class="slider-top">
+        <span class="slider-name">Günlük kaçırılan çağrı sayısı</span>
+        <span class="slider-value" id="calls-out">10</span>
+      </div>
+      <input type="range" id="calls" min="1" max="50" value="15" step="1" oninput="calc()" aria-label="Günlük kaçırılan çağrı sayısı">
+    </div>
+
+    <div class="slider-block">
+      <div class="slider-top">
+        <span class="slider-name">Ortalama işlem / randevu değeri</span>
+        <span class="slider-value" id="value-out">800 ₺</span>
+      </div>
+      <input type="range" id="val" min="100" max="5000" value="800" step="50" oninput="calc()" aria-label="Ortalama işlem değeri">
+    </div>
+
+    <div class="slider-block">
+      <div class="slider-top">
+        <span class="slider-name">Çağrıdan müşteriye dönüşüm oranı</span>
+        <span class="slider-value" id="conv-out">%30</span>
+      </div>
+      <input type="range" id="conv" min="5" max="80" value="30" step="5" oninput="calc()" aria-label="Dönüşüm oranı">
+    </div>
+
+  </div>
+
+  <div class="result-hero" role="status" aria-live="polite">
+    <p class="result-label">Tahmini yıllık kayıp</p>
+    <p class="result-amount" id="annual">0 ₺</p>
+    <p class="result-period" id="result-sub">hesaplanıyor...</p>
+  </div>
+
+  <div class="breakdown-grid">
+    <div class="b-card">
+      <p class="b-num" id="b-daily">0 ₺</p>
+      <p class="b-label">Günlük kayıp</p>
+    </div>
+    <div class="b-card">
+      <p class="b-num" id="b-monthly">0 ₺</p>
+      <p class="b-label">Aylık kayıp</p>
+    </div>
+    <div class="b-card">
+      <p class="b-num" id="b-missed">0</p>
+      <p class="b-label">Yıllık kaçan fırsat</p>
+    </div>
+  </div>
+
+  <div class="insight-box" id="insight-box" role="note">
+    Sektörünüzü seçin ve değerleri girin.
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-text-block">
+      <p class="cta-title">Bu kaybı sıfırlamak ister misiniz?</p>
+      <p class="cta-sub">Aspalo AI — 7/24 Türkçe sesli asistan. Ücretsiz demo alın.</p>
+    </div>
+    <a href="index.html?demo=1" class="cta-btn">
+      Ücretsiz Demo Al
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <p class="footer-note">
+    Hesaplama tahmini değerlere dayanmaktadır. &nbsp;|&nbsp;
+    <a href="index.html">aspalo.com</a>
+  </p>
+
+</div>
+
+<script>
+  // Mobil menü
+  (function () {
+    var btn = document.getElementById('mobileMenuBtn');
+    var nav = document.querySelector('.navbar');
+    if (btn && nav) {
+      btn.addEventListener('click', function () { nav.classList.toggle('open'); });
+      document.querySelectorAll('#mobileNav a').forEach(function (link) {
+        link.addEventListener('click', function () { nav.classList.remove('open'); });
+      });
+    }
+  })();
+
+  let currentSector = 'klinik';
+
+  const insights = {
+    klinik: (missed, annual) => `Bu yıl <strong>${fmt(missed)} randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Kliniğinizin doluluk oranı her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.`,
+    hukuk: (missed, annual) => `<strong>${fmt(missed)} potansiyel müvekkil</strong> bu yıl ilk aramada ulaşamadı. Hukuk sektöründe ilk temas kritiktir — cevap veremezseniz rakibinize gidiyorlar.`,
+    emlak: (missed, annual) => `<strong>${fmt(missed)} sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.`,
+    salon: (missed, annual) => `<strong>${fmt(missed)} randevu talebi</strong> bu yıl meşgul hatta ya da cevapsız kaldı. Müşteri bir sonraki salonu arıyor, sadakat beklemeniz zorlaşıyor.`,
+    restoran: (missed, annual) => `<strong>${fmt(missed)} rezervasyon talebi</strong> bu yıl kaçtı. Yoğun saatlerde telefona bakacak kimse yok — asistan her çağrıyı anında karşılayabilir.`,
+    diger: (missed, annual) => `<strong>${fmt(missed)} fırsat</strong> bu yıl cevaplanmayan telefon yüzünden gitti. Her kaçırılan çağrı, rakibinize giden bir müşteridir.`
+  };
+
+  function fmt(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.', ',') + ' M₺';
+    if (n >= 1000) return Math.round(n).toLocaleString('tr-TR') + ' ₺';
+    return Math.round(n).toLocaleString('tr-TR') + ' ₺';
+  }
+
+  function fmtNum(n) {
+    return Math.round(n).toLocaleString('tr-TR');
+  }
+
+  let prevAnnual = 0;
+
+  function animateValue(el, newVal, formatter) {
+    const start = prevAnnual;
+    const end = newVal;
+    const duration = 400;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = start + (end - start) * ease;
+      el.textContent = formatter(current);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  function calc() {
+    const calls = +document.getElementById('calls').value;
+    const val   = +document.getElementById('val').value;
+    const conv  = +document.getElementById('conv').value;
+
+    document.getElementById('calls-out').textContent = calls;
+    document.getElementById('value-out').textContent = Math.round(val).toLocaleString('tr-TR') + ' ₺';
+    document.getElementById('conv-out').textContent  = '%' + conv;
+
+    const daily   = calls * (conv / 100) * val;
+    const monthly = daily * 30;
+    const annual  = daily * 365;
+    const missed  = calls * 365;
+
+    document.getElementById('b-daily').textContent   = fmt(daily);
+    document.getElementById('b-monthly').textContent = fmt(monthly);
+    document.getElementById('b-missed').textContent  = fmtNum(missed) + ' çağrı';
+
+    const annualEl = document.getElementById('annual');
+    animateValue(annualEl, annual, (v) => {
+      if (v >= 1000000) return (v / 1000000).toFixed(2).replace('.', ',') + ' M₺';
+      return Math.round(v).toLocaleString('tr-TR') + ' ₺';
+    });
+    prevAnnual = annual;
+
+    annualEl.classList.remove('pop');
+    void annualEl.offsetWidth;
+    annualEl.classList.add('pop');
+
+    document.getElementById('result-sub').textContent =
+      '= ' + fmt(monthly).replace(' ₺','') + ' ₺ / ay  ·  ' + fmtNum(missed) + ' fırsat / yıl';
+
+    const insightFn = insights[currentSector] || insights.diger;
+    document.getElementById('insight-box').innerHTML = insightFn(missed, annual);
+  }
+
+  function setSector(el, sector, val, calls) {
+    document.querySelectorAll('.sector-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    el.classList.add('active');
+    el.setAttribute('aria-pressed', 'true');
+    currentSector = sector;
+    document.getElementById('val').value   = val;
+    document.getElementById('calls').value = calls;
+    prevAnnual = 0;
+    calc();
+  }
+
+  calc();
+</script>
+
+</body>
+</html>
