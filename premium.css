@@ -66,8 +66,8 @@ html.lenis, html.lenis body { height: auto; }
 .premium-site .hero-title {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
-    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
-    line-height: 1.1;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.12;
     letter-spacing: -0.02em;
     font-weight: 500;
     max-width: 18em;
@@ -248,7 +248,7 @@ html.lenis, html.lenis body { height: auto; }
 /* ── HERO — soft light ── */
 .premium-site .hero {
     min-height: 100svh;
-    padding: 140px 0 100px;
+    padding: 100px 0 48px;
     background: #ffffff;
     color: var(--primary);
     isolation: isolate;
@@ -367,12 +367,32 @@ html.lenis, html.lenis body { height: auto; }
     box-shadow: 0 6px 20px rgba(38, 44, 192, 0.3);
 }
 
+.premium-site .hero-badges-row {
+    margin-bottom: 16px;
+}
+
+.premium-site .sector-badges {
+    margin-bottom: 14px;
+}
+
+.premium-site .hero-title {
+    margin-bottom: 10px;
+}
+
+.premium-site .hero-cta {
+    margin-bottom: 20px;
+}
+
+.premium-site .hero-how {
+    margin-bottom: 20px;
+}
+
 .premium-site .hero-sub {
     font-family: var(--font);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-muted);
-    line-height: 1.65;
+    line-height: 1.55;
     max-width: 520px;
     animation: none;
 }
@@ -397,7 +417,7 @@ html.lenis, html.lenis body { height: auto; }
 
 .premium-site .hero-cta-primary,
 .premium-site .hero-cta-secondary.hero-cta-listen {
-    min-height: 52px;
+    min-height: 60px;
 }
 
 .premium-site .hero-cta-secondary.hero-cta-listen {
@@ -405,7 +425,7 @@ html.lenis, html.lenis body { height: auto; }
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 6px 24px 6px 8px;
+    padding: 8px 22px 8px 10px;
     border-radius: 100px;
     font-size: 16px;
     font-weight: 600;
@@ -414,7 +434,7 @@ html.lenis, html.lenis body { height: auto; }
     color: var(--primary);
     border: 1px solid rgba(99, 102, 241, 0.3);
     background: rgba(99, 102, 241, 0.05);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+    box-shadow: 0 12px 34px rgba(99, 102, 241, 0.18), 0 4px 14px rgba(15, 23, 42, 0.12);
     transition: transform 0.25s var(--premium-ease), box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
@@ -422,8 +442,8 @@ html.lenis, html.lenis body { height: auto; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
     background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
@@ -459,7 +479,7 @@ html.lenis, html.lenis body { height: auto; }
     background: rgba(99, 102, 241, 0.1);
     border-color: rgba(99, 102, 241, 0.5);
     color: var(--primary);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.16);
+    box-shadow: 0 18px 42px rgba(99, 102, 241, 0.24), 0 6px 16px rgba(15, 23, 42, 0.14);
 }
 
 .premium-site .hero-cta-secondary.hero-cta-listen:hover .hero-cta-listen__play {
@@ -518,9 +538,11 @@ html.lenis, html.lenis body { height: auto; }
     transform-style: preserve-3d;
     will-change: transform;
     box-shadow:
-        0 0 0 2px rgba(255,255,255,0.12),
-        0 30px 60px -20px rgba(15, 23, 42, 0.35),
-        0 12px 24px -8px rgba(15, 23, 42, 0.2);
+        0 0 0 1px rgba(255, 255, 255, 0.8),
+        0 0 0 2.5px rgba(120, 117, 108, 0.5),
+        inset 0 0 1.5px 1px rgba(255, 255, 255, 0.6),
+        0 30px 60px -20px rgba(15, 23, 42, 0.3),
+        0 12px 24px -8px rgba(15, 23, 42, 0.18);
 }
 
 .premium-site .phone-screen {
@@ -726,11 +748,9 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .premium-site .dashboard-frame {
-    border-radius: var(--premium-radius-xl);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow:
-        0 40px 100px -40px rgba(15, 23, 42, 0.35),
-        0 0 0 1px rgba(255,255,255,0.8) inset;
+    background: transparent;
+    border: none;
+    box-shadow: none;
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -777,13 +797,14 @@ html.lenis, html.lenis body { height: auto; }
     border-radius: var(--premium-radius-xl);
     padding: 36px 32px;
     background: #fff;
-    border: 1px solid rgba(15, 23, 42, 0.06);
+    border: 1.5px solid rgba(38, 44, 192, 0.35);
     color: var(--text);
     box-shadow: 0 8px 40px -16px rgba(15, 23, 42, 0.1);
-    transition: transform 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease);
+    transition: transform 0.5s var(--premium-ease), box-shadow 0.5s var(--premium-ease), border-color 0.5s var(--premium-ease);
 }
 
 .premium-site .sector-benefit-panel:hover {
+    border-color: rgba(38, 44, 192, 0.5);
     box-shadow: 0 32px 64px -24px rgba(79, 70, 229, 0.15);
 }
 
@@ -1044,11 +1065,6 @@ html.lenis, html.lenis body { height: auto; }
     transition: transform 0.25s var(--premium-ease);
 }
 
-.premium-site .dash-menu-item,
-.premium-site .dash-lead-tags span {
-    transition: transform 0.2s var(--premium-ease), opacity 0.2s ease;
-}
-
 .premium-site .comparison-table tbody tr {
     transition: transform 0.35s var(--premium-ease), opacity 0.35s ease;
 }
@@ -1109,7 +1125,7 @@ html.lenis, html.lenis body { height: auto; }
 
 .premium-site .calc-section .section-title {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: baseline;
     gap: 0.28em;
     white-space: nowrap;
@@ -1117,12 +1133,6 @@ html.lenis, html.lenis body { height: auto; }
 
 .premium-site .calc-section .section-title .hero-line {
     display: inline-block;
-}
-
-.premium-site .calc-section .section-desc {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 @media (max-width: 600px) {
@@ -1151,7 +1161,7 @@ html.lenis, html.lenis body { height: auto; }
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: var(--premium-radius-xl);
     padding: 2rem;
-    margin: 36px auto 16px;
+    margin: 36px 0 16px;
     box-shadow: 0 4px 24px -8px rgba(15, 23, 42, 0.06);
 }
 
@@ -1276,7 +1286,7 @@ html.lenis, html.lenis body { height: auto; }
     border-radius: var(--premium-radius-xl);
     padding: 1.75rem 2rem;
     text-align: center;
-    margin: 0 auto 14px;
+    margin: 0 0 14px;
 }
 .premium-site .calc-result-label {
     font-family: var(--font);
@@ -1305,7 +1315,7 @@ html.lenis, html.lenis body { height: auto; }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin: 0 auto 14px;
+    margin: 0 0 14px;
 }
 .premium-site .calc-b-card {
     background: rgba(15, 23, 42, 0.02);
@@ -1337,7 +1347,7 @@ html.lenis, html.lenis body { height: auto; }
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.65;
-    margin: 0 auto 2rem;
+    margin: 0 0 2rem;
 }
 .premium-site .calc-insight-box strong {
     color: #262cc0;
@@ -1355,7 +1365,7 @@ html.lenis, html.lenis body { height: auto; }
     justify-content: space-between;
     gap: 1.5rem;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0;
 }
 .premium-site .calc-cta-text { flex: 1; min-width: 200px; }
 .premium-site .calc-cta-title {
@@ -1515,8 +1525,8 @@ html.lenis, html.lenis body { height: auto; }
     }
 
     .premium-site .hero-cta-secondary.hero-cta-listen {
-        font-size: 15px;
-        padding-right: 18px;
+        font-size: 16px;
+        padding-right: 22px;
     }
 
     .cursor-glow { display: none; }
@@ -1596,29 +1606,10 @@ html.reduce-motion .premium-site [data-premium-reveal="scale"] {
    Redesign layer — independent visual system, same content/IA
    ================================================================ */
 
-/* ── References: infinite marquee ── */
-.premium-site .references-marquee {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-}
-.premium-site .references-track {
-    display: flex;
-    gap: 24px;
-    width: max-content;
-    animation: references-scroll 26s linear infinite;
-}
-.premium-site .references-track:hover {
-    animation-play-state: paused;
-}
-.premium-site .references-track .reference-card {
-    flex: 0 0 auto;
-    width: 260px;
-    margin: 0;
-}
-@keyframes references-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+/* ── References: static trust logo row ── */
+.premium-site .references {
+    padding: 32px 0 56px;
+    background: #ffffff;
 }
 
 /* ── Features: even grid, full-width columns ── */
