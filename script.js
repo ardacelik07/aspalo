@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearTimeout(revertTimer);
         revertTimer = setTimeout(function () {
             mode = 'wave';
-        }, 3200);
+        }, 1000);
     }
 
     canvas.addEventListener('click', activateText);
