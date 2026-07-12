@@ -511,3 +511,241 @@ document.addEventListener('DOMContentLoaded', function () {
         window.calcCompute();
     }
 })();
+
+/* Ses dalgası - footer altındaki interaktif dot-matrix görselleştirme */
+(function () {
+    var canvas = document.getElementById('sound-wall-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var wrap = canvas.parentElement;
+
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var BASE_CELL_SIZE = 15;
+    var MIN_TEXT_ROWS = 11; // guarantees enough vertical resolution for legible letterforms
+    var MIN_TEXT_COLS = 80; // guarantees enough horizontal resolution on narrow (mobile) widths
+    var cellSize = BASE_CELL_SIZE;
+    var dotFillRadius = 5;
+    var dotOutlineRadius = 2.2;
+
+    var cols = 0, rows = 0, cssW = 0, cssH = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var litGradient = null;
+    var mode = 'wave';
+    var textGrid = null;
+    var colSeeds = [];
+    var t = 0;
+    var revertTimer = null;
+    var rafId = null;
+    var io = null;
+    var isVisible = false;
+
+    function buildColSeeds() {
+        colSeeds = [];
+        for (var x = 0; x < cols; x++) {
+            colSeeds.push({
+                base: Math.random() * Math.PI * 2,
+                speed: 0.02 + Math.random() * 0.025,
+                amp: 0.4 + Math.random() * 0.5
+            });
+        }
+    }
+
+    function buildTextGrid() {
+        var SS = 12; // supersample factor for clean, well-separated letterforms
+        var off = document.createElement('canvas');
+        off.width = cols * SS;
+        off.height = rows * SS;
+        var octx = off.getContext('2d');
+        octx.clearRect(0, 0, off.width, off.height);
+        octx.fillStyle = '#fff';
+        octx.textAlign = 'center';
+        var label = 'ASPALO';
+        var targetW = off.width * (cssW < 600 ? 0.75 : 0.6);
+        // Scale the font size itself (not a transform) so glyph proportions
+        // and inter-letter gaps stay intact instead of squashing together.
+        var fontSize = Math.floor(rows * SS * 0.6);
+        octx.font = '600 ' + fontSize + 'px Arial, Helvetica, sans-serif';
+        var measured = octx.measureText(label).width;
+        if (measured > 0) {
+            fontSize = Math.max(6, Math.floor(fontSize * (targetW / measured)));
+            octx.font = '600 ' + fontSize + 'px Arial, Helvetica, sans-serif';
+        }
+        // 'middle' baseline centers using font metrics (ascent+descent), but
+        // an all-caps word like "ASPALO" has no descender ink, so that
+        // metric-based center sits visually higher than the true glyph
+        // center. Measure the actual ink bounds and center on those instead.
+        octx.textBaseline = 'alphabetic';
+        var m = octx.measureText(label);
+        var ascent = m.actualBoundingBoxAscent || fontSize * 0.72;
+        var descent = m.actualBoundingBoxDescent || 0;
+        var baselineY = off.height / 2 + (ascent - descent) / 2;
+        octx.fillText(label, off.width / 2, baselineY);
+        var data;
+        try {
+            data = octx.getImageData(0, 0, off.width, off.height).data;
+        } catch (e) {
+            textGrid = null;
+            return;
+        }
+        var grid = {};
+        var cellPixels = SS * SS;
+        for (var y = 0; y < rows; y++) {
+            for (var x = 0; x < cols; x++) {
+                var sum = 0;
+                for (var sy = 0; sy < SS; sy++) {
+                    var rowOffset = ((y * SS + sy) * off.width + x * SS) * 4;
+                    for (var sx = 0; sx < SS; sx++) {
+                        sum += data[rowOffset + sx * 4 + 3];
+                    }
+                }
+                var coverage = sum / (cellPixels * 255);
+                // Store the graduated coverage (not just a boolean) so edge
+                // pixels can be drawn as smaller/dimmer dots instead of being
+                // dropped outright - this keeps letterforms readable even
+                // when the grid only has a handful of rows to work with.
+                if (coverage > 0.04) grid[x + ',' + y] = coverage;
+            }
+        }
+        textGrid = grid;
+    }
+
+    function resize() {
+        cssW = wrap.clientWidth;
+        cssH = wrap.clientHeight;
+        if (!cssW || !cssH) return;
+        // On short/narrow containers, a fixed 15px pitch leaves too few rows
+        // or columns to render legible letterforms in text mode - the dots
+        // just look like random noise or blocky mush on mobile. Shrink the
+        // dot pitch (and radii, proportionally) so there are always enough
+        // rows AND columns, instead of letting resolution collapse in
+        // either dimension. Wider/taller containers are unaffected
+        // (cellSize stays capped at BASE_CELL_SIZE, same as before).
+        cellSize = Math.max(8, Math.min(BASE_CELL_SIZE, cssH / MIN_TEXT_ROWS, cssW / MIN_TEXT_COLS));
+        dotFillRadius = cellSize * (5 / BASE_CELL_SIZE);
+        dotOutlineRadius = cellSize * (2.2 / BASE_CELL_SIZE);
+        canvas.width = Math.round(cssW * dpr);
+        canvas.height = Math.round(cssH * dpr);
+        canvas.style.width = cssW + 'px';
+        canvas.style.height = cssH + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = Math.ceil(cssW / cellSize) + 1;
+        rows = Math.ceil(cssH / cellSize);
+        litGradient = ctx.createLinearGradient(0, 0, cssW, 0);
+        litGradient.addColorStop(0, '#4338ca');
+        litGradient.addColorStop(0.5, '#6366f1');
+        litGradient.addColorStop(1, '#8b5cf6');
+        buildColSeeds();
+        buildTextGrid();
+    }
+
+    function waveHeightAt(x, time) {
+        var s = colSeeds[x] || { base: 0, speed: 0.02, amp: 0.5 };
+        var macro = (Math.sin(x * 0.14 + time * 0.012) + 1) / 2;
+        var micro = (Math.sin(time * s.speed + s.base) + 1) / 2;
+        var v = macro * 0.62 + micro * 0.38;
+        return Math.max(0.035, Math.min(0.96, v * s.amp + 0.04));
+    }
+
+    function roundRect(x, y, w, h, r) {
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h, r);
+        ctx.arcTo(x + w, y + h, x, y + h, r);
+        ctx.arcTo(x, y + h, x, y, r);
+        ctx.arcTo(x, y, x + w, y, r);
+        ctx.closePath();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, cssW, cssH);
+        for (var x = 0; x < cols; x++) {
+            var litCount = mode === 'wave' ? Math.round(waveHeightAt(x, t) * rows) : 0;
+            for (var y = 0; y < rows; y++) {
+                var cx = x * cellSize + cellSize / 2;
+                var cy = cssH - (y * cellSize + cellSize / 2);
+                var lit, coverage;
+                if (mode === 'text') {
+                    coverage = textGrid ? textGrid[x + ',' + (rows - 1 - y)] : 0;
+                    lit = !!coverage;
+                } else {
+                    lit = y < litCount;
+                }
+                ctx.beginPath();
+                if (lit) {
+                    ctx.fillStyle = litGradient || '#6366f1';
+                    if (mode === 'text') {
+                        // Graduated size/opacity instead of a hard on/off dot:
+                        // partially-covered edge pixels render as smaller,
+                        // dimmer dots rather than disappearing, which keeps
+                        // letterforms readable even at low row counts.
+                        var scale = Math.max(0.3, Math.sqrt(coverage));
+                        var r = dotFillRadius * scale;
+                        ctx.globalAlpha = Math.min(1, 0.5 + coverage * 0.5);
+                        roundRect(cx - r, cy - r, r * 2, r * 2, r * 0.6);
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+                    } else if (y === litCount - 1) {
+                        ctx.arc(cx, cy, dotFillRadius, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        roundRect(cx - dotFillRadius, cy - dotFillRadius, dotFillRadius * 2, dotFillRadius * 2, 3);
+                        ctx.fill();
+                    }
+                } else {
+                    ctx.strokeStyle = 'rgba(99, 102, 241, 0.1)';
+                    ctx.lineWidth = 1;
+                    ctx.arc(cx, cy, dotOutlineRadius, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function loop() {
+        if (!isVisible) { rafId = null; return; }
+        t += 1;
+        draw();
+        rafId = requestAnimationFrame(loop);
+    }
+
+    function ensureLoop() {
+        if (!rafId && isVisible) rafId = requestAnimationFrame(loop);
+    }
+
+    function activateText() {
+        mode = 'text';
+        draw();
+        clearTimeout(revertTimer);
+        revertTimer = setTimeout(function () {
+            mode = 'wave';
+        }, 3200);
+    }
+
+    canvas.addEventListener('click', activateText);
+
+    window.addEventListener('resize', function () {
+        resize();
+        if (!isVisible) draw();
+    });
+
+    if (reduced) {
+        resize();
+        mode = 'text';
+        draw();
+        return;
+    }
+
+    resize();
+
+    if ('IntersectionObserver' in window) {
+        io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                isVisible = entry.isIntersecting;
+                if (isVisible) ensureLoop(); else draw();
+            });
+        }, { threshold: 0.01 });
+        io.observe(wrap);
+    } else {
+        isVisible = true;
+        ensureLoop();
+    }
+})();
