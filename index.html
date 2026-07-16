@@ -11,8 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260712d">
-    <link rel="stylesheet" href="premium.css?v=20260712d">
+    <link rel="stylesheet" href="styles.css?v=20260716g">
+    <link rel="stylesheet" href="premium.css?v=20260716g">
 </head>
 <body class="premium-site">
     <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
@@ -79,19 +79,11 @@
                         <span data-i18n="hero_badge">Sektörünüze önceden uyumlu</span>
                     </p>
                 </div>
-                <div class="sector-badges" id="sector-badges" data-i18n-aria="sectors_aria" aria-label="Sektörler">
-                    <span class="sector-badge" data-sector="Emlak" data-i18n="sector_emlak">Emlak</span>
-                    <span class="sector-badge" data-sector="Otomotiv" data-i18n="sector_otomotiv">Otomotiv</span>
-                    <span class="sector-badge" data-sector="Sağlık" data-i18n="sector_saglik">Sağlık</span>
-                    <span class="sector-badge" data-sector="Lojistik" data-i18n="sector_lojistik">Lojistik</span>
-                    <span class="sector-badge" data-sector="E-Ticaret" data-i18n="sector_eticaret">E-Ticaret</span>
-                    <span class="sector-badge" data-sector="Otel Konaklama" data-i18n="sector_otel">Otel Konaklama</span>
-                </div>
                 <h2 class="hero-title" data-i18n-html="hero_title_html">
-                    Hiçbir Çağrıyı Kaçırmayın, <span class="gradient-text">Tüm Müşteri Görüşmelerini Yapay Zeka ile Yönetin.</span>
+                    Çağrılarınızı Yöneten <span class="gradient-text">Yapay zeka asistanı</span>
                 </h2>
                 <p class="hero-sub" data-i18n="hero_sub">
-                    Her çağrıyı anında yanıtlayan, potansiyel müşterileri analiz eden, randevu planlayan ve süreci satışa taşıyan yapay zeka telefon asistanı. 7/24, çok dilli altyapı ile.
+                    Aspalo, gelen aramaları 7/24 yanıtlayan, randevu alan ve soruları cevaplayan bir yapay zeka asistanı. Hiçbir çağrı cevapsız kalmaz.
                 </p>
                 <div class="hero-cta">
                     <a href="#" class="btn hero-cta-secondary hero-cta-listen" id="hero-demo-btn">
@@ -106,34 +98,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="hero-how" data-i18n-aria="hero_how_aria" aria-label="Nasıl çalışır">
-                    <ol class="hero-how-steps">
-                        <li data-i18n-html="hero_how_1"><strong>AI gelen ve giden aramaları</strong> yanıtlar ve yapar.</li>
-                        <li data-i18n-html="hero_how_2"><strong>Görüşmeyi analiz eder</strong>, lead skorlar.</li>
-                        <li data-i18n-html="hero_how_3"><strong>Lead ve özet</strong> panelinizde takip edilir.</li>
-                    </ol>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-num">%100</span>
-                        <span class="stat-label" data-i18n="stat_answered">yanıtlanan arama</span>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat">
-                        <span class="stat-num">%65</span>
-                        <span class="stat-label" data-i18n="stat_cost">maliyet azaltımı</span>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat">
-                        <span class="stat-num">+$35k</span>
-                        <span class="stat-label" data-i18n="stat_revenue">aylık getiri</span>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat">
-                        <span class="stat-num">%40</span>
-                        <span class="stat-label" data-i18n="stat_appointments">Daha fazla randevu</span>
-                    </div>
-                </div>
+                
             </div>
             <div class="hero-visual">
                 <div class="phone-stage" aria-hidden="true">
@@ -257,46 +222,46 @@
             <div class="calc-card">
                 <p class="calc-label" data-i18n="calc_pick_sector">Sektörünüzü seçin</p>
                 <div class="calc-sector-grid">
-                    <button class="calc-sector-btn active" onclick="setCalcSector(this,'klinik',800,15)" aria-pressed="true">
-                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" /></svg></span>
-                        <span data-i18n="calc_sector_klinik">Klinik</span>
-                    </button>
-                    <button class="calc-sector-btn" onclick="setCalcSector(this,'hukuk',1200,10)" aria-pressed="false">
-                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg></span>
-                        <span data-i18n="calc_sector_hukuk">Hukuk bürosu</span>
-                    </button>
-                    <button class="calc-sector-btn" onclick="setCalcSector(this,'emlak',2500,8)" aria-pressed="false">
+                    <button class="calc-sector-btn active" onclick="setCalcSector(this,'Emlak',2500,8)" aria-pressed="true">
                         <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg></span>
-                        <span data-i18n="calc_sector_emlak">Emlak ofisi</span>
+                        <span data-i18n="sector_emlak">Emlak</span>
                     </button>
-                    <button class="calc-sector-btn" onclick="setCalcSector(this,'salon',400,12)" aria-pressed="false">
-                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3" /><path d="M8.12 8.12 12 12" /><path d="M20 4 8.12 15.88" /><circle cx="6" cy="18" r="3" /><path d="M14.8 14.8 20 20" /></svg></span>
-                        <span data-i18n="calc_sector_salon">Salon &amp; Spa</span>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'Otomotiv',1500,10)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" /><circle cx="7" cy="17" r="2" /><path d="M9 17h6" /><circle cx="17" cy="17" r="2" /></svg></span>
+                        <span data-i18n="sector_otomotiv">Otomotiv</span>
                     </button>
-                    <button class="calc-sector-btn" onclick="setCalcSector(this,'restoran',350,20)" aria-pressed="false">
-                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg></span>
-                        <span data-i18n="calc_sector_restoran">Restoran</span>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'Sağlık',800,15)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z" /></svg></span>
+                        <span data-i18n="sector_saglik">Sağlık</span>
                     </button>
-                    <button class="calc-sector-btn" onclick="setCalcSector(this,'diger',600,10)" aria-pressed="false">
-                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg></span>
-                        <span data-i18n="calc_sector_diger">Diğer</span>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'Lojistik',1000,12)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15" /><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="m3.3 7 8.7 5 8.7-5" /><path d="M12 22V12" /></svg></span>
+                        <span data-i18n="sector_lojistik">Lojistik</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'E-Ticaret',450,18)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" /><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" /></svg></span>
+                        <span data-i18n="sector_eticaret">E-Ticaret</span>
+                    </button>
+                    <button class="calc-sector-btn" onclick="setCalcSector(this,'Otel Konaklama',1800,10)" aria-pressed="false">
+                        <span class="calc-sector-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></svg></span>
+                        <span data-i18n="sector_otel">Otel Konaklama</span>
                     </button>
                 </div>
 
                 <div class="calc-slider-block">
                     <div class="calc-slider-top">
                         <span class="calc-slider-name" data-i18n="calc_calls_label">Günlük kaçırılan çağrı sayısı</span>
-                        <span class="calc-slider-value" id="calc-calls-out">15</span>
+                        <span class="calc-slider-value" id="calc-calls-out">8</span>
                     </div>
-                    <input type="range" id="calc-calls" min="1" max="50" value="15" step="1" oninput="calcCompute()" aria-label="Günlük kaçırılan çağrı sayısı">
+                    <input type="range" id="calc-calls" min="1" max="50" value="8" step="1" oninput="calcCompute()" aria-label="Günlük kaçırılan çağrı sayısı">
                 </div>
 
                 <div class="calc-slider-block">
                     <div class="calc-slider-top">
                         <span class="calc-slider-name" data-i18n="calc_value_label">Ortalama işlem / randevu değeri</span>
-                        <span class="calc-slider-value" id="calc-value-out">800 ₺</span>
+                        <span class="calc-slider-value" id="calc-value-out">2.500 ₺</span>
                     </div>
-                    <input type="range" id="calc-val" min="100" max="5000" value="800" step="50" oninput="calcCompute()" aria-label="Ortalama işlem değeri">
+                    <input type="range" id="calc-val" min="100" max="5000" value="2500" step="50" oninput="calcCompute()" aria-label="Ortalama işlem değeri">
                 </div>
 
                 <div class="calc-slider-block">
@@ -669,7 +634,7 @@
                                 </span>
                                 <span class="footer-contact-text">
                                     <span class="footer-contact-label" data-i18n="footer_phone_alt_label">Telefon (2)</span>
-                                    <span class="footer-contact-value">0542 782 00 43</span>
+                                    <span class="footer-contact-value">+90 542 782 00 43</span>
                                 </span>
                             </a>
                         </li>
@@ -759,7 +724,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="i18n.js?v=20260712b"></script>
     <script src="script.js?v=20260708ak"></script>
-    <script src="premium.js?v=20260712c"></script>
+    <script src="premium.js?v=20260716a"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
       (function () {

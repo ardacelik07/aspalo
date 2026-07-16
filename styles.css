@@ -50,6 +50,12 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; overflow-x: hidden; }
+
+/* Sabit navbar (fixed, ~78px) anchor ile gelinen bölümlerin başlığını
+   kesmesin diye tüm id'li section'lara üstten boşluk payı */
+section[id] {
+    scroll-margin-top: 100px;
+}
 body {
     font-family: var(--font);
     background: var(--bg);
@@ -135,7 +141,7 @@ img { max-width: 100%; }
     box-shadow: 0 4px 20px rgba(30, 58, 95, 0.35);
 }
 
-.btn-large { padding: 14px 28px; font-size: 16px; }
+.btn-large { padding: 12px 24px; font-size: 14px; }
 .btn-small { padding: 10px 18px; font-size: 14px; font-weight: 500; }
 .btn-full { width: 100%; }
 
@@ -326,8 +332,8 @@ img { max-width: 100%; }
 .hero-container {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1.38fr 0.62fr;
+    gap: 30px;
     align-items: center;
 }
 
@@ -397,7 +403,7 @@ img { max-width: 100%; }
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--primary-light);
-    margin-bottom: 16px;
+    margin-bottom: 40px;
     animation: fade-in-up 0.6s ease-out 0.15s both;
 }
 
@@ -1489,38 +1495,61 @@ img { max-width: 100%; }
 }
 
 .references-logos {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 56px 72px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .reference-logo {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    height: 140px;
+    padding: 24px;
+    background: rgba(38, 44, 192, 0.03);
+    border: 1px solid rgba(38, 44, 192, 0.18);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.reference-logo:hover {
+    border-color: rgba(38, 44, 192, 0.45);
+    background: rgba(38, 44, 192, 0.06);
+    box-shadow: 0 12px 32px rgba(38, 44, 192, 0.14);
+    transform: translateY(-3px);
 }
 
 .reference-logo img {
-    max-width: 280px;
-    max-height: 96px;
+    max-width: 100%;
+    max-height: 72px;
     width: auto;
     height: auto;
     object-fit: contain;
+    transition: transform 0.25s ease;
+    animation: reference-logo-float 4.5s ease-in-out infinite;
 }
-.reference-logo--yasam img { max-height: 116px; }
-.reference-logo--ofb img { max-height: 132px; }
-.reference-logo--ofb { transform: translateY(14px); }
-.reference-logo--mng img { max-height: 150px; }
+
+.reference-logo:nth-child(2) img { animation-delay: -1.5s; }
+.reference-logo:nth-child(3) img { animation-delay: -3s; }
+
+@keyframes reference-logo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.reference-logo:hover img {
+    transform: scale(1.06);
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reference-logo img { animation: none; }
+}
 
 @media (max-width: 640px) {
-    .references-logos { gap: 36px 44px; }
-    .reference-logo img { max-height: 64px; }
-    .reference-logo--yasam img { max-height: 78px; }
-    .reference-logo--ofb img { max-height: 88px; }
-    .reference-logo--ofb { transform: translateY(9px); }
-    .reference-logo--mng img { max-height: 100px; }
+    .references-logos { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .reference-logo { height: 110px; padding: 16px; }
+    .reference-logo img { max-height: 56px; }
 }
 
 /* Pricing */
