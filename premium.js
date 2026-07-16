@@ -322,7 +322,8 @@
         [
             '.feature-card', '.comparison-card', '.pricing-card',
             '.sector-compat-card', '.step', '.dashboard-mockup',
-            '.comparison-table-wrap', '.dash-card', '.sector-benefit-list li'
+            '.comparison-table-wrap', '.dash-card', '.sector-benefit-list li',
+            '.reference-logo'
         ].forEach(function (sel) {
             document.querySelectorAll(sel).forEach(function (el) {
                 el.setAttribute('data-premium-reveal', 'scale');
@@ -333,6 +334,7 @@
     function initReveals() {
         gsap.utils.toArray('[data-premium-reveal]').forEach(function (el) {
             if (el.classList.contains('sector-compat-card')) return;
+            if (el.classList.contains('reference-logo')) return;
             gsap.to(el, {
                 opacity: 1,
                 y: 0,
@@ -360,6 +362,24 @@
                 ease: EASE_SOFT,
                 scrollTrigger: {
                     trigger: '#sector-cards',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        }
+
+        var logos = document.querySelectorAll('.references-logos .reference-logo');
+        if (logos.length) {
+            gsap.to(logos, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                filter: 'blur(0px)',
+                duration: 0.7,
+                stagger: 0.12,
+                ease: 'back.out(1.4)',
+                scrollTrigger: {
+                    trigger: '.references-logos',
                     start: 'top 85%',
                     toggleActions: 'play none none none'
                 }

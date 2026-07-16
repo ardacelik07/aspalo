@@ -424,16 +424,16 @@ document.addEventListener('DOMContentLoaded', function () {
  * Kayıp Hesaplama — anasayfaya gömülü hesap makinesi
  */
 (function () {
-    var calcCurrentSector = 'klinik';
+    var calcCurrentSector = 'Emlak';
     var calcPrevAnnual = 0;
 
     var calcInsights = {
-        klinik: function (missed) { return 'Bu yıl <strong>' + calcFmt(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Kliniğinizin doluluk oranı her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
-        hukuk: function (missed) { return '<strong>' + calcFmt(missed) + ' potansiyel müvekkil</strong> bu yıl ilk aramada ulaşamadı. Hukuk sektöründe ilk temas kritiktir — cevap veremezseniz rakibinize gidiyorlar.'; },
-        emlak: function (missed) { return '<strong>' + calcFmt(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
-        salon: function (missed) { return '<strong>' + calcFmt(missed) + ' randevu talebi</strong> bu yıl meşgul hatta ya da cevapsız kaldı. Müşteri bir sonraki salonu arıyor, sadakat beklemeniz zorlaşıyor.'; },
-        restoran: function (missed) { return '<strong>' + calcFmt(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Yoğun saatlerde telefona bakacak kimse yok — asistan her çağrıyı anında karşılayabilir.'; },
-        diger: function (missed) { return '<strong>' + calcFmt(missed) + ' fırsat</strong> bu yıl cevaplanmayan telefon yüzünden gitti. Her kaçırılan çağrı, rakibinize giden bir müşteridir.'; }
+        'Emlak': function (missed) { return '<strong>' + calcFmt(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
+        'Otomotiv': function (missed) { return '<strong>' + calcFmt(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
+        'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmt(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
+        'Lojistik': function (missed) { return '<strong>' + calcFmt(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
+        'E-Ticaret': function (missed) { return '<strong>' + calcFmt(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
+        'Otel Konaklama': function (missed) { return '<strong>' + calcFmt(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
     };
 
     function calcFmt(n) {
@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('calc-result-sub').textContent =
             '= ' + calcFmt(monthly) + ' / ay  ·  ' + calcFmtNum(missed) + ' fırsat / yıl';
 
-        var insightFn = calcInsights[calcCurrentSector] || calcInsights.diger;
+        var insightFn = calcInsights[calcCurrentSector] || calcInsights['Emlak'];
         document.getElementById('calc-insight-box').innerHTML = insightFn(missed);
     };
 
