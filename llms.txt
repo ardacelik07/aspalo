@@ -1,0 +1,25 @@
+# Aspalo
+
+> Aspalo, işletmelerin gelen ve giden telefon çağrılarını 7/24 yanıtlayan, randevu alan, soruları cevaplayan, lead skorlayan ve CRM'e (HubSpot, Salesforce, Google Sheets, Slack, Microsoft Teams) entegre çalışan bir yapay zeka sesli asistanıdır. Türkiye merkezli, çok dilli altyapıya sahiptir.
+
+Aspalo hiçbir çağrıyı cevapsız bırakmaz: mesai dışı, meşgul veya yoğun saatlerde gelen aramaları insan operatör gibi yanıtlar, potansiyel müşterileri analiz eder, randevu planlar ve süreci satışa taşır. Emlak, Otomotiv, Sağlık, Lojistik, E-Ticaret ve Otel Konaklama gibi sektörlere önceden uyumlu senaryolarla gelir.
+
+## Sayfalar
+
+- [Ana Sayfa](https://aspalo.com/): Ürün özeti, canlı sesli AI demosu, sektörel kullanım senaryoları, İnsan vs Aspalo karşılaştırması, kurulum adımları (48 saatte aktif) ve fiyatlandırma planları (Basic, Growth, Pro).
+- [Kaçırılan Çağrı Hesaplayıcısı](https://aspalo.com/hesaplama.html): İşletmelerin kaçırılan çağrılar yüzünden yılda ne kadar gelir kaybettiğini sektöre göre tahmin eden ücretsiz araç.
+
+## Sektörler ve Kullanım Senaryoları
+
+- Emlak: Portföy bilgisi ve görüşme randevusu
+- Otomotiv: Servis randevusu ve test sürüşü
+- Sağlık: Hasta kaydı ve randevu hatırlatma
+- Lojistik: Kargo takibi ve müşteri hizmetleri
+- E-Ticaret: Sipariş desteği ve iade yönetimi
+- Otel Konaklama: Rezervasyon ve misafir hizmetleri
+
+## İletişim
+
+- E-posta: info@aspalo.com
+- Telefon: +90 507 142 41 55
+- Web: https://aspalo.com/

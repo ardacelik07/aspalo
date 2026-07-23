@@ -427,13 +427,43 @@ document.addEventListener('DOMContentLoaded', function () {
     var calcCurrentSector = 'Emlak';
     var calcPrevAnnual = 0;
 
+    // Sektöre göre gerçekçi varsayılan değerler — Türkiye piyasa verilerine dayanır:
+    // - Emlak: yasal azami komisyon satış bedelinin %4'ü (KDV hariç); ör. 5M TL'lik
+    //   satışta ~200.000 TL toplam komisyon, taraflar arası paylaşılır (TDB/Sigorta Sözcü).
+    // - Otomotiv: yetkili/özel serviste ortalama periyodik bakım faturası 5.000–25.000 TL.
+    // - Sağlık: özel klinik muayene ücreti tipik olarak 100–1.000 TL bandında (TDB 2026 tarifesi).
+    // - E-Ticaret: Türkiye'de 2025 yıllık ortalama sepet tutarı (AOV) 1.278 TL (Ticaret Bakanlığı raporu).
+    // - Otel: çok gecelik ortalama rezervasyon değeri baz alınmıştır (ADR verisine dayalı tahmin).
+    // - Çağrıdan müşteriye dönüşüm: gelen (inbound) aramalar soğuk aramadan çok daha
+    //   iyi dönüşür, ama sektöre göre üst sınır konularak aşırı/gerçekçi olmayan
+    //   sonuçların (ör. milyar TL) önüne geçilir — her sektörün "en kötü senaryo"
+    //   tavanı birbirine yakın, mantıklı bir bantta kalacak şekilde ayarlandı.
+    // missedUnit: "Yıllık kaçan X" kartındaki ve alt özet metnindeki birim adı —
+    // her sektörün kaçırdığı şeyin gerçek adı (aşağıdaki insight metinleriyle tutarlı).
+    // callsLabel/valueLabel/convLabel: kayar çubukların üstündeki başlık metinleri —
+    // seçilen sektöre göre değişir (ör. "çağrı" yerine emlakta "sorgulama").
+    var calcSectorConfig = {
+        'Emlak':          { calls: 3,  callsMax: 8,  val: 50000, valMin: 10000, valMax: 80000, valStep: 1000, conv: 10, convMax: 20, missedUnit: 'sorgulama',
+            callsLabel: 'Günlük kaçırılan sorgulama sayısı', valueLabel: 'Ortalama işlem/komisyon değeri', convLabel: 'Sorgulamadan müşteriye dönüşüm oranı' },
+        'Otomotiv':       { calls: 8,  callsMax: 15, val: 9000,  valMin: 3000,  valMax: 20000, valStep: 500,  conv: 10, convMax: 25, missedUnit: 'servis talebi',
+            callsLabel: 'Günlük kaçırılan servis talebi sayısı', valueLabel: 'Ortalama servis/test sürüşü değeri', convLabel: 'Talepten müşteriye dönüşüm oranı' },
+        'Sağlık':         { calls: 15, callsMax: 40, val: 750,   valMin: 200,   valMax: 3000,  valStep: 50,   conv: 25, convMax: 45, missedUnit: 'randevu talebi',
+            callsLabel: 'Günlük kaçırılan randevu talebi sayısı', valueLabel: 'Ortalama randevu/tedavi değeri', convLabel: 'Randevu talebinden hastaya dönüşüm oranı' },
+        'Lojistik':       { calls: 12, callsMax: 35, val: 600,   valMin: 150,   valMax: 3000,  valStep: 50,   conv: 20, convMax: 40, missedUnit: 'takip sorgusu',
+            callsLabel: 'Günlük kaçırılan takip sorgusu sayısı', valueLabel: 'Ortalama sevkiyat/hizmet değeri', convLabel: 'Sorgudan müşteriye dönüşüm oranı' },
+        'E-Ticaret':      { calls: 18, callsMax: 40, val: 1200,  valMin: 300,   valMax: 5000,  valStep: 100,  conv: 15, convMax: 30, missedUnit: 'sipariş sorgusu',
+            callsLabel: 'Günlük kaçırılan sipariş sorgusu sayısı', valueLabel: 'Ortalama sipariş değeri', convLabel: 'Sorgudan siparişe dönüşüm oranı' },
+        'Otel Konaklama': { calls: 10, callsMax: 25, val: 3500,  valMin: 800,   valMax: 10000, valStep: 100,  conv: 25, convMax: 40, missedUnit: 'rezervasyon talebi',
+            callsLabel: 'Günlük kaçırılan rezervasyon talebi sayısı', valueLabel: 'Ortalama rezervasyon değeri', convLabel: 'Talepten rezervasyona dönüşüm oranı' }
+    };
+
     var calcInsights = {
-        'Emlak': function (missed) { return '<strong>' + calcFmt(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
-        'Otomotiv': function (missed) { return '<strong>' + calcFmt(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
-        'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmt(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
-        'Lojistik': function (missed) { return '<strong>' + calcFmt(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
-        'E-Ticaret': function (missed) { return '<strong>' + calcFmt(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
-        'Otel Konaklama': function (missed) { return '<strong>' + calcFmt(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
+        'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
+        'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
+        'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmtNum(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
+        'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
+        'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
+        'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
     };
 
     function calcFmt(n) {
@@ -475,9 +505,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var annual = daily * 365;
         var missed = calls * 365;
 
+        var sectorCfg = calcSectorConfig[calcCurrentSector] || calcSectorConfig['Emlak'];
+        var unit = sectorCfg.missedUnit || 'çağrı';
+
         document.getElementById('calc-b-daily').textContent = calcFmt(daily);
         document.getElementById('calc-b-monthly').textContent = calcFmt(monthly);
-        document.getElementById('calc-b-missed').textContent = calcFmtNum(missed) + ' çağrı';
+        document.getElementById('calc-b-missed').textContent = calcFmtNum(missed) + ' ' + unit;
+        var missedLabelEl = document.getElementById('calc-b-missed-label');
+        if (missedLabelEl) missedLabelEl.textContent = 'Yıllık kaçan ' + unit;
 
         var annualEl = document.getElementById('calc-annual');
         calcAnimateValue(annualEl, annual, function (v) {
@@ -487,13 +522,15 @@ document.addEventListener('DOMContentLoaded', function () {
         calcPrevAnnual = annual;
 
         document.getElementById('calc-result-sub').textContent =
-            '= ' + calcFmt(monthly) + ' / ay  ·  ' + calcFmtNum(missed) + ' fırsat / yıl';
+            '= ' + calcFmt(monthly) + ' / ay  ·  ' + calcFmtNum(missed) + ' ' + unit + ' / yıl';
 
         var insightFn = calcInsights[calcCurrentSector] || calcInsights['Emlak'];
         document.getElementById('calc-insight-box').innerHTML = insightFn(missed);
     };
 
-    window.setCalcSector = function (el, sector, val, calls) {
+    window.setCalcSector = function (el, sector) {
+        var cfg = calcSectorConfig[sector];
+        if (!cfg) return;
         document.querySelectorAll('.calc-sector-btn').forEach(function (b) {
             b.classList.remove('active');
             b.setAttribute('aria-pressed', 'false');
@@ -501,14 +538,36 @@ document.addEventListener('DOMContentLoaded', function () {
         el.classList.add('active');
         el.setAttribute('aria-pressed', 'true');
         calcCurrentSector = sector;
-        document.getElementById('calc-val').value = val;
-        document.getElementById('calc-calls').value = calls;
+        var valEl = document.getElementById('calc-val');
+        valEl.min = cfg.valMin;
+        valEl.max = cfg.valMax;
+        valEl.step = cfg.valStep;
+        valEl.value = cfg.val;
+        var callsEl = document.getElementById('calc-calls');
+        callsEl.max = cfg.callsMax;
+        callsEl.value = cfg.calls;
+        var convEl = document.getElementById('calc-conv');
+        convEl.max = cfg.convMax;
+        convEl.value = cfg.conv;
+
+        var callsLabelEl = document.getElementById('calc-calls-label');
+        if (callsLabelEl) callsLabelEl.textContent = cfg.callsLabel;
+        var valueLabelEl = document.getElementById('calc-value-label');
+        if (valueLabelEl) valueLabelEl.textContent = cfg.valueLabel;
+        var convLabelEl = document.getElementById('calc-conv-label');
+        if (convLabelEl) convLabelEl.textContent = cfg.convLabel;
+
         calcPrevAnnual = 0;
         window.calcCompute();
     };
 
     if (document.getElementById('calc-calls')) {
-        window.calcCompute();
+        var initialBtn = document.querySelector('.calc-sector-btn.active') || document.querySelector('.calc-sector-btn');
+        if (initialBtn) {
+            window.setCalcSector(initialBtn, calcCurrentSector);
+        } else {
+            window.calcCompute();
+        }
     }
 })();
 
