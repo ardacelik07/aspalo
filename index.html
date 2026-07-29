@@ -19,8 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260716g">
-    <link rel="stylesheet" href="premium.css?v=20260716g">
+    <link rel="stylesheet" href="styles.css?v=20260728n">
+    <link rel="stylesheet" href="premium.css?v=20260728n">
 </head>
 <body class="premium-site">
     <!-- Google Tag Manager (noscript) -->
@@ -423,6 +423,31 @@
         </div>
     </section>
 
+    <!-- Veri Uyumluluğu / Güven -->
+    <section id="trust" class="trust-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="trust_title">Verileriniz Türkiye Sınırları İçinde Kalır</h2>
+            <p class="section-desc" data-i18n="trust_desc">KVKK ve GDPR'a sonradan eklenmiş değil, altyapının temelinde var olan uyum.</p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <span class="trust-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+                    <h3 data-i18n="trust_1_t">KVKK ve GDPR uyumlu</h3>
+                    <p data-i18n="trust_1_p">Görüşme verileri yasal çerçeveye tam uyumlu işlenir.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="trust-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg></span>
+                    <h3 data-i18n="trust_2_t">Veriler Türkiye'de kalır</h3>
+                    <p data-i18n="trust_2_p">Görüşme kayıtlarınız yurt dışına değil, Türkiye'deki sunucularda tutulur.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="trust-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></span>
+                    <h3 data-i18n="trust_3_t">CLOUD Act riski yok</h3>
+                    <p data-i18n="trust_3_p">Rakiplerimizin çoğu ABD altyapısı kullanır, bu risk taşır. Aspalo'da yok.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Dashboard Önizlemesi - landing-page / frontend benzeri -->
     <section id="dashboard" class="dashboard-section">
         <div class="container">
@@ -544,48 +569,100 @@
             <div class="pricing-cards">
                 <article class="pricing-card">
                     <h3 class="pricing-plan-name">Basic</h3>
-                    <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
+                    <p class="pricing-plan-desc" data-i18n="plan_basic_desc">Gelen aramaları karşılamak isteyen işletmeler için</p>
+                    <div class="pricing-price-wrap">
+                        <span class="pricing-price">19.499</span>
+                        <span class="pricing-currency">₺</span>
+                        <span class="pricing-period" data-i18n="plan_per_month">/ay</span>
+                        <span class="pricing-vat-note" data-i18n="plan_vat_note">+KDV</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li data-i18n="plan_b1">1.000 dakika dahil</li>
-                        <li data-i18n="plan_b2">Gelen arama AI yanıtı</li>
-                        <li data-i18n="plan_b3">Kayıt & transkript</li>
-                        <li data-i18n="plan_b4">Randevu alma</li>
-                        <li data-i18n="plan_b5">Anlık dashboard analitiği</li>
+                    <p class="pricing-minutes" data-i18n="plan_b1">1.000 dakika görüşme dahil</p>
+                    <ul class="pricing-features pricing-features--icon">
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                            <span data-i18n="plan_b2">Gelen aramaları AI karşılar, cevaplar</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                            <span data-i18n="plan_b3">Her görüşme kayda alınır, yazıya dökülür</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                            <span data-i18n="plan_b4">Randevu alma ve yönetme</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+                            <span data-i18n="plan_b5">Anlık performans paneli</span>
+                        </li>
                     </ul>
-                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-basic-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
+                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-basic-btn"><span data-i18n="plan_cta">Bizimle iletişime geç</span> <svg class="pricing-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
                 </article>
                 <article class="pricing-card pricing-card--popular">
                     <span class="pricing-badge" data-i18n="plan_popular">En Popüler</span>
                     <h3 class="pricing-plan-name">Growth</h3>
-                    <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
+                    <p class="pricing-plan-desc" data-i18n="plan_growth_desc">Aramayı satışa ve takibe çeviren işletmeler için</p>
+                    <div class="pricing-price-wrap">
+                        <span class="pricing-price">34.999</span>
+                        <span class="pricing-currency">₺</span>
+                        <span class="pricing-period" data-i18n="plan_per_month">/ay</span>
+                        <span class="pricing-vat-note" data-i18n="plan_vat_note">+KDV</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li data-i18n="plan_g1">2.000 dakika dahil</li>
-                        <li data-i18n="plan_g2">Gelen + giden AI aramaları</li>
-                        <li data-i18n="plan_g3">Lead skorlama</li>
-                        <li data-i18n="plan_g4">CRM entegrasyonları</li>
-                        <li data-i18n="plan_g5">WhatsApp takibi</li>
-                        <li data-i18n="plan_g6">Gelişmiş analitik dashboard</li>
+                    <p class="pricing-minutes" data-i18n="plan_g1">2.000 dakika görüşme dahil</p>
+                    <p class="pricing-plus" data-i18n="plan_plus">Basic'teki her şey dahil, üstüne:</p>
+                    <ul class="pricing-features pricing-features--icon">
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 7 23 1 17 1"/><line x1="16" y1="8" x2="23" y2="1"/><path d="M21 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg></span>
+                            <span data-i18n="plan_g2">Giden aramalar da yapılır (hatırlatma, takip)</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                            <span data-i18n="plan_g3">Aramalar önem sırasına göre otomatik sıralanır</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></span>
+                            <span data-i18n="plan_g4">Mevcut CRM sisteminizle entegre çalışır</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+                            <span data-i18n="plan_g5">WhatsApp üzerinden otomatik takip mesajı</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                            <span data-i18n="plan_g6">Detaylı, kırılımlı performans raporları</span>
+                        </li>
                     </ul>
-                    <p class="pricing-plus" data-i18n="plan_plus">Basic'deki her şey dahil</p>
-                    <a href="#" class="btn btn-primary pricing-cta pricing-cta--primary" id="pricing-growth-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
+                    <a href="#" class="btn btn-primary pricing-cta pricing-cta--primary" id="pricing-growth-btn"><span data-i18n="plan_cta">Bizimle iletişime geç</span> <svg class="pricing-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
                 </article>
                 <article class="pricing-card">
                     <h3 class="pricing-plan-name">Pro</h3>
+                    <p class="pricing-plan-desc" data-i18n="plan_pro_desc">Çoklu şube veya kurumsal ihtiyacı olan işletmeler için</p>
                     <div class="pricing-price-wrap pricing-price-wrap--custom">
-                        <span class="pricing-price-custom" data-i18n="plan_contact">Size özel teklif için bizimle görüşün</span>
+                        <span class="pricing-price-custom" data-i18n="plan_contact">Özel teklif</span>
                     </div>
-                    <ul class="pricing-features">
-                        <li data-i18n="plan_p1">Özel dakika paketleri</li>
-                        <li data-i18n="plan_p2">Çoklu ajan yönlendirme</li>
-                        <li data-i18n="plan_p3">Özel iş akışları</li>
-                        <li data-i18n="plan_p4">API erişimi</li>
-                        <li data-i18n="plan_p5">Özel destek</li>
+                    <p class="pricing-minutes" data-i18n="plan_p_minutes">İhtiyacınıza göre dakika paketi</p>
+                    <ul class="pricing-features pricing-features--icon">
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+                            <span data-i18n="plan_p1">Size özel dakika paketleri</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></span>
+                            <span data-i18n="plan_p2">Birden fazla asistanı farklı görevlere yönlendirme</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                            <span data-i18n="plan_p3">İşletmenize özel akış ve senaryo tasarımı</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+                            <span data-i18n="plan_p4">Kendi sistemlerinize API ile bağlanma</span>
+                        </li>
+                        <li>
+                            <span class="pricing-feature-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
+                            <span data-i18n="plan_p5">Öncelikli, özel destek hattı</span>
+                        </li>
                     </ul>
-                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-pro-btn" data-i18n="plan_cta">Bizimle İletişime Geç</a>
+                    <a href="#" class="btn btn-primary pricing-cta" id="pricing-pro-btn"><span data-i18n="plan_cta_pro">Satış ekibiyle görüş</span> <svg class="pricing-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
                 </article>
             </div>
         </div>
@@ -734,7 +811,7 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="i18n.js?v=20260712b"></script>
+    <script src="i18n.js?v=20260728e"></script>
     <script src="script.js?v=20260720e"></script>
     <script src="premium.js?v=20260716a"></script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
