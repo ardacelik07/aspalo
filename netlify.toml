@@ -7,5 +7,15 @@
   to = "/index.html"
   status = 200
 
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
 [build.environment]
   NODE_VERSION = "18"

@@ -424,7 +424,12 @@ img { max-width: 100%; }
     margin-bottom: 28px;
     animation: fade-in-up 0.6s ease-out 0.3s both;
 }
-.hero-cta-primary { flex-shrink: 0; }
+.hero-cta-primary {
+    flex-shrink: 0;
+    padding: 18px 32px;
+    font-size: 17px;
+    min-height: 60px;
+}
 
 /* Hemen Aspalo'yu Dene — primary ile hizalı companion CTA */
 .hero-cta-secondary.hero-cta-listen {
@@ -433,13 +438,13 @@ img { max-width: 100%; }
     align-items: center;
     justify-content: center;
     gap: 12px;
-    min-height: 60px;
-    padding: 8px 28px 8px 10px;
+    min-height: 66px;
+    padding: 8px 32px 8px 10px;
     border-radius: 100px;
     border: 1px solid rgba(148, 163, 184, 0.35);
     background: rgba(255, 255, 255, 0.92);
     color: var(--text);
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
     line-height: 1;
     white-space: nowrap;
@@ -451,8 +456,8 @@ img { max-width: 100%; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     flex-shrink: 0;
     background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
@@ -587,7 +592,7 @@ img { max-width: 100%; }
 /* Hero visual - telefon etrafı geçişli, gerçek telefon hissi */
 .hero-visual {
     position: relative;
-    min-height: 520px;
+    min-height: 590px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -598,15 +603,15 @@ img { max-width: 100%; }
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 48px 32px;
+    padding: 56px 40px;
     background: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 50%, transparent 70%);
     border-radius: 48px;
     box-shadow: inset 0 0 80px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 .phone-mockup {
     position: relative;
-    width: 260px;
-    height: 530px;
+    width: 300px;
+    height: 610px;
     background: linear-gradient(160deg, #f3f1ec 0%, #e2dfd8 25%, #c9c6bd 55%, #a9a69c 80%, #918e83 100%);
     border-radius: 54px;
     padding: 4px;
@@ -847,7 +852,7 @@ img { max-width: 100%; }
 /* Integration logos - Bağlantı yapılıyor */
 .integration-logos-right {
     position: absolute;
-    left: calc(50% + 180px);
+    left: calc(50% + 205px);
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -1683,14 +1688,13 @@ img { max-width: 100%; }
 
 .pricing-badge {
     position: absolute;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 22px;
+    right: 22px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
-    padding: 8px clamp(12px, 4vw, 18px) 7px;
+    padding: 7px clamp(12px, 4vw, 16px) 6px;
     background: var(--gradient-hero);
     color: #fff;
     font-size: clamp(10px, 2.6vw, 12px);
@@ -1704,32 +1708,36 @@ img { max-width: 100%; }
 }
 
 .pricing-plan-name {
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
     letter-spacing: -0.02em;
 }
-.pricing-card--popular .pricing-plan-name {
-    margin-top: 28px;
+
+.pricing-plan-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 20px 0;
 }
 
 .pricing-price-wrap {
-    margin-bottom: 24px;
+    margin-bottom: 6px;
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
     gap: 4px;
 }
 .pricing-price {
-    font-size: 36px;
+    font-size: 48px;
     font-weight: 800;
     color: var(--text);
     letter-spacing: -0.03em;
     line-height: 1.1;
 }
 .pricing-currency {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--text-muted);
     margin-left: 2px;
@@ -1741,12 +1749,30 @@ img { max-width: 100%; }
 }
 
 .pricing-price-wrap--custom {
-    margin-bottom: 24px;
+    margin-bottom: 6px;
 }
 .pricing-price-custom {
-    font-size: 22px;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+}
+
+.pricing-minutes {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin: 0 0 20px 0;
+}
+.pricing-vat-note {
+    display: inline-block;
+    align-self: center;
+    margin-left: 18px;
+    font-size: 11px;
     font-weight: 700;
-    color: var(--primary-light);
+    color: var(--primary);
+    background: rgba(15, 23, 42, 0.06);
+    padding: 3px 9px;
+    border-radius: 100px;
 }
 
 .pricing-features {
@@ -1777,6 +1803,29 @@ img { max-width: 100%; }
     background: var(--primary-light);
 }
 
+.pricing-features--icon li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: 0;
+}
+.pricing-features--icon li::before {
+    content: none;
+}
+.pricing-feature-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    color: var(--text);
+}
+.pricing-card--popular .pricing-feature-icon {
+    color: var(--primary-light);
+}
+
 .pricing-extra {
     font-size: 13px;
     color: var(--text-dim);
@@ -1788,14 +1837,16 @@ img { max-width: 100%; }
     font-size: 14px;
     font-weight: 600;
     color: var(--primary-light);
-    margin-bottom: 24px;
-    margin-top: 0;
+    margin: 0 0 20px 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
 }
 
 .pricing-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     width: 100%;
     padding: 14px 24px;
     font-size: 15px;
@@ -1829,8 +1880,8 @@ img { max-width: 100%; }
     .pricing { padding: 72px 0; }
     .pricing-header { margin-bottom: 40px; }
     .pricing-card { padding: 28px 24px; }
-    .pricing-price { font-size: 32px; }
-    .pricing-plan-name { font-size: 20px; }
+    .pricing-price { font-size: 38px; }
+    .pricing-plan-name { font-size: 24px; }
 }
 
 /* CTA */
@@ -2348,4 +2399,48 @@ img { max-width: 100%; }
 }
 @media (max-width: 480px) {
     .sound-wall { height: 170px; }
+}
+
+/* Veri Uyumluluğu / Güven */
+.trust-section {
+    padding: 100px 0;
+    background: var(--bg-elevated);
+}
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+.trust-card {
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+.trust-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+}
+.trust-icon {
+    display: inline-flex;
+    color: #262cc0;
+    margin-bottom: 16px;
+}
+.trust-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+.trust-card p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .trust-grid { grid-template-columns: 1fr; }
 }

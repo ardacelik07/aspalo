@@ -59,14 +59,22 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .premium-site .container {
-    max-width: 1200px;
+    max-width: 1500px;
+}
+
+.premium-site .hero .container {
+    max-width: 1360px;
+}
+
+.premium-site .hero-container {
+    gap: 100px;
 }
 
 /* Typography: Fraunces display serif for headlines, Plus Jakarta Sans for UI/body */
 .premium-site .hero-title {
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
-    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    font-size: clamp(2rem, 3.7vw, 3.15rem);
     line-height: 1.12;
     letter-spacing: -0.02em;
     font-weight: 500;
@@ -389,11 +397,11 @@ html.lenis, html.lenis body { height: auto; }
 
 .premium-site .hero-sub {
     font-family: var(--font);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-muted);
     line-height: 1.55;
-    max-width: 520px;
+    max-width: 560px;
     animation: none;
 }
 
@@ -417,17 +425,17 @@ html.lenis, html.lenis body { height: auto; }
 
 .premium-site .hero-cta-primary,
 .premium-site .hero-cta-secondary.hero-cta-listen {
-    min-height: 48px;
+    min-height: 62px;
 }
 
 .premium-site .hero-cta-secondary.hero-cta-listen {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 6px 18px 6px 6px;
+    gap: 10px;
+    padding: 8px 26px 8px 8px;
     border-radius: 100px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1;
     white-space: nowrap;
@@ -442,8 +450,8 @@ html.lenis, html.lenis body { height: auto; }
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     flex-shrink: 0;
     background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
@@ -843,6 +851,22 @@ html.lenis, html.lenis body { height: auto; }
     border-color: rgba(15, 23, 42, 0.16);
 }
 
+.premium-site .trust-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+.premium-site .trust-card {
+    border-radius: var(--radius);
+    padding: 28px;
+    background: linear-gradient(160deg, rgba(38, 44, 192, 0.16) 0%, rgba(38, 44, 192, 0.05) 45%, rgba(38, 44, 192, 0.12) 100%);
+    border: 1px solid rgba(38, 44, 192, 0.4);
+    box-shadow: none;
+    transition: border-color 0.3s var(--premium-ease);
+}
+.premium-site .trust-card:hover {
+    border-color: rgba(38, 44, 192, 0.55);
+}
+
 .premium-site .comparison-value {
     font-family: var(--font);
     font-size: 36px;
@@ -1093,19 +1117,20 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .premium-site .pricing-card--popular {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 24px 80px -24px rgba(99, 102, 241, 0.25);
+    border-color: rgba(38, 44, 192, 0.4);
+    background: linear-gradient(160deg, rgba(38, 44, 192, 0.16) 0%, rgba(38, 44, 192, 0.05) 45%, rgba(38, 44, 192, 0.12) 100%);
+    box-shadow: 0 24px 80px -24px rgba(38, 44, 192, 0.3);
 }
 
 .premium-site .pricing-card--popular::before {
     content: '';
     position: absolute;
-    inset: -2px;
+    inset: -1px;
     border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #d8b4fe, #6366f1);
-    background-size: 300% 300%;
-    animation: premium-gradient-flow 8s ease infinite;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(38, 44, 192, 0.75), rgba(38, 44, 192, 0.25), rgba(38, 44, 192, 0.65));
+    background-size: 200% 200%;
+    animation: premium-gradient-flow 10s ease infinite;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -1398,12 +1423,17 @@ html.lenis, html.lenis body { height: auto; }
     padding: 0;
 }
 
+.premium-site .pricing-card--popular .pricing-vat-note {
+    background: rgba(38, 44, 192, 0.14);
+    color: #262cc0;
+}
+
 .premium-site .pricing-badge {
-    background: none;
-    color: #4338ca;
-    padding: 0;
+    background: rgba(38, 44, 192, 0.16);
+    color: #262cc0;
+    padding: 7px 14px 6px;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: 100px;
 }
 
 .premium-site .footer {
