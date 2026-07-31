@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aspalo — Her Sektör İçin AI Çağrı Merkezi</title>
@@ -19,8 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260728n">
-    <link rel="stylesheet" href="premium.css?v=20260728n">
+    <link rel="stylesheet" href="styles.css?v=20260728o">
+    <link rel="stylesheet" href="premium.css?v=20260728o">
 </head>
 <body class="premium-site">
     <!-- Google Tag Manager (noscript) -->
@@ -814,6 +818,19 @@
     <script src="i18n.js?v=20260728e"></script>
     <script src="script.js?v=20260720e"></script>
     <script src="premium.js?v=20260716a"></script>
+    <!-- Sayfa her zaman en üstten (hero) açılsın; mobil tarayıcıların scroll konumunu
+         hatırlamasını (bfcache / restore) engeller. -->
+    <script>
+      (function () {
+        function forceTop() {
+          if (!window.location.hash) {
+            window.scrollTo(0, 0);
+          }
+        }
+        window.addEventListener('load', forceTop);
+        window.addEventListener('pageshow', forceTop);
+      })();
+    </script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
     <script>
       (function () {
