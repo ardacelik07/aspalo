@@ -362,9 +362,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 var nameEl = document.getElementById('demo-name');
                 var emailEl = document.getElementById('demo-email');
                 var companyEl = document.getElementById('demo-company');
+                var phoneEl = document.getElementById('demo-phone');
                 var name = (nameEl && nameEl.value) ? nameEl.value.trim() : '';
                 var email = (emailEl && emailEl.value) ? emailEl.value.trim() : '';
                 var company = (companyEl && companyEl.value) ? companyEl.value.trim() : '';
+                var phone = (phoneEl && phoneEl.value) ? phoneEl.value.trim() : '';
                 if (!name || !email) {
                     alert(i18n('form_err_fields'));
                     return;
@@ -375,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var w = weekdaysFull();
                     dateStr = selectedDate.getDate() + ' ' + m[selectedDate.getMonth()] + ' ' + selectedDate.getFullYear() + ' ' + w[selectedDate.getDay()];
                 }
-                var payload = { name: name, email: email, company: company, date: dateStr, time: selectedTime || '', language: window.AspaloI18n ? window.AspaloI18n.getLang() : 'tr' };
+                var payload = { name: name, email: email, company: company, phone: phone, date: dateStr, time: selectedTime || '', language: window.AspaloI18n ? window.AspaloI18n.getLang() : 'tr' };
                 var origText = btnConfirm.textContent;
                 btnConfirm.disabled = true;
                 btnConfirm.textContent = i18n('form_sending');
@@ -386,6 +388,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (nameEl) nameEl.value = '';
                         if (emailEl) emailEl.value = '';
                         if (companyEl) companyEl.value = '';
+                        if (phoneEl) phoneEl.value = '';
                         formInner.style.display = 'none';
                         selectedDate = null;
                         selectedTime = null;

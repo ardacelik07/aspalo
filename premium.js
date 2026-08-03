@@ -439,13 +439,13 @@
         var tl = gsap.timeline({ defaults: { ease: EASE_SOFT } });
 
         tl.from('.navbar', { y: -20, opacity: 0, duration: 0.55 })
-            .from('.logo-img', { scale: 0.85, opacity: 0, duration: 0.45 }, '-=0.35')
+            .from('.logo-img', { opacity: 0, duration: 0.45 }, '-=0.35')
             .from('.nav-links > a, .nav-links .lang-switch, .nav-links .btn-nav', {
                 y: -10, opacity: 0, stagger: 0.05, duration: 0.4
             }, '-=0.3')
             .from('.hero-badge-industry', { y: 20, opacity: 0, duration: 0.5 }, '-=0.15')
             .from('.sector-badges .sector-badge', {
-                y: 14, opacity: 0, scale: 0.92, stagger: 0.04, duration: 0.4
+                y: 14, opacity: 0, stagger: 0.04, duration: 0.4
             }, '-=0.35');
 
         var heroTitle = document.querySelector('.hero-title');
@@ -454,12 +454,18 @@
             tl.add(function () {}, '+=0.05');
         }
 
+        /* Not: phone-stage / logo-img / sector-badge'lerde önceden "scale" ile
+           büyütme-küçültme vardı (0.85-0.92 -> 1). Bu, telefon görselinin ve
+           rozetlerin sayfa açılışında bir an daha küçük/dar render edilip
+           sonra büyümesine — yani "farklı genişlikte gelip normale dönme"
+           görünümüne — yol açıyordu. Scale kaldırıldı, sadece opacity/y kaldı;
+           genişlik/boyut hep sabit, sadece kayma+solma animasyonu var. */
         tl.from('.hero-sub', { y: 18, opacity: 0, duration: 0.55 }, '-=0.55')
             .from('.hero-cta > *', { y: 16, opacity: 0, stagger: 0.08, duration: 0.45, clearProps: 'opacity,transform' }, '-=0.35')
             .from('.hero-how-steps li', { x: -12, opacity: 0, stagger: 0.07, duration: 0.4 }, '-=0.25')
             .from('.hero-stats .stat', { y: 18, opacity: 0, stagger: 0.06, duration: 0.45 }, '-=0.25')
             .from('.phone-stage', {
-                y: 40, opacity: 0, scale: 0.92, duration: 0.85, ease: EASE, clearProps: 'opacity,transform'
+                y: 40, opacity: 0, duration: 0.85, ease: EASE, clearProps: 'opacity,transform'
             }, '-=0.65');
 
         document.querySelectorAll('.hero-stats .stat-num').forEach(function (el) {
