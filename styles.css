@@ -49,7 +49,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-anchor: none; }
 
 /* Sabit navbar (fixed, ~78px) anchor ile gelinen bölümlerin başlığını
    kesmesin diye tüm id'li section'lara üstten boşluk payı */
@@ -426,10 +426,17 @@ img { max-width: 100%; }
 }
 .hero-cta-primary {
     flex-shrink: 0;
-    padding: 18px 32px;
-    font-size: 17px;
-    min-height: 60px;
+    position: relative;
+    padding: 24px 44px;
+    font-size: 20px;
+    min-height: 72px;
+    animation: hero-talk-pulse 2.6s ease-in-out infinite;
 }
+@keyframes hero-talk-pulse {
+    0%, 100% { box-shadow: 0 4px 24px rgba(15, 23, 42, 0.15), 0 0 0 0 rgba(30, 58, 95, 0.35); }
+    50% { box-shadow: 0 4px 24px rgba(15, 23, 42, 0.15), 0 0 0 10px rgba(30, 58, 95, 0); }
+}
+.hero-cta-primary:hover { animation-play-state: paused; }
 
 /* Hemen Aspalo'yu Dene — primary ile hizalı companion CTA */
 .hero-cta-secondary.hero-cta-listen {
@@ -2379,6 +2386,198 @@ img { max-width: 100%; }
     .demo-modal-content { width: 95%; max-height: 95vh; }
     .demo-modal-body { padding: 16px; }
     .calendar-day { font-size: 12px; }
+}
+
+/* ============================================
+   GÖRÜŞME SIRASI: "kendi telefonundan ara" kartı
+   ============================================ */
+.phone-try-card {
+    display: none;
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 9500;
+    width: 100%;
+    max-width: 380px;
+    padding: 26px 26px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 56px rgba(15, 23, 42, 0.2);
+    animation: demoModalSlideUp 0.35s ease;
+}
+.phone-try-card.is-visible { display: block; }
+.phone-try-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+.phone-try-close:hover { background: rgba(15, 23, 42, 0.06); color: var(--text); }
+.phone-try-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.35;
+    margin: 0 24px 8px 0;
+}
+.phone-try-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 24px 18px 0;
+    font-weight: 500;
+}
+.phone-try-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.phone-try-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: var(--transition);
+}
+.phone-try-input:focus { border-color: var(--primary-light); }
+.phone-try-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font);
+    color: #fff;
+    background: linear-gradient(180deg, #05091c, #262cc0);
+    box-shadow: 0 8px 24px rgba(38, 44, 192, 0.3);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.phone-try-submit:hover { opacity: 0.92; }
+.phone-try-submit:disabled { opacity: 0.7; cursor: default; }
+.phone-try-note {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin: 0;
+}
+.phone-try-note.is-success { color: #16a34a; font-weight: 600; }
+
+@media (max-width: 640px) {
+    .phone-try-card { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+}
+
+/* ============================================
+   GÖRÜŞME BİTİŞ EKRANI (post-call)
+   ============================================ */
+.post-call-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+}
+.post-call-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post-call-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+}
+.post-call-content {
+    position: relative;
+    width: 92%;
+    max-width: 600px;
+    padding: 56px 52px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+    text-align: center;
+    animation: demoModalSlideUp 0.3s ease;
+}
+.post-call-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+.post-call-close:hover { background: rgba(15, 23, 42, 0.06); color: var(--text); }
+.post-call-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 26px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.12);
+    color: #16a34a;
+}
+.post-call-icon svg { width: 34px; height: 34px; }
+.post-call-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin: 0 0 16px;
+}
+.post-call-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 34px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post-call-actions { display: flex; justify-content: center; }
+.post-call-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    font-size: 16px;
+}
+
+@media (max-width: 640px) {
+    .post-call-content { padding: 40px 28px; }
+    .post-call-title { font-size: 24px; }
+    .post-call-sub { font-size: 15px; }
 }
 
 /* Ses dalgası - dot-matrix görselleştirme */

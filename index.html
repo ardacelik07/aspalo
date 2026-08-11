@@ -23,8 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260728q">
-    <link rel="stylesheet" href="premium.css?v=20260728q">
+    <link rel="stylesheet" href="styles.css?v=20260728y">
+    <link rel="stylesheet" href="premium.css?v=20260728y">
 </head>
 <body class="premium-site">
     <!-- Google Tag Manager (noscript) -->
@@ -102,13 +102,6 @@
                     Aspalo, gelen aramaları 7/24 yanıtlayan, randevu alan ve soruları cevaplayan bir yapay zeka asistanı. Hiçbir çağrı cevapsız kalmaz.
                 </p>
                 <div class="hero-cta">
-                    <a href="#" class="btn hero-cta-secondary hero-cta-listen" id="hero-demo-btn">
-                        <span class="hero-cta-listen__play" aria-hidden="true">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"/></svg>
-                        </span>
-                        <span class="hero-cta-listen__dot" aria-hidden="true"></span>
-                        <span class="hero-cta-listen__label" data-i18n="hero_cta_demo">Ücretsiz Demo Başlat</span>
-                    </a>
                     <a href="#call" class="btn btn-primary btn-large btn-glow hero-cta-primary" id="hero-call-btn">
                         <span data-i18n="hero_cta_listen">Hemen Aspalo'yu Dene</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -676,7 +669,6 @@
                         <img src="images/logo2.png" alt="Aspalo" class="logo-img">
                     </a>
                     <p class="footer-tagline" data-i18n="footer_tag">Her türlü çağrıyı karşılayan AI.</p>
-                    <a href="#" class="btn btn-primary btn-sm footer-demo-btn" id="demo-request-footer-brand" data-i18n="footer_demo">Demo İste</a>
                 </div>
                 <div class="footer-col footer-col--links">
                     <p class="footer-col-title" data-i18n="footer_links_title">Bağlantılar</p>
@@ -821,23 +813,83 @@
         </div>
     </div>
 
+    <!-- Görüşme sırasında: "kendi telefonundan da arayabilirsin" kartı -->
+    <div id="phone-try-card" class="phone-try-card" aria-hidden="true">
+        <button type="button" class="phone-try-close" id="phone-try-close" aria-label="Kapat">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <h3 class="phone-try-title" data-i18n="phone_try_title">Gerçek bir aramada nasıl davrandığını duyun</h3>
+        <p class="phone-try-text" data-i18n="phone_try_text">Numaranızı bırakın, Aspalo sizi tıpkı bir müşteriniz gibi arasın.</p>
+        <form class="phone-try-form" id="phone-try-form">
+            <input type="tel" class="phone-try-input" id="phone-try-input" data-i18n-placeholder="phone_try_placeholder" placeholder="Telefon numaranız" required>
+            <button type="submit" class="phone-try-submit" id="phone-try-submit">
+                <span data-i18n="phone_try_cta">Beni Arayın</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+        </form>
+        <p class="phone-try-note" id="phone-try-note" data-i18n="phone_try_note">5 saniye içinde arıyoruz.</p>
+    </div>
+
+    <!-- Görüşme bitiş ekranı -->
+    <div id="post-call-modal" class="post-call-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="post-call-overlay" id="post-call-overlay"></div>
+        <div class="post-call-content">
+            <button type="button" class="post-call-close" id="post-call-close" aria-label="Kapat">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <span class="post-call-icon" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3 class="post-call-title" data-i18n="post_call_title">İşletmeniz adına neler yapabileceğimizi görüşelim.</h3>
+            <p class="post-call-sub" data-i18n="post_call_sub">Aspalo'yu işletmenize nasıl uyarlayabileceğimizi kısa bir görüşmede anlatalım.</p>
+            <div class="post-call-actions">
+                <button type="button" class="btn btn-primary post-call-cta" id="post-call-cta">
+                    <span data-i18n="post_call_cta">Toplantı Ayarlayın</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="i18n.js?v=20260728g"></script>
-    <script src="script.js?v=20260728a"></script>
+    <script src="i18n.js?v=20260728m"></script>
+    <script src="script.js?v=20260728b"></script>
     <script src="premium.js?v=20260728c"></script>
-    <!-- Sayfa her zaman en üstten (hero) açılsın; mobil tarayıcıların scroll konumunu
-         hatırlamasını (bfcache / restore) engeller. -->
+    <!-- Sayfa her zaman en üstten (hero) açılsın; mobil tarayıcıların scroll
+         konumunu hatırlamasını (bfcache/restore) engeller. Mobilde adres çubuğu
+         daralması, geç yüklenen fontlar/görseller veya hero animasyonu sayfa
+         yüksekliğini kısa süre içinde değiştirebildiği için tek seferlik
+         scrollTo(0,0) yetmiyordu — yükleme sonrası kısa bir pencerede tekrar
+         tekrar en üste sabitliyoruz, kullanıcı kendi kaydırmaya başlar başlamaz
+         devre dışı kalıyor. -->
     <script>
       (function () {
+        var userScrolled = false;
+        function markUserScrolled() { userScrolled = true; }
+        window.addEventListener('touchstart', markUserScrolled, { passive: true, once: true });
+        window.addEventListener('wheel', markUserScrolled, { passive: true, once: true });
+
         function forceTop() {
-          if (!window.location.hash) {
-            window.scrollTo(0, 0);
-          }
+          if (window.location.hash || userScrolled) return;
+          if (window.scrollY !== 0) window.scrollTo(0, 0);
         }
-        window.addEventListener('load', forceTop);
-        window.addEventListener('pageshow', forceTop);
+
+        function holdAtTop(durationMs) {
+          var start = Date.now();
+          function tick() {
+            forceTop();
+            if (!userScrolled && Date.now() - start < durationMs) {
+              requestAnimationFrame(tick);
+            }
+          }
+          tick();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () { holdAtTop(1800); });
+        window.addEventListener('load', function () { holdAtTop(1800); });
+        window.addEventListener('pageshow', function () { holdAtTop(1800); });
       })();
     </script>
     <!-- Hero "Hemen Konuş" -> Vapi widget'a tıklar -->
@@ -848,6 +900,55 @@
           heroCallBtn.addEventListener('click', function (e) {
             e.preventDefault();
             if (typeof window.startVapiCall === 'function') window.startVapiCall();
+          });
+        }
+      })();
+    </script>
+    <!-- Görüşme sırası kartı ve görüşme sonrası ekranı -->
+    <script>
+      (function () {
+        var tryCard = document.getElementById('phone-try-card');
+        var tryClose = document.getElementById('phone-try-close');
+        if (tryClose && tryCard) {
+          tryClose.addEventListener('click', function () {
+            tryCard.classList.remove('is-visible');
+            tryCard.setAttribute('aria-hidden', 'true');
+          });
+        }
+        // "Beni Arayın" formu — şimdilik sadece arayüz; geri arama (callback)
+        // altyapısı devreye girince submit burada gerçek bir isteğe bağlanacak.
+        var tryForm = document.getElementById('phone-try-form');
+        var tryInput = document.getElementById('phone-try-input');
+        var tryNote = document.getElementById('phone-try-note');
+        if (tryForm) {
+          tryForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!tryInput || !tryInput.value.trim()) return;
+            var t = window.AspaloI18n ? window.AspaloI18n.t.bind(window.AspaloI18n) : function (k) { return k; };
+            var submitBtn = document.getElementById('phone-try-submit');
+            if (submitBtn) submitBtn.disabled = true;
+            if (tryNote) {
+              tryNote.textContent = t('phone_try_success');
+              tryNote.classList.add('is-success');
+            }
+            tryForm.style.display = 'none';
+          });
+        }
+        var postCall = document.getElementById('post-call-modal');
+        var postCallClose = document.getElementById('post-call-close');
+        var postCallOverlay = document.getElementById('post-call-overlay');
+        var postCallCta = document.getElementById('post-call-cta');
+        function closePostCall() {
+          if (!postCall) return;
+          postCall.classList.remove('active');
+          postCall.setAttribute('aria-hidden', 'true');
+        }
+        if (postCallClose) postCallClose.addEventListener('click', closePostCall);
+        if (postCallOverlay) postCallOverlay.addEventListener('click', closePostCall);
+        if (postCallCta) {
+          postCallCta.addEventListener('click', function () {
+            closePostCall();
+            if (typeof window.AspaloOpenDemoModal === 'function') window.AspaloOpenDemoModal();
           });
         }
       })();
@@ -895,10 +996,30 @@
         if (!window.vapiSDK || typeof window.vapiSDK.run !== "function") return null;
         try {
           var instance = window.vapiSDK.run({ apiKey: apiKey, assistant: assistant, config: config });
-          instance.on("call-start", function () { console.log("Demo call started"); });
-          instance.on("call-end", function () { console.log("Demo call ended"); });
+          instance.on("call-start", function () {
+            console.log("Demo call started");
+            setCallBusy(true); // görüşme kuruldu, güvenlik zaman aşımını iptal et
+            window.__aspaloCallStartedAt = Date.now();
+            var tryCard = document.getElementById('phone-try-card');
+            if (tryCard) { tryCard.classList.add('is-visible'); tryCard.setAttribute('aria-hidden', 'false'); }
+          });
+          instance.on("call-end", function () {
+            console.log("Demo call ended");
+            setCallBusy(false);
+            var tryCard = document.getElementById('phone-try-card');
+            if (tryCard) { tryCard.classList.remove('is-visible'); tryCard.setAttribute('aria-hidden', 'true'); }
+            // Görüşme bitiş ekranını sadece gerçek/anlamlı süren bir görüşmeden
+            // sonra göster — hızlı ardışık tıklamalarla widget'ı yanlışlıkla
+            // başlatıp kapatma (toggle) sonucu açılmasın.
+            var startedAt = window.__aspaloCallStartedAt || 0;
+            var duration = startedAt ? (Date.now() - startedAt) : 0;
+            if (duration < 8000) return;
+            var postCall = document.getElementById('post-call-modal');
+            if (postCall) { postCall.classList.add('active'); postCall.setAttribute('aria-hidden', 'false'); }
+          });
           instance.on("error", function (err) {
             console.error("Vapi error:", err);
+            setCallBusy(false);
             var msg = (err && err.message) ? String(err.message) : "";
             if (msg.indexOf("Permission") !== -1 || msg.indexOf("NotAllowed") !== -1 || msg.indexOf("denied") !== -1) {
               try {
@@ -926,12 +1047,30 @@
         }
         return false;
       }
+      // Görüşme "meşgul" durumu: bir görüşme başlatılırken/aktifken art arda
+      // basılan tıklamalar widget'a tekrar iletilmesin (widget toggle çalışıyor,
+      // ikinci tıklama görüşmeyi anında iptal/sonlandırıyordu). Buton yine her
+      // tıklamada tepki verir, sadece fazladan tıklamalar widget'a gitmez —
+      // sonuç kullanıcı için "kaç kere basarsam basayım tek seferlik" olur.
+      var callBusy = false;
+      var callBusySafetyTimer = null;
+      function setCallBusy(val) {
+        callBusy = val;
+        if (callBusySafetyTimer) { clearTimeout(callBusySafetyTimer); callBusySafetyTimer = null; }
+        if (val) {
+          // Widget bulunamaz/hiç yanıt vermezse (call-start hiç tetiklenmezse)
+          // sonsuza kadar kilitli kalmasın diye güvenlik zaman aşımı.
+          callBusySafetyTimer = setTimeout(function () { callBusy = false; }, 20000);
+        }
+      }
       window.startVapiCall = function () {
+        if (callBusy) return;
+        setCallBusy(true);
         if (findAndClickVapiButton()) return;
         var attempts = 0;
         var iv = setInterval(function () {
           if (findAndClickVapiButton()) { clearInterval(iv); return; }
-          if (++attempts >= 25) clearInterval(iv);
+          if (++attempts >= 25) { clearInterval(iv); setCallBusy(false); }
         }, 300);
       };
       (function (d, t) {

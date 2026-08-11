@@ -155,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = '';
         }
     }
+    // Görüşme sonrası ekranındaki "Toplantı Ayarlayın" butonu bu modalı açar.
+    window.AspaloOpenDemoModal = openDemoModal;
 
     if (demoRequestBtn) demoRequestBtn.addEventListener('click', function (e) { e.preventDefault(); openDemoModal(); });
     if (demoRequestBtnMobile) demoRequestBtnMobile.addEventListener('click', function (e) {
