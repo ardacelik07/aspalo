@@ -158,7 +158,7 @@
             return;
         }
 
-        var seconds = 154;
+        var seconds = 6;
         if (timerEl) timerEl.textContent = formatTime(seconds);
 
         phoneDemoTimer = setInterval(function () {
@@ -170,6 +170,8 @@
         async function playLoop() {
             while (running) {
                 resetMessages();
+                seconds = 6;
+                if (timerEl) timerEl.textContent = formatTime(seconds);
                 await wait(500);
                 setVoice(true);
                 messages[0].classList.add('is-visible');
