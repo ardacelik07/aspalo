@@ -539,9 +539,21 @@
             if (live) return;
             live = true;
             if (acceptTimer) clearTimeout(acceptTimer);
+            if (window.AspaloHero && typeof window.AspaloHero.unlock === 'function') {
+                window.AspaloHero.unlock();
+            }
             if (stage) stage.classList.add('is-live');
-            if (window.AspaloHero && typeof window.AspaloHero.play === 'function') {
-                window.AspaloHero.play(current);
+            function startTalk() {
+                if (window.AspaloHero && typeof window.AspaloHero.play === 'function') {
+                    window.AspaloHero.play(current);
+                }
+            }
+            if (window.AspaloHero && typeof window.AspaloHero.pickup === 'function') {
+                window.AspaloHero.pickup(function () {
+                    setTimeout(startTalk, 220);
+                });
+            } else {
+                startTalk();
             }
         }
 
@@ -551,7 +563,21 @@
                 acceptCall();
                 return;
             }
-            acceptTimer = setTimeout(acceptCall, 2400);
+            if (window.AspaloHero && typeof window.AspaloHero.ring === 'function') {
+                window.AspaloHero.ring();
+            }
+            document.addEventListener('pointerdown', function onFirst() {
+                if (live) return;
+                if (window.AspaloHero && typeof window.AspaloHero.unlock === 'function') {
+                    window.AspaloHero.unlock();
+                }
+                if (window.AspaloHero && typeof window.AspaloHero.ring === 'function') {
+                    window.AspaloHero.ring();
+                }
+                if (acceptTimer) clearTimeout(acceptTimer);
+                acceptTimer = setTimeout(acceptCall, 2600);
+            }, { capture: true, once: true });
+            acceptTimer = setTimeout(acceptCall, 8000);
         }
 
         function setIndustry(id) {
@@ -560,7 +586,7 @@
             setChips();
             setPhone();
             if (live && window.AspaloHero && typeof window.AspaloHero.play === 'function') {
-                window.AspaloHero.play(current);
+                window.AspaloHero.play(current, { pickup: true });
             }
             resetScenes();
         }
@@ -619,7 +645,7 @@
                 setPhone();
                 resetScenes();
                 if (live && window.AspaloHero && typeof window.AspaloHero.play === 'function') {
-                    window.AspaloHero.play(current);
+                    window.AspaloHero.play(current, { pickup: true });
                 }
             },
             setIndustry: setIndustry

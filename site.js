@@ -197,6 +197,7 @@
         {
             id: 'healthcare',
             name: 'Ayşe Kaya',
+            caller: 'female',
             intent: { tr: 'Randevu', en: 'Appointment' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Klinik. Ben ADA. Nasıl yardımcı olabilirim?', en: 'Hello, Aspalo Clinic. This is ADA. How can I help you?' },
@@ -218,6 +219,7 @@
         {
             id: 'realestate',
             name: 'Mehmet Yılmaz',
+            caller: 'male',
             intent: { tr: 'Portföy sorusu', en: 'Property inquiry' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Emlak. Ben ADA. Hangi semtte bakıyorsunuz?', en: 'Hello, Aspalo Realty. This is ADA. Which neighborhood are you looking in?' },
@@ -237,6 +239,7 @@
         {
             id: 'hotel',
             name: 'Elif Demir',
+            caller: 'female',
             intent: { tr: 'Rezervasyon', en: 'Reservation' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Otel. Ben ADA. Rezervasyon için yardımcı olayım.', en: 'Hello, Aspalo Hotel. This is ADA. I can help with a reservation.' },
@@ -256,6 +259,7 @@
         {
             id: 'automotive',
             name: 'Can Öztürk',
+            caller: 'male',
             intent: { tr: 'Servis', en: 'Service' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Oto. Ben ADA. Servis mi, satış mı?', en: 'Hello, Aspalo Auto. This is ADA. Service or sales?' },
@@ -275,6 +279,7 @@
         {
             id: 'logistics',
             name: 'Zeynep Acar',
+            caller: 'female',
             intent: { tr: 'Kargo takibi', en: 'Shipment status' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Lojistik. Ben ADA. Takip numaranız var mı?', en: 'Hello, Aspalo Logistics. This is ADA. Do you have a tracking number?' },
@@ -295,6 +300,7 @@
         {
             id: 'support',
             name: 'Deniz Koç',
+            caller: 'female',
             intent: { tr: 'Sipariş desteği', en: 'Support request' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Mağaza. Ben ADA. Siparişinizle ilgili yardımcı olayım.', en: 'Hello, Aspalo Store. This is ADA. I can help with your order.' },
@@ -316,6 +322,7 @@
         {
             id: 'restaurant',
             name: 'Selin Arı',
+            caller: 'female',
             intent: { tr: 'Rezervasyon', en: 'Reservation' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Mutfak. Ben ADA. Masa için yardımcı olayım.', en: 'Hello, Aspalo Kitchen. This is ADA. I can help with a table.' },
@@ -347,6 +354,12 @@
         var paused = false;
         var muted = true;
         var speakingUtter = null;
+        var speakingAudio = null;
+        var fxAudio = null;
+        var ringing = false;
+        var audioCtx = null;
+        var ringTimer = null;
+        var ringOscs = [];
         var muteBtn = stage.querySelector('[data-hero-mute]');
         var replayBtn = stage.querySelector('[data-hero-replay]');
 
@@ -355,27 +368,288 @@
             window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
         }
 
+        var voiceCache = { tr: {}, en: {} };
+
+        function getAudioCtx() {
+            var AC = window.AudioContext || window.webkitAudioContext;
+            if (!AC) return null;
+            if (!audioCtx) audioCtx = new AC();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            return audioCtx;
+        }
+
+        function stopTone() {
+            if (ringTimer) {
+                clearInterval(ringTimer);
+                ringTimer = null;
+            }
+            ringOscs.forEach(function (node) {
+                try { node.stop(); } catch (e) {}
+            });
+            ringOscs = [];
+        }
+
+        function stopFx() {
+            stopTone();
+            if (!fxAudio) return;
+            try {
+                fxAudio.onended = null;
+                fxAudio.onerror = null;
+                fxAudio.pause();
+                fxAudio.src = '';
+            } catch (e) {}
+            fxAudio = null;
+        }
+
+        function playMp3Fx(name, done, loop) {
+            stopFx();
+            var a = new Audio('/audio/call/' + name + '.mp3');
+            fxAudio = a;
+            a.loop = !!loop;
+            a.volume = name === 'ring' ? 0.85 : 0.95;
+            var finished = false;
+            function finish() {
+                if (finished) return;
+                finished = true;
+                if (fxAudio === a) fxAudio = null;
+                if (done) done();
+            }
+            if (!loop) a.onended = finish;
+            a.onerror = finish;
+            var play = a.play();
+            if (play && typeof play.catch === 'function') play.catch(finish);
+        }
+
+        function playRingBurst(ctx) {
+            var now = ctx.currentTime;
+            var dur = 1.2;
+            [440, 480].forEach(function (freq) {
+                var osc = ctx.createOscillator();
+                var gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.22, now + 0.03);
+                gain.gain.setValueAtTime(0.22, now + dur - 0.08);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + dur + 0.02);
+                ringOscs.push(osc);
+            });
+        }
+
+        function whenUnlocked(fn) {
+            var ctx = getAudioCtx();
+            if (!ctx) {
+                fn(null);
+                return;
+            }
+            if (ctx.state === 'running') {
+                fn(ctx);
+                return;
+            }
+            ctx.resume().then(function () { fn(getAudioCtx()); }).catch(function () { fn(null); });
+        }
+
+        function startRing() {
+            ringing = true;
+            whenUnlocked(function (ctx) {
+                if (!ringing) return;
+                stopFx();
+                ringing = true;
+                if (ctx && ctx.state === 'running') {
+                    playRingBurst(ctx);
+                    ringTimer = setInterval(function () {
+                        if (!ringing) return;
+                        var liveCtx = getAudioCtx();
+                        if (liveCtx && liveCtx.state === 'running') playRingBurst(liveCtx);
+                    }, 1650);
+                    return;
+                }
+                playMp3Fx('ring', null, true);
+            });
+        }
+
+        function playPickup(done) {
+            ringing = false;
+            whenUnlocked(function (ctx) {
+                stopFx();
+                if (ctx && ctx.state === 'running') {
+                    var now = ctx.currentTime;
+                    var osc = ctx.createOscillator();
+                    var noise = ctx.createOscillator();
+                    var gain = ctx.createGain();
+                    var nGain = ctx.createGain();
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.exponentialRampToValueAtTime(70, now + 0.16);
+                    gain.gain.setValueAtTime(0.0001, now);
+                    gain.gain.exponentialRampToValueAtTime(0.32, now + 0.008);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    noise.type = 'sawtooth';
+                    noise.frequency.value = 90;
+                    nGain.gain.setValueAtTime(0.14, now);
+                    nGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+                    noise.connect(nGain);
+                    nGain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.2);
+                    noise.start(now);
+                    noise.stop(now + 0.06);
+                    setTimeout(function () { if (done) done(); }, 220);
+                    return;
+                }
+                playMp3Fx('pickup', done, false);
+            });
+        }
+
+        function unlockHeroAudio() {
+            whenUnlocked(function (ctx) {
+                if (ringing && ctx && !ringTimer) startRing();
+            });
+        }
+
         function cancelSpeak() {
             speakingUtter = null;
+            if (speakingAudio) {
+                try {
+                    speakingAudio.onended = null;
+                    speakingAudio.onerror = null;
+                    speakingAudio.pause();
+                    speakingAudio.src = '';
+                } catch (e) {}
+                speakingAudio = null;
+            }
             if (window.speechSynthesis) {
                 try { window.speechSynthesis.cancel(); } catch (e) {}
             }
         }
 
-        function pickVoice() {
-            if (!window.speechSynthesis) return null;
-            var voices = window.speechSynthesis.getVoices() || [];
-            var prefix = lang() === 'en' ? 'en' : 'tr';
-            var match = voices.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(prefix) === 0; });
-            var preferred = match.filter(function (v) {
-                return /google|natural|premium|enhanced|yelda|filiz|yelda|samantha|allison|ava|zoe/i.test(v.name);
-            });
-            return preferred[0] || match[0] || null;
+        function locale() {
+            return lang() === 'en' ? 'en-US' : 'tr-TR';
         }
 
-        function speakAda(text, done) {
+        function callerGender(scenario) {
+            if (scenario && scenario.caller) return scenario.caller;
+            var first = String((scenario && scenario.name) || '').split(/\s+/)[0].toLowerCase();
+            if (/^(ay[sş]e|elif|zeynep|selin|fatma|emine|merve|seda|ece|irem|g[uü]l|nisa|deniz)$/.test(first)) return 'female';
+            return 'male';
+        }
+
+        function scoreVoice(voice, loc, role, gender) {
+            var vLang = (voice.lang || '').toLowerCase();
+            var name = (voice.name || '').toLowerCase();
+            var prefix = loc.slice(0, 2);
+            var score = 0;
+            if (vLang === loc.toLowerCase()) score += 120;
+            else if (vLang.indexOf(prefix + '-') === 0 || vLang === prefix) score += 50;
+            else return -1;
+
+            if (/premium|enhanced|neural|natural|online|google|microsoft|siri/.test(name)) score += 55;
+            if (voice.localService) score += 18;
+
+            if (prefix === 'tr') {
+                if (/yelda|filiz|yıldız|yildiz|emel|aylin/.test(name)) score += 90;
+                if (/tolga|yuri|can|ahmet/.test(name)) score += role === 'user' ? 85 : 20;
+            } else {
+                if (/samantha|ava|allison|zoe|susan|siri|karen|moira|tessa|samantha|aria|jenny|sara/.test(name)) score += 45;
+                if (/daniel|alex|fred|tom|david|mark|aaron|guy|eric/.test(name)) score += role === 'user' ? 50 : 10;
+            }
+
+            if (role === 'ai' && /female|woman|yelda|filiz|samantha|ava|allison|zoe|susan|aria|jenny|emel/.test(name)) score += 22;
+            if (role === 'user' && gender === 'female' && /female|woman|yelda|filiz|samantha|ava|allison|zoe|susan|aria|jenny|emel|emma|michelle|ana/.test(name)) score += 40;
+            if (role === 'user' && gender === 'female' && /male|man|tolga|ahmet|guy|daniel|andrew|brian|david/.test(name)) score -= 60;
+            if (role === 'user' && gender !== 'female' && /male|man|tolga|daniel|alex|david|guy|fred|ahmet|andrew|brian/.test(name)) score += 28;
+            if (/compact|eloquence|novelty|whisper|zarvox|trinoids|boing|bad news/.test(name)) score -= 80;
+            return score;
+        }
+
+        function pickVoice(role, gender) {
+            if (!window.speechSynthesis) return null;
+            var loc = locale();
+            var key = lang();
+            var slot = role === 'user' ? 'user-' + (gender || 'male') : 'ai';
+            if (voiceCache[key] && voiceCache[key][slot]) return voiceCache[key][slot];
+            var voices = window.speechSynthesis.getVoices() || [];
+            if (!voices.length) return null;
+            var ranked = voices.map(function (v) {
+                return { v: v, s: scoreVoice(v, loc, role, gender) };
+            }).filter(function (x) { return x.s > 0; }).sort(function (a, b) { return b.s - a.s; });
+            var chosen = ranked[0] && ranked[0].v;
+            if (role === 'user' && ranked.length > 1 && chosen && voiceCache[key] && voiceCache[key].ai === chosen) {
+                chosen = ranked[1].v;
+            }
+            if (!voiceCache[key]) voiceCache[key] = {};
+            voiceCache[key][slot] = chosen || null;
+            return chosen || null;
+        }
+
+        var TR_ONES = ['', 'bir', 'iki', 'üç', 'dört', 'beş', 'altı', 'yedi', 'sekiz', 'dokuz'];
+        var TR_TENS = ['', 'on', 'yirmi', 'otuz', 'kırk', 'elli', 'altmış', 'yetmiş', 'seksen', 'doksan'];
+        var TR_DIGIT = ['sıfır', 'bir', 'iki', 'üç', 'dört', 'beş', 'altı', 'yedi', 'sekiz', 'dokuz'];
+
+        function trNum(n) {
+            n = parseInt(n, 10);
+            if (isNaN(n)) return '';
+            if (n === 0) return 'sıfır';
+            if (n < 10) return TR_ONES[n];
+            if (n < 100) {
+                var t = Math.floor(n / 10);
+                var o = n % 10;
+                return (TR_TENS[t] + (o ? ' ' + TR_ONES[o] : '')).trim();
+            }
+            return String(n);
+        }
+
+        function speakable(text, loc) {
+            var out = String(text || '');
+            if (loc === 'tr-TR') {
+                out = out.replace(/Dr\./g, 'Doktor');
+                out = out.replace(/SMS/g, 'es em es');
+                out = out.replace(/CRM/g, 'si ar em');
+                out = out.replace(/m²/g, 'metrekare');
+                out = out.replace(/\bTL\b/g, 'lira');
+                out = out.replace(/\bkm\b/gi, 'kilometre');
+                out = out.replace(/3\+1/g, 'üç artı bir');
+                out = out.replace(/(\d{1,2}):(\d{2})/g, function (_, h, m) {
+                    return m === '00' ? trNum(h) : (trNum(h) + ' ' + trNum(m));
+                });
+                out = out.replace(/0(\d{3})\s(\d{3})\s(\d{2})\s(\d{2})/g, function (_, a, b, c, d) {
+                    return ['sıfır', a, b, c, d].map(function (part, i) {
+                        if (i === 0) return part;
+                        return String(part).split('').map(function (ch) { return TR_DIGIT[ch] || ch; }).join(' ');
+                    }).join(', ');
+                });
+                out = out.replace(/(\d+)[.,](\d+)\s*milyon/gi, function (_, a, b) {
+                    return trNum(a) + ' virgül ' + trNum(b) + ' milyon';
+                });
+            } else {
+                out = out.replace(/Dr\./g, 'Doctor');
+                out = out.replace(/(\d{1,2}):(\d{2})/g, function (_, h, m) {
+                    var hr = parseInt(h, 10);
+                    if (m === '00') return hr + " o'clock";
+                    return hr + ' ' + m;
+                });
+                out = out.replace(/0(\d{3})\s(\d{3})\s(\d{2})\s(\d{2})/g, function (full) {
+                    return full.replace(/\d/g, function (d) { return d + ' '; }).trim();
+                });
+            }
+            return out;
+        }
+
+        function clipUrl(scenario, index, role) {
+            var i = String(index);
+            if (i.length < 2) i = '0' + i;
+            return '/audio/hero/' + scenario.id + '-' + lang() + '-' + i + '-' + role + '.mp3';
+        }
+
+        function speakLine(scenario, index, role, text, done) {
             cancelSpeak();
-            if (muted || reduced || paused || !window.speechSynthesis || !text) {
+            if (muted || reduced || paused || !text) {
                 done();
                 return;
             }
@@ -384,21 +658,54 @@
                 if (finished) return;
                 finished = true;
                 speakingUtter = null;
+                speakingAudio = null;
                 done();
             }
-            var u = new SpeechSynthesisUtterance(text);
-            u.lang = lang() === 'en' ? 'en-US' : 'tr-TR';
-            u.rate = 1.04;
-            u.pitch = 1;
-            var voice = pickVoice();
-            if (voice) u.voice = voice;
+            var audio = new Audio(clipUrl(scenario, index, role));
+            speakingAudio = audio;
+            audio.preload = 'auto';
+            audio.onended = finish;
+            audio.onerror = function () { speakBrowser(scenario, role, text, finish); };
+            var play = audio.play();
+            if (play && typeof play.catch === 'function') {
+                play.catch(function () { speakBrowser(scenario, role, text, finish); });
+            }
+            setTimeout(function () {
+                if (!finished && speakingAudio === audio) finish();
+            }, 18000);
+        }
+
+        function speakBrowser(scenario, role, text, done) {
+            if (!window.speechSynthesis) {
+                done();
+                return;
+            }
+            var loc = locale();
+            var spoken = speakable(text, loc);
+            var gender = role === 'user' ? callerGender(scenario) : 'female';
+            var finished = false;
+            function finish() {
+                if (finished) return;
+                finished = true;
+                speakingUtter = null;
+                done();
+            }
+            var u = new SpeechSynthesisUtterance(spoken);
+            u.lang = loc;
+            u.rate = role === 'ai' ? 0.94 : 0.98;
+            u.pitch = role === 'ai' ? 1.04 : (gender === 'female' ? 1.08 : 0.86);
+            var voice = pickVoice(role, gender);
+            if (voice) {
+                u.voice = voice;
+                if (voice.lang) u.lang = voice.lang;
+            }
             u.onend = finish;
             u.onerror = finish;
             speakingUtter = u;
             try { window.speechSynthesis.speak(u); } catch (e) { finish(); }
             setTimeout(function () {
                 if (!finished && speakingUtter === u) finish();
-            }, Math.min(12000, 1800 + String(text).length * 80));
+            }, Math.min(16000, 2200 + String(spoken).length * 95));
         }
 
         function syncMuteBtn() {
@@ -411,7 +718,11 @@
         function setMuted(next) {
             muted = !!next;
             syncMuteBtn();
-            if (muted) cancelSpeak();
+            if (muted) {
+                cancelSpeak();
+                return;
+            }
+            unlockHeroAudio();
         }
         var timer = null;
         var clockTimer = null;
@@ -535,12 +846,42 @@
         }
 
         function holdFor(text, role) {
-            var extra = Math.min(String(text).length * 26, 1600);
-            return (role === 'ai' ? 1200 : 620) + extra + jitter(120, 320);
+            var extra = Math.min(String(text).length * 22, 1400);
+            return (role === 'ai' ? 900 : 520) + extra + jitter(80, 200);
         }
 
-        function typingFor(text) {
-            return 520 + Math.min(String(text).length * 16, 820) + jitter(80, 280);
+        function isShort(text) {
+            return String(text).length < 32;
+        }
+
+        function thinkBeforeAda(scenario, index, text, msg) {
+            if (index === 0) return jitter(180, 80);
+            var prev = scenario.messages[index - 1];
+            var status = msg.meta && msg.meta.status;
+            if (status === 'processing') return jitter(480, 180);
+            if (status === 'crm') return jitter(200, 100);
+            if (prev && prev.role === 'ai') return jitter(160, 80);
+            if (prev && isShort(txt(prev))) return jitter(200, 100);
+            return jitter(240, 120);
+        }
+
+        function shouldType(msg, text, index) {
+            if (index === 0) return false;
+            if (msg.meta && (msg.meta.status === 'processing' || msg.meta.status === 'crm')) return true;
+            return String(text).length > 78;
+        }
+
+        function afterTurn(msg, text, role) {
+            if (msg.meta && msg.meta.status === 'done') return jitter(240, 80);
+            if (role === 'ai' && /[?？]\s*$/.test(text)) return jitter(80, 60);
+            return jitter(50, 40);
+        }
+
+        function userDelay(scenario, index, text) {
+            var prev = index > 0 ? scenario.messages[index - 1] : null;
+            if (prev && /[?？]\s*$/.test(txt(prev))) return jitter(420, 180);
+            if (isShort(text)) return jitter(220, 80);
+            return jitter(280, 120);
         }
 
         function pickScenario() {
@@ -592,7 +933,7 @@
                         stage.classList.remove('is-fading');
                         startConversation(currentId);
                     }, 480);
-                }, 2200);
+                }, 2000);
                 return;
             }
 
@@ -602,10 +943,11 @@
 
             if (msg.role === 'ai') {
                 setSpeaking(false);
-                var typing = makeTyping();
-                reveal(typing);
+                var wait = thinkBeforeAda(scenario, index, text, msg);
+                var typing = shouldType(msg, text, index) ? makeTyping() : null;
+                if (typing) reveal(typing);
                 schedule(function () {
-                    if (typing.parentNode) typing.parentNode.removeChild(typing);
+                    if (typing && typing.parentNode) typing.parentNode.removeChild(typing);
                     applyMeta(scenario, msg.meta);
                     var bubble = makeBubble('ai', text);
                     reveal(bubble);
@@ -613,15 +955,15 @@
                     if (muted || reduced) {
                         schedule(function () {
                             setSpeaking(false);
-                            next();
+                            schedule(next, afterTurn(msg, text, 'ai'));
                         }, holdFor(text, 'ai'));
                     } else {
-                        speakAda(text, function () {
+                        speakLine(scenario, index, 'ai', text, function () {
                             setSpeaking(false);
-                            schedule(next, 220);
+                            schedule(next, afterTurn(msg, text, 'ai'));
                         });
                     }
-                }, typingFor(text));
+                }, typing ? Math.max(wait, 420 + Math.min(String(text).length * 10, 500)) : wait);
                 return;
             }
 
@@ -629,8 +971,16 @@
             schedule(function () {
                 applyMeta(scenario, msg.meta);
                 reveal(makeBubble('user', text));
-                schedule(next, holdFor(text, 'user'));
-            }, jitter(380, 520));
+                if (muted || reduced) {
+                    schedule(function () {
+                        schedule(next, afterTurn(msg, text, 'user'));
+                    }, holdFor(text, 'user'));
+                } else {
+                    speakLine(scenario, index, 'user', text, function () {
+                        schedule(next, afterTurn(msg, text, 'user'));
+                    });
+                }
+            }, userDelay(scenario, index, text));
         }
 
         function getScenario(id) {
@@ -642,31 +992,57 @@
             return pickScenario();
         }
 
-        function startConversation(id) {
+        function startConversation(id, opts) {
+            opts = opts || {};
+            ringing = false;
             var scenario = getScenario(id);
             currentId = scenario.id;
             clearChat();
             resetMeta();
-            startClock();
-            playMessage(scenario, 0);
+            function beginTalk() {
+                startClock();
+                playMessage(scenario, 0);
+            }
+            if (reduced) {
+                beginTalk();
+                return;
+            }
+            if (opts.intro) {
+                startRing();
+                schedule(function () {
+                    playPickup(function () {
+                        schedule(beginTalk, 280);
+                    });
+                }, 2800);
+                return;
+            }
+            if (opts.pickup) {
+                playPickup(function () {
+                    schedule(beginTalk, 240);
+                });
+                return;
+            }
+            beginTalk();
         }
 
         function stop() {
             if (timer) clearTimeout(timer);
             timer = null;
+            ringing = false;
             stopClock();
             cancelSpeak();
+            stopFx();
             setSpeaking(false);
         }
 
-        function restart(id) {
+        function restart(id, opts) {
             stop();
             stage.classList.remove('is-fading');
             if (reduced) {
                 renderStatic(getScenario(id));
                 return;
             }
-            startConversation(id);
+            startConversation(id, opts);
         }
 
         if (typeof IntersectionObserver === 'function') {
@@ -682,14 +1058,28 @@
             muteBtn.addEventListener('click', function () { setMuted(!muted); });
             syncMuteBtn();
         }
+        document.addEventListener('pointerdown', unlockHeroAudio, true);
         if (replayBtn) {
-            replayBtn.addEventListener('click', function () { restart(currentId); });
+            replayBtn.addEventListener('click', function () { restart(currentId, { intro: true }); });
         }
 
         var storyMode = !!document.querySelector('[data-story]');
         var startId = stage.getAttribute('data-hero-start');
-        if (!storyMode && !startId) restart();
-        window.AspaloHero = { play: restart, restart: restart, stop: stop, setMuted: setMuted, refreshLabels: syncMuteBtn };
+        if (!storyMode && !startId) restart(undefined, { intro: true });
+        window.AspaloHero = {
+            play: restart,
+            restart: restart,
+            stop: stop,
+            ring: startRing,
+            pickup: function (done) {
+                unlockHeroAudio();
+                playPickup(done);
+            },
+            stopFx: stopFx,
+            unlock: unlockHeroAudio,
+            setMuted: setMuted,
+            refreshLabels: syncMuteBtn
+        };
         return { restart: restart, play: restart, setMuted: setMuted, refreshLabels: syncMuteBtn };
     }
 
@@ -725,10 +1115,13 @@
         'Otel Konaklama': 'hotel'
     };
 
+    var sectorHeroStarted = false;
     function playSectorHero(sector) {
         var id = SECTOR_HERO[sector];
         if (!id || !window.AspaloHero || typeof window.AspaloHero.play !== 'function') return;
-        window.AspaloHero.play(id);
+        var opts = sectorHeroStarted ? { pickup: true } : { intro: true };
+        sectorHeroStarted = true;
+        window.AspaloHero.play(id, opts);
     }
 
     function applySectorCopy(sector) {
@@ -875,7 +1268,7 @@
             if (hero && typeof hero.restart === 'function' && !document.querySelector('[data-story]')) {
                 var chip = document.querySelector('.sector-chip.active');
                 var hid = chip && SECTOR_HERO[chip.getAttribute('data-sector')];
-                hero.restart(hid || undefined);
+                hero.restart(hid || undefined, hid ? { pickup: true } : { intro: true });
             }
         };
         var year = document.getElementById('footer-year');
