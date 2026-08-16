@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=site2">
-    <link rel="stylesheet" href="site.css?v=site2">
+    <link rel="stylesheet" href="site.css?v=site9">
 </head>
 <body data-i18n-page="home">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDXZ6F59"
@@ -114,18 +114,15 @@
             <div class="hero-stage" aria-hidden="true">
                 <div class="hero-stage-bar">
                     <span class="hero-live-dot"></span>
-                    <span class="hero-stage-label" data-i18n="hero_ai_name">Aspalo Asistan</span>
-                    <span class="hero-stage-timer" data-i18n="hero_live">Canlı görüşme</span>
+                    <span class="hero-stage-label" data-i18n="hero_ai_name">ADA</span>
+                    <span class="hero-stage-timer" data-hero-timer>0:00</span>
                 </div>
-                <div class="hero-wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                <div class="hero-chat">
-                    <div class="hero-bubble hero-bubble-ai" data-delay="400" data-i18n="hero_b1">Merhaba, Aspalo. Bugün nasıl yardımcı olabilirim?</div>
-                    <div class="hero-bubble hero-bubble-user" data-delay="1800" data-i18n="hero_b2">Yarın için randevu almak istiyorum.</div>
-                    <div class="hero-bubble hero-bubble-ai" data-delay="3200" data-i18n="hero_b3">Tabii. Saat 14:30 uygun — adınızı ve telefonunuzu alayım.</div>
-                </div>
+                <div class="hero-wave" data-hero-wave><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="hero-chat" data-hero-chat><div class="hero-chat-inner" data-hero-thread></div></div>
                 <div class="hero-captured">
-                    <p><small data-i18n="hero_cap_name">İsim</small><b data-i18n="hero_cap_name_v">Ayşe Kaya</b></p>
-                    <p><small data-i18n="hero_cap_intent">Niyet</small><b data-i18n="hero_cap_intent_v">Randevu</b></p>
+                    <p><small data-i18n="hero_cap_name">İsim</small><b data-hero-meta="name">—</b></p>
+                    <p><small data-i18n="hero_cap_intent">Niyet</small><b data-hero-meta="intent">—</b></p>
+                    <p><small data-i18n="hero_cap_status">Durum</small><b data-hero-meta="status">—</b></p>
                 </div>
             </div>
         </div>
@@ -427,9 +424,9 @@
         <div class="container footer-base">© <span id="footer-year">2026</span> Aspalo. <span data-i18n="footer_copy">Tüm hakları saklıdır.</span></div>
     </footer>
 
-    <script src="i18n.js?v=site2"></script>
+    <script src="i18n.js?v=site9"></script>
     <script src="script.js?v=site2"></script>
-    <script src="site.js?v=site2"></script>
+    <script src="site.js?v=site9"></script>
     <script src="widget.js?v=site2"></script>
     <script>
       (function () {
