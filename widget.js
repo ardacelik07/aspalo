@@ -5,9 +5,45 @@
     var vapiInstance = null;
     var assistant = "056c49fc-6999-46e0-88ee-235392642f7a";
     var apiKey = "76473afb-6fd2-44d8-affc-6b040bd924d3";
+    var adaCallActive = false;
+
+    function t(key) {
+        return window.AspaloI18n ? window.AspaloI18n.t(key) : key;
+    }
+
+    function getAdaOverrides() {
+        var locale = window.AspaloI18n && window.AspaloI18n.assistantLocale
+            ? window.AspaloI18n.assistantLocale()
+            : { languageCode: "tr-TR", stt: "tr", responseLanguage: "Turkish" };
+        return {
+            firstMessage: t("ada_first_message"),
+            transcriber: { language: locale.stt },
+            variableValues: {
+                locale: locale.languageCode,
+                response_language: locale.responseLanguage,
+                system_instruction: t("ada_system_instruction")
+            }
+        };
+    }
+
+    function startAdaCall() {
+        if (!vapiInstance) return false;
+        try {
+            vapiInstance.start(assistant, getAdaOverrides());
+            return true;
+        } catch (e) {
+            console.error("Vapi start error:", e);
+            return false;
+        }
+    }
+
+    function stopAdaCall() {
+        if (!vapiInstance) return;
+        try { vapiInstance.stop(); } catch (e) {}
+        adaCallActive = false;
+    }
 
     function buildVapiButtonConfig() {
-        var t = window.AspaloI18n ? window.AspaloI18n.t.bind(window.AspaloI18n) : function (k) { return k; };
         return {
             position: "bottom-right",
             offset: "40px",
@@ -38,22 +74,43 @@
     }
 
     var buttonConfig = buildVapiButtonConfig();
-    window.refreshVapiLabels = function () {
+    function paintVapiLabels() {
         buttonConfig = buildVapiButtonConfig();
-    };
+        var idle = t("vapi_idle_title");
+        var idleSub = t("vapi_idle_sub");
+        document.querySelectorAll(".vapi-btn, [class*='vapi']").forEach(function (root) {
+            var titles = root.querySelectorAll("p, span, div");
+            titles.forEach(function (el) {
+                var text = (el.textContent || "").trim();
+                if (text === "Talk Now" || text === "Hemen Konuş" || text === "ADA ile Konuş" || text === "Talk to ADA") {
+                    el.textContent = idle;
+                }
+                if (text === "Talk with Aspalo" || text === "Aspalo ile konuş" || text === "Sesli yapay zekâ asistanı" || text === "AI voice assistant") {
+                    el.textContent = idleSub;
+                }
+            });
+        });
+    }
+
+    window.refreshVapiLabels = paintVapiLabels;
 
     function initVapiWidget(config) {
         if (!window.vapiSDK || typeof window.vapiSDK.run !== "function") return null;
         try {
-            var instance = window.vapiSDK.run({ apiKey: apiKey, assistant: assistant, config: config });
-            instance.on("call-start", function () { console.log("Demo call started"); });
-            instance.on("call-end", function () { console.log("Demo call ended"); });
+            var instance = window.vapiSDK.run({
+                apiKey: apiKey,
+                assistant: assistant,
+                assistantOverrides: getAdaOverrides(),
+                config: config
+            });
+            instance.on("call-start", function () { adaCallActive = true; });
+            instance.on("call-end", function () { adaCallActive = false; });
             instance.on("error", function (err) {
                 console.error("Vapi error:", err);
                 var msg = (err && err.message) ? String(err.message) : "";
                 if (msg.indexOf("Permission") !== -1 || msg.indexOf("NotAllowed") !== -1 || msg.indexOf("denied") !== -1) {
                     try {
-                        alert(window.AspaloI18n ? window.AspaloI18n.t("vapi_mic_err") : "Mikrofon erişimi reddedildi.");
+                        alert(t("vapi_mic_err") || t("ada_mic_needed"));
                     } catch (e) {}
                 }
             });
@@ -94,6 +151,7 @@
         g.async = true;
         s.parentNode.insertBefore(g, s);
         g.onload = function () {
+            buttonConfig = buildVapiButtonConfig();
             vapiInstance = initVapiWidget(buttonConfig);
             window.vapiInstance = vapiInstance;
             wireLiveDemoEvents(vapiInstance);
@@ -125,7 +183,7 @@
         if (!modal) return;
         modal.classList.remove("open");
         document.body.classList.remove("modal-open");
-        if (vapiInstance) { try { vapiInstance.stop(); } catch (e) {} }
+        stopAdaCall();
         ldStopTimer();
     }
 
@@ -237,20 +295,52 @@
                 if (!vapiInstance) { console.error("Vapi not ready yet"); return; }
                 ldShowState("connecting");
                 wireLiveDemoEvents(vapiInstance);
-                try { vapiInstance.start(assistant); } catch (e) { console.error("Vapi start error:", e); ldShowState("idle"); }
+                if (!startAdaCall()) ldShowState("idle");
             });
         }
         var endBtn = document.getElementById("live-demo-end-btn");
         if (endBtn) {
             endBtn.addEventListener("click", function () {
-                if (vapiInstance) { try { vapiInstance.stop(); } catch (e) {} }
+                stopAdaCall();
             });
         }
         var restartBtn = document.getElementById("live-demo-restart-btn");
         if (restartBtn) {
             restartBtn.addEventListener("click", function () { ldShowState("idle"); });
         }
+
+        document.addEventListener("click", function (e) {
+            var btn = e.target.closest && e.target.closest(".vapi-btn");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (adaCallActive) stopAdaCall();
+            else startAdaCall();
+        }, true);
     }
+
+    function onAdaLocaleChange() {
+        paintVapiLabels();
+        if (!adaCallActive) return;
+        stopAdaCall();
+        ldShowState("idle");
+        var idle = document.getElementById("live-demo-idle");
+        if (!idle) return;
+        var existing = idle.querySelector(".live-demo-lang-note");
+        if (existing) existing.remove();
+        var note = document.createElement("p");
+        note.className = "live-demo-lang-note";
+        note.setAttribute("role", "status");
+        note.textContent = t("ada_lang_switch_end");
+        var startBtn = document.getElementById("live-demo-start-btn");
+        idle.insertBefore(note, startBtn || null);
+    }
+
+    var prevLangHandler = window.onAspaloLanguageChange;
+    window.onAspaloLanguageChange = function (lang) {
+        if (typeof prevLangHandler === "function") prevLangHandler(lang);
+        onAdaLocaleChange();
+    };
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", bindLiveDemo);

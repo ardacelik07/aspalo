@@ -16,7 +16,7 @@
             + '<div class="demo-modal-content">'
             + '<button class="demo-modal-close" data-i18n-aria="modal_close" aria-label="Kapat"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>'
             + '<div class="demo-modal-body">'
-            + '<div class="demo-info-panel"><div class="demo-brand"><img src="images/logo2.png" alt="Aspalo" class="demo-logo-img"></div>'
+            + '<div class="demo-info-panel"><div class="demo-brand"><img src="/images/logo2.png" alt="Aspalo" class="demo-logo-img"></div>'
             + '<h2 class="demo-title" data-i18n="modal_title">Sayılarınızı Birlikte İnceleyelim</h2>'
             + '<p class="demo-description" data-i18n="modal_desc">Kaç arama kaçıyor, gerçek maliyeti ne, hattınıza nasıl bağlanır — 30 dakikada netleştirelim.</p>'
             + '<div class="demo-details" id="demo-details">'
@@ -29,13 +29,13 @@
             + '<div class="calendar-weekdays" id="calendar-weekdays"><div>PAZ</div><div>PZT</div><div>SAL</div><div>ÇAR</div><div>PER</div><div>CUM</div><div>CMT</div></div>'
             + '<div class="calendar-days" id="calendar-days"></div></div>'
             + '<div class="demo-form-panel"><div class="selected-date-info" id="selected-date-info"><span id="selected-date-text" data-i18n="cal_pick_date">Tarih seçin</span></div>'
-            + '<div class="time-format-toggle"><button class="time-toggle-btn" data-format="12">12 sa</button><button class="time-toggle-btn active" data-format="24">24 sa</button></div>'
+            + '<div class="time-format-toggle"><button class="time-toggle-btn" data-format="12" data-i18n="time_12">12 sa</button><button class="time-toggle-btn active" data-format="24" data-i18n="time_24">24 sa</button></div>'
             + '<div class="time-slots" id="time-slots"><p class="no-date-selected" id="no-date-selected-p" data-i18n="cal_pick_first">Lütfen önce bir tarih seçin</p></div>'
             + '<div class="demo-form-inner" id="demo-form-inner" style="display:none;">'
-            + '<div class="form-group"><label for="demo-name" data-i18n="form_name">Adınız *</label><input type="text" id="demo-name" name="name" required></div>'
-            + '<div class="form-group"><label for="demo-email">Email *</label><input type="email" id="demo-email" name="email" required></div>'
-            + '<div class="form-group"><label for="demo-company" data-i18n="form_company">Şirket ismi</label><input type="text" id="demo-company" name="company"></div>'
-            + '<div class="form-group"><label for="demo-phone" data-i18n="form_phone">Telefon numarası</label><input type="tel" id="demo-phone" name="phone"></div>'
+            + '<div class="form-group"><label for="demo-name" data-i18n="form_name">Adınız *</label><input type="text" id="demo-name" name="name" required autocomplete="name" data-i18n-placeholder="form_name_ph"></div>'
+            + '<div class="form-group"><label for="demo-email" data-i18n="form_email">E-posta *</label><input type="email" id="demo-email" name="email" required autocomplete="email" data-i18n-placeholder="form_email_ph"></div>'
+            + '<div class="form-group"><label for="demo-company" data-i18n="form_company">Şirket adı</label><input type="text" id="demo-company" name="company" autocomplete="organization" data-i18n-placeholder="form_company_ph"></div>'
+            + '<div class="form-group"><label for="demo-phone" data-i18n="form_phone">Telefon numarası</label><input type="tel" id="demo-phone" name="phone" autocomplete="tel" data-i18n-placeholder="form_phone_ph"></div>'
             + '<p class="form-disclaimer" data-i18n-html="form_disclaimer_html">Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>\'nı kabul etmiş olursunuz.</p>'
             + '<div class="form-actions"><button type="button" class="btn-back" id="btn-back" data-i18n="form_back">Geri</button><button type="button" class="btn-confirm" id="btn-confirm" data-i18n="form_confirm">Onayla</button></div>'
             + '</div></div></div></div></div>'
@@ -49,7 +49,7 @@
             + '<p class="live-demo-mic-note" data-i18n="live_demo_mic_note">Bu bir simülasyondur; gerçek bir görüşme kaydedilmez.</p></div>'
             + '<div class="live-demo-state live-demo-state-connecting" id="live-demo-connecting" data-state="connecting" hidden><div class="live-demo-spinner" aria-hidden="true"></div><p class="live-demo-connecting-text" data-i18n="live_demo_connecting">Bağlanıyor...</p></div>'
             + '<div class="live-demo-state live-demo-state-active" id="live-demo-active" data-state="active" hidden>'
-            + '<div class="live-demo-call-bar"><span class="live-demo-live-dot" aria-hidden="true"></span><span class="live-demo-live-label" data-i18n="live_demo_live">Canlı Görüşme</span><span class="live-demo-timer" id="live-demo-timer">0:00</span><button type="button" class="live-demo-end-btn" id="live-demo-end-btn" data-i18n="live_demo_end">Görüşmeyi bitir</button></div>'
+            + '<div class="live-demo-call-bar" role="status" aria-live="polite" data-i18n-aria="ada_status_aria"><span class="live-demo-live-dot" aria-hidden="true"></span><span class="live-demo-live-label" data-i18n="live_demo_live">Canlı görüşme</span><span class="live-demo-timer" id="live-demo-timer">0:00</span><button type="button" class="live-demo-end-btn" id="live-demo-end-btn" data-i18n="live_demo_end">Görüşmeyi Bitir</button></div>'
             + '<div class="live-demo-body"><div class="live-demo-transcript" id="live-demo-transcript" aria-live="polite"></div>'
             + '<div class="live-demo-captured"><p class="live-demo-captured-title" data-i18n="live_demo_captured_title">Yakalanan bilgi</p>'
             + '<div class="live-demo-captured-row"><span class="live-demo-captured-label" data-i18n="live_demo_captured_name">İsim</span><span class="live-demo-captured-value" id="live-demo-captured-name">—</span></div>'
@@ -66,22 +66,112 @@
 
     injectChrome();
 
+    function isMobileNav() {
+        return window.matchMedia('(max-width: 1200px)').matches;
+    }
+
+    function setDdOpen(dd, open) {
+        var btn = dd.querySelector('.nav-dd-btn');
+        dd.classList.toggle('is-open', open);
+        if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function closeAllDd() {
+        document.querySelectorAll('.nav-dd').forEach(function (dd) { setDdOpen(dd, false); });
+    }
+
     function initNav() {
+        var nav = document.getElementById('site-nav') || document.querySelector('.site-nav');
+        if (nav) {
+            var onScroll = function () {
+                nav.classList.toggle('is-scrolled', window.scrollY > 8);
+            };
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+        }
+
+        var menuBtn = document.querySelector('.mobile-menu-btn');
+        if (menuBtn && nav) {
+            menuBtn.addEventListener('click', function () {
+                requestAnimationFrame(function () {
+                    menuBtn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+                });
+            });
+        }
+
         document.querySelectorAll('.nav-dd').forEach(function (dd) {
             var btn = dd.querySelector('.nav-dd-btn');
-            if (!btn) return;
+            var menu = dd.querySelector('.nav-dd-menu');
+            if (!btn || !menu) return;
+
             btn.addEventListener('click', function (e) {
-                if (window.matchMedia('(max-width: 900px)').matches) return;
+                if (isMobileNav()) return;
                 e.preventDefault();
-                var open = dd.classList.contains('is-open');
-                document.querySelectorAll('.nav-dd').forEach(function (other) { other.classList.remove('is-open'); });
-                if (!open) dd.classList.add('is-open');
+                var open = !dd.classList.contains('is-open');
+                closeAllDd();
+                setDdOpen(dd, open);
+                if (open) {
+                    var first = menu.querySelector('a');
+                    if (first) first.focus();
+                }
+            });
+
+            btn.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    closeAllDd();
+                    setDdOpen(dd, true);
+                    var first = menu.querySelector('a');
+                    if (first) first.focus();
+                }
+            });
+
+            menu.querySelectorAll('a').forEach(function (link, i, links) {
+                link.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        e.preventDefault();
+                        setDdOpen(dd, false);
+                        btn.focus();
+                    } else if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        (links[i + 1] || links[0]).focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        (links[i - 1] || links[links.length - 1]).focus();
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        links[0].focus();
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        links[links.length - 1].focus();
+                    }
+                });
             });
         });
+
         document.addEventListener('click', function (e) {
-            if (!e.target.closest('.nav-dd')) {
-                document.querySelectorAll('.nav-dd').forEach(function (dd) { dd.classList.remove('is-open'); });
-            }
+            if (!e.target.closest('.nav-dd')) closeAllDd();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeAllDd();
+        });
+
+        document.querySelectorAll('.mobile-acc-btn').forEach(function (btn) {
+            var acc = btn.closest('.mobile-acc');
+            var panel = acc ? acc.querySelector('.mobile-acc-panel') : null;
+            if (!panel) return;
+            btn.addEventListener('click', function () {
+                var open = !acc.classList.contains('is-open');
+                acc.classList.toggle('is-open', open);
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                if (open) {
+                    panel.removeAttribute('hidden');
+                    panel.removeAttribute('inert');
+                } else {
+                    panel.setAttribute('hidden', '');
+                    panel.setAttribute('inert', '');
+                }
+            });
         });
     }
 
@@ -203,7 +293,7 @@
             ]
         },
         {
-            id: 'ecommerce',
+            id: 'support',
             name: 'Deniz Koç',
             intent: { tr: 'Sipariş desteği', en: 'Support request' },
             messages: [
@@ -222,6 +312,25 @@
                 { role: 'user', tr: 'Yok, teşekkürler.', en: 'No, that\'s all.' },
                 { role: 'ai', tr: 'İyi alışverişler.', en: 'Enjoy your order.', meta: { status: 'done' } }
             ]
+        },
+        {
+            id: 'restaurant',
+            name: 'Selin Arı',
+            intent: { tr: 'Rezervasyon', en: 'Reservation' },
+            messages: [
+                { role: 'ai', tr: 'Merhaba, Aspalo Mutfak. Ben ADA. Masa için yardımcı olayım.', en: 'Hello, Aspalo Kitchen. This is ADA. I can help with a table.' },
+                { role: 'user', tr: 'Bu akşam 20:30, dört kişilik teras masası var mı?', en: 'Do you have a terrace table for four tonight at 20:30?', meta: { intent: true, status: 'listening' } },
+                { role: 'ai', tr: 'Bakıyorum. Terasta 20:30 için dört kişilik masa açık.', en: 'Checking now. A terrace table for four is open at 20:30.' },
+                { role: 'user', tr: 'Harika. Selin Arı.', en: 'Perfect. Selin Arı.', meta: { name: true } },
+                { role: 'ai', tr: 'Selin Hanım, telefonunuzu da alayım — hatırlatma SMS\'i için.', en: 'Selin, may I take your number for a reminder text?' },
+                { role: 'user', tr: '0536 902 14 77', en: '0536 902 14 77' },
+                { role: 'ai', tr: 'Alerji veya özel istek var mı?', en: 'Any allergies or special requests?' },
+                { role: 'user', tr: 'Pencereye yakın olsun yeter.', en: 'Near the window is enough.' },
+                { role: 'ai', tr: '20:30, teras, dört kişi — masayı ayırıyorum.', en: '20:30, terrace, four guests — I\'m holding the table.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Rezervasyon alındı. Onay SMS\'i ve CRM kaydı düştü.', en: 'The table is booked. Confirmation SMS and CRM are in.', meta: { status: 'crm' } },
+                { role: 'user', tr: 'Teşekkürler.', en: 'Thank you.' },
+                { role: 'ai', tr: 'Bu akşam sizi bekleriz. Afiyet olsun.', en: 'We\'ll see you tonight. Enjoy your evening.', meta: { status: 'done' } }
+            ]
         }
     ];
 
@@ -234,7 +343,76 @@
         var wave = stage.querySelector('[data-hero-wave]');
         var timerEl = stage.querySelector('[data-hero-timer]');
         var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var currentId = null;
         var paused = false;
+        var muted = true;
+        var speakingUtter = null;
+        var muteBtn = stage.querySelector('[data-hero-mute]');
+        var replayBtn = stage.querySelector('[data-hero-replay]');
+
+        if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+            window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
+        }
+
+        function cancelSpeak() {
+            speakingUtter = null;
+            if (window.speechSynthesis) {
+                try { window.speechSynthesis.cancel(); } catch (e) {}
+            }
+        }
+
+        function pickVoice() {
+            if (!window.speechSynthesis) return null;
+            var voices = window.speechSynthesis.getVoices() || [];
+            var prefix = lang() === 'en' ? 'en' : 'tr';
+            var match = voices.filter(function (v) { return (v.lang || '').toLowerCase().indexOf(prefix) === 0; });
+            var preferred = match.filter(function (v) {
+                return /google|natural|premium|enhanced|yelda|filiz|yelda|samantha|allison|ava|zoe/i.test(v.name);
+            });
+            return preferred[0] || match[0] || null;
+        }
+
+        function speakAda(text, done) {
+            cancelSpeak();
+            if (muted || reduced || paused || !window.speechSynthesis || !text) {
+                done();
+                return;
+            }
+            var finished = false;
+            function finish() {
+                if (finished) return;
+                finished = true;
+                speakingUtter = null;
+                done();
+            }
+            var u = new SpeechSynthesisUtterance(text);
+            u.lang = lang() === 'en' ? 'en-US' : 'tr-TR';
+            u.rate = 1.04;
+            u.pitch = 1;
+            var voice = pickVoice();
+            if (voice) u.voice = voice;
+            u.onend = finish;
+            u.onerror = finish;
+            speakingUtter = u;
+            try { window.speechSynthesis.speak(u); } catch (e) { finish(); }
+            setTimeout(function () {
+                if (!finished && speakingUtter === u) finish();
+            }, Math.min(12000, 1800 + String(text).length * 80));
+        }
+
+        function syncMuteBtn() {
+            if (!muteBtn) return;
+            muteBtn.classList.toggle('is-muted', muted);
+            muteBtn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+            muteBtn.setAttribute('aria-label', t(muted ? 'hero_unmute' : 'hero_mute'));
+        }
+
+        function setMuted(next) {
+            muted = !!next;
+            syncMuteBtn();
+            if (muted) cancelSpeak();
+        }
         var timer = null;
         var clockTimer = null;
         var elapsed = 0;
@@ -412,7 +590,7 @@
                     stage.classList.add('is-fading');
                     schedule(function () {
                         stage.classList.remove('is-fading');
-                        startConversation();
+                        startConversation(currentId);
                     }, 480);
                 }, 2200);
                 return;
@@ -432,10 +610,17 @@
                     var bubble = makeBubble('ai', text);
                     reveal(bubble);
                     setSpeaking(true);
-                    schedule(function () {
-                        setSpeaking(false);
-                        next();
-                    }, holdFor(text, 'ai'));
+                    if (muted || reduced) {
+                        schedule(function () {
+                            setSpeaking(false);
+                            next();
+                        }, holdFor(text, 'ai'));
+                    } else {
+                        speakAda(text, function () {
+                            setSpeaking(false);
+                            schedule(next, 220);
+                        });
+                    }
                 }, typingFor(text));
                 return;
             }
@@ -448,8 +633,18 @@
             }, jitter(380, 520));
         }
 
-        function startConversation() {
-            var scenario = pickScenario();
+        function getScenario(id) {
+            if (id) {
+                for (var i = 0; i < HERO_SCENARIOS.length; i++) {
+                    if (HERO_SCENARIOS[i].id === id) return HERO_SCENARIOS[i];
+                }
+            }
+            return pickScenario();
+        }
+
+        function startConversation(id) {
+            var scenario = getScenario(id);
+            currentId = scenario.id;
             clearChat();
             resetMeta();
             startClock();
@@ -460,29 +655,42 @@
             if (timer) clearTimeout(timer);
             timer = null;
             stopClock();
+            cancelSpeak();
             setSpeaking(false);
         }
 
-        function restart() {
+        function restart(id) {
             stop();
             stage.classList.remove('is-fading');
             if (reduced) {
-                renderStatic(pickScenario());
+                renderStatic(getScenario(id));
                 return;
             }
-            startConversation();
+            startConversation(id);
         }
 
         if (typeof IntersectionObserver === 'function') {
             var io = new IntersectionObserver(function (entries) {
                 var entry = entries[0];
                 paused = !(entry && entry.isIntersecting);
+                if (paused) cancelSpeak();
             }, { threshold: 0.28 });
             io.observe(stage);
         }
 
-        restart();
-        return { restart: restart };
+        if (muteBtn) {
+            muteBtn.addEventListener('click', function () { setMuted(!muted); });
+            syncMuteBtn();
+        }
+        if (replayBtn) {
+            replayBtn.addEventListener('click', function () { restart(currentId); });
+        }
+
+        var storyMode = !!document.querySelector('[data-story]');
+        var startId = stage.getAttribute('data-hero-start');
+        if (!storyMode && !startId) restart();
+        window.AspaloHero = { play: restart, restart: restart, stop: stop, setMuted: setMuted, refreshLabels: syncMuteBtn };
+        return { restart: restart, play: restart, setMuted: setMuted, refreshLabels: syncMuteBtn };
     }
 
     function initWorks() {
@@ -508,6 +716,21 @@
         'Otel Konaklama': 'otel'
     };
 
+    var SECTOR_HERO = {
+        Emlak: 'realestate',
+        Otomotiv: 'automotive',
+        'Sağlık': 'healthcare',
+        Lojistik: 'logistics',
+        'E-Ticaret': 'support',
+        'Otel Konaklama': 'hotel'
+    };
+
+    function playSectorHero(sector) {
+        var id = SECTOR_HERO[sector];
+        if (!id || !window.AspaloHero || typeof window.AspaloHero.play !== 'function') return;
+        window.AspaloHero.play(id);
+    }
+
     function applySectorCopy(sector) {
         var slug = SECTOR_MAP[sector];
         if (!slug) return;
@@ -524,6 +747,7 @@
             chip.classList.toggle('active', chip.getAttribute('data-sector') === sector);
             chip.setAttribute('aria-pressed', chip.getAttribute('data-sector') === sector ? 'true' : 'false');
         });
+        playSectorHero(sector);
     }
 
     function initSectors() {
@@ -553,6 +777,76 @@
         if (btn && typeof window.setCalcSector === 'function') window.setCalcSector(btn, initial);
     }
 
+    function initPartnerForm() {
+        var form = document.getElementById('partner-apply-form');
+        if (!form) return;
+        var status = document.getElementById('partner-form-status');
+        var btn = document.getElementById('partner-form-submit');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = (document.getElementById('partner-name') || {}).value || '';
+            var email = (document.getElementById('partner-email') || {}).value || '';
+            name = name.trim();
+            email = email.trim();
+            if (!name || !email) {
+                if (status) {
+                    status.hidden = false;
+                    status.className = 'partner-form-status is-error';
+                    status.textContent = t('form_err_fields');
+                }
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (status) {
+                    status.hidden = false;
+                    status.className = 'partner-form-status is-error';
+                    status.textContent = t('form_err_email');
+                }
+                return;
+            }
+            var company = ((document.getElementById('partner-company') || {}).value || '').trim();
+            var trackEl = document.getElementById('partner-type');
+            var track = trackEl ? trackEl.value : '';
+            var message = ((document.getElementById('partner-message') || {}).value || '').trim();
+            var fd = new FormData();
+            fd.append('name', name);
+            fd.append('email', email);
+            fd.append('company', company);
+            fd.append('track', track);
+            fd.append('message', message);
+            fd.append('source', 'partnership');
+            fd.append('_subject', t('partner_form_subject') + name);
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = t('form_sending');
+            }
+            fetch('https://formspree.io/f/xpqjadno', {
+                method: 'POST',
+                body: fd,
+                headers: { Accept: 'application/json' }
+            }).then(function (res) {
+                if (!res.ok) throw new Error('fail');
+                if (status) {
+                    status.hidden = false;
+                    status.className = 'partner-form-status';
+                    status.textContent = t('partner_form_ok');
+                }
+                form.reset();
+            }).catch(function () {
+                if (status) {
+                    status.hidden = false;
+                    status.className = 'partner-form-status is-error';
+                    status.textContent = t('form_err_send');
+                }
+            }).then(function () {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = t('partner_form_submit');
+                }
+            });
+        });
+    }
+
     function applyPageMeta() {
         var page = document.body.getAttribute('data-i18n-page');
         if (!page || !window.AspaloI18n) return;
@@ -570,13 +864,19 @@
         initWorks();
         initSectors();
         applyPageMeta();
+        initPartnerForm();
         var prevLang = window.onAspaloLanguageChange;
         window.onAspaloLanguageChange = function (lang) {
             if (typeof prevLang === 'function') prevLang(lang);
             var active = document.querySelector('.sector-chip.active');
             if (active) applySectorCopy(active.getAttribute('data-sector'));
             applyPageMeta();
-            if (hero && typeof hero.restart === 'function') hero.restart();
+            if (hero && typeof hero.refreshLabels === 'function') hero.refreshLabels();
+            if (hero && typeof hero.restart === 'function' && !document.querySelector('[data-story]')) {
+                var chip = document.querySelector('.sector-chip.active');
+                var hid = chip && SECTOR_HERO[chip.getAttribute('data-sector')];
+                hero.restart(hid || undefined);
+            }
         };
         var year = document.getElementById('footer-year');
         if (year) year.textContent = new Date().getFullYear();

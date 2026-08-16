@@ -1,6 +1,18 @@
 /**
- * Aspalo — TR / EN i18n
- * "The Ledger" — copy is data-forward and declarative by design.
+ * Aspalo — TR / EN localization.
+ * Single source of user-facing copy. Default locale: tr.
+ * First visit: browser language. After that: localStorage `aspalo_lang`.
+ *
+ * Glossary (keep consistent):
+ *   yapay zekâ / artificial intelligence
+ *   sesli yapay zekâ asistanı / AI voice assistant
+ *   yapay zekâ sohbet asistanı / AI chat assistant
+ *   sektörler / industries
+ *   iş ortaklığı / partnerships
+ *   sıkça sorulan sorular / frequently asked questions
+ *   gösterge paneli / dashboard
+ *   demo talep et / request a demo
+ *   ADA ile konuş / talk to ADA
  */
 (function (global) {
     'use strict';
@@ -10,7 +22,7 @@
     var T = {
         tr: {
             meta_title: 'Aspalo — Kaçırılan Aramaların Maliyetini Hesaplayın',
-            meta_desc: 'Aspalo, işletmenizin gelen aramalarını 7/24 karşılayan yapay zeka çağrı asistanıdır. Sektörünüze göre kaçırdığınız aramaların yıllık maliyetini hesaplayın.',
+            meta_desc: 'Aspalo, işletmenizin gelen aramalarını 7/24 karşılayan yapay zekâ çağrı asistanıdır. Sektörünüze göre kaçırdığınız aramaların yıllık maliyetini hesaplayın.',
 
             nav_calc: 'Hesaplayıcı',
             nav_sectors: 'Sektörler',
@@ -18,8 +30,33 @@
             nav_proof: 'Referanslar',
             nav_pricing: 'Fiyatlandırma',
             nav_faq: 'Sıkça Sorulan Sorular',
-            nav_cta: 'Görüşme Ayarla',
-            menu_aria: 'Menü',
+            nav_cta: 'Demo Talep Et',
+            menu_aria: 'Menüyü aç',
+            lang_tr: 'Türkçe',
+            lang_en: 'English',
+            lang_switch_aria: 'Dil seçimi',
+            time_12: '12 sa',
+            time_24: '24 sa',
+            form_email: 'E-posta *',
+            form_name_ph: 'Adınız',
+            form_email_ph: 'nina.v@example.com',
+            form_company_ph: 'Şirket adı',
+            form_phone_ph: '05xx xxx xx xx',
+            form_err_email: 'Geçerli bir e-posta adresi girin.',
+            form_err_phone: 'Geçerli bir telefon numarası girin.',
+            alt_dashboard: 'Aspalo gösterge paneli',
+            alt_logo: 'Aspalo',
+            ada_first_message: 'Merhaba, ben ADA. Size nasıl yardımcı olabilirim?',
+            ada_system_instruction: 'Her zaman doğal, profesyonel Türkçe yanıt ver. İngilizceye geçme.',
+            ada_listening: 'Dinliyorum',
+            ada_thinking: 'Düşünüyorum',
+            ada_speaking: 'Yanıtlıyorum',
+            ada_mic_needed: 'Mikrofon izni gerekli',
+            ada_end: 'Görüşmeyi Bitir',
+            ada_retry: 'Tekrar Dene',
+            ada_connect_err: 'Bağlantı kurulamadı',
+            ada_lang_switch_end: 'Dil değiştiği için görüşme sonlandırıldı. Yeni dilde tekrar başlatabilirsiniz.',
+            ada_status_aria: 'ADA görüşme durumu',
 
             hero_eyebrow: 'AI Çağrı Asistanı',
             hero_title_html: 'Cevapsız Kalan Her Arama, <span class="ink-accent">Bir Maliyettir.</span>',
@@ -85,7 +122,28 @@
 
             pricing_badge: 'Fiyatlandırma',
             pricing_title: 'Üç Paket, Tek Prensip: Size Özel',
-            pricing_desc: 'Fiyat, aylık çağrı hacminize ve ihtiyacınıza göre şekillenir. Aşağıdaki tablo neyin dahil olduğunu gösterir — rakamı görüşmede netleştiririz.',
+            pricing_desc: 'Fiyat, aylık çağrı hacminize ve ihtiyacınıza göre şekillenir. Rakamı görüşmede netleştiririz.',
+            pricing_compare: 'Planları karşılaştırın',
+            plan_basic_mins: '1.000 dakika görüşme dahil',
+            plan_growth_mins: '2.000 dakika görüşme dahil',
+            plan_pro_mins: 'İhtiyacınıza göre dakika paketi',
+            plan_growth_plus: 'Basic\'teki her şey dahil, üstüne:',
+            plan_cta_contact: 'Bizimle iletişime geç',
+            plan_cta_sales: 'Satış ekibiyle görüş',
+            plan_f_inbound: 'Gelen aramaları AI karşılar, cevaplar',
+            plan_f_record: 'Her görüşme kayda alınır, yazıya dökülür',
+            plan_f_appt: 'Randevu alma ve yönetme',
+            plan_f_dash: 'Anlık gösterge paneli',
+            plan_f_outbound: 'Giden aramalar da yapılır (hatırlatma, takip)',
+            plan_f_priority: 'Aramalar önem sırasına göre otomatik sıralanır',
+            plan_f_crm: 'Mevcut CRM sisteminizle entegre çalışır',
+            plan_f_wa: 'WhatsApp üzerinden otomatik takip mesajı',
+            plan_f_reports: 'Detaylı, kırılımlı performans raporları',
+            plan_f_custom_mins: 'Size özel dakika paketleri',
+            plan_f_multi: 'Birden fazla asistanı farklı görevlere yönlendirme',
+            plan_f_flow: 'İşletmenize özel akış ve senaryo tasarımı',
+            plan_f_api: 'Kendi sistemlerinize API ile bağlanma',
+            plan_f_support: 'Öncelikli, özel destek hattı',
             pricing_col_basic: 'Basic',
             pricing_col_growth: 'Growth',
             pricing_col_pro: 'Pro',
@@ -98,7 +156,7 @@
             pricing_row_inbound: 'Gelen aramaları AI karşılar',
             pricing_row_recording: 'Kayıt ve yazıya dökme',
             pricing_row_appointment: 'Randevu alma ve yönetme',
-            pricing_row_dashboard: 'Performans paneli',
+            pricing_row_dashboard: 'Gösterge paneli',
             pricing_row_outbound: 'Giden arama (hatırlatma, takip)',
             pricing_row_priority: 'Otomatik önem sıralaması',
             pricing_row_crm: 'CRM entegrasyonu',
@@ -112,12 +170,12 @@
             val_included_pro: 'Size özel',
             val_dashboard_basic: 'Anlık',
             val_dashboard_growth: 'Detaylı, kırılımlı',
-            pricing_cta: 'Görüş',
+            pricing_cta: 'Demo Talep Et',
 
-            faq_title: 'Aklınıza Takılan Sorular',
+            faq_title: 'Sıkça Sorulan Sorular',
             faq_desc: 'Aspalo hakkında en sık sorulan soruları bir araya getirdik. Aradığınızı bulamazsanız bize doğrudan ulaşabilirsiniz.',
             faq_q1: 'Aspalo tam olarak nedir, nasıl çalışır?',
-            faq_a1: 'Aspalo, işletmenizin telefon hattına bağlanan bir yapay zeka çağrı asistanıdır. Gelen aramaları karşılar, sorulara yanıt verir, randevu alır ve gerektiğinde giden aramalar yapar — tıpkı eğitilmiş bir çalışan gibi, ancak 7/24 kesintisiz.',
+            faq_a1: 'Aspalo, işletmenizin telefon hattına bağlanan bir yapay zekâ çağrı asistanıdır. Gelen aramaları karşılar, sorulara yanıt verir, randevu alır ve gerektiğinde giden aramalar yapar — tıpkı eğitilmiş bir çalışan gibi, ancak 7/24 kesintisiz.',
             faq_q2: 'Fiyatlandırma nasıl işliyor? Neden sabit bir fiyat yok?',
             faq_a2: 'Fiyatlandırma, aylık çağrı hacminize ve ihtiyacınız olan özelliklere göre şekillenir. Bu yüzden internet sitesinde tek bir rakam yerine, işletmenizle birebir görüşüp size en uygun paketi birlikte belirliyoruz. Görüşmede size özel bir teklif alırsınız.',
             faq_q3: 'Kurulum ne kadar sürer, mevcut telefon hattımı değiştirmem gerekiyor mu?',
@@ -131,12 +189,12 @@
             faq_q7: 'Türkçe aksanları ve farklı konuşma tarzlarını anlıyor mu?',
             faq_a7: 'Evet, Aspalo Türkçe üzerine özel olarak yapılandırılmıştır ve farklı ağız/aksan varyasyonlarını anlayacak şekilde çalışır.',
             faq_q8: 'Görüşmeyi nasıl ayarlayabilirim, bir taahhüt altına giriyor muyum?',
-            faq_a8: '"Görüşme Ayarla" butonuna tıklayıp size uygun bir zaman seçmeniz yeterli. Görüşme herhangi bir taahhüt gerektirmez; Aspalo\'nun işletmeniz için nasıl çalışacağını birlikte inceleriz.',
+            faq_a8: '"Demo Talep Et" düğmesine tıklayıp size uygun bir zaman seçmeniz yeterli. Görüşme herhangi bir taahhüt gerektirmez; Aspalo\'nun işletmeniz için nasıl çalışacağını birlikte inceleriz.',
 
             final_cta_badge: 'Sırada Ne Var',
             final_cta_title: 'Rakamı Gördünüz. Şimdi Konuşalım.',
             final_cta_sub: '30 dakikalık bir görüşmede, hesaplayıcıdaki rakamı kendi verilerinizle doğrularız ve Aspalo\'nun hattınıza nasıl bağlanacağını netleştiririz.',
-            final_cta_btn: 'Görüşme Ayarla',
+            final_cta_btn: 'Demo Talep Et',
 
             footer_email_label: 'E-posta',
             footer_phone_label: 'Telefon',
@@ -154,68 +212,71 @@
             cal_pick_date: 'Tarih seçin',
             cal_pick_first: 'Lütfen önce bir tarih seçin',
             form_name: 'Adınız *',
-            form_company: 'Şirket ismi',
+            form_company: 'Şirket adı',
             form_phone: 'Telefon numarası',
             form_disclaimer_html: 'Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>\'nı kabul etmiş olursunuz.',
             form_back: 'Geri',
             form_confirm: 'Onayla',
             form_sending: 'Gönderiliyor...',
             form_success: '✓ Talebiniz alındı',
-            form_err_fields: 'Lütfen ad ve email alanlarını doldurun.',
+            form_err_fields: 'Lütfen ad ve e-posta alanlarını doldurun.',
             form_err_send: 'Gönderilemedi. Lütfen tekrar deneyin veya doğrudan iletişime geçin.',
-            form_subject: 'Yeni Görüşme Talebi: ',
+            form_subject: 'Yeni demo talebi: ',
 
-            vapi_idle_title: 'Hemen Konuş',
-            vapi_idle_sub: 'Aspalo ile konuş',
+            vapi_idle_title: 'ADA ile Konuş',
+            vapi_idle_sub: 'Sesli yapay zekâ asistanı',
             vapi_load_title: 'Bağlanıyor...',
             vapi_load_sub: 'Lütfen bekleyin',
-            vapi_active_title: 'Görüşme Aktif',
-            vapi_active_sub: 'Kapatmak için tıklayın',
-            vapi_mic_err: 'Mikrofon erişimi reddedildi. Lütfen tarayıcıda bu site için mikrofon iznini verin ve tekrar deneyin.',
+            vapi_active_title: 'Görüşme sürüyor',
+            vapi_active_sub: 'Bitirmek için tıklayın',
+            vapi_mic_err: 'Mikrofon izni gerekli. Tarayıcıda bu site için mikrofon erişimine izin verin ve tekrar deneyin.',
 
-            live_demo_btn: 'Canlı dinleyin',
-            live_demo_eyebrow: 'Canlı Yapay Zeka Demosu',
-            live_demo_title: 'Aspalo\'nun bir aramayı nasıl karşıladığını dinleyin',
-            live_demo_desc: 'Mikrofonunuza izin verin, "Aramayı başlat" butonuna basın — Aspalo\'nun AI asistanı gerçek bir müşteri gibi sizinle konuşacak.',
-            live_demo_start: 'Aramayı başlat',
-            live_demo_mic_note: 'Bu bir simülasyondur; gerçek bir görüşme kaydedilmez.',
+            live_demo_btn: 'ADA ile Konuş',
+            live_demo_eyebrow: 'Canlı yapay zekâ demosu',
+            live_demo_title: 'ADA\'nın bir aramayı nasıl karşıladığını dinleyin',
+            live_demo_desc: 'Mikrofon izni verin, ardından görüşmeyi başlatın. ADA sizinle seçili dilde konuşur.',
+            live_demo_start: 'ADA ile Konuş',
+            live_demo_mic_note: 'Bu bir demodur; gerçek bir müşteri görüşmesi kaydedilmez.',
             live_demo_connecting: 'Bağlanıyor...',
-            live_demo_live: 'Canlı Görüşme',
-            live_demo_end: 'Görüşmeyi bitir',
+            live_demo_live: 'Canlı görüşme',
+            live_demo_end: 'Görüşmeyi Bitir',
             live_demo_captured_title: 'Yakalanan bilgi',
             live_demo_captured_name: 'İsim',
             live_demo_captured_sector: 'Sektör',
             live_demo_ended_eyebrow: 'Demo tamamlandı',
             live_demo_ended_title: 'Aynısı, gerçek hattınızda da olabilir',
-            live_demo_ended_desc: 'Az önce duyduğunuz deneyimi işletmenize özel kurmamız için birlikte 30 dakikalık bir görüşme ayarlayalım.',
-            live_demo_ended_cta: 'Görüşme Ayarla',
-            live_demo_restart: 'Tekrar dinle',
+            live_demo_ended_desc: 'Az önce duyduğunuz deneyimi işletmenize özel kurmamız için 30 dakikalık bir görüşme ayarlayalım.',
+            live_demo_ended_cta: 'Demo Talep Et',
+            live_demo_restart: 'Tekrar Dene',
 
             nav_solutions: 'Çözümlerimiz',
             nav_products: 'Ürünler',
             nav_platform: 'Platform',
             nav_about: 'Hakkımızda',
-            nav_voice: 'Ses',
-            nav_chat: 'Sohbet',
+            nav_plans: 'Planlar',
+            nav_partners: 'İş Ortaklığı',
+            nav_sss: 'Sıkça Sorulan Sorular',
+            nav_voice: 'Sesli Yapay Zekâ',
+            nav_chat: 'Yapay Zekâ Sohbet Asistanı',
             nav_data: 'Veri kontrolü',
-            nav_voice_desc: '7/24 sesli çağrı asistanı',
+            nav_voice_desc: '7/24 sesli yapay zekâ asistanı',
             nav_chat_desc: 'Web ve mesajlaşma asistanı',
             nav_sectors_desc: 'Sektöre özel senaryolar ve maliyet',
             nav_data_desc: 'KVKK, veri Türkiye\'de kalır',
 
-            meta_title_home: 'Aspalo — Kurumsal Sesli ve Sohbet Yapay Zekası',
-            meta_desc_home: 'Aspalo, işletmenizin gelen aramalarını ve sohbetlerini 7/24 karşılayan yapay zeka asistanıdır. Veriler Türkiye\'de kalır.',
-            meta_title_ses: 'Aspalo Ses — 7/24 AI Çağrı Asistanı',
-            meta_desc_ses: 'Gelen aramaları ilk çınlamada karşılayan, randevu alan ve CRM\'inize yazan sesli yapay zeka.',
-            meta_title_sohbet: 'Aspalo Sohbet — Web ve Mesajlaşma Asistanı',
-            meta_desc_sohbet: 'Web, WhatsApp ve mesajlaşma kanallarında 7/24 yanıt veren sohbet yapay zekası.',
+            meta_title_home: 'Aspalo — Kurumsal Sesli ve Sohbet Yapay Zekâsı',
+            meta_desc_home: 'Aspalo, işletmenizin gelen aramalarını ve sohbetlerini 7/24 karşılayan yapay zekâ asistanıdır. Veriler Türkiye\'de kalır.',
+            meta_title_ses: 'Sesli Yapay Zekâ — Aspalo',
+            meta_desc_ses: 'Gelen aramaları ilk çınlamada karşılayan, randevu alan ve CRM\'inize yazan sesli yapay zekâ asistanı.',
+            meta_title_sohbet: 'Yapay Zekâ Sohbet Asistanı — Aspalo',
+            meta_desc_sohbet: 'Web, WhatsApp ve mesajlaşma kanallarında 7/24 yanıt veren sohbet asistanı.',
             meta_title_sektorler: 'Sektörler — Kaçırılan Aramaların Maliyeti | Aspalo',
             meta_desc_sektorler: 'Sektörünüze göre kaçırılan aramaların yıllık maliyetini hesaplayın. Emlak, sağlık, otel, otomotiv ve daha fazlası.',
 
-            home_eyebrow: 'Kurumsal sesli ve sohbet AI',
+            home_eyebrow: 'Kurumsal sesli ve sohbet yapay zekâsı',
             home_title_html: 'Müşteriniz aradığında, <em>Aspalo açar.</em>',
             home_sub: 'Gelen aramaları ilk çınlamada karşılar, randevu alır, kaydı özetler ve CRM\'inize yazar. Yeni hat yok. Veri Türkiye\'de kalır.',
-            home_cta: 'Görüşme Ayarla',
+            home_cta: 'Demo Talep Et',
             home_m1: '7/24',
             home_m1_l: 'Kesintisiz yanıt',
             home_m2: '48 saat',
@@ -232,6 +293,42 @@
             hero_st_booked: 'Alındı',
             hero_st_crm: 'CRM güncellendi',
             hero_st_done: 'Tamamlandı',
+            story_open_line: 'Bir arama. Bir cümle. Randevu, CRM, SMS — aynı nefeste.',
+            story_industries_aria: 'Sektör seçin',
+            story_ind_health: 'Sağlık',
+            story_ind_hotel: 'Otel',
+            story_ind_estate: 'Emlak',
+            story_ind_auto: 'Otomotiv',
+            story_ind_logi: 'Lojistik',
+            story_ind_rest: 'Restoran',
+            story_ind_support: 'Destek',
+            story_phone_in: 'Gelen arama',
+            story_phone_accept: 'ADA açıyor',
+            story_extract_eyebrow: 'Anlama',
+            story_extract_title: 'Cümle, kayda dönüşür.',
+            story_think_eyebrow: 'Karar',
+            story_think_title: 'ADA düşünür. Siz bekletmezsiniz.',
+            story_flow_eyebrow: 'Yolculuk',
+            story_flow_title: 'Veri, sistemin içinden geçer.',
+            story_view_aria: 'Görünüm',
+            story_view_biz: 'İş görünümü',
+            story_view_dev: 'Geliştirici',
+            story_int_eyebrow: 'Bağlantı',
+            story_int_title: 'Aynı saniye, kullandığınız araca düşer.',
+            story_int_got: 'Alındı',
+            story_dash_eyebrow: 'Panel',
+            story_dash_title: 'Görüşme bitti. Sayılar hareket etti.',
+            story_coda_note: 'Veri Türkiye\'de kalır. Mevcut hattınıza bağlanır. Yeni numara şart değil.',
+            hero_unmute: 'Sesi aç',
+            hero_mute: 'Sesi kapat',
+            hero_replay: 'Konuşmayı yeniden oynat',
+            home_ind_health: 'Randevu, hatırlatma, nöbet hattı.',
+            home_ind_hotel: 'Rezervasyon, oda, geç check-in.',
+            home_ind_estate: 'Portföy, gezme, ilk açan kazanır.',
+            home_ind_auto: 'Servis, ikame, iş emri.',
+            home_ind_logi: 'Takip, teslim penceresi, sürücü.',
+            home_ind_support: 'Sipariş, iade, kargo durumu.',
+            home_ind_calc: 'Sektörünüze göre yıllık kaybı hesaplayın →',
             customers_label: 'Bize güvenen kurumlar',
 
             compare_badge: 'İnsan mı, Aspalo mu?',
@@ -273,6 +370,10 @@
             ch_chat_t: 'Sohbet',
             ch_chat_p: 'Web, WhatsApp ve mesajlaşma. Aynı asistan, yazılı kanalda.',
             ch_more: 'Ürünü incele →',
+
+            langs_title: 'Müşterilerinizin Dilini Konuşun',
+            langs_desc: 'Dünya çapındaki müşterilerle anadillerinde sorunsuzca iletişim kurun. Çeviri yok, gecikme yok — sadece doğal konuşmalar.',
+            langs_caption: '45+ dil destekleniyor',
 
             plat_badge: 'Platform',
             plat_title: 'Aramadan kayda, tek akış.',
@@ -317,7 +418,7 @@
             vcap_5_p: 'Hatırlatma, no-show takibi ve kampanya — Growth ve Pro paketlerinde.',
             vcap_6_t: 'Mevcut altyapı',
             vcap_6_p: 'Yeni hat şart değil. Santral veya VoIP\'inize bağlanır.',
-            voice_use_title: 'Sesli yapay zeka kullanım senaryoları',
+            voice_use_title: 'Sesli yapay zekâ kullanım senaryoları',
             voice_use_desc: 'Aynı motor, farklı masalarda farklı iş üretir.',
             vuse_1_t: 'Müşteri hizmetleri',
             vuse_1_1: 'Sık sorulan sorular',
@@ -353,7 +454,7 @@
             ccap_5_p: 'Web, WhatsApp, Messenger — tek senaryo.',
             ccap_6_t: 'Ölçüm',
             ccap_6_p: 'Çözülen, aktarılan, kaçan sohbetler aynı panelde.',
-            chat_use_title: 'Sohbet yapay zekası kullanım senaryoları',
+            chat_use_title: 'Sohbet yapay zekâsı kullanım senaryoları',
             chat_use_desc: 'Yazılı kanal, sesin tamamlayıcısıdır — rakibi değil.',
             cuse_1_t: 'Destek',
             cuse_1_1: 'Sipariş ve iade soruları',
@@ -476,6 +577,133 @@
             footer_col_company: 'Şirket',
             footer_col_contact: 'İletişim',
 
+            meta_title_planlar: 'Planlar — Aspalo',
+            meta_desc_planlar: 'Basic, Growth ve Pro. Fiyat, çağrı hacminize göre şekillenir.',
+            meta_title_partnerlik: 'İş Ortaklığı — Aspalo',
+            meta_desc_partnerlik: 'Ajanslar, entegratörler ve danışmanlar için Aspalo iş ortaklığı programı. Müşterilerinize sesli ve sohbet yapay zekâsı taşıyın.',
+            meta_title_sss: 'Sıkça Sorulan Sorular — Aspalo',
+            meta_desc_sss: 'Aspalo hakkında en sık sorulan sorular.',
+
+            partner_eyebrow: 'İş Ortaklığı',
+            partner_title: 'Müşterilerinize yapay zekâ taşıyın. Birlikte büyüyün.',
+            partner_sub: 'Ajanslar, entegratörler ve sektör danışmanları Aspalo’yu zaten güvendikleri işletmelere götürebilir. Siz ilişkiyi getirirsiniz. Ürün, kurulum ve destek bizde kalır.',
+            partner_cta: 'Ortak olun',
+            partner_cta_sales: 'Satış ekibiyle görüşün',
+            partner_visual_kicker: 'Ortaklık akışı',
+            partner_visual_1t: 'Siz',
+            partner_visual_1p: 'Güven ve mevcut müşteri ilişkisi',
+            partner_visual_2t: 'Aspalo',
+            partner_visual_2p: 'Sesli ve sohbet yapay zekâsı, kurulum, panel',
+            partner_visual_3t: 'Müşteri',
+            partner_visual_3p: '7/24 karşılanan arama, kayıt, randevu',
+            partner_why_badge: 'Neden Aspalo',
+            partner_why_t: 'Ortaklığınıza gerçek bir ürün ekleyin.',
+            partner_why_p: 'Müşterileriniz cevapsız aramayı gelir kaybı olarak yaşar. Aspalo o boşluğu kapatır; siz de tanıdığınız hesaplara ölçülebilir bir çözüm götürürsünüz.',
+            partner_why_1t: 'Tekrarlayan gelir',
+            partner_why_1p: 'Kapalı anlaşmalarda pay. Müşteri kaldıkça katkı devam eder.',
+            partner_why_2t: 'Satabileceğiniz bir asistan',
+            partner_why_2p: 'Sesli yapay zekâ ve sohbet asistanı. Aynı senaryo, aynı kayıt, aynı panel.',
+            partner_why_3t: 'Kurulum desteği',
+            partner_why_3p: 'Hattı bağlarız, senaryoyu birlikte kurarız. Siz hesabı yönetirsiniz.',
+            partner_why_4t: 'Satış ve pazarlama seti',
+            partner_why_4p: 'Sektör anlatıları, hesaplayıcı, demo akışı. İlk toplantıya hazır gelin.',
+            partner_why_5t: 'Teknik eşlik',
+            partner_why_5p: 'CRM, santral ve senaryo sorularında doğrudan ürün ekibi.',
+            partner_why_6t: 'Sabit bir muhatap',
+            partner_why_6p: 'Pipeline, teklif ve teslimat için tek ortaklık yöneticisi.',
+            partner_who_badge: 'Kimler için',
+            partner_who_t: 'Program, nasıl değer ürettiğinize göre şekillenir.',
+            partner_who_p: 'Tek bir kalıp yok. İlişki getiren, kuran veya yeniden satan herkes aynı masada olabilir.',
+            partner_who_1t: 'Ajanslar',
+            partner_who_1p: 'Pazarlama veya müşteri deneyimi ajansları. Mevcut hesaplara sesli kanal ekler, retainer’ı derinleştirir.',
+            partner_who_2t: 'Sistem entegratörleri',
+            partner_who_2p: 'CRM, santral ve iş akışını bağlayan ekipler. Aspalo’yu teslimatın parçası yapar.',
+            partner_who_3t: 'Teknoloji ortakları',
+            partner_who_3p: 'Kendi ürününe ses veya sohbet katmanı eklemek isteyen yazılımlar.',
+            partner_who_4t: 'Danışmanlar',
+            partner_who_4p: 'Sektör operatörleri ve bağımsız danışmanlar. Doğru odaya girişi sağlar, anlaşmayı ilerletir.',
+            partner_who_5t: 'Yeniden satıcılar',
+            partner_who_5p: 'Bölgesel yazılım veya çağrı merkezi firmaları. Aspalo’yu kendi teklifine paketler.',
+            partner_who_6t: 'Çözüm ortakları',
+            partner_who_6p: 'Keşiften canlıya kadar uçtan uca götüren ekipler. Hizmet gelirini program katkısının üstüne koyar.',
+            partner_ben_badge: 'Kazanımlar',
+            partner_ben_t: 'Ortaklığın somut karşılığı.',
+            partner_ben_p: 'Eğitim, materyal ve destek; kapalı iş ve çalışan kurulum için vardır. Sertifika koleksiyonu için değil.',
+            partner_ben_1t: 'Gelir paylaşımı',
+            partner_ben_1p: 'Getirdiğiniz veya birlikte kapattığınız anlaşmalarda net pay.',
+            partner_ben_2t: 'Ortak pazarlama',
+            partner_ben_2p: 'Referans hikâyesi, ortak yayın ve etkinlik alanı.',
+            partner_ben_3t: 'Öncelikli destek',
+            partner_ben_3p: 'Kayıtlı fırsatlarda teslimat ve satış ekibine doğrudan hat.',
+            partner_ben_4t: 'Ürün eğitimi',
+            partner_ben_4p: 'Senaryo, fiyatlandırma ve sektör anlatısı. İlk demoya hazır olursunuz.',
+            partner_ben_5t: 'Erken erişim',
+            partner_ben_5p: 'Yeni kanal ve özellikler, müşterinizden önce sizin masanızda.',
+            partner_ben_6t: 'Teknik dokümantasyon',
+            partner_ben_6p: 'API, entegrasyon ve kurulum notları. Tahminle iş yapılmaz.',
+            partner_ben_7t: 'Satış materyali',
+            partner_ben_7p: 'Hesaplayıcı, sektör kartları, örnek görüşme akışları.',
+            partner_ben_8t: 'Sertifikasyon',
+            partner_ben_8p: 'Ürünü anlatabileceğinizi gösteren kısa, zorunlu bir yeterlilik.',
+            partner_how_badge: 'Süreç',
+            partner_how_t: 'Dört adım. Uzun bir labirent yok.',
+            partner_how_p: 'Başvurudan ilk ortak hesaba kadar yol kısa tutulur. Gereksiz katman eklemeyiz.',
+            partner_how_1t: 'Başvurun',
+            partner_how_1p: 'Kiminle çalıştığınızı ve nasıl değer ürettiğinizi yazın. 10 dakikayı geçmez.',
+            partner_how_2t: 'Ekiple tanışın',
+            partner_how_2p: '30 dakikada uyumu, dikeyi ve ticari modeli netleştiririz.',
+            partner_how_3t: 'Hazırlanın',
+            partner_how_3p: 'Ürün eğitimi, demo ortamı ve ilk hedef hesap listesi.',
+            partner_how_4t: 'Birlikte büyüyün',
+            partner_how_4p: 'Kayıtlı fırsat, ortak satış ve canlıya alınan ilk müşteri.',
+            partner_stat_badge: 'Ölçek',
+            partner_stat_t: 'Ortaklarınızın satacağı ürün, sahada duruyor.',
+            partner_stat_p: 'Aşağıdaki rakamlar ürüne aittir. Aktif ortak sayısı program olgunlaştıkça burada yayınlanacak.',
+            partner_stat_1l: 'Desteklenen dil',
+            partner_stat_2l: 'Hazır sektör senaryosu',
+            partner_stat_3l: 'Tipik kurulum',
+            partner_stat_3v: '48 saat',
+            partner_stat_4l: 'Aktif ortak',
+            partner_stat_4v: '—',
+            partner_stat_note: 'Yer tutucu. Program verisi eklenecek.',
+            partner_trust_badge: 'Güven',
+            partner_trust_t: 'Müşterilerinizin zaten tanıdığı bir zemin.',
+            partner_trust_p: 'Aspalo sağlık, turizm ve kurumsal hizmette canlı. Ortak, boş bir slayt satmaz; çalışan bir asistan götürür.',
+            partner_hl_1k: 'Dikey',
+            partner_hl_1t: 'Emlak ve otomotiv',
+            partner_hl_1p: 'İlk açan ofis portföyü alır. Ortaklar burayı randevu ve lead skoruna bağlar.',
+            partner_hl_2k: 'Dikey',
+            partner_hl_2t: 'Sağlık ve konaklama',
+            partner_hl_2p: 'Randevu ve rezervasyon kaçmaz. Ortak, doluluk konuşmasını somutlaştırır.',
+            partner_hl_3k: 'Teslimat',
+            partner_hl_3t: 'Mevcut hat, yeni santral yok',
+            partner_hl_3p: 'Entegratörler için sürtünme düşüktür. Kurulum ortalama 48 saatte canlıya alınır.',
+            partner_faq_badge: 'Sıkça sorulan sorular',
+            partner_faq_t: 'Başvurmadan önce netleşenler.',
+            partner_faq_q1: 'Nasıl başvururum?',
+            partner_faq_a1: 'Sayfadaki formu doldurun veya satış ekibiyle 30 dakikalık bir görüşme ayarlayın. Aynı gün içinde dönüş yaparız.',
+            partner_faq_q2: 'Katılımın bir ücreti var mı?',
+            partner_faq_a2: 'Programa giriş ücreti yoktur. Ticari model, kapalı iş ve seçtiğiniz ortaklık türüne göre görüşmede netleşir.',
+            partner_faq_q3: 'Teknik bilgi şart mı?',
+            partner_faq_a3: 'Hayır. Ajans ve danışman ortakları ilişkiyi getirir; kurulumu Aspalo üstlenir. Entegratörler isterse teslimata daha derin girer.',
+            partner_faq_q4: 'Hazırlık ne kadar sürer?',
+            partner_faq_a4: 'Ürün eğitimi ve demo hazırlığı genellikle bir hafta içinde biter. İlk müşteri kurulumu ortalama 48 saattir.',
+            partner_faq_q5: 'Hangi destek dahil?',
+            partner_faq_a5: 'Ortaklık yöneticisi, satış materyali, teknik eşlik ve kayıtlı fırsatlarda teslimat desteği. Karmaşık hesaplarda birlikte satarız.',
+            partner_apply_badge: 'Başvuru',
+            partner_apply_t: 'Nerede durduğumuzu söyleyin.',
+            partner_apply_p: 'Dikeyinizi, mevcut müşteri çevrenizi ve nasıl çalışmak istediğinizi yazmanız yeterli. Form bir taahhüt değildir.',
+            partner_form_type: 'Ortaklık türü',
+            partner_form_unsure: 'Henüz emin değilim',
+            partner_form_msg: 'Kısaca anlatın',
+            partner_form_msg_ph: 'Hangi dikeyde çalışıyorsunuz, kimi tanıtabilirsiniz?',
+            partner_form_consent: 'Göndererek Aspalo ortaklık ekibinin sizinle iletişime geçmesini kabul etmiş olursunuz.',
+            partner_form_submit: 'Başvuruyu gönder',
+            partner_form_ok: 'Başvurunuz alındı. En kısa sürede dönüş yapacağız.',
+            partner_form_subject: 'Yeni ortaklık başvurusu: ',
+            partner_final_t: 'Aspalo ile büyümeye hazır mısınız?',
+            partner_final_p: 'İlk görüşmede uyumu, modeli ve ilk hedef hesabı konuşuruz. Taahhüt yoktur.',
+
             weekdays_short: ['PAZ', 'PZT', 'SAL', 'ÇAR', 'PER', 'CUM', 'CMT'],
             weekdays_full: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
             months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
@@ -485,13 +713,38 @@
             meta_desc: 'Aspalo is an AI call assistant that answers your business calls 24/7. Calculate the yearly cost of the calls you\'re missing, by sector.',
 
             nav_calc: 'Calculator',
-            nav_sectors: 'Sectors',
+            nav_sectors: 'Industries',
             nav_mechanism: 'How It Works',
             nav_proof: 'References',
             nav_pricing: 'Pricing',
-            nav_faq: 'FAQ',
-            nav_cta: 'Schedule a Call',
-            menu_aria: 'Menu',
+            nav_faq: 'Frequently Asked Questions',
+            nav_cta: 'Request a Demo',
+            menu_aria: 'Open menu',
+            lang_tr: 'Türkçe',
+            lang_en: 'English',
+            lang_switch_aria: 'Language',
+            time_12: '12 hr',
+            time_24: '24 hr',
+            form_email: 'Email *',
+            form_name_ph: 'Your name',
+            form_email_ph: 'nina.v@example.com',
+            form_company_ph: 'Company name',
+            form_phone_ph: '+1 555 000 0000',
+            form_err_email: 'Enter a valid email address.',
+            form_err_phone: 'Enter a valid phone number.',
+            alt_dashboard: 'Aspalo dashboard',
+            alt_logo: 'Aspalo',
+            ada_first_message: 'Hello, I am ADA. How can I help you?',
+            ada_system_instruction: 'Always respond in natural, professional English. Do not switch to Turkish.',
+            ada_listening: 'Listening',
+            ada_thinking: 'Thinking',
+            ada_speaking: 'Speaking',
+            ada_mic_needed: 'Microphone permission required',
+            ada_end: 'End Conversation',
+            ada_retry: 'Try Again',
+            ada_connect_err: 'Unable to connect',
+            ada_lang_switch_end: 'The conversation ended because the language changed. You can start again in the new language.',
+            ada_status_aria: 'ADA conversation status',
 
             hero_eyebrow: 'AI Call Assistant',
             hero_title_html: 'Every Missed Call <span class="ink-accent">Has a Cost.</span>',
@@ -557,7 +810,28 @@
 
             pricing_badge: 'Pricing',
             pricing_title: 'Three Plans, One Principle: Custom to You',
-            pricing_desc: 'Price is shaped by your monthly call volume and needs. The table below shows what\'s included — we settle the number on a call.',
+            pricing_desc: 'Price is shaped by your monthly call volume and needs. We settle the number on a call.',
+            pricing_compare: 'Compare plans',
+            plan_basic_mins: '1,000 conversation minutes included',
+            plan_growth_mins: '2,000 conversation minutes included',
+            plan_pro_mins: 'Minute package tailored to your needs',
+            plan_growth_plus: 'Everything in Basic, plus:',
+            plan_cta_contact: 'Get in touch',
+            plan_cta_sales: 'Talk to sales',
+            plan_f_inbound: 'AI answers inbound calls',
+            plan_f_record: 'Every call is recorded and transcribed',
+            plan_f_appt: 'Appointment booking and management',
+            plan_f_dash: 'Real-time performance dashboard',
+            plan_f_outbound: 'Outbound calls too (reminders, follow-up)',
+            plan_f_priority: 'Calls are automatically prioritized',
+            plan_f_crm: 'Integrates with your existing CRM',
+            plan_f_wa: 'Automatic WhatsApp follow-up messages',
+            plan_f_reports: 'Detailed, segmented performance reports',
+            plan_f_custom_mins: 'Custom minute packages',
+            plan_f_multi: 'Route multiple assistants to different tasks',
+            plan_f_flow: 'Custom flow and scenario design',
+            plan_f_api: 'Connect your systems via API',
+            plan_f_support: 'Priority private support line',
             pricing_col_basic: 'Basic',
             pricing_col_growth: 'Growth',
             pricing_col_pro: 'Pro',
@@ -570,7 +844,7 @@
             pricing_row_inbound: 'AI answers inbound calls',
             pricing_row_recording: 'Recording & transcription',
             pricing_row_appointment: 'Appointment booking & management',
-            pricing_row_dashboard: 'Performance dashboard',
+            pricing_row_dashboard: 'Dashboard',
             pricing_row_outbound: 'Outbound calls (reminders, follow-up)',
             pricing_row_priority: 'Automatic call prioritization',
             pricing_row_crm: 'CRM integration',
@@ -584,9 +858,9 @@
             val_included_pro: 'Custom',
             val_dashboard_basic: 'Real-time',
             val_dashboard_growth: 'Detailed, segmented',
-            pricing_cta: 'Talk to us',
+            pricing_cta: 'Request a Demo',
 
-            faq_title: 'Questions You Might Have',
+            faq_title: 'Frequently Asked Questions',
             faq_desc: "We've gathered the most common questions about Aspalo. Can't find what you're looking for? Reach out to us directly.",
             faq_q1: 'What exactly is Aspalo and how does it work?',
             faq_a1: "Aspalo is an AI call assistant that connects to your business's phone line. It answers inbound calls, responds to questions, books appointments, and makes outbound calls when needed — just like a trained employee, but available around the clock.",
@@ -603,12 +877,12 @@
             faq_q7: 'Does it understand Turkish accents and different speaking styles?',
             faq_a7: 'Yes, Aspalo is built specifically for Turkish and is designed to understand a range of accents and speech patterns.',
             faq_q8: 'How do I schedule a call, and am I committing to anything?',
-            faq_a8: 'Just click "Schedule a Call" and pick a time that works for you. It comes with no commitment — we\'ll walk through how Aspalo would work for your business together.',
+            faq_a8: 'Click Request a Demo and pick a time that works for you. There is no commitment — we will walk through how Aspalo would work for your business.',
 
             final_cta_badge: "What's Next",
             final_cta_title: "You've Seen the Number. Let's Talk.",
             final_cta_sub: 'In a 30-minute call, we verify the calculator\'s number against your own data and map out how Aspalo connects to your line.',
-            final_cta_btn: 'Schedule a Call',
+            final_cta_btn: 'Request a Demo',
 
             footer_email_label: 'Email',
             footer_phone_label: 'Phone',
@@ -633,61 +907,64 @@
             form_confirm: 'Confirm',
             form_sending: 'Sending...',
             form_success: '✓ Request received',
-            form_err_fields: 'Please fill in name and email.',
+            form_err_fields: 'Please fill in your name and email.',
             form_err_send: 'Could not send. Please try again or contact us directly.',
-            form_subject: 'New Call Request: ',
+            form_subject: 'New demo request: ',
 
-            vapi_idle_title: 'Talk Now',
-            vapi_idle_sub: 'Talk with Aspalo',
+            vapi_idle_title: 'Talk to ADA',
+            vapi_idle_sub: 'AI voice assistant',
             vapi_load_title: 'Connecting...',
             vapi_load_sub: 'Please wait',
-            vapi_active_title: 'Call Active',
+            vapi_active_title: 'Conversation active',
             vapi_active_sub: 'Click to end',
-            vapi_mic_err: 'Microphone access denied. Please allow microphone for this site and try again.',
+            vapi_mic_err: 'Microphone permission required. Allow microphone access for this site and try again.',
 
-            live_demo_btn: 'Hear it live',
-            live_demo_eyebrow: 'Live AI Demo',
-            live_demo_title: 'Hear how Aspalo answers a call',
-            live_demo_desc: 'Allow microphone access, press "Start the call" — Aspalo\'s AI assistant will talk with you like a real customer would.',
-            live_demo_start: 'Start the call',
-            live_demo_mic_note: 'This is a simulation; no real conversation is recorded.',
+            live_demo_btn: 'Talk to ADA',
+            live_demo_eyebrow: 'Live AI demo',
+            live_demo_title: 'Hear how ADA answers a call',
+            live_demo_desc: 'Allow microphone access, then start the conversation. ADA will speak in the language selected on this site.',
+            live_demo_start: 'Talk to ADA',
+            live_demo_mic_note: 'This is a demo. A real customer call is not recorded.',
             live_demo_connecting: 'Connecting...',
-            live_demo_live: 'Live Call',
-            live_demo_end: 'End call',
-            live_demo_captured_title: 'Captured info',
+            live_demo_live: 'Live conversation',
+            live_demo_end: 'End Conversation',
+            live_demo_captured_title: 'Captured information',
             live_demo_captured_name: 'Name',
-            live_demo_captured_sector: 'Sector',
+            live_demo_captured_sector: 'Industry',
             live_demo_ended_eyebrow: 'Demo complete',
-            live_demo_ended_title: 'The same can run on your real line',
-            live_demo_ended_desc: 'Let\'s set up a 30-minute call to build the experience you just heard, tailored to your business.',
-            live_demo_ended_cta: 'Book a call',
-            live_demo_restart: 'Hear it again',
+            live_demo_ended_title: 'The same experience can run on your line',
+            live_demo_ended_desc: 'Let us set up a 30-minute call to tailor what you just heard to your business.',
+            live_demo_ended_cta: 'Request a Demo',
+            live_demo_restart: 'Try Again',
 
             nav_solutions: 'Solutions',
             nav_products: 'Products',
             nav_platform: 'Platform',
             nav_about: 'About',
-            nav_voice: 'Voice',
-            nav_chat: 'Chat',
+            nav_plans: 'Plans',
+            nav_partners: 'Partnerships',
+            nav_sss: 'Frequently Asked Questions',
+            nav_voice: 'Voice AI',
+            nav_chat: 'AI Chat Assistant',
             nav_data: 'Data control',
-            nav_voice_desc: '24/7 voice call assistant',
+            nav_voice_desc: '24/7 AI voice assistant',
             nav_chat_desc: 'Web and messaging assistant',
-            nav_sectors_desc: 'Sector playbooks and cost',
+            nav_sectors_desc: 'Industry playbooks and cost',
             nav_data_desc: 'KVKK, data stays in Turkey',
 
             meta_title_home: 'Aspalo — Enterprise Voice and Chat AI',
             meta_desc_home: 'Aspalo is an AI assistant that answers your business calls and chats 24/7. Data stays in Turkey.',
-            meta_title_ses: 'Aspalo Voice — 24/7 AI Call Assistant',
-            meta_desc_ses: 'A voice AI that answers on the first ring, books appointments, and writes to your CRM.',
-            meta_title_sohbet: 'Aspalo Chat — Web and Messaging Assistant',
-            meta_desc_sohbet: 'Chat AI that answers 24/7 on web, WhatsApp, and messaging channels.',
-            meta_title_sektorler: 'Sectors — Cost of Missed Calls | Aspalo',
+            meta_title_ses: 'Voice AI — Aspalo',
+            meta_desc_ses: 'An AI voice assistant that answers on the first ring, books appointments, and writes to your CRM.',
+            meta_title_sohbet: 'AI Chat Assistant — Aspalo',
+            meta_desc_sohbet: 'A chat assistant that answers 24/7 on web, WhatsApp, and messaging channels.',
+            meta_title_sektorler: 'Industries — Cost of Missed Calls | Aspalo',
             meta_desc_sektorler: 'Calculate the yearly cost of missed calls by sector. Real estate, healthcare, hotels, automotive, and more.',
 
             home_eyebrow: 'Enterprise voice and chat AI',
             home_title_html: 'When your customer calls, <em>Aspalo picks up.</em>',
             home_sub: 'Answers on the first ring, books the appointment, summarizes the call, and writes to your CRM. No new line. Data stays in Turkey.',
-            home_cta: 'Schedule a call',
+            home_cta: 'Request a Demo',
             home_m1: '24/7',
             home_m1_l: 'Uninterrupted answer',
             home_m2: '48 hours',
@@ -704,6 +981,42 @@
             hero_st_booked: 'Booked',
             hero_st_crm: 'CRM Updated',
             hero_st_done: 'Done',
+            story_open_line: 'One call. One sentence. Appointment, CRM, SMS — in the same breath.',
+            story_industries_aria: 'Choose an industry',
+            story_ind_health: 'Healthcare',
+            story_ind_hotel: 'Hotel',
+            story_ind_estate: 'Real estate',
+            story_ind_auto: 'Automotive',
+            story_ind_logi: 'Logistics',
+            story_ind_rest: 'Restaurant',
+            story_ind_support: 'Support',
+            story_phone_in: 'Incoming call',
+            story_phone_accept: 'ADA is answering',
+            story_extract_eyebrow: 'Understanding',
+            story_extract_title: 'The sentence becomes a record.',
+            story_think_eyebrow: 'Decision',
+            story_think_title: 'ADA thinks. You are not on hold.',
+            story_flow_eyebrow: 'Journey',
+            story_flow_title: 'The data moves through the system.',
+            story_view_aria: 'View',
+            story_view_biz: 'Business view',
+            story_view_dev: 'Developer',
+            story_int_eyebrow: 'Connections',
+            story_int_title: 'It lands in the tools you already use.',
+            story_int_got: 'Received',
+            story_dash_eyebrow: 'Dashboard',
+            story_dash_title: 'The call ended. The numbers moved.',
+            story_coda_note: 'Data stays in Turkey. It connects to your existing line. No new number required.',
+            hero_unmute: 'Unmute voice',
+            hero_mute: 'Mute voice',
+            hero_replay: 'Replay conversation',
+            home_ind_health: 'Appointments, reminders, on-call.',
+            home_ind_hotel: 'Reservations, rooms, late check-in.',
+            home_ind_estate: 'Listings, viewings, first to pick up.',
+            home_ind_auto: 'Service, courtesy car, work orders.',
+            home_ind_logi: 'Tracking, delivery windows, drivers.',
+            home_ind_support: 'Orders, returns, shipment status.',
+            home_ind_calc: 'Calculate yearly loss for your industry →',
             customers_label: 'Organizations that trust us',
 
             compare_badge: 'Human or Aspalo?',
@@ -745,6 +1058,10 @@
             ch_chat_t: 'Chat',
             ch_chat_p: 'Web, WhatsApp, and messaging. The same assistant, in writing.',
             ch_more: 'See the product →',
+
+            langs_title: 'Speak your customers’ language',
+            langs_desc: 'Talk with customers worldwide in their native languages. No translation, no lag — just natural conversation.',
+            langs_caption: '45+ languages supported',
 
             plat_badge: 'Platform',
             plat_title: 'From the call to the record, one flow.',
@@ -844,7 +1161,7 @@
             cuse_4_2: 'Standard replies',
             cuse_4_3: 'Team playbook',
 
-            sec_page_badge: 'Sectors',
+            sec_page_badge: 'Industries',
             sec_calc_title: 'Annual loss, by your sector',
             sec_calc_desc: 'Two sliders, one sector. The number is a calculation from your inputs — not a guess.',
             sec_dash_title: 'The same conversation, in your panel.',
@@ -948,6 +1265,133 @@
             footer_col_company: 'Company',
             footer_col_contact: 'Contact',
 
+            meta_title_planlar: 'Plans — Aspalo',
+            meta_desc_planlar: 'Basic, Growth, and Pro. Price is shaped by your call volume.',
+            meta_title_partnerlik: 'Partnerships — Aspalo',
+            meta_desc_partnerlik: 'A partnership program for agencies, integrators, and advisors. Take Aspalo voice and chat AI to the businesses you already serve.',
+            meta_title_sss: 'Frequently Asked Questions — Aspalo',
+            meta_desc_sss: 'The most common questions about Aspalo.',
+
+            partner_eyebrow: 'Partnerships',
+            partner_title: 'Bring AI to your clients. Grow with us.',
+            partner_sub: 'Agencies, integrators, and industry advisors can take Aspalo to businesses that already trust them. You bring the relationship. We bring the product, the setup, and the support.',
+            partner_cta: 'Become a Partner',
+            partner_cta_sales: 'Talk to Sales',
+            partner_visual_kicker: 'How the partnership works',
+            partner_visual_1t: 'You',
+            partner_visual_1p: 'Trust and an existing client relationship',
+            partner_visual_2t: 'Aspalo',
+            partner_visual_2p: 'Voice and chat AI, setup, dashboard',
+            partner_visual_3t: 'The customer',
+            partner_visual_3p: '24/7 answered calls, recordings, appointments',
+            partner_why_badge: 'Why Aspalo',
+            partner_why_t: 'Add a real product to your practice.',
+            partner_why_p: 'Your clients feel missed calls as lost revenue. Aspalo closes that gap, and you take a measurable offer into accounts you already know.',
+            partner_why_1t: 'Recurring revenue',
+            partner_why_1p: 'A share of closed deals. The contribution continues while the customer stays.',
+            partner_why_2t: 'An assistant you can sell',
+            partner_why_2p: 'Voice AI and a chat assistant. Same script, same record, same dashboard.',
+            partner_why_3t: 'Onboarding support',
+            partner_why_3p: 'We connect the line and build the script with you. You own the account.',
+            partner_why_4t: 'Sales and marketing kit',
+            partner_why_4p: 'Industry stories, the calculator, a demo path. Walk into the first meeting ready.',
+            partner_why_5t: 'Technical backup',
+            partner_why_5p: 'Direct product help on CRM, PBX, and script questions.',
+            partner_why_6t: 'One named contact',
+            partner_why_6p: 'A single partnership manager for pipeline, quotes, and delivery.',
+            partner_who_badge: 'Who it is for',
+            partner_who_t: 'The program follows how you create value.',
+            partner_who_p: 'There is no single mold. People who introduce, implement, or resell can sit at the same table.',
+            partner_who_1t: 'Agencies',
+            partner_who_1p: 'Marketing or CX agencies. Add a voice channel to retainers you already run.',
+            partner_who_2t: 'System integrators',
+            partner_who_2p: 'Teams that connect CRM, PBX, and workflows. Make Aspalo part of delivery.',
+            partner_who_3t: 'Technology partners',
+            partner_who_3p: 'Software products that want a voice or chat layer on top of what they already ship.',
+            partner_who_4t: 'Consultants',
+            partner_who_4p: 'Operators and independents who can open the right room and move a deal forward.',
+            partner_who_5t: 'Resellers',
+            partner_who_5p: 'Regional software or contact-center firms that package Aspalo into their own offer.',
+            partner_who_6t: 'Solution partners',
+            partner_who_6p: 'Teams that run discovery through go-live. Keep services revenue on top of program incentives.',
+            partner_ben_badge: 'What you get',
+            partner_ben_t: 'The tangible side of the partnership.',
+            partner_ben_p: 'Training, materials, and support exist to close work and ship deployments — not to collect badges.',
+            partner_ben_1t: 'Revenue share',
+            partner_ben_1p: 'A clear share on deals you introduce or close with us.',
+            partner_ben_2t: 'Co-marketing',
+            partner_ben_2p: 'Reference stories, joint posts, and room at events.',
+            partner_ben_3t: 'Priority support',
+            partner_ben_3p: 'A direct line to sales and delivery on registered opportunities.',
+            partner_ben_4t: 'Product training',
+            partner_ben_4p: 'Scripts, pricing, and industry narrative. You leave ready to demo.',
+            partner_ben_5t: 'Early access',
+            partner_ben_5p: 'New channels and features reach your desk before they reach your client.',
+            partner_ben_6t: 'Technical documentation',
+            partner_ben_6p: 'API, integration, and setup notes. No guesswork.',
+            partner_ben_7t: 'Sales materials',
+            partner_ben_7p: 'The calculator, industry cards, and sample call flows.',
+            partner_ben_8t: 'Certification',
+            partner_ben_8p: 'A short, required bar that shows you can explain the product.',
+            partner_how_badge: 'How it works',
+            partner_how_t: 'Four steps. No maze.',
+            partner_how_p: 'The path from apply to the first shared account stays short. We do not add ceremony.',
+            partner_how_1t: 'Apply',
+            partner_how_1p: 'Tell us who you work with and how you create value. It takes about ten minutes.',
+            partner_how_2t: 'Meet the team',
+            partner_how_2p: 'In 30 minutes we settle fit, vertical, and the commercial model.',
+            partner_how_3t: 'Get ready',
+            partner_how_3p: 'Product training, a demo environment, and a first target-account list.',
+            partner_how_4t: 'Grow together',
+            partner_how_4p: 'Registered opportunity, joint selling, and the first customer live.',
+            partner_stat_badge: 'Scale',
+            partner_stat_t: 'The product you will sell is already in the field.',
+            partner_stat_p: 'These figures belong to the product. Active partner count will be published here as the program matures.',
+            partner_stat_1l: 'Languages supported',
+            partner_stat_2l: 'Industry playbooks ready',
+            partner_stat_3l: 'Typical setup',
+            partner_stat_3v: '48 hours',
+            partner_stat_4l: 'Active partners',
+            partner_stat_4v: '—',
+            partner_stat_note: 'Placeholder. Program data will be added.',
+            partner_trust_badge: 'Trust',
+            partner_trust_t: 'Ground your clients already recognize.',
+            partner_trust_p: 'Aspalo is live in healthcare, travel, and corporate services. Partners do not sell a slide. They take a working assistant.',
+            partner_hl_1k: 'Vertical',
+            partner_hl_1t: 'Real estate and automotive',
+            partner_hl_1p: 'The office that picks up first wins the listing. Partners tie this to appointments and lead score.',
+            partner_hl_2k: 'Vertical',
+            partner_hl_2t: 'Healthcare and hospitality',
+            partner_hl_2p: 'Appointments and reservations stop leaking. Partners make occupancy concrete.',
+            partner_hl_3k: 'Delivery',
+            partner_hl_3t: 'Existing line, no new PBX',
+            partner_hl_3p: 'Low friction for integrators. Typical go-live is 48 hours.',
+            partner_faq_badge: 'Frequently asked questions',
+            partner_faq_t: 'What is clear before you apply.',
+            partner_faq_q1: 'How do I apply?',
+            partner_faq_a1: 'Fill in the form on this page or book a 30-minute call with sales. We reply the same day.',
+            partner_faq_q2: 'Is there a fee to join?',
+            partner_faq_a2: 'There is no entry fee. Commercial terms are set on the call, based on closed work and the track you choose.',
+            partner_faq_q3: 'Do I need technical knowledge?',
+            partner_faq_a3: 'No. Agency and consultant partners bring the relationship; Aspalo handles setup. Integrators can go deeper on delivery if they want.',
+            partner_faq_q4: 'How long does onboarding take?',
+            partner_faq_a4: 'Product training and demo prep usually finish within a week. The first customer setup typically takes 48 hours.',
+            partner_faq_q5: 'What support is included?',
+            partner_faq_a5: 'A partnership manager, sales materials, technical backup, and delivery support on registered deals. On complex accounts we sell together.',
+            partner_apply_badge: 'Apply',
+            partner_apply_t: 'Tell us where you stand.',
+            partner_apply_p: 'Your vertical, the clients you can introduce, and how you want to work. The form is not a commitment.',
+            partner_form_type: 'Partnership type',
+            partner_form_unsure: 'Not sure yet',
+            partner_form_msg: 'A short note',
+            partner_form_msg_ph: 'Which verticals do you work in, and who can you introduce?',
+            partner_form_consent: 'By submitting, you agree to be contacted by the Aspalo partnership team.',
+            partner_form_submit: 'Submit application',
+            partner_form_ok: 'We received your application. We will get back to you shortly.',
+            partner_form_subject: 'New partnership application: ',
+            partner_final_t: 'Ready to grow with Aspalo?',
+            partner_final_p: 'The first conversation covers fit, the model, and a first target account. There is no commitment.',
+
             weekdays_short: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
             weekdays_full: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
             months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -955,13 +1399,74 @@
     };
 
     var currentLang = 'tr';
+    var DEV = /localhost|127\.0\.0\.1/.test(location.hostname);
+    var missingLogged = {};
+
+    function has(lang, key) {
+        return !!(T[lang] && T[lang][key] != null);
+    }
 
     function t(key) {
         var pack = T[currentLang] || T.tr;
-        return pack[key] != null ? pack[key] : (T.tr[key] || key);
+        if (pack[key] != null) return pack[key];
+        if (DEV && !missingLogged[currentLang + ':' + key]) {
+            missingLogged[currentLang + ':' + key] = true;
+            console.warn('[i18n] missing', currentLang, key);
+        }
+        if (T.tr[key] != null) return T.tr[key];
+        return '';
     }
 
     function getLang() { return currentLang; }
+
+    function detectInitialLang() {
+        try {
+            var saved = localStorage.getItem(STORAGE_KEY);
+            if (saved === 'en' || saved === 'tr') return saved;
+        } catch (e) {}
+        var list = (navigator.languages && navigator.languages.length)
+            ? navigator.languages
+            : [navigator.language || 'tr'];
+        for (var i = 0; i < list.length; i++) {
+            var code = String(list[i] || '').toLowerCase();
+            if (code.indexOf('en') === 0) return 'en';
+            if (code.indexOf('tr') === 0) return 'tr';
+        }
+        return 'tr';
+    }
+
+    function canonicalUrl() {
+        var link = document.querySelector('link[rel="canonical"]');
+        if (link && link.href) return link.href;
+        return 'https://aspalo.com' + (location.pathname || '/');
+    }
+
+    function upsertMeta(attr, name, content) {
+        if (!content) return;
+        var sel = attr === 'property' ? 'meta[property="' + name + '"]' : 'meta[name="' + name + '"]';
+        var el = document.querySelector(sel);
+        if (!el) {
+            el = document.createElement('meta');
+            el.setAttribute(attr, name);
+            document.head.appendChild(el);
+        }
+        el.setAttribute('content', content);
+    }
+
+    function upsertHreflang() {
+        var url = canonicalUrl();
+        ['tr', 'en', 'x-default'].forEach(function (code) {
+            var hrefLang = code === 'x-default' ? 'x-default' : code;
+            var el = document.querySelector('link[rel="alternate"][hreflang="' + hrefLang + '"]');
+            if (!el) {
+                el = document.createElement('link');
+                el.setAttribute('rel', 'alternate');
+                el.setAttribute('hreflang', hrefLang);
+                document.head.appendChild(el);
+            }
+            el.setAttribute('href', url);
+        });
+    }
 
     function applyLanguage(lang) {
         if (!T[lang]) lang = 'tr';
@@ -972,13 +1477,15 @@
         var page = document.body ? document.body.getAttribute('data-i18n-page') : null;
         var titleKey = page ? 'meta_title_' + page : 'meta_title';
         var descKey = page ? 'meta_desc_' + page : 'meta_desc';
-        var title = t(titleKey);
-        document.title = (title && title !== titleKey) ? title : t('meta_title');
+        var title = has(lang, titleKey) || has('tr', titleKey) ? t(titleKey) : t('meta_title');
+        var desc = has(lang, descKey) || has('tr', descKey) ? t(descKey) : t('meta_desc');
+        if (title) document.title = title;
         var metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            var desc = t(descKey);
-            metaDesc.setAttribute('content', (desc && desc !== descKey) ? desc : t('meta_desc'));
-        }
+        if (metaDesc && desc) metaDesc.setAttribute('content', desc);
+        upsertMeta('property', 'og:title', title);
+        upsertMeta('property', 'og:description', desc);
+        upsertMeta('property', 'og:locale', lang === 'en' ? 'en_US' : 'tr_TR');
+        upsertHreflang();
 
         document.querySelectorAll('[data-i18n]').forEach(function (el) {
             el.textContent = t(el.getAttribute('data-i18n'));
@@ -992,9 +1499,14 @@
         document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
             el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
         });
+        document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+            el.setAttribute('alt', t(el.getAttribute('data-i18n-alt')));
+        });
 
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
-            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            var on = btn.getAttribute('data-lang') === lang;
+            btn.classList.toggle('active', on);
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
 
         if (typeof global.onAspaloLanguageChange === 'function') {
@@ -1003,9 +1515,7 @@
     }
 
     function initLanguageSwitcher() {
-        var saved = null;
-        try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-        applyLanguage(saved === 'en' ? 'en' : 'tr');
+        applyLanguage(detectInitialLang());
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 applyLanguage(btn.getAttribute('data-lang'));
@@ -1014,10 +1524,15 @@
     }
 
     global.AspaloI18n = {
-        t: t, getLang: getLang, applyLanguage: applyLanguage,
+        t: t, getLang: getLang, applyLanguage: applyLanguage, has: has,
         getMonths: function () { return t('months'); },
         getWeekdaysShort: function () { return t('weekdays_short'); },
-        getWeekdaysFull: function () { return t('weekdays_full'); }
+        getWeekdaysFull: function () { return t('weekdays_full'); },
+        assistantLocale: function () {
+            return currentLang === 'en'
+                ? { languageCode: 'en-US', stt: 'en', responseLanguage: 'English', transcriptLocale: 'en-US' }
+                : { languageCode: 'tr-TR', stt: 'tr', responseLanguage: 'Turkish', transcriptLocale: 'tr-TR' };
+        }
     };
 
     if (document.readyState === 'loading') {

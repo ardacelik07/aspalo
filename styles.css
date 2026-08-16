@@ -145,11 +145,11 @@ input:focus-visible,
 .lang-switch { display: flex; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; }
 .lang-btn {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 600;
     background: transparent;
     border: none;
-    padding: 6px 11px;
+    padding: 6px 9px;
     cursor: pointer;
     color: var(--ink-soft);
 }
@@ -159,7 +159,7 @@ input:focus-visible,
 .mobile-menu-btn span { width: 22px; height: 2px; background: var(--ink); }
 .mobile-nav { display: none; }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .nav-links { display: none; }
     .mobile-menu-btn { display: flex; }
     .mobile-nav {

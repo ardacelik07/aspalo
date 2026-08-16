@@ -288,8 +288,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 var email = (emailEl && emailEl.value) ? emailEl.value.trim() : '';
                 var company = (companyEl && companyEl.value) ? companyEl.value.trim() : '';
                 var phone = (phoneEl && phoneEl.value) ? phoneEl.value.trim() : '';
+                var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
                 if (!name || !email) {
                     alert(i18n('form_err_fields'));
+                    return;
+                }
+                if (!emailOk) {
+                    alert(i18n('form_err_email'));
+                    return;
+                }
+                if (phone && phone.replace(/\D/g, '').length < 7) {
+                    alert(i18n('form_err_phone'));
                     return;
                 }
                 var dateStr = '';
