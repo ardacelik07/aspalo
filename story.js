@@ -543,18 +543,14 @@
                 window.AspaloHero.unlock();
             }
             if (stage) stage.classList.add('is-live');
-            function startTalk() {
+            if (window.AspaloHero && typeof window.AspaloHero.pickup === 'function') {
+                window.AspaloHero.pickup();
+            }
+            setTimeout(function () {
                 if (window.AspaloHero && typeof window.AspaloHero.play === 'function') {
                     window.AspaloHero.play(current);
                 }
-            }
-            if (window.AspaloHero && typeof window.AspaloHero.pickup === 'function') {
-                window.AspaloHero.pickup(function () {
-                    setTimeout(startTalk, 220);
-                });
-            } else {
-                startTalk();
-            }
+            }, 180);
         }
 
         function armPhone() {
@@ -574,10 +570,8 @@
                 if (window.AspaloHero && typeof window.AspaloHero.ring === 'function') {
                     window.AspaloHero.ring();
                 }
-                if (acceptTimer) clearTimeout(acceptTimer);
-                acceptTimer = setTimeout(acceptCall, 2600);
             }, { capture: true, once: true });
-            acceptTimer = setTimeout(acceptCall, 8000);
+            acceptTimer = setTimeout(acceptCall, 2400);
         }
 
         function setIndustry(id) {

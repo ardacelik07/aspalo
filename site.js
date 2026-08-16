@@ -360,6 +360,7 @@
         var audioCtx = null;
         var ringTimer = null;
         var ringOscs = [];
+        var pickupBuf = null;
         var muteBtn = stage.querySelector('[data-hero-mute]');
         var replayBtn = stage.querySelector('[data-hero-replay]');
 
@@ -403,10 +404,10 @@
 
         function playMp3Fx(name, done, loop) {
             stopFx();
-            var a = new Audio('/audio/call/' + name + '.mp3');
+            var a = new Audio('/audio/call/' + name + '.mp3' + (name === 'pickup' ? '?v=3' : ''));
             fxAudio = a;
             a.loop = !!loop;
-            a.volume = name === 'ring' ? 0.85 : 0.95;
+            a.volume = name === 'ring' ? 0.85 : 0.62;
             var finished = false;
             function finish() {
                 if (finished) return;
@@ -442,15 +443,22 @@
 
         function whenUnlocked(fn) {
             var ctx = getAudioCtx();
+            var settled = false;
+            function go(next) {
+                if (settled) return;
+                settled = true;
+                fn(next || null);
+            }
             if (!ctx) {
-                fn(null);
+                go(null);
                 return;
             }
             if (ctx.state === 'running') {
-                fn(ctx);
+                go(ctx);
                 return;
             }
-            ctx.resume().then(function () { fn(getAudioCtx()); }).catch(function () { fn(null); });
+            ctx.resume().then(function () { go(getAudioCtx()); }).catch(function () { go(null); });
+            setTimeout(function () { go(ctx); }, 180);
         }
 
         function startRing() {
@@ -472,43 +480,47 @@
             });
         }
 
+        function preloadPickup(ctx) {
+            if (pickupBuf || !ctx) return;
+            fetch('/audio/call/pickup.mp3?v=3').then(function (res) {
+                if (!res.ok) throw new Error('pickup');
+                return res.arrayBuffer();
+            }).then(function (raw) {
+                return ctx.decodeAudioData(raw);
+            }).then(function (buf) {
+                pickupBuf = buf;
+            }).catch(function () {});
+        }
+
         function playPickup(done) {
             ringing = false;
+            var finished = false;
+            function finish() {
+                if (finished) return;
+                finished = true;
+                if (done) done();
+            }
+            setTimeout(finish, 420);
             whenUnlocked(function (ctx) {
                 stopFx();
-                if (ctx && ctx.state === 'running') {
-                    var now = ctx.currentTime;
-                    var osc = ctx.createOscillator();
-                    var noise = ctx.createOscillator();
+                if (ctx) preloadPickup(ctx);
+                if (ctx && ctx.state === 'running' && pickupBuf) {
+                    var src = ctx.createBufferSource();
                     var gain = ctx.createGain();
-                    var nGain = ctx.createGain();
-                    osc.type = 'square';
-                    osc.frequency.setValueAtTime(220, now);
-                    osc.frequency.exponentialRampToValueAtTime(70, now + 0.16);
-                    gain.gain.setValueAtTime(0.0001, now);
-                    gain.gain.exponentialRampToValueAtTime(0.32, now + 0.008);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-                    osc.connect(gain);
+                    src.buffer = pickupBuf;
+                    gain.gain.value = 0.58;
+                    src.connect(gain);
                     gain.connect(ctx.destination);
-                    noise.type = 'sawtooth';
-                    noise.frequency.value = 90;
-                    nGain.gain.setValueAtTime(0.14, now);
-                    nGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
-                    noise.connect(nGain);
-                    nGain.connect(ctx.destination);
-                    osc.start(now);
-                    osc.stop(now + 0.2);
-                    noise.start(now);
-                    noise.stop(now + 0.06);
-                    setTimeout(function () { if (done) done(); }, 220);
+                    src.start();
                     return;
                 }
-                playMp3Fx('pickup', done, false);
+                playMp3Fx('pickup', null, false);
             });
         }
 
         function unlockHeroAudio() {
             whenUnlocked(function (ctx) {
+                preloadPickup(ctx);
                 if (ringing && ctx && !ringTimer) startRing();
             });
         }
@@ -1010,16 +1022,14 @@
             if (opts.intro) {
                 startRing();
                 schedule(function () {
-                    playPickup(function () {
-                        schedule(beginTalk, 280);
-                    });
-                }, 2800);
+                    playPickup();
+                    schedule(beginTalk, 260);
+                }, 2200);
                 return;
             }
             if (opts.pickup) {
-                playPickup(function () {
-                    schedule(beginTalk, 240);
-                });
+                playPickup();
+                schedule(beginTalk, 200);
                 return;
             }
             beginTalk();
@@ -1066,6 +1076,7 @@
         var storyMode = !!document.querySelector('[data-story]');
         var startId = stage.getAttribute('data-hero-start');
         if (!storyMode && !startId) restart(undefined, { intro: true });
+        preloadPickup(getAudioCtx());
         window.AspaloHero = {
             play: restart,
             restart: restart,
