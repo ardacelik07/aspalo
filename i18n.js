@@ -27,6 +27,8 @@
 
             calc_sector_label: 'Sektörünüzü seçin',
             calc_result_label: 'Yıllık kayıp',
+            calc_daily_loss: 'Günlük kayıp',
+            calc_monthly_loss: 'Aylık kayıp',
             calc_cta: 'Bu rakamı birlikte doğrulayalım',
             calc_disclaimer: 'Türkiye piyasa verilerine dayalı sektör ortalamaları kullanılmıştır. Kendi rakamlarınızla değiştirebilirsiniz.',
 
@@ -79,6 +81,7 @@
             proof_badge: 'Referanslar',
             proof_title: 'Bize Güvenen Kurumlar',
             proof_desc: 'Sağlık, turizm ve kurumsal hizmet sektörlerinden işletmeler Aspalo ile çalışıyor.',
+            proof_aria: 'Referans şirketler',
 
             pricing_badge: 'Fiyatlandırma',
             pricing_title: 'Üç Paket, Tek Prensip: Size Özel',
@@ -211,6 +214,8 @@
 
             calc_sector_label: 'Choose your sector',
             calc_result_label: 'Annual loss',
+            calc_daily_loss: 'Daily loss',
+            calc_monthly_loss: 'Monthly loss',
             calc_cta: 'Let\'s verify this number together',
             calc_disclaimer: 'Based on Turkish market sector averages. You can replace them with your own numbers.',
 
@@ -263,6 +268,7 @@
             proof_badge: 'References',
             proof_title: 'Organizations That Trust Us',
             proof_desc: 'Businesses across healthcare, tourism, and corporate services work with Aspalo.',
+            proof_aria: 'Reference companies',
 
             pricing_badge: 'Pricing',
             pricing_title: 'Three Plans, One Principle: Custom to You',

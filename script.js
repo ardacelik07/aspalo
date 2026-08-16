@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (updateSelectedDateInfoRef) updateSelectedDateInfoRef();
         if (renderTimeSlotsRef) renderTimeSlotsRef();
         if (typeof window.refreshVapiLabels === 'function') window.refreshVapiLabels();
+        if (typeof window.refreshCalcForLanguage === 'function') window.refreshCalcForLanguage();
     };
 
     // Mobile menu
@@ -340,6 +341,10 @@ document.addEventListener('DOMContentLoaded', function () {
     renderCalendarRef = renderCalendar;
     renderTimeSlotsRef = renderTimeSlots;
     updateCalendarWeekdayHeaders();
+    // The calculator engine below runs synchronously before AspaloI18n has applied the
+    // user's saved language preference, so re-sync its labels/insight copy here once
+    // the language is known to be correct.
+    if (typeof window.refreshCalcForLanguage === 'function') window.refreshCalcForLanguage();
 });
 
 /**
@@ -359,36 +364,68 @@ document.addEventListener('DOMContentLoaded', function () {
     // - Call-to-customer conversion: inbound calls convert far better than cold outreach, but a
     //   sector-specific ceiling keeps results realistic (avoids implausible outputs) while keeping
     //   each sector's worst-case band in a comparable, sensible range.
+    function calcLang() { return window.AspaloI18n ? window.AspaloI18n.getLang() : 'tr'; }
+    function calcLocale() { return calcLang() === 'en' ? 'en-US' : 'tr-TR'; }
+
     var calcSectorConfig = {
-        'Emlak':          { calls: 3,  callsMax: 8,  val: 50000, valMin: 10000, valMax: 80000, valStep: 1000, conv: 10, convMax: 20, missedUnit: 'sorgulama',
-            callsLabel: 'Günlük kaçırılan sorgulama sayısı', valueLabel: 'Ortalama işlem/komisyon değeri', convLabel: 'Sorgulamadan müşteriye dönüşüm oranı' },
-        'Otomotiv':       { calls: 8,  callsMax: 15, val: 9000,  valMin: 3000,  valMax: 20000, valStep: 500,  conv: 10, convMax: 25, missedUnit: 'servis talebi',
-            callsLabel: 'Günlük kaçırılan servis talebi sayısı', valueLabel: 'Ortalama servis/test sürüşü değeri', convLabel: 'Talepten müşteriye dönüşüm oranı' },
-        'Sağlık':         { calls: 15, callsMax: 40, val: 750,   valMin: 200,   valMax: 3000,  valStep: 50,   conv: 25, convMax: 45, missedUnit: 'randevu talebi',
-            callsLabel: 'Günlük kaçırılan randevu talebi sayısı', valueLabel: 'Ortalama randevu/tedavi değeri', convLabel: 'Randevu talebinden hastaya dönüşüm oranı' },
-        'Lojistik':       { calls: 12, callsMax: 35, val: 600,   valMin: 150,   valMax: 3000,  valStep: 50,   conv: 20, convMax: 40, missedUnit: 'takip sorgusu',
-            callsLabel: 'Günlük kaçırılan takip sorgusu sayısı', valueLabel: 'Ortalama sevkiyat/hizmet değeri', convLabel: 'Sorgudan müşteriye dönüşüm oranı' },
-        'E-Ticaret':      { calls: 18, callsMax: 40, val: 1200,  valMin: 300,   valMax: 5000,  valStep: 100,  conv: 15, convMax: 30, missedUnit: 'sipariş sorgusu',
-            callsLabel: 'Günlük kaçırılan sipariş sorgusu sayısı', valueLabel: 'Ortalama sipariş değeri', convLabel: 'Sorgudan siparişe dönüşüm oranı' },
-        'Otel Konaklama': { calls: 10, callsMax: 25, val: 3500,  valMin: 800,   valMax: 10000, valStep: 100,  conv: 25, convMax: 40, missedUnit: 'rezervasyon talebi',
-            callsLabel: 'Günlük kaçırılan rezervasyon talebi sayısı', valueLabel: 'Ortalama rezervasyon değeri', convLabel: 'Talepten rezervasyona dönüşüm oranı' }
+        'Emlak':          { calls: 3,  callsMax: 8,  val: 50000, valMin: 10000, valMax: 80000, valStep: 1000, conv: 10, convMax: 20,
+            missedUnit: { tr: 'sorgulama', en: 'inquiries' },
+            callsLabel: { tr: 'Günlük kaçırılan sorgulama sayısı', en: 'Daily missed inquiries' },
+            valueLabel: { tr: 'Ortalama işlem/komisyon değeri', en: 'Average deal/commission value' },
+            convLabel: { tr: 'Sorgulamadan müşteriye dönüşüm oranı', en: 'Inquiry-to-customer conversion rate' } },
+        'Otomotiv':       { calls: 8,  callsMax: 15, val: 9000,  valMin: 3000,  valMax: 20000, valStep: 500,  conv: 10, convMax: 25,
+            missedUnit: { tr: 'servis talebi', en: 'service requests' },
+            callsLabel: { tr: 'Günlük kaçırılan servis talebi sayısı', en: 'Daily missed service requests' },
+            valueLabel: { tr: 'Ortalama servis/test sürüşü değeri', en: 'Average service/test-drive value' },
+            convLabel: { tr: 'Talepten müşteriye dönüşüm oranı', en: 'Request-to-customer conversion rate' } },
+        'Sağlık':         { calls: 15, callsMax: 40, val: 750,   valMin: 200,   valMax: 3000,  valStep: 50,   conv: 25, convMax: 45,
+            missedUnit: { tr: 'randevu talebi', en: 'appointment requests' },
+            callsLabel: { tr: 'Günlük kaçırılan randevu talebi sayısı', en: 'Daily missed appointment requests' },
+            valueLabel: { tr: 'Ortalama randevu/tedavi değeri', en: 'Average appointment/treatment value' },
+            convLabel: { tr: 'Randevu talebinden hastaya dönüşüm oranı', en: 'Request-to-patient conversion rate' } },
+        'Lojistik':       { calls: 12, callsMax: 35, val: 600,   valMin: 150,   valMax: 3000,  valStep: 50,   conv: 20, convMax: 40,
+            missedUnit: { tr: 'takip sorgusu', en: 'tracking inquiries' },
+            callsLabel: { tr: 'Günlük kaçırılan takip sorgusu sayısı', en: 'Daily missed tracking inquiries' },
+            valueLabel: { tr: 'Ortalama sevkiyat/hizmet değeri', en: 'Average shipment/service value' },
+            convLabel: { tr: 'Sorgudan müşteriye dönüşüm oranı', en: 'Inquiry-to-customer conversion rate' } },
+        'E-Ticaret':      { calls: 18, callsMax: 40, val: 1200,  valMin: 300,   valMax: 5000,  valStep: 100,  conv: 15, convMax: 30,
+            missedUnit: { tr: 'sipariş sorgusu', en: 'order inquiries' },
+            callsLabel: { tr: 'Günlük kaçırılan sipariş sorgusu sayısı', en: 'Daily missed order inquiries' },
+            valueLabel: { tr: 'Ortalama sipariş değeri', en: 'Average order value' },
+            convLabel: { tr: 'Sorgudan siparişe dönüşüm oranı', en: 'Inquiry-to-order conversion rate' } },
+        'Otel Konaklama': { calls: 10, callsMax: 25, val: 3500,  valMin: 800,   valMax: 10000, valStep: 100,  conv: 25, convMax: 40,
+            missedUnit: { tr: 'rezervasyon talebi', en: 'booking requests' },
+            callsLabel: { tr: 'Günlük kaçırılan rezervasyon talebi sayısı', en: 'Daily missed booking requests' },
+            valueLabel: { tr: 'Ortalama rezervasyon değeri', en: 'Average booking value' },
+            convLabel: { tr: 'Talepten rezervasyona dönüşüm oranı', en: 'Request-to-booking conversion rate' } }
     };
 
     var calcInsights = {
-        'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
-        'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
-        'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmtNum(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
-        'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
-        'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
-        'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
+        tr: {
+            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
+            'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
+            'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmtNum(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
+            'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
+            'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
+            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
+        },
+        en: {
+            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' inquiries</strong> went unanswered this year. Real estate buyers call multiple agencies at once — first to answer wins.'; },
+            'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' service/test-drive requests</strong> went unanswered this year. The customer immediately calls another dealer or service center.'; },
+            'Sağlık': function (missed) { return 'This year, <strong>' + calcFmtNum(missed) + ' appointment requests</strong> were lost to an unanswered phone. Your occupancy rate drops with every missed call — and most patients never call back.'; },
+            'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' shipment/tracking inquiries</strong> went unanswered this year. Unanswered customer service calls lead to dissatisfaction and lost business.'; },
+            'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' order/return inquiries</strong> went unanswered this year. A customer who can\'t get a fast answer gives their next order to a competitor.'; },
+            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' booking requests</strong> were missed this year. The prospective guest calls another property immediately — a fast answer becomes a booking.'; }
+        }
     };
 
     function calcFmt(n) {
-        if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.', ',') + ' M₺';
-        return Math.round(n).toLocaleString('tr-TR') + ' ₺';
+        var locale = calcLocale();
+        if (n >= 1000000) return (n / 1000000).toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' M₺';
+        return Math.round(n).toLocaleString(locale) + ' ₺';
     }
     function calcFmtNum(n) {
-        return Math.round(n).toLocaleString('tr-TR');
+        return Math.round(n).toLocaleString(calcLocale());
     }
     function calcAnimateValue(el, newVal, formatter) {
         var start = calcPrevAnnual;
@@ -404,6 +441,29 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(update);
     }
 
+    var calcPeriodSuffix = {
+        tr: { month: '/ ay', year: '/ yıl', missedPrefix: 'Yıllık kaçan ' },
+        en: { month: '/ month', year: '/ year', missedPrefix: 'Annual missed ' }
+    };
+
+    function applyCalcLabelsForSector(sector) {
+        var cfg = calcSectorConfig[sector];
+        if (!cfg) return;
+        var lang = calcLang();
+        var callsLabelEl = document.getElementById('calc-calls-label');
+        if (callsLabelEl) callsLabelEl.textContent = cfg.callsLabel[lang];
+        var valueLabelEl = document.getElementById('calc-value-label');
+        if (valueLabelEl) valueLabelEl.textContent = cfg.valueLabel[lang];
+        var convLabelEl = document.getElementById('calc-conv-label');
+        if (convLabelEl) convLabelEl.textContent = cfg.convLabel[lang];
+        var callsEl = document.getElementById('calc-calls');
+        if (callsEl) callsEl.setAttribute('aria-label', cfg.callsLabel[lang]);
+        var valEl = document.getElementById('calc-val');
+        if (valEl) valEl.setAttribute('aria-label', cfg.valueLabel[lang]);
+        var convEl = document.getElementById('calc-conv');
+        if (convEl) convEl.setAttribute('aria-label', cfg.convLabel[lang]);
+    }
+
     window.calcCompute = function () {
         var callsEl = document.getElementById('calc-calls');
         var valEl = document.getElementById('calc-val');
@@ -412,9 +472,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var calls = +callsEl.value;
         var val = +valEl.value;
         var conv = +convEl.value;
+        var lang = calcLang();
+        var locale = calcLocale();
 
         document.getElementById('calc-calls-out').textContent = calls;
-        document.getElementById('calc-value-out').textContent = Math.round(val).toLocaleString('tr-TR') + ' ₺';
+        document.getElementById('calc-value-out').textContent = Math.round(val).toLocaleString(locale) + ' ₺';
         document.getElementById('calc-conv-out').textContent = '%' + conv;
 
         var daily = calls * (conv / 100) * val;
@@ -423,25 +485,25 @@ document.addEventListener('DOMContentLoaded', function () {
         var missed = calls * 365;
 
         var sectorCfg = calcSectorConfig[calcCurrentSector] || calcSectorConfig['Emlak'];
-        var unit = sectorCfg.missedUnit || 'çağrı';
+        var unit = (sectorCfg.missedUnit && sectorCfg.missedUnit[lang]) || (lang === 'en' ? 'calls' : 'çağrı');
 
         document.getElementById('calc-b-daily').textContent = calcFmt(daily);
         document.getElementById('calc-b-monthly').textContent = calcFmt(monthly);
         document.getElementById('calc-b-missed').textContent = calcFmtNum(missed) + ' ' + unit;
         var missedLabelEl = document.getElementById('calc-b-missed-label');
-        if (missedLabelEl) missedLabelEl.textContent = 'Yıllık kaçan ' + unit;
+        if (missedLabelEl) missedLabelEl.textContent = calcPeriodSuffix[lang].missedPrefix + unit;
 
         var annualEl = document.getElementById('calc-annual');
         calcAnimateValue(annualEl, annual, function (v) {
-            if (v >= 1000000) return (v / 1000000).toFixed(2).replace('.', ',') + ' M₺';
-            return Math.round(v).toLocaleString('tr-TR') + ' ₺';
+            if (v >= 1000000) return (v / 1000000).toLocaleString(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' M₺';
+            return Math.round(v).toLocaleString(locale) + ' ₺';
         });
         calcPrevAnnual = annual;
 
         document.getElementById('calc-result-sub').textContent =
-            '= ' + calcFmt(monthly) + ' / ay  ·  ' + calcFmtNum(missed) + ' ' + unit + ' / yıl';
+            '= ' + calcFmt(monthly) + ' ' + calcPeriodSuffix[lang].month + '  ·  ' + calcFmtNum(missed) + ' ' + unit + ' ' + calcPeriodSuffix[lang].year;
 
-        var insightFn = calcInsights[calcCurrentSector] || calcInsights['Emlak'];
+        var insightFn = (calcInsights[lang] && calcInsights[lang][calcCurrentSector]) || calcInsights.tr[calcCurrentSector] || calcInsights.tr['Emlak'];
         document.getElementById('calc-insight-box').innerHTML = insightFn(missed);
     };
 
@@ -467,14 +529,14 @@ document.addEventListener('DOMContentLoaded', function () {
         convEl.max = cfg.convMax;
         convEl.value = cfg.conv;
 
-        var callsLabelEl = document.getElementById('calc-calls-label');
-        if (callsLabelEl) callsLabelEl.textContent = cfg.callsLabel;
-        var valueLabelEl = document.getElementById('calc-value-label');
-        if (valueLabelEl) valueLabelEl.textContent = cfg.valueLabel;
-        var convLabelEl = document.getElementById('calc-conv-label');
-        if (convLabelEl) convLabelEl.textContent = cfg.convLabel;
+        applyCalcLabelsForSector(sector);
 
         calcPrevAnnual = 0;
+        window.calcCompute();
+    };
+
+    window.refreshCalcForLanguage = function () {
+        applyCalcLabelsForSector(calcCurrentSector);
         window.calcCompute();
     };
 

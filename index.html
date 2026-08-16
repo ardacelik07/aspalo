@@ -131,11 +131,11 @@
             <div class="calc-breakdown-grid">
                 <div class="calc-b-card">
                     <p class="calc-b-num" id="calc-b-daily">0 ₺</p>
-                    <p class="calc-b-label">Günlük kayıp</p>
+                    <p class="calc-b-label" data-i18n="calc_daily_loss">Günlük kayıp</p>
                 </div>
                 <div class="calc-b-card">
                     <p class="calc-b-num" id="calc-b-monthly">0 ₺</p>
-                    <p class="calc-b-label">Aylık kayıp</p>
+                    <p class="calc-b-label" data-i18n="calc_monthly_loss">Aylık kayıp</p>
                 </div>
                 <div class="calc-b-card">
                     <p class="calc-b-num" id="calc-b-missed">0</p>
@@ -154,7 +154,10 @@
                     <span data-i18n="calc_cta">Bu rakamı birlikte doğrulayalım</span>
                 </a>
                 <button type="button" class="btn btn-outline btn-live-demo" data-open-live-demo id="live-demo-btn">
-                    <span class="live-demo-dot" aria-hidden="true"></span>
+                    <span class="mic-pulse" aria-hidden="true">
+                        <span class="mic-pulse-ring"></span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    </span>
                     <span data-i18n="live_demo_btn">Canlı dinleyin</span>
                 </button>
             </div>
@@ -264,7 +267,7 @@
             <p class="eyebrow" data-i18n="proof_badge">Referanslar</p>
             <h2 class="section-title" data-i18n="proof_title">Bize Güvenen Kurumlar</h2>
             <p class="section-desc" data-i18n="proof_desc">Sağlık, turizm ve kurumsal hizmet sektörlerinden işletmeler Aspalo ile çalışıyor.</p>
-            <div class="proof-logos" role="group" aria-label="Referans şirketler">
+            <div class="proof-logos" role="group" data-i18n-aria="proof_aria" aria-label="Referans şirketler">
                 <div class="proof-logo"><img src="images/ref-yasam.jpeg" alt="Yaşam Hastaneler Grubu" loading="lazy"></div>
                 <div class="proof-logo"><img src="images/ref-ofb.jpeg" alt="OFB Kurumsal Kokulandırma" loading="lazy"></div>
                 <div class="proof-logo"><img src="images/ref-mng.jpg" alt="MNG Turizm" loading="lazy"></div>
@@ -744,24 +747,9 @@
         g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g, s);
-        function tagVapiWidget() {
-          var fixed = document.querySelectorAll('body > div');
-          var list = [];
-          fixed.forEach(function (el) {
-            var st = (el.getAttribute('style') || '').toLowerCase();
-            if (st.indexOf('position') !== -1 && st.indexOf('fixed') !== -1 && (st.indexOf('bottom') !== -1 || st.indexOf('right') !== -1)) {
-              list.push(el);
-              el.classList.add('vapi-floating-widget');
-            }
-          });
-          for (var j = 1; j < list.length; j++) { try { list[j].remove(); } catch (e) {} }
-        }
         g.onload = function () {
           vapiInstance = initVapiWidget(buttonConfig);
           window.vapiInstance = vapiInstance;
-          setTimeout(tagVapiWidget, 800);
-          setTimeout(tagVapiWidget, 1800);
-          setTimeout(tagVapiWidget, 3000);
           wireLiveDemoEvents(vapiInstance);
         };
       })(document, "script");
