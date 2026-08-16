@@ -129,10 +129,11 @@ input:focus-visible,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 76px;
+    height: 88px;
 }
-.logo-img { height: 30px; width: auto; }
-.navbar .logo-img { height: 46px; }
+.logo { display: flex; align-items: center; flex-shrink: 0; }
+.logo-img { height: 48px; width: auto; display: block; }
+.navbar .logo-img { height: 64px; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a:not(.btn) {
     font-size: 0.92rem;

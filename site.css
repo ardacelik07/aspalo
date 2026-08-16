@@ -708,7 +708,8 @@
     gap: 36px;
     padding-bottom: 48px;
 }
-.site-footer .logo-img { height: 40px; filter: brightness(1.15); }
+.navbar .logo-img { height: 64px; }
+.site-footer .logo-img { height: 68px; filter: brightness(1.15); }
 .footer-col h4 {
     font-size: 0.75rem;
     letter-spacing: 0.1em;
