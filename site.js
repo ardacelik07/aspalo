@@ -1251,6 +1251,53 @@
         });
     }
 
+    function injectHeroSoundfield() {
+        document.querySelectorAll('.home-hero, .sector-page-hero, .product-hero').forEach(function (hero) {
+            if (hero.querySelector('.hero-soundfield')) return;
+            var field = document.createElement('div');
+            field.className = 'hero-soundfield';
+            field.setAttribute('aria-hidden', 'true');
+            field.innerHTML = ''
+                + '<div class="hero-soundfield-glow"></div>'
+                + '<div class="hero-soundfield-rings"><i></i><i></i><i></i><i></i></div>'
+                + '<svg class="hero-soundfield-sine" viewBox="0 0 1440 520" preserveAspectRatio="none">'
+                + '<path class="sine-a" d="M-240 268C-80 188 80 348 240 268S560 188 720 268 1040 348 1200 268 1520 188 1680 268 2000 348 2160 268"/>'
+                + '<path class="sine-b" d="M-240 268C-40 208 160 328 360 268S760 208 960 268 1360 328 1560 268 1960 208 2160 268"/>'
+                + '<path class="sine-c" d="M-240 268C20 228 280 308 540 268S1060 228 1320 268 1840 308 2100 268"/>'
+                + '</svg>';
+            hero.insertBefore(field, hero.firstChild);
+        });
+    }
+
+    function injectFooterWave() {
+        var host = document.querySelector('.footer-wave');
+        if (!host) {
+            setTimeout(injectFooterWave, 0);
+            return;
+        }
+        if (host.querySelector('.footer-eq')) return;
+        var cols = 168;
+        var max = 16;
+        var html = '<div class="footer-eq">';
+        var i, d, t, h, env, noise;
+        for (i = 0; i < cols; i++) {
+            t = i / (cols - 1);
+            env = 0.16
+                + 0.62 * Math.exp(-Math.pow((t - 0.07) / 0.045, 2))
+                + 0.38 * Math.exp(-Math.pow((t - 0.2) / 0.04, 2))
+                + 0.28 * Math.exp(-Math.pow((t - 0.38) / 0.05, 2))
+                + 0.78 * Math.exp(-Math.pow((t - 0.64) / 0.055, 2))
+                + 0.5 * Math.exp(-Math.pow((t - 0.9) / 0.042, 2));
+            noise = 0.32 * Math.sin(t * 37.4 + 0.6) + 0.2 * Math.sin(t * 19.1 + 2.1) + 0.12 * Math.sin(t * 61 + 1.3);
+            h = Math.round((0.12 + env + Math.abs(noise) * 0.22) * max);
+            h = Math.max(2, Math.min(max, h));
+            html += '<span style="--d:' + (i % 11) + '">';
+            for (d = 0; d < h; d++) html += '<i></i>';
+            html += '</span>';
+        }
+        host.innerHTML = html + '</div>';
+    }
+
     function applyPageMeta() {
         var page = document.body.getAttribute('data-i18n-page');
         if (!page || !window.AspaloI18n) return;
@@ -1264,6 +1311,8 @@
     function init() {
         initNav();
         initReveal();
+        injectHeroSoundfield();
+        injectFooterWave();
         var hero = initHeroStage();
         initWorks();
         initSectors();
