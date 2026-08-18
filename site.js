@@ -1190,13 +1190,15 @@
             e.preventDefault();
             var name = (document.getElementById('partner-name') || {}).value || '';
             var email = (document.getElementById('partner-email') || {}).value || '';
+            var phone = (document.getElementById('partner-phone') || {}).value || '';
             name = name.trim();
             email = email.trim();
-            if (!name || !email) {
+            phone = phone.trim();
+            if (!name || !email || !phone) {
                 if (status) {
                     status.hidden = false;
                     status.className = 'partner-form-status is-error';
-                    status.textContent = t('form_err_fields');
+                    status.textContent = t('form_err_fields_phone');
                 }
                 return;
             }
@@ -1208,6 +1210,14 @@
                 }
                 return;
             }
+            if (phone.replace(/\D/g, '').length < 7) {
+                if (status) {
+                    status.hidden = false;
+                    status.className = 'partner-form-status is-error';
+                    status.textContent = t('form_err_phone');
+                }
+                return;
+            }
             var company = ((document.getElementById('partner-company') || {}).value || '').trim();
             var trackEl = document.getElementById('partner-type');
             var track = trackEl ? trackEl.value : '';
@@ -1215,6 +1225,7 @@
             var fd = new FormData();
             fd.append('name', name);
             fd.append('email', email);
+            fd.append('phone', phone);
             fd.append('company', company);
             fd.append('track', track);
             fd.append('message', message);

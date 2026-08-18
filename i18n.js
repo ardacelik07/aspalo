@@ -11,7 +11,7 @@
  *   iş ortaklığı / partnerships
  *   sıkça sorulan sorular / frequently asked questions
  *   gösterge paneli / dashboard
- *   demo talep et / request a demo
+ *   görüşme ayarla / book a call
  *   ADA ile konuş / talk to ADA
  */
 (function (global) {
@@ -30,7 +30,7 @@
             nav_proof: 'Referanslar',
             nav_pricing: 'Fiyatlandırma',
             nav_faq: 'Sıkça Sorulan Sorular',
-            nav_cta: 'Demo Talep Et',
+            nav_cta: 'Görüşme Ayarla',
             menu_aria: 'Menüyü aç',
             lang_tr: 'Türkçe',
             lang_en: 'English',
@@ -170,7 +170,7 @@
             val_included_pro: 'Size özel',
             val_dashboard_basic: 'Anlık',
             val_dashboard_growth: 'Detaylı, kırılımlı',
-            pricing_cta: 'Demo Talep Et',
+            pricing_cta: 'Görüşme Ayarla',
 
             faq_title: 'Sıkça Sorulan Sorular',
             faq_desc: 'Aspalo hakkında en sık sorulan soruları bir araya getirdik. Aradığınızı bulamazsanız bize doğrudan ulaşabilirsiniz.',
@@ -189,12 +189,12 @@
             faq_q7: 'Türkçe aksanları ve farklı konuşma tarzlarını anlıyor mu?',
             faq_a7: 'Evet, Aspalo Türkçe üzerine özel olarak yapılandırılmıştır ve farklı ağız/aksan varyasyonlarını anlayacak şekilde çalışır.',
             faq_q8: 'Görüşmeyi nasıl ayarlayabilirim, bir taahhüt altına giriyor muyum?',
-            faq_a8: '"Demo Talep Et" düğmesine tıklayıp size uygun bir zaman seçmeniz yeterli. Görüşme herhangi bir taahhüt gerektirmez; Aspalo\'nun işletmeniz için nasıl çalışacağını birlikte inceleriz.',
+            faq_a8: '"Görüşme Ayarla" düğmesine tıklayıp size uygun bir zaman seçmeniz yeterli. Görüşme herhangi bir taahhüt gerektirmez; Aspalo\'nun işletmeniz için nasıl çalışacağını birlikte inceleriz.',
 
             final_cta_badge: 'Sırada Ne Var',
             final_cta_title: 'Rakamı Gördünüz. Şimdi Konuşalım.',
             final_cta_sub: '30 dakikalık bir görüşmede, hesaplayıcıdaki rakamı kendi verilerinizle doğrularız ve Aspalo\'nun hattınıza nasıl bağlanacağını netleştiririz.',
-            final_cta_btn: 'Demo Talep Et',
+            final_cta_btn: 'Görüşme Ayarla',
 
             footer_email_label: 'E-posta',
             footer_phone_label: 'Telefon',
@@ -214,6 +214,8 @@
             form_name: 'Adınız *',
             form_company: 'Şirket adı',
             form_phone: 'Telefon numarası',
+            form_phone_req: 'Telefon numarası *',
+            form_err_fields_phone: 'Lütfen ad, e-posta ve telefon alanlarını doldurun.',
             form_disclaimer_html: 'Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>\'nı kabul etmiş olursunuz.',
             form_back: 'Geri',
             form_confirm: 'Onayla',
@@ -246,7 +248,7 @@
             live_demo_ended_eyebrow: 'Demo tamamlandı',
             live_demo_ended_title: 'Aynısı, gerçek hattınızda da olabilir',
             live_demo_ended_desc: 'Az önce duyduğunuz deneyimi işletmenize özel kurmamız için 30 dakikalık bir görüşme ayarlayalım.',
-            live_demo_ended_cta: 'Demo Talep Et',
+            live_demo_ended_cta: 'Görüşme Ayarla',
             live_demo_restart: 'Tekrar Dene',
 
             nav_solutions: 'Çözümlerimiz',
@@ -276,7 +278,7 @@
             home_eyebrow: 'Kurumsal sesli ve sohbet yapay zekâsı',
             home_title_html: 'Müşteriniz aradığında, <em>Aspalo açar.</em>',
             home_sub: 'Gelen aramaları ilk çınlamada karşılar, randevu alır, kaydı özetler ve CRM\'inize yazar. Yeni hat yok. Veri Türkiye\'de kalır.',
-            home_cta: 'Demo Talep Et',
+            home_cta: 'Görüşme Ayarla',
             home_m1: '7/24',
             home_m1_l: 'Kesintisiz yanıt',
             home_m2: '48 saat',
@@ -718,7 +720,7 @@
             nav_proof: 'References',
             nav_pricing: 'Pricing',
             nav_faq: 'Frequently Asked Questions',
-            nav_cta: 'Request a Demo',
+            nav_cta: 'Book a Call',
             menu_aria: 'Open menu',
             lang_tr: 'Türkçe',
             lang_en: 'English',
@@ -858,7 +860,7 @@
             val_included_pro: 'Custom',
             val_dashboard_basic: 'Real-time',
             val_dashboard_growth: 'Detailed, segmented',
-            pricing_cta: 'Request a Demo',
+            pricing_cta: 'Book a Call',
 
             faq_title: 'Frequently Asked Questions',
             faq_desc: "We've gathered the most common questions about Aspalo. Can't find what you're looking for? Reach out to us directly.",
@@ -877,12 +879,12 @@
             faq_q7: 'Does it understand Turkish accents and different speaking styles?',
             faq_a7: 'Yes, Aspalo is built specifically for Turkish and is designed to understand a range of accents and speech patterns.',
             faq_q8: 'How do I schedule a call, and am I committing to anything?',
-            faq_a8: 'Click Request a Demo and pick a time that works for you. There is no commitment — we will walk through how Aspalo would work for your business.',
+            faq_a8: 'Click "Book a Call" and pick a time that works for you. There is no commitment — we will walk through how Aspalo would work for your business.',
 
             final_cta_badge: "What's Next",
             final_cta_title: "You've Seen the Number. Let's Talk.",
             final_cta_sub: 'In a 30-minute call, we verify the calculator\'s number against your own data and map out how Aspalo connects to your line.',
-            final_cta_btn: 'Request a Demo',
+            final_cta_btn: 'Book a Call',
 
             footer_email_label: 'Email',
             footer_phone_label: 'Phone',
@@ -902,6 +904,8 @@
             form_name: 'Your name *',
             form_company: 'Company name',
             form_phone: 'Phone number',
+            form_phone_req: 'Phone number *',
+            form_err_fields_phone: 'Please fill in your name, email, and phone number.',
             form_disclaimer_html: 'By continuing you agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.',
             form_back: 'Back',
             form_confirm: 'Confirm',
@@ -934,7 +938,7 @@
             live_demo_ended_eyebrow: 'Demo complete',
             live_demo_ended_title: 'The same experience can run on your line',
             live_demo_ended_desc: 'Let us set up a 30-minute call to tailor what you just heard to your business.',
-            live_demo_ended_cta: 'Request a Demo',
+            live_demo_ended_cta: 'Book a Call',
             live_demo_restart: 'Try Again',
 
             nav_solutions: 'Solutions',
@@ -964,7 +968,7 @@
             home_eyebrow: 'Enterprise voice and chat AI',
             home_title_html: 'When your customer calls, <em>Aspalo picks up.</em>',
             home_sub: 'Answers on the first ring, books the appointment, summarizes the call, and writes to your CRM. No new line. Data stays in Turkey.',
-            home_cta: 'Request a Demo',
+            home_cta: 'Book a Call',
             home_m1: '24/7',
             home_m1_l: 'Uninterrupted answer',
             home_m2: '48 hours',

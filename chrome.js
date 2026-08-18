@@ -36,7 +36,7 @@
         + '<button type="button" class="lang-btn active" data-lang="tr" aria-pressed="true" data-i18n="lang_tr">Türkçe</button>'
         + '<button type="button" class="lang-btn" data-lang="en" aria-pressed="false" data-i18n="lang_en">English</button>'
         + '</div>'
-        + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Demo Talep Et</a>'
+        + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Görüşme Ayarla</a>'
         + '</div>'
         + '<button class="mobile-menu-btn" data-i18n-aria="menu_aria" aria-label="Menü" aria-expanded="false" aria-controls="mobile-nav">'
         + '<span></span><span></span><span></span></button>'
@@ -57,7 +57,7 @@
         + '<button type="button" class="lang-btn active" data-lang="tr" aria-pressed="true" data-i18n="lang_tr">Türkçe</button>'
         + '<button type="button" class="lang-btn" data-lang="en" aria-pressed="false" data-i18n="lang_en">English</button>'
         + '</div>'
-        + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Demo Talep Et</a>'
+        + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Görüşme Ayarla</a>'
         + '</div></nav>';
 
     document.write(nav);
