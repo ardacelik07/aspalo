@@ -18,7 +18,7 @@
             + '<div class="demo-modal-body">'
             + '<div class="demo-info-panel"><div class="demo-brand"><img src="/images/logo2.png" alt="Aspalo" class="demo-logo-img"></div>'
             + '<h2 class="demo-title" data-i18n="modal_title">Sayılarınızı Birlikte İnceleyelim</h2>'
-            + '<p class="demo-description" data-i18n="modal_desc">Kaç arama kaçıyor, gerçek maliyeti ne, hattınıza nasıl bağlanır — 30 dakikada netleştirelim.</p>'
+            + '<p class="demo-description" data-i18n="modal_desc">Kaç arama kaçıyor, gerçek maliyeti ne, hattınıza nasıl bağlanır. 30 dakikada netleştirelim.</p>'
             + '<div class="demo-details" id="demo-details">'
             + '<div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-i18n="modal_confirm">Onay gerekli</span></div>'
             + '<div class="demo-detail-item"><span class="demo-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span data-i18n="modal_duration">30 dakika</span></div>'
@@ -44,7 +44,7 @@
             + '<div class="live-demo-state live-demo-state-idle" id="live-demo-idle" data-state="idle">'
             + '<p class="live-demo-eyebrow" data-i18n="live_demo_eyebrow">Canlı Yapay Zeka Demosu</p>'
             + '<h2 class="live-demo-title" data-i18n="live_demo_title">Aspalo\'nun bir aramayı nasıl karşıladığını dinleyin</h2>'
-            + '<p class="live-demo-desc" data-i18n="live_demo_desc">Mikrofonunuza izin verin, "Aramayı başlat" butonuna basın — Aspalo\'nun AI asistanı gerçek bir müşteri gibi sizinle konuşacak.</p>'
+            + '<p class="live-demo-desc" data-i18n="live_demo_desc">Mikrofonunuza izin verin, "Aramayı başlat" butonuna basın. Aspalo\'nun AI asistanı gerçek bir müşteri gibi sizinle konuşacak.</p>'
             + '<button type="button" class="btn btn-primary" id="live-demo-start-btn"><span data-i18n="live_demo_start">Aramayı başlat</span></button>'
             + '<p class="live-demo-mic-note" data-i18n="live_demo_mic_note">Bu bir simülasyondur; gerçek bir görüşme kaydedilmez.</p></div>'
             + '<div class="live-demo-state live-demo-state-connecting" id="live-demo-connecting" data-state="connecting" hidden><div class="live-demo-spinner" aria-hidden="true"></div><p class="live-demo-connecting-text" data-i18n="live_demo_connecting">Bağlanıyor...</p></div>'
@@ -203,12 +203,12 @@
                 { role: 'ai', tr: 'Merhaba, Aspalo Klinik. Ben ADA. Nasıl yardımcı olabilirim?', en: 'Hello, Aspalo Clinic. This is ADA. How can I help you?' },
                 { role: 'user', tr: 'Yarın nöroloji için randevu almak istiyorum.', en: 'I\'d like a neurology appointment for tomorrow.', meta: { intent: true, status: 'listening' } },
                 { role: 'ai', tr: 'Tabii. Daha önce kliniğimizde muayene oldunuz mu?', en: 'Of course. Have you been seen at our clinic before?' },
-                { role: 'user', tr: 'Evet, geçen yıl Dr. Demir\'e gitmiştim.', en: 'Yes — I saw Dr. Demir last year.' },
+                { role: 'user', tr: 'Evet, geçen yıl Dr. Demir\'e gitmiştim.', en: 'Yes. I saw Dr. Demir last year.' },
                 { role: 'ai', tr: 'Anladım. Yarın 14:30 veya 16:00 uygun. Hangisini istersiniz?', en: 'Understood. Tomorrow 14:30 or 16:00 is open. Which do you prefer?' },
                 { role: 'user', tr: '14:30 olsun. Adım Ayşe Kaya.', en: '14:30 works. My name is Ayşe Kaya.', meta: { name: true } },
                 { role: 'ai', tr: 'Teşekkürler Ayşe Hanım. Teyit SMS\'i için telefonunuzu alabilir miyim?', en: 'Thank you, Ayşe. May I take your number for the confirmation text?' },
                 { role: 'user', tr: '0532 441 19 08', en: '0532 441 19 08' },
-                { role: 'ai', tr: '14:30, Dr. Demir — kaydı oluşturuyorum.', en: '14:30 with Dr. Demir — I\'m creating the record now.', meta: { status: 'processing' } },
+                { role: 'ai', tr: '14:30, Dr. Demir. Kaydı oluşturuyorum.', en: '14:30 with Dr. Demir. I\'m creating the record now.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Randevunuz alındı. Takvim ve özet CRM\'e düştü.', en: 'Your appointment is booked. The calendar and summary are in the CRM.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'Harika, teşekkürler.', en: 'Perfect, thank you.' },
                 { role: 'ai', tr: 'Geçmiş olsun. Başka bir şey var mı?', en: 'Wishing you a smooth visit. Anything else I can help with?' },
@@ -230,9 +230,9 @@
                 { role: 'user', tr: 'Yarın 11:00 olur. Mehmet Yılmaz.', en: 'Tomorrow at 11:00 works. Mehmet Yılmaz.', meta: { name: true } },
                 { role: 'ai', tr: 'Not aldım. Cep telefonunuzu da ekleyeyim mi?', en: 'Noted. Shall I add your mobile number as well?' },
                 { role: 'user', tr: '0533 218 44 90', en: '0533 218 44 90' },
-                { role: 'ai', tr: 'Mehmet Bey, yarın 11:00 Moda 3+1 — randevuyu işliyorum.', en: 'Mehmet, tomorrow 11:00 at the Moda 3-bed — I\'m locking the viewing.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Mehmet Bey, yarın 11:00 Moda 3+1. Randevuyu işliyorum.', en: 'Mehmet, tomorrow 11:00 at the Moda 3-bed. I\'m locking the viewing.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Gezme saati kilitlendi. Danışmana ve CRM\'e düştü.', en: 'The viewing is booked. It\'s with the agent and in the CRM.', meta: { status: 'crm' } },
-                { role: 'user', tr: 'Tamam, orada olurum.', en: 'Good — I\'ll be there.' },
+                { role: 'user', tr: 'Tamam, orada olurum.', en: 'Good. I\'ll be there.' },
                 { role: 'ai', tr: 'Adres ve kat planını SMS ile gönderiyorum. İyi günler.', en: 'I\'m sending the address and floor plan by SMS. Have a good day.', meta: { status: 'done' } }
             ]
         },
@@ -250,7 +250,7 @@
                 { role: 'user', tr: 'Evet. Elif Demir.', en: 'Yes. Elif Demir.', meta: { name: true } },
                 { role: 'ai', tr: 'Elif Hanım, kartsız opsiyonla 30 dakika tutabilirim. Telefonunuz?', en: 'Elif, I can hold it for 30 minutes without a card. Your phone number?' },
                 { role: 'user', tr: '0541 776 02 31', en: '0541 776 02 31' },
-                { role: 'ai', tr: 'Kaydı oluşturuyorum — 22–24 Ağustos, deluxe, kahvaltı dahil.', en: 'Creating the booking — 22–24 August, deluxe, breakfast included.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Kaydı oluşturuyorum. 22–24 Ağustos, deluxe, kahvaltı dahil.', en: 'Creating the booking. 22–24 August, deluxe, breakfast included.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Rezervasyonunuz alındı. Onay e-postası ve CRM kaydı hazır.', en: 'Your reservation is confirmed. The email and CRM record are ready.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'Mükemmel.', en: 'Excellent.' },
                 { role: 'ai', tr: 'Resepsiyonda sizi bekleriz. İyi akşamlar.', en: 'We\'ll see you at reception. Have a good evening.', meta: { status: 'done' } }
@@ -268,12 +268,12 @@
                 { role: 'user', tr: '2022 Volkswagen Tiguan, 48 bin km.', en: '2022 Volkswagen Tiguan, 48,000 km.' },
                 { role: 'ai', tr: 'Yarın 09:30 veya çarşamba 15:00 açık. Hangisi uygun?', en: 'Tomorrow 09:30 or Wednesday 15:00 is open. Which works?' },
                 { role: 'user', tr: 'Yarın 09:30. Can Öztürk.', en: 'Tomorrow 09:30. Can Öztürk.', meta: { name: true } },
-                { role: 'ai', tr: 'Plaka ve telefonunuz da yeterli, kaydı bağlarım.', en: 'Plate and phone are enough — I\'ll attach the record.' },
+                { role: 'ai', tr: 'Plaka ve telefonunuz da yeterli, kaydı bağlarım.', en: 'Plate and phone are enough. I\'ll attach the record.' },
                 { role: 'user', tr: '34 CNO 122, 0530 667 81 45', en: '34 CNO 122, 0530 667 81 45' },
-                { role: 'ai', tr: 'Yarın 09:30 bakım + yağ — işlemi açıyorum.', en: 'Tomorrow 09:30, service and oil — opening the job now.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Yarın 09:30 bakım ve yağ. İşlemi açıyorum.', en: 'Tomorrow 09:30, service and oil. Opening the job now.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Randevu alındı. Usta atandı, kayıt CRM\'de.', en: 'Appointment booked. A technician is assigned and it\'s in the CRM.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'İkame araç var mı?', en: 'Do you have a courtesy car?' },
-                { role: 'ai', tr: 'Evet, ikame araç rezerve ettim. Serviste görüşürüz.', en: 'Yes — I reserved a courtesy car. See you at the workshop.', meta: { status: 'done' } }
+                { role: 'ai', tr: 'Evet, ikame araç rezerve ettim. Serviste görüşürüz.', en: 'Yes. I reserved a courtesy car. See you at the workshop.', meta: { status: 'done' } }
             ]
         },
         {
@@ -284,13 +284,13 @@
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Lojistik. Ben ADA. Takip numaranız var mı?', en: 'Hello, Aspalo Logistics. This is ADA. Do you have a tracking number?' },
                 { role: 'user', tr: 'Evet, TR-448291. Kargo nerede?', en: 'Yes, TR-448291. Where is the shipment?', meta: { intent: true, status: 'listening' } },
-                { role: 'ai', tr: 'Bir saniye, sevkiyatı sorguluyorum.', en: 'One moment — I\'m looking up the shipment.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Bir saniye, sevkiyatı sorguluyorum.', en: 'One moment. I\'m looking up the shipment.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Paket Gebze aktarmada. Yarın 10:00–13:00 teslim penceresi.', en: 'The parcel is at the Gebze hub. Delivery window is tomorrow 10:00–13:00.' },
                 { role: 'user', tr: 'Saat 12\'den önce gelebilir mi? Adres ev, Zeynep Acar.', en: 'Can it arrive before 12:00? Home address, Zeynep Acar.', meta: { name: true } },
                 { role: 'ai', tr: '10:00–12:00 olarak daraltıyorum. Kapıda kim imza atacak?', en: 'I\'ll narrow it to 10:00–12:00. Who will sign at the door?' },
-                { role: 'user', tr: 'Ben olacağım, 0542 119 33 70', en: 'I will — 0542 119 33 70' },
+                { role: 'user', tr: 'Ben olacağım, 0542 119 33 70', en: 'I will. 0542 119 33 70' },
                 { role: 'ai', tr: 'Tercihinizi sürücüye ve CRM\'e yazıyorum.', en: 'I\'m writing the preference to the driver and the CRM.', meta: { status: 'crm' } },
-                { role: 'ai', tr: 'Güncellendi. Yarın 10:00–12:00, SMS ile link gelecek.', en: 'Updated. Tomorrow 10:00–12:00 — you\'ll get the tracking link by SMS.', meta: { status: 'booked' } },
+                { role: 'ai', tr: 'Güncellendi. Yarın 10:00–12:00, SMS ile link gelecek.', en: 'Updated. Tomorrow 10:00–12:00. You\'ll get the tracking link by SMS.', meta: { status: 'booked' } },
                 { role: 'user', tr: 'Teşekkürler.', en: 'Thank you.' },
                 { role: 'ai', tr: 'Rica ederim. Başka bir gönderi var mı?', en: 'You\'re welcome. Any other shipment I can check?' },
                 { role: 'user', tr: 'Yok.', en: 'No.' },
@@ -305,9 +305,9 @@
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Mağaza. Ben ADA. Siparişinizle ilgili yardımcı olayım.', en: 'Hello, Aspalo Store. This is ADA. I can help with your order.' },
                 { role: 'user', tr: '7A19 siparişim hâlâ kargoya verilmemiş.', en: 'My order 7A19 still hasn\'t shipped.', meta: { intent: true, status: 'listening' } },
-                { role: 'ai', tr: 'Kontrol ediyorum. Stok bekliyordu, bugün 16:00\'da kargoya çıkıyor.', en: 'Checking now. It was waiting on stock — it ships today at 16:00.', meta: { status: 'processing' } },
+                { role: 'ai', tr: 'Kontrol ediyorum. Stok bekliyordu, bugün 16:00\'da kargoya çıkıyor.', en: 'Checking now. It was waiting on stock. It ships today at 16:00.', meta: { status: 'processing' } },
                 { role: 'user', tr: 'Yarın elime geçer mi? Deniz Koç.', en: 'Will I have it tomorrow? Deniz Koç.', meta: { name: true } },
-                { role: 'ai', tr: 'İstanbul içi evet, 18:00 öncesi. Adres aynı mı — Kadıköy, Caferağa?', en: 'In Istanbul, yes — before 18:00. Same address, Kadıköy, Caferağa?' },
+                { role: 'ai', tr: 'İstanbul içi evet, 18:00 öncesi. Adres aynı mı, Kadıköy, Caferağa?', en: 'In Istanbul, yes, before 18:00. Same address, Kadıköy, Caferağa?' },
                 { role: 'user', tr: 'Evet, aynı.', en: 'Yes, same address.' },
                 { role: 'ai', tr: 'Takip numarasını SMS ve e-postaya düşürüyorum.', en: 'I\'m sending the tracking number by SMS and email.' },
                 { role: 'user', tr: 'İade süresi ne kadar?', en: 'How long is the return window?' },
@@ -329,11 +329,11 @@
                 { role: 'user', tr: 'Bu akşam 20:30, dört kişilik teras masası var mı?', en: 'Do you have a terrace table for four tonight at 20:30?', meta: { intent: true, status: 'listening' } },
                 { role: 'ai', tr: 'Bakıyorum. Terasta 20:30 için dört kişilik masa açık.', en: 'Checking now. A terrace table for four is open at 20:30.' },
                 { role: 'user', tr: 'Harika. Selin Arı.', en: 'Perfect. Selin Arı.', meta: { name: true } },
-                { role: 'ai', tr: 'Selin Hanım, telefonunuzu da alayım — hatırlatma SMS\'i için.', en: 'Selin, may I take your number for a reminder text?' },
+                { role: 'ai', tr: 'Selin Hanım, hatırlatma SMS\'i için telefonunuzu da alayım.', en: 'Selin, may I take your number for a reminder text?' },
                 { role: 'user', tr: '0536 902 14 77', en: '0536 902 14 77' },
                 { role: 'ai', tr: 'Alerji veya özel istek var mı?', en: 'Any allergies or special requests?' },
                 { role: 'user', tr: 'Pencereye yakın olsun yeter.', en: 'Near the window is enough.' },
-                { role: 'ai', tr: '20:30, teras, dört kişi — masayı ayırıyorum.', en: '20:30, terrace, four guests — I\'m holding the table.', meta: { status: 'processing' } },
+                { role: 'ai', tr: '20:30, teras, dört kişi. Masayı ayırıyorum.', en: '20:30, terrace, four guests. I\'m holding the table.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Rezervasyon alındı. Onay SMS\'i ve CRM kaydı düştü.', en: 'The table is booked. Confirmation SMS and CRM are in.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'Teşekkürler.', en: 'Thank you.' },
                 { role: 'ai', tr: 'Bu akşam sizi bekleriz. Afiyet olsun.', en: 'We\'ll see you tonight. Enjoy your evening.', meta: { status: 'done' } }

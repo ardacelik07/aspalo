@@ -411,20 +411,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var calcInsights = {
         tr: {
-            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor — ilk cevap veren kazanıyor.'; },
+            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sorgulama</strong> bu yıl cevapsız kaldı. Emlak müşterisi aynı anda birden fazla ofisi arıyor. İlk cevap veren kazanıyor.'; },
             'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' servis/test sürüşü talebi</strong> bu yıl cevaplanamadı. Müşteri hemen başka bir bayiyi veya servisi arıyor.'; },
-            'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmtNum(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor — ve hastaların büyük çoğunluğu geri aramıyor.'; },
+            'Sağlık': function (missed) { return 'Bu yıl <strong>' + calcFmtNum(missed) + ' randevu talebi</strong> cevaplanmayan bir telefon yüzünden gitti. Doluluk oranınız her kaçırılan çağrıda düşüyor ve hastaların büyük çoğunluğu geri aramıyor.'; },
             'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' kargo/takip sorgusu</strong> bu yıl cevapsız kaldı. Yanıtsız kalan müşteri hizmetleri çağrıları memnuniyetsizliğe ve kayba yol açıyor.'; },
             'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' sipariş/iade sorgusu</strong> bu yıl cevaplanamadı. Hızlı yanıt alamayan müşteri, bir sonraki siparişini rakibe veriyor.'; },
-            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor — anında yanıt rezervasyona dönüşüyor.'; }
+            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' rezervasyon talebi</strong> bu yıl kaçtı. Misafir adayı hemen başka bir tesisi arıyor. Anında yanıt rezervasyona dönüşüyor.'; }
         },
         en: {
-            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' inquiries</strong> went unanswered this year. Real estate buyers call multiple agencies at once — first to answer wins.'; },
+            'Emlak': function (missed) { return '<strong>' + calcFmtNum(missed) + ' inquiries</strong> went unanswered this year. Real estate buyers call multiple agencies at once. First to answer wins.'; },
             'Otomotiv': function (missed) { return '<strong>' + calcFmtNum(missed) + ' service/test-drive requests</strong> went unanswered this year. The customer immediately calls another dealer or service center.'; },
-            'Sağlık': function (missed) { return 'This year, <strong>' + calcFmtNum(missed) + ' appointment requests</strong> were lost to an unanswered phone. Your occupancy rate drops with every missed call — and most patients never call back.'; },
+            'Sağlık': function (missed) { return 'This year, <strong>' + calcFmtNum(missed) + ' appointment requests</strong> were lost to an unanswered phone. Your occupancy rate drops with every missed call, and most patients never call back.'; },
             'Lojistik': function (missed) { return '<strong>' + calcFmtNum(missed) + ' shipment/tracking inquiries</strong> went unanswered this year. Unanswered customer service calls lead to dissatisfaction and lost business.'; },
             'E-Ticaret': function (missed) { return '<strong>' + calcFmtNum(missed) + ' order/return inquiries</strong> went unanswered this year. A customer who can\'t get a fast answer gives their next order to a competitor.'; },
-            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' booking requests</strong> were missed this year. The prospective guest calls another property immediately — a fast answer becomes a booking.'; }
+            'Otel Konaklama': function (missed) { return '<strong>' + calcFmtNum(missed) + ' booking requests</strong> were missed this year. The prospective guest calls another property immediately. A fast answer becomes a booking.'; }
         }
     };
 
