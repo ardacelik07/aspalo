@@ -1388,11 +1388,17 @@
             field.setAttribute('aria-hidden', 'true');
             field.innerHTML = ''
                 + '<div class="hero-soundfield-glow"></div>'
-                + '<div class="hero-soundfield-rings"><i></i><i></i><i></i><i></i></div>'
+                + '<div class="hero-soundfield-glow hero-soundfield-glow-b"></div>'
+                + '<div class="hero-soundfield-grid"></div>'
+                + '<div class="hero-soundfield-nodes"><i></i><i></i><i></i><i></i><i></i><i></i></div>'
+                + '<div class="hero-soundfield-rings"><i></i><i></i><i></i><i></i><i></i></div>'
                 + '<svg class="hero-soundfield-sine" viewBox="0 0 1440 520" preserveAspectRatio="none">'
-                + '<path class="sine-a" d="M-240 268C-80 188 80 348 240 268S560 188 720 268 1040 348 1200 268 1520 188 1680 268 2000 348 2160 268"/>'
-                + '<path class="sine-b" d="M-240 268C-40 208 160 328 360 268S760 208 960 268 1360 328 1560 268 1960 208 2160 268"/>'
-                + '<path class="sine-c" d="M-240 268C20 228 280 308 540 268S1060 228 1320 268 1840 308 2100 268"/>'
+                + '<defs><filter id="hero-sine-glow" x="-20%" y="-40%" width="140%" height="180%">'
+                + '<feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>'
+                + '</filter></defs>'
+                + '<path class="sine-a" filter="url(#hero-sine-glow)" d="M-240 270C-120 190 0 350 160 250S420 160 560 280 780 390 940 250 1180 140 1320 270 1540 390 1760 250 1980 170 2160 270"/>'
+                + '<path class="sine-b" d="M-240 270C-60 220 140 330 340 250S720 170 920 290 1240 360 1440 250 1760 180 2000 280 2160 270"/>'
+                + '<path class="sine-c" d="M-240 270C40 240 300 310 560 260S1040 210 1300 290 1760 320 2100 260"/>'
                 + '</svg>';
             hero.insertBefore(field, hero.firstChild);
         });

@@ -32,6 +32,7 @@
     .hero-wave span { animation: none; transform: scaleY(0.55); opacity: 0.5; }
     .hero-soundfield-sine path,
     .hero-soundfield-rings i,
+    .hero-soundfield-nodes i,
     .footer-sine-line { animation: none; }
     .hero-live-dot { animation: none; }
     .hero-bubble { opacity: 1; transform: none; transition: none; }
@@ -232,16 +233,54 @@
 }
 .hero-soundfield-glow {
     position: absolute;
-    width: 70%;
-    height: 80%;
-    left: 8%;
-    top: 10%;
-    background: radial-gradient(ellipse at 30% 45%, rgba(37, 99, 235, 0.22), transparent 58%);
+    width: 72%;
+    height: 82%;
+    left: 4%;
+    top: 6%;
+    background: radial-gradient(ellipse at 28% 42%, rgba(37, 99, 235, 0.3), transparent 60%);
+}
+.hero-soundfield-glow-b {
+    left: auto;
+    right: 0;
+    top: 12%;
+    width: 52%;
+    height: 76%;
+    background: radial-gradient(ellipse at 62% 48%, rgba(56, 189, 248, 0.18), transparent 64%);
+}
+.hero-soundfield-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.045) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 42% 48%, #000 18%, transparent 74%);
+    -webkit-mask-image: radial-gradient(ellipse at 42% 48%, #000 18%, transparent 74%);
+}
+.hero-soundfield-nodes i {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #38BDF8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+    opacity: 0.35;
+    animation: soundNode 5.6s ease-in-out infinite;
+}
+.hero-soundfield-nodes i:nth-child(1) { left: 14%; top: 28%; animation-delay: 0s; }
+.hero-soundfield-nodes i:nth-child(2) { left: 31%; top: 62%; animation-delay: 0.8s; }
+.hero-soundfield-nodes i:nth-child(3) { left: 48%; top: 22%; animation-delay: 1.6s; }
+.hero-soundfield-nodes i:nth-child(4) { left: 63%; top: 70%; animation-delay: 2.2s; }
+.hero-soundfield-nodes i:nth-child(5) { left: 78%; top: 34%; animation-delay: 3s; }
+.hero-soundfield-nodes i:nth-child(6) { left: 88%; top: 58%; animation-delay: 3.8s; }
+@keyframes soundNode {
+    0%, 100% { transform: scale(0.7); opacity: 0.18; }
+    50% { transform: scale(1.35); opacity: 0.7; }
 }
 .hero-soundfield-rings {
     position: absolute;
-    left: 22%;
-    top: 46%;
+    left: 24%;
+    top: 48%;
     width: 8px;
     height: 8px;
 }
@@ -249,27 +288,28 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 90px;
-    height: 90px;
-    margin: -45px 0 0 -45px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+    border: 1px solid rgba(56, 189, 248, 0.28);
     border-radius: 50%;
-    animation: soundRing 7.5s var(--ease) infinite;
+    animation: soundRing 6.4s var(--ease) infinite;
 }
-.hero-soundfield-rings i:nth-child(2) { animation-delay: 1.8s; }
-.hero-soundfield-rings i:nth-child(3) { animation-delay: 3.6s; }
-.hero-soundfield-rings i:nth-child(4) { animation-delay: 5.4s; }
+.hero-soundfield-rings i:nth-child(2) { animation-delay: 1.2s; }
+.hero-soundfield-rings i:nth-child(3) { animation-delay: 2.4s; }
+.hero-soundfield-rings i:nth-child(4) { animation-delay: 3.6s; }
+.hero-soundfield-rings i:nth-child(5) { animation-delay: 4.8s; }
 @keyframes soundRing {
-    0% { transform: scale(0.35); opacity: 0.45; }
-    70% { opacity: 0.12; }
-    100% { transform: scale(6.8); opacity: 0; }
+    0% { transform: scale(0.28); opacity: 0.55; }
+    65% { opacity: 0.14; }
+    100% { transform: scale(7.4); opacity: 0; }
 }
 .hero-soundfield-sine {
     position: absolute;
-    inset: 8% -8% 18%;
-    width: 116%;
-    height: 74%;
-    opacity: 0.55;
+    inset: 6% -10% 14%;
+    width: 120%;
+    height: 80%;
+    opacity: 0.72;
 }
 .hero-soundfield-sine path {
     fill: none;
@@ -278,23 +318,23 @@
     stroke-linejoin: round;
 }
 .hero-soundfield-sine .sine-a {
-    stroke-width: 1.4;
-    opacity: 0.38;
-    animation: sineDrift 22s linear infinite;
+    stroke-width: 1.7;
+    opacity: 0.5;
+    animation: sineDrift 18s linear infinite;
 }
 .hero-soundfield-sine .sine-b {
-    stroke-width: 1.1;
-    opacity: 0.22;
-    animation: sineDrift 28s linear infinite reverse;
+    stroke-width: 1.2;
+    opacity: 0.28;
+    animation: sineDrift 24s linear infinite reverse;
 }
 .hero-soundfield-sine .sine-c {
-    stroke-width: 0.9;
-    opacity: 0.14;
-    animation: sineDrift 34s linear infinite;
+    stroke-width: 1;
+    opacity: 0.16;
+    animation: sineDrift 30s linear infinite;
 }
 @keyframes sineDrift {
     from { transform: translateX(0); }
-    to { transform: translateX(-180px); }
+    to { transform: translateX(-220px); }
 }
 .home-hero-grid,
 .story-open-grid {
