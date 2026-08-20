@@ -6,8 +6,13 @@ Aspalo hiçbir çağrıyı cevapsız bırakmaz: mesai dışı, meşgul veya yoğ
 
 ## Sayfalar
 
-- [Ana Sayfa](https://aspalo.com/): Ürün özeti, canlı sesli AI demosu, sektörel kullanım senaryoları, İnsan vs Aspalo karşılaştırması, kurulum adımları (48 saatte aktif) ve fiyatlandırma planları (Basic, Growth, Pro).
-- [Kaçırılan Çağrı Hesaplayıcısı](https://aspalo.com/hesaplama.html): İşletmelerin kaçırılan çağrılar yüzünden yılda ne kadar gelir kaybettiğini sektöre göre tahmin eden ücretsiz araç.
+- [Ana Sayfa](https://aspalo.com/): Ürün özeti, canlı sesli AI demosu, İnsan vs Aspalo karşılaştırması ve kurulum adımları.
+- [Ses](https://aspalo.com/cozumlerimiz/ses/): 7/24 AI çağrı asistanı.
+- [Sohbet](https://aspalo.com/cozumlerimiz/sohbet/): Web ve mesajlaşma asistanı.
+- [Sektörler](https://aspalo.com/sektorler/): Sektöre özel senaryolar ve kaçırılan çağrı hesaplayıcısı.
+- [Planlar](https://aspalo.com/planlar/): Basic, Growth ve Pro paketleri.
+- [Partnerlik](https://aspalo.com/partnerlik/): Ajans ve entegratör programı.
+- [S.S.S.](https://aspalo.com/sss/): Sık sorulan sorular.
 
 ## Sektörler ve Kullanım Senaryoları
 

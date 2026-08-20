@@ -2,10 +2,28 @@
   publish = "."
   command = "echo 'No build step needed'"
 
+[build.environment]
+  NODE_VERSION = "18"
+
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/ses.html"
+  to = "/cozumlerimiz/ses/"
+  status = 301
+
+[[redirects]]
+  from = "/sohbet.html"
+  to = "/cozumlerimiz/sohbet/"
+  status = 301
+
+[[redirects]]
+  from = "/sektorler.html"
+  to = "/sektorler/"
+  status = 301
+
+[[redirects]]
+  from = "/hesaplama.html"
+  to = "/sektorler/#calc"
+  status = 301
 
 [[headers]]
   for = "/llms.txt"
@@ -16,6 +34,3 @@
   for = "/robots.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
-
-[build.environment]
-  NODE_VERSION = "18"
