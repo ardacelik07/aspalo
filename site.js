@@ -343,8 +343,11 @@
 
     var HERO_DEMOS = {
         healthcare: { src: '/videos/hero/healthcare.mp4', poster: '/videos/hero/healthcare.jpg', caption: 'hero_demo_caption_healthcare' },
+        hotel: { src: '/videos/hero/hotel.mp4', poster: '/videos/hero/hotel.jpg', caption: 'hero_demo_caption_hotel' },
         realestate: { src: '/videos/hero/realestate.mp4', poster: '/videos/hero/realestate.jpg', caption: 'hero_demo_caption_realestate' },
-        automotive: { src: '/videos/hero/automotive.mp4', poster: '/videos/hero/automotive.jpg', caption: 'hero_demo_caption_automotive' }
+        automotive: { src: '/videos/hero/automotive.mp4', poster: '/videos/hero/automotive.jpg', caption: 'hero_demo_caption_automotive' },
+        logistics: { src: '/videos/hero/logistics.mp4', poster: '/videos/hero/logistics.jpg', caption: 'hero_demo_caption_logistics' },
+        support: { src: '/videos/hero/support.mp4', poster: '/videos/hero/support.jpg', caption: 'hero_demo_caption_support' }
     };
 
     function initHeroDemo() {
