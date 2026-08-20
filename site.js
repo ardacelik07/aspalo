@@ -1404,27 +1404,101 @@
             setTimeout(injectFooterWave, 0);
             return;
         }
-        if (host.querySelector('.footer-eq')) return;
-        var cols = 168;
-        var max = 16;
-        var html = '<div class="footer-eq">';
-        var i, d, t, h, env, noise;
-        for (i = 0; i < cols; i++) {
-            t = i / (cols - 1);
-            env = 0.16
-                + 0.62 * Math.exp(-Math.pow((t - 0.07) / 0.045, 2))
-                + 0.38 * Math.exp(-Math.pow((t - 0.2) / 0.04, 2))
-                + 0.28 * Math.exp(-Math.pow((t - 0.38) / 0.05, 2))
-                + 0.78 * Math.exp(-Math.pow((t - 0.64) / 0.055, 2))
-                + 0.5 * Math.exp(-Math.pow((t - 0.9) / 0.042, 2));
-            noise = 0.32 * Math.sin(t * 37.4 + 0.6) + 0.2 * Math.sin(t * 19.1 + 2.1) + 0.12 * Math.sin(t * 61 + 1.3);
-            h = Math.round((0.12 + env + Math.abs(noise) * 0.22) * max);
-            h = Math.max(2, Math.min(max, h));
-            html += '<span style="--d:' + (i % 11) + '">';
-            for (d = 0; d < h; d++) html += '<i></i>';
-            html += '</span>';
+        if (host.querySelector('.footer-sine')) return;
+
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var w = 1440;
+        var h = 132;
+        var mid = h / 2;
+        var n = 180;
+
+        host.innerHTML = ''
+            + '<svg class="footer-sine" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" aria-hidden="true">'
+            + '<defs><linearGradient id="footer-sine-fill" x1="0" y1="0" x2="0" y2="1">'
+            + '<stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3"/>'
+            + '<stop offset="50%" stop-color="#2563EB" stop-opacity="0.1"/>'
+            + '<stop offset="100%" stop-color="#38BDF8" stop-opacity="0.3"/>'
+            + '</linearGradient></defs>'
+            + '<path class="footer-sine-fill"/>'
+            + '<polyline class="footer-sine-echo"/>'
+            + '<polyline class="footer-sine-line"/>'
+            + '</svg>';
+
+        var fill = host.querySelector('.footer-sine-fill');
+        var echo = host.querySelector('.footer-sine-echo');
+        var line = host.querySelector('.footer-sine-line');
+
+        function burst(phase, pos, width, gain) {
+            var d = Math.min(Math.abs(phase - pos), 1 - Math.abs(phase - pos));
+            return gain * Math.exp(-Math.pow(d / width, 2));
         }
-        host.innerHTML = html + '</div>';
+
+        function sample(t, time, lag) {
+            var phase = ((t + time * 0.16 + lag) % 1 + 1) % 1;
+            var env = 0.08
+                + burst(phase, 0.14, 0.05, 0.64)
+                + burst(phase, 0.33, 0.038, 0.4)
+                + burst(phase, 0.54, 0.07, 0.8)
+                + burst(phase, 0.74, 0.036, 0.34)
+                + burst(phase, 0.91, 0.048, 0.56);
+            var osc = Math.sin(t * 58 + time * 7.4 + lag * 12) * 0.5
+                + Math.sin(t * 104 + time * 5.2 + lag * 8) * 0.28
+                + Math.sin(t * 21 + time * 2.6) * 0.22;
+            return { env: env, osc: osc };
+        }
+
+        function draw(time) {
+            var top = [];
+            var bot = [];
+            var pts = [];
+            var echoPts = [];
+            var i, t, s, e, amp, x;
+            for (i = 0; i <= n; i++) {
+                t = i / n;
+                s = sample(t, time, 0);
+                e = sample(t, time, 0.08);
+                amp = s.env * (0.3 + Math.abs(s.osc) * 0.7);
+                x = (t * w).toFixed(1);
+                top.push(x + ',' + (mid - amp * 54).toFixed(1));
+                bot.push(x + ',' + (mid + amp * 54).toFixed(1));
+                pts.push(x + ',' + (mid - s.osc * s.env * 50).toFixed(1));
+                echoPts.push(x + ',' + (mid - e.osc * e.env * 38).toFixed(1));
+            }
+            fill.setAttribute('d', 'M' + top.join(' L') + ' L' + bot.reverse().join(' L') + ' Z');
+            line.setAttribute('points', pts.join(' '));
+            echo.setAttribute('points', echoPts.join(' '));
+        }
+
+        draw(0);
+        if (reduced) return;
+
+        var raf = 0;
+        var running = false;
+        function tick(now) {
+            if (!running) return;
+            draw(now / 1000);
+            raf = requestAnimationFrame(tick);
+        }
+        function start() {
+            if (running) return;
+            running = true;
+            raf = requestAnimationFrame(tick);
+        }
+        function stop() {
+            running = false;
+            if (raf) cancelAnimationFrame(raf);
+            raf = 0;
+        }
+
+        if (typeof IntersectionObserver === 'function') {
+            var io = new IntersectionObserver(function (entries) {
+                if (entries[0] && entries[0].isIntersecting) start();
+                else stop();
+            }, { threshold: 0.08 });
+            io.observe(host);
+        } else {
+            start();
+        }
     }
 
     function applyPageMeta() {
