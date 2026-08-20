@@ -19,6 +19,7 @@
   from = "/sektorler.html"
   to = "/sektorler/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/hesaplama.html"
