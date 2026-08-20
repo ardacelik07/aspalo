@@ -554,6 +554,13 @@
         }
 
         function armPhone() {
+            if (!phone) {
+                live = true;
+                if (window.AspaloHero && typeof window.AspaloHero.play === 'function') {
+                    window.AspaloHero.play(current);
+                }
+                return;
+            }
             if (acceptTimer) clearTimeout(acceptTimer);
             if (live || reduced) {
                 acceptCall();
@@ -579,7 +586,7 @@
             current = id;
             setChips();
             setPhone();
-            if (live && window.AspaloHero && typeof window.AspaloHero.play === 'function') {
+            if (window.AspaloHero && typeof window.AspaloHero.play === 'function' && (!phone || live)) {
                 window.AspaloHero.play(current, { pickup: true });
             }
             resetScenes();

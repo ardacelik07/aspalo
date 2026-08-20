@@ -22,12 +22,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css?v=site34">
-    <link rel="stylesheet" href="/site.css?v=site35">
+    <link rel="stylesheet" href="/site.css?v=site38">
 </head>
 <body data-nav="home" data-i18n-page="home">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDXZ6F59"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <script src="/chrome.js?v=site9"></script>
+    <script src="/chrome.js?v=site10"></script>
 
     <main class="story" data-story>
         <header class="home-hero story-open">
@@ -56,41 +56,20 @@
                         <button type="button" class="story-ind" data-industry="support" aria-pressed="false" data-i18n="story_ind_support">Destek</button>
                     </div>
                 </div>
-                <div class="hero-stage" data-call-stage>
-                    <div class="story-phone is-on" data-story-phone>
-                        <div class="story-phone-top">
-                            <span class="story-phone-pulse"></span>
-                            <span data-i18n="story_phone_in">Gelen arama</span>
-                        </div>
-                        <div class="story-phone-avatar" data-story-initial>A</div>
-                        <p class="story-phone-name" data-story-caller>Ayşe Kaya</p>
-                        <p class="story-phone-place" data-story-place>Aspalo Klinik</p>
-                        <button type="button" class="story-phone-accept" data-story-accept data-i18n="story_phone_accept">ADA açıyor</button>
-                    </div>
-                    <div class="story-call" data-story-call>
-                        <div class="hero-stage-bar">
-                            <span class="hero-live-dot"></span>
-                            <span class="hero-stage-label" data-i18n="hero_ai_name">ADA</span>
-                            <span class="hero-stage-timer" data-hero-timer>0:00</span>
-                            <div class="hero-stage-actions">
-                                <button type="button" class="hero-ctrl is-muted" data-hero-mute aria-pressed="true" data-i18n-aria="hero_unmute" aria-label="Sesi aç">
-                                    <svg class="hero-ico-mute" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
-                                    <svg class="hero-ico-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-                                </button>
-                                <button type="button" class="hero-ctrl" data-hero-replay data-i18n-aria="hero_replay" aria-label="Yeniden oynat">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div aria-hidden="true">
-                            <div class="hero-wave" data-hero-wave><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                            <div class="hero-chat" data-hero-chat><div class="hero-chat-inner" data-hero-thread></div></div>
-                            <div class="hero-captured">
-                                <p><small data-i18n="hero_cap_name">İsim</small><b data-hero-meta="name">—</b></p>
-                                <p><small data-i18n="hero_cap_intent">Niyet</small><b data-hero-meta="intent">—</b></p>
-                                <p><small data-i18n="hero_cap_status">Durum</small><b data-hero-meta="status">—</b></p>
-                            </div>
-                        </div>
+                <div class="hero-demo" data-hero-demo data-industry="healthcare">
+                    <div class="hero-demo-card">
+                        <video class="hero-demo-video" data-hero-video playsinline preload="metadata" poster="/videos/hero/healthcare.jpg" src="/videos/hero/healthcare.mp4"></video>
+                        <span class="hero-demo-time" data-hero-time>0:00</span>
+                        <button type="button" class="hero-demo-play" data-hero-play data-i18n-aria="hero_demo_play" aria-label="Demoyu izle">
+                            <span class="hero-demo-play-circle" aria-hidden="true">
+                                <svg class="hero-demo-ico-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="hero-demo-ico-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>
+                            </span>
+                        </button>
+                        <button type="button" class="hero-demo-watch" data-hero-play>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                            <span data-i18n="hero_demo_watch">Demo İzle</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -391,11 +370,11 @@
     </section>
 
     <div data-site-footer></div>
-    <script src="/i18n.js?v=site21"></script>
+    <script src="/i18n.js?v=site23"></script>
     <script src="/script.js?v=site9"></script>
-    <script src="/site.js?v=site36"></script>
-    <script src="/story.js?v=site27"></script>
-    <script src="/widget.js?v=site7"></script>
+    <script src="/site.js?v=site38"></script>
+    <script src="/story.js?v=site28"></script>
+    <script src="/widget.js?v=site9"></script>
     <script>
       (function () {
         function forceTop() {

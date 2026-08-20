@@ -341,6 +341,124 @@
         }
     ];
 
+    var HERO_DEMOS = {
+        healthcare: { src: '/videos/hero/healthcare.mp4', poster: '/videos/hero/healthcare.jpg', caption: 'hero_demo_caption_healthcare' },
+        realestate: { src: '/videos/hero/realestate.mp4', poster: '/videos/hero/realestate.jpg', caption: 'hero_demo_caption_realestate' },
+        automotive: { src: '/videos/hero/automotive.mp4', poster: '/videos/hero/automotive.jpg', caption: 'hero_demo_caption_automotive' }
+    };
+
+    function initHeroDemo() {
+        var root = document.querySelector('[data-hero-demo]');
+        var video = root && root.querySelector('[data-hero-video]');
+        if (!root || !video) return null;
+
+        var timeEl = root.querySelector('[data-hero-time]');
+        var playBtns = root.querySelectorAll('[data-hero-play]');
+        var currentId = root.getAttribute('data-industry') || 'healthcare';
+        var fs = document.querySelector('[data-hero-fs]');
+        if (!fs) {
+            fs = document.createElement('div');
+            fs.className = 'hero-demo-fs';
+            fs.setAttribute('data-hero-fs', '');
+            fs.setAttribute('hidden', '');
+            fs.innerHTML = ''
+                + '<button type="button" class="hero-demo-fs-close" data-hero-fs-close data-i18n-aria="modal_close" aria-label="Kapat">'
+                + '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+                + '</button>'
+                + '<div class="hero-demo-fs-stage">'
+                + '<video class="hero-demo-fs-video" data-hero-fs-video playsinline controls preload="metadata"></video>'
+                + '</div>';
+            document.body.appendChild(fs);
+        }
+        var fsVideo = fs.querySelector('[data-hero-fs-video]');
+        var fsOpen = false;
+
+        function demoOf(id) {
+            return HERO_DEMOS[id] || HERO_DEMOS.healthcare;
+        }
+
+        function load(id) {
+            var next = HERO_DEMOS[id] ? id : currentId;
+            if (!HERO_DEMOS[id] && !HERO_DEMOS[currentId]) next = 'healthcare';
+            if (!HERO_DEMOS[id]) {
+                currentId = next;
+                root.setAttribute('data-industry', currentId);
+                return;
+            }
+            var demo = demoOf(next);
+            currentId = next;
+            root.setAttribute('data-industry', currentId);
+            if (video.getAttribute('src') !== demo.src) {
+                video.pause();
+                video.src = demo.src;
+                video.setAttribute('poster', demo.poster);
+                video.load();
+            }
+            if (timeEl) timeEl.textContent = '0:00';
+            if (fsOpen) playFullscreen();
+        }
+
+        function closeFullscreen() {
+            if (!fsOpen) return;
+            fsOpen = false;
+            fs.classList.remove('is-open');
+            fs.setAttribute('hidden', '');
+            document.body.classList.remove('modal-open');
+            if (fsVideo) {
+                fsVideo.pause();
+                fsVideo.removeAttribute('src');
+                fsVideo.load();
+            }
+        }
+
+        function playFullscreen() {
+            var demo = demoOf(currentId);
+            if (!fsVideo || !demo) return;
+            fsOpen = true;
+            fs.removeAttribute('hidden');
+            fs.classList.add('is-open');
+            document.body.classList.add('modal-open');
+            var closeBtn = fs.querySelector('[data-hero-fs-close]');
+            if (closeBtn) closeBtn.setAttribute('aria-label', t('modal_close') || 'Kapat');
+            if (fsVideo.getAttribute('src') !== demo.src) {
+                fsVideo.src = demo.src;
+                fsVideo.setAttribute('poster', demo.poster);
+            }
+            var playPromise = fsVideo.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(function () {});
+            }
+        }
+
+        playBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                playFullscreen();
+            });
+        });
+        fs.addEventListener('click', function (e) {
+            if (e.target === fs || e.target.closest('[data-hero-fs-close]')) closeFullscreen();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeFullscreen();
+        });
+
+        load(currentId);
+        window.AspaloHero = {
+            play: function (id) { load(id); },
+            restart: function (id) { load(id || currentId); playFullscreen(); },
+            stop: closeFullscreen,
+            ring: function () {},
+            pickup: function (done) { if (done) done(); },
+            stopFx: function () {},
+            unlock: function () {},
+            setMuted: function () {},
+            refreshLabels: function () {}
+        };
+        return window.AspaloHero;
+    }
+
     function initHeroStage() {
         var stage = document.querySelector('.hero-stage');
         var chat = stage && stage.querySelector('[data-hero-chat]');
@@ -1324,7 +1442,7 @@
         initReveal();
         injectHeroSoundfield();
         injectFooterWave();
-        var hero = initHeroStage();
+        var hero = initHeroDemo() || initHeroStage();
         initWorks();
         initSectors();
         applyPageMeta();

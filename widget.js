@@ -121,6 +121,18 @@
         }
     }
 
+    function hideVapiLauncher() {
+        document.querySelectorAll(".vapi-btn").forEach(function (el) {
+            el.style.setProperty("display", "none", "important");
+            el.style.setProperty("visibility", "hidden", "important");
+            el.setAttribute("aria-hidden", "true");
+            var wrap = el.parentElement;
+            if (wrap && wrap !== document.body) {
+                wrap.style.setProperty("display", "none", "important");
+            }
+        });
+    }
+
     function findAndClickVapiButton() {
         var btn = document.querySelector(".vapi-btn");
         if (btn) { btn.click(); return true; }
@@ -155,6 +167,9 @@
             vapiInstance = initVapiWidget(buttonConfig);
             window.vapiInstance = vapiInstance;
             wireLiveDemoEvents(vapiInstance);
+            hideVapiLauncher();
+            setTimeout(hideVapiLauncher, 400);
+            setTimeout(hideVapiLauncher, 1200);
         };
     })(document, "script");
 
