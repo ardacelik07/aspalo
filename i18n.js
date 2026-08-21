@@ -1,7 +1,7 @@
 /**
  * Aspalo — TR / EN localization.
  * Single source of user-facing copy. Default locale: tr.
- * First visit: browser language. After that: localStorage `aspalo_lang`.
+ * First visit: Turkish. After that: localStorage `aspalo_lang`.
  *
  * Glossary (keep consistent):
  *   yapay zekâ / artificial intelligence
@@ -1446,14 +1446,6 @@
             var saved = localStorage.getItem(STORAGE_KEY);
             if (saved === 'en' || saved === 'tr') return saved;
         } catch (e) {}
-        var list = (navigator.languages && navigator.languages.length)
-            ? navigator.languages
-            : [navigator.language || 'tr'];
-        for (var i = 0; i < list.length; i++) {
-            var code = String(list[i] || '').toLowerCase();
-            if (code.indexOf('en') === 0) return 'en';
-            if (code.indexOf('tr') === 0) return 'tr';
-        }
         return 'tr';
     }
 
