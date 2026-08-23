@@ -301,7 +301,7 @@
         var phone = root.querySelector('[data-story-phone]');
         var acceptBtn = root.querySelector('[data-story-accept]');
         var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var current = 'healthcare';
+        var current = 'realestate';
         var view = 'business';
         var live = false;
         var acceptTimer = null;
@@ -582,14 +582,14 @@
         }
 
         function setIndustry(id) {
-            if (!STORY[id]) return;
+            if (!id) return;
             current = id;
             setChips();
-            setPhone();
+            if (STORY[id]) setPhone();
             if (window.AspaloHero && typeof window.AspaloHero.play === 'function' && (!phone || live)) {
                 window.AspaloHero.play(current, { pickup: true });
             }
-            resetScenes();
+            if (STORY[id]) resetScenes();
         }
 
         function setView(next) {
