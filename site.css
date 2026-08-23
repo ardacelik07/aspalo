@@ -12,8 +12,14 @@
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.container { max-width: var(--container); }
+.container {
+    max-width: var(--container);
+    padding-left: max(28px, env(safe-area-inset-left, 0px));
+    padding-right: max(28px, env(safe-area-inset-right, 0px));
+}
 html, body { overflow-x: hidden; }
+body { overflow-wrap: break-word; }
+img, video { max-width: 100%; height: auto; }
 
 .vapi-btn,
 [data-open-live-demo],
@@ -793,6 +799,7 @@ html, body { overflow-x: hidden; }
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 8px;
+    max-width: 100%;
 }
 .story-ind {
     font-family: var(--font-sans);
@@ -1969,6 +1976,9 @@ html, body { overflow-x: hidden; }
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 28px;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
 }
 .sector-chip {
     font-family: var(--font-sans);
@@ -2276,7 +2286,7 @@ html, body { overflow-x: hidden; }
     .navbar.open .mobile-nav { display: flex; }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
     .home-hero-grid,
     .story-open-grid,
     .sector-hero-grid,
@@ -2321,22 +2331,46 @@ html, body { overflow-x: hidden; }
     .home-dash-layout, .home-ind-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 700px) {
+    .container {
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+    }
     .channel-grid, .use-grid, .benefit-grid, .cap-grid, .footer-grid, .home-ind-grid, .home-dash-layout,
     .partner-hero-grid, .partner-apply-grid, .partner-who-grid,
     .partner-highlights, .partner-steps, .partner-stats, .partner-ben-grid { grid-template-columns: 1fr; }
     .compare-col { padding: 26px 20px; }
     .product-hero, .sector-page-hero { padding: 40px 0 36px; }
     .home-hero { padding: 28px 0 36px; }
-    .home-hero-title { font-size: clamp(1.85rem, 8.2vw, 2.35rem); }
+    .home-hero-title { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+    .product-hero h1,
+    .partner-hero h1,
+    .sector-page-hero h1 { max-width: none; }
     .story-open-line { font-size: 1rem; max-width: none; margin-bottom: 20px; }
     .home-hero-actions { margin-bottom: 20px; }
-    .home-hero-actions .btn { width: 100%; }
-    .story-industries { gap: 6px; }
-    .story-ind { padding: 6px 10px; font-size: 0.74rem; }
-    .sector-chip { padding: 7px 12px; font-size: 0.8rem; }
-    .sector-page-hero h1 { max-width: none; }
+    .home-hero-actions .btn,
+    .product-hero-actions .btn,
+    .partner-hero-actions .btn { width: 100%; }
+    .story-industries,
+    .sector-switcher { gap: 8px; }
+    .story-ind,
+    .sector-chip {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+        min-height: 40px;
+        max-width: 100%;
+    }
     .navbar .logo-img { height: 44px; }
     .nav-container { height: 68px; }
+    .plan-card { padding: 26px 20px 22px; }
+    .plan-card-desc { min-height: 0; }
+    .plan-card-cta { width: 100%; }
+    .hero-demo-card {
+        aspect-ratio: 16 / 10;
+        min-height: 210px;
+    }
+    .partner-form input,
+    .partner-form select,
+    .partner-form textarea { font-size: 16px; }
     .compare-section, .trust-plus, .cap-section, .use-section, .sector-story { padding: 56px 0; }
     .final-cta { padding: 64px 0; }
     .hero-demo-watch { left: 12px; bottom: 12px; }
@@ -2363,4 +2397,15 @@ html, body { overflow-x: hidden; }
     .langs-flags { gap: 12px; padding: 0 12px 0 0; }
     .langs-flags li { width: 38px; height: 38px; }
     .langs-track { animation-duration: 32s; }
+}
+@media (max-width: 430px) {
+    .home-hero-title { font-size: clamp(1.6rem, 8.6vw, 2rem); }
+    .product-hero h1,
+    .sector-page-hero h1 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
+    .story-ind, .sector-chip { padding: 8px 11px; font-size: 0.74rem; }
+    .hero-demo-card { min-height: 188px; border-radius: 14px; }
+    .hero-demo-play-circle { width: 54px; height: 54px; }
+    .plan-card-name { font-size: 1.35rem; }
+    .plan-card-price { font-size: 1.7rem; }
+    .final-cta-title { font-size: clamp(1.55rem, 8vw, 2rem); }
 }
