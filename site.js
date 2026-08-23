@@ -304,7 +304,7 @@
             intent: { tr: 'Sipariş desteği', en: 'Support request' },
             messages: [
                 { role: 'ai', tr: 'Merhaba, Aspalo Mağaza. Ben ADA. Siparişinizle ilgili yardımcı olayım.', en: 'Hello, Aspalo Store. This is ADA. I can help with your order.' },
-                { role: 'user', tr: '7A19 siparişim hâlâ kargoya verilmemiş.', en: 'My order 7A19 still hasn\'t shipped.', meta: { intent: true, status: 'listening' } },
+                { role: 'user', tr: '7A19 siparişim hala kargoya verilmemiş.', en: 'My order 7A19 still hasn\'t shipped.', meta: { intent: true, status: 'listening' } },
                 { role: 'ai', tr: 'Kontrol ediyorum. Stok bekliyordu, bugün 16:00\'da kargoya çıkıyor.', en: 'Checking now. It was waiting on stock. It ships today at 16:00.', meta: { status: 'processing' } },
                 { role: 'user', tr: 'Yarın elime geçer mi? Deniz Koç.', en: 'Will I have it tomorrow? Deniz Koç.', meta: { name: true } },
                 { role: 'ai', tr: 'İstanbul içi evet, 18:00 öncesi. Adres aynı mı, Kadıköy, Caferağa?', en: 'In Istanbul, yes, before 18:00. Same address, Kadıköy, Caferağa?' },

@@ -85,7 +85,7 @@
                 if (text === "Talk Now" || text === "Hemen Konuş" || text === "ADA ile Konuş" || text === "Talk to ADA") {
                     el.textContent = idle;
                 }
-                if (text === "Talk with Aspalo" || text === "Aspalo ile konuş" || text === "Sesli yapay zekâ asistanı" || text === "AI voice assistant") {
+                if (text === "Talk with Aspalo" || text === "Aspalo ile konuş" || text === "Sesli yapay zeka asistanı" || text === "AI voice assistant") {
                     el.textContent = idleSub;
                 }
             });

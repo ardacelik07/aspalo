@@ -258,7 +258,7 @@
         support: {
             caller: 'Deniz Koç',
             place: { tr: 'Aspalo Mağaza', en: 'Aspalo Store' },
-            quote: { tr: '<mark>7A19</mark> siparişim hâlâ kargoya verilmemiş.', en: 'My order <mark>7A19</mark> still hasn\'t shipped.' },
+            quote: { tr: '<mark>7A19</mark> siparişim hala kargoya verilmemiş.', en: 'My order <mark>7A19</mark> still hasn\'t shipped.' },
             tokens: [
                 { k: { tr: 'Niyet', en: 'Intent' }, v: { tr: 'Sipariş', en: 'Support' } },
                 { k: { tr: 'Sipariş', en: 'Order' }, v: '7A19' },

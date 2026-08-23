@@ -4,9 +4,9 @@
  * First visit: Turkish. After that: localStorage `aspalo_lang`.
  *
  * Glossary (keep consistent):
- *   yapay zekâ / artificial intelligence
- *   sesli yapay zekâ asistanı / AI voice assistant
- *   yapay zekâ sohbet asistanı / AI chat assistant
+ *   yapay zeka / artificial intelligence
+ *   sesli yapay zeka asistanı / AI voice assistant
+ *   yapay zeka sohbet asistanı / AI chat assistant
  *   sektörler / industries
  *   iş ortaklığı / partnerships
  *   sıkça sorulan sorular / frequently asked questions
@@ -22,7 +22,7 @@
     var T = {
         tr: {
             meta_title: 'Aspalo | Kaçırılan Aramaların Maliyetini Hesaplayın',
-            meta_desc: 'Aspalo, işletmenizin gelen aramalarını 7/24 karşılayan yapay zekâ çağrı asistanıdır. Sektörünüze göre kaçırdığınız aramaların yıllık maliyetini hesaplayın.',
+            meta_desc: 'Aspalo, işletmenizin gelen aramalarını 7/24 karşılayan yapay zeka çağrı asistanıdır. Sektörünüze göre kaçırdığınız aramaların yıllık maliyetini hesaplayın.',
 
             nav_calc: 'Hesaplayıcı',
             nav_sectors: 'Sektörler',
@@ -176,7 +176,7 @@
             faq_title: 'S.S.S',
             faq_desc: 'Aspalo hakkında en sık sorulan soruları bir araya getirdik. Aradığınızı bulamazsanız bize doğrudan ulaşabilirsiniz.',
             faq_q1: 'Aspalo tam olarak nedir, nasıl çalışır?',
-            faq_a1: 'Aspalo, işletmenizin telefon hattına bağlanan bir yapay zekâ çağrı asistanıdır. Gelen aramaları karşılar, sorulara yanıt verir, randevu alır ve gerektiğinde giden aramalar yapar. Tıpkı eğitilmiş bir çalışan gibi, ancak 7/24 kesintisiz.',
+            faq_a1: 'Aspalo, işletmenizin telefon hattına bağlanan bir yapay zeka çağrı asistanıdır. Gelen aramaları karşılar, sorulara yanıt verir, randevu alır ve gerektiğinde giden aramalar yapar. Tıpkı eğitilmiş bir çalışan gibi, ancak 7/24 kesintisiz.',
             faq_q2: 'Fiyatlandırma nasıl işliyor? Neden sabit bir fiyat yok?',
             faq_a2: 'Fiyatlandırma, aylık çağrı hacminize ve ihtiyacınız olan özelliklere göre şekillenir. Bu yüzden internet sitesinde tek bir rakam yerine, işletmenizle birebir görüşüp size en uygun paketi birlikte belirliyoruz. Görüşmede size özel bir teklif alırsınız.',
             faq_q3: 'Kurulum ne kadar sürer, mevcut telefon hattımı değiştirmem gerekiyor mu?',
@@ -227,7 +227,7 @@
             form_subject: 'Yeni demo talebi: ',
 
             vapi_idle_title: 'ADA ile Konuş',
-            vapi_idle_sub: 'Sesli yapay zekâ asistanı',
+            vapi_idle_sub: 'Sesli yapay zeka asistanı',
             vapi_load_title: 'Bağlanıyor...',
             vapi_load_sub: 'Lütfen bekleyin',
             vapi_active_title: 'Görüşme sürüyor',
@@ -235,7 +235,7 @@
             vapi_mic_err: 'Mikrofon izni gerekli. Tarayıcıda bu site için mikrofon erişimine izin verin ve tekrar deneyin.',
 
             live_demo_btn: 'ADA ile Konuş',
-            live_demo_eyebrow: 'Canlı yapay zekâ demosu',
+            live_demo_eyebrow: 'Canlı yapay zeka demosu',
             live_demo_title: 'ADA\'nın bir aramayı nasıl karşıladığını dinleyin',
             live_demo_desc: 'Mikrofon izni verin, ardından görüşmeyi başlatın. ADA sizinle seçili dilde konuşur.',
             live_demo_start: 'ADA ile Konuş',
@@ -259,19 +259,19 @@
             nav_plans: 'Planlar',
             nav_partners: 'İş Ortaklığı',
             nav_sss: 'S.S.S',
-            nav_voice: 'Sesli Yapay Zekâ',
-            nav_chat: 'Yapay Zekâ Sohbet Asistanı',
+            nav_voice: 'Sesli Yapay Zeka',
+            nav_chat: 'Yapay Zeka Sohbet Asistanı',
             nav_data: 'Veri kontrolü',
-            nav_voice_desc: '7/24 sesli yapay zekâ asistanı',
+            nav_voice_desc: '7/24 sesli yapay zeka asistanı',
             nav_chat_desc: 'Web ve mesajlaşma asistanı',
             nav_sectors_desc: 'Sektöre özel senaryolar ve planlandırma',
             nav_data_desc: 'KVKK, veri Türkiye\'de kalır',
 
             meta_title_home: 'Aspalo | Kurumsal Sesli ve Sohbet Yapay Zekası',
-            meta_desc_home: 'Aspalo, işletmenizin gelen aramalarını ve sohbetlerini 7/24 karşılayan yapay zekâ asistanıdır. Veriler Türkiye\'de kalır.',
-            meta_title_ses: 'Sesli Yapay Zekâ | Aspalo',
-            meta_desc_ses: 'Gelen aramaları ilk çınlamada karşılayan, randevu alan ve CRM\'inize yazan sesli yapay zekâ asistanı.',
-            meta_title_sohbet: 'Yapay Zekâ Sohbet Asistanı | Aspalo',
+            meta_desc_home: 'Aspalo, işletmenizin gelen aramalarını ve sohbetlerini 7/24 karşılayan yapay zeka asistanıdır. Veriler Türkiye\'de kalır.',
+            meta_title_ses: 'Sesli Yapay Zeka | Aspalo',
+            meta_desc_ses: 'Gelen aramaları ilk çınlamada karşılayan, randevu alan ve CRM\'inize yazan sesli yapay zeka asistanı.',
+            meta_title_sohbet: 'Yapay Zeka Sohbet Asistanı | Aspalo',
             meta_desc_sohbet: 'Web, WhatsApp ve mesajlaşma kanallarında 7/24 yanıt veren sohbet asistanı.',
             meta_title_sektorler: 'Sektörler | Kaçırılan Aramaların Maliyeti | Aspalo',
             meta_desc_sektorler: 'Sektörünüze göre kaçırılan aramaların yıllık maliyetini hesaplayın. Emlak, sağlık, otel, otomotiv ve daha fazlası.',
@@ -437,7 +437,7 @@
             vcap_5_p: 'Hatırlatma araması yapar, gelmeyen randevuyu takip eder, kampanya duyurusu iletir.',
             vcap_6_t: 'Mevcut altyapı',
             vcap_6_p: 'Yeni hat şart değil. Santral veya VoIP\'inize bağlanır.',
-            voice_use_title: 'Sesli yapay zekâ kullanım senaryoları',
+            voice_use_title: 'Sesli yapay zeka kullanım senaryoları',
             voice_use_desc: 'Aynı sistem, her departmanda farklı işi çözer.',
             vuse_1_t: 'Müşteri hizmetleri',
             vuse_1_1: 'Sık sorulan sorular',
@@ -473,7 +473,7 @@
             ccap_5_p: 'Web, WhatsApp ve Messenger. Tek senaryo.',
             ccap_6_t: 'Ölçüm',
             ccap_6_p: 'Çözülen, aktarılan, kaçan sohbetler aynı panelde.',
-            chat_use_title: 'Sohbet yapay zekâsı kullanım senaryoları',
+            chat_use_title: 'Sohbet yapay zekası kullanım senaryoları',
             chat_use_desc: 'Yazılı kanal, sesin tamamlayıcısıdır, rakibi değil.',
             cuse_1_t: 'Destek',
             cuse_1_1: 'Sipariş ve iade soruları',
@@ -514,13 +514,13 @@
 
             sec_otomotiv_title: 'Servis ve test sürüşü, dakikalar içinde kaçar.',
             sec_otomotiv_lead: 'Cevapsız müşteri bir sonraki yetkili veya özel servisi çevirir.',
-            sec_otomotiv_body: 'Aspalo servis talebini, şikâyeti veya test sürüşünü karşılar; plaka ve uygun saati alır, atölye veya satışa iletir.',
+            sec_otomotiv_body: 'Aspalo servis talebini, şikayeti veya test sürüşünü karşılar; plaka ve uygun saati alır, atölye veya satışa iletir.',
             sec_otomotiv_s1: 'Günde 8–15 kaçan talep',
             sec_otomotiv_s2: 'Servis kapasitesi dolmaz, kaçar',
             sec_otomotiv_w1_t: 'Müşteri arar',
             sec_otomotiv_w1_p: 'Servis, yedek parça veya test sürüşü.',
             sec_otomotiv_w2_t: 'Aspalo karşılar',
-            sec_otomotiv_w2_p: 'Plaka, şikâyet, uygun gün alınır.',
+            sec_otomotiv_w2_p: 'Plaka, şikayet, uygun gün alınır.',
             sec_otomotiv_w3_t: 'Slot ayırır',
             sec_otomotiv_w3_p: 'Atölye veya satış takvimine işler.',
             sec_otomotiv_w4_t: 'Onay gider',
@@ -534,13 +534,13 @@
             sec_saglik_w1_t: 'Hasta arar',
             sec_saglik_w1_p: '7/24, mesai veya gece.',
             sec_saglik_w2_t: 'Aspalo yanıtlar',
-            sec_saglik_w2_p: 'Doğal akış, branş ve şikâyet.',
+            sec_saglik_w2_p: 'Doğal akış, branş ve şikayet.',
             sec_saglik_w3_t: 'Randevu alır',
             sec_saglik_w3_p: 'Takvim veya SMS ile slot.',
             sec_saglik_w4_t: 'Onay gönderir',
             sec_saglik_w4_p: 'Kararın özeti hastaya gider.',
 
-            sec_lojistik_title: 'Takip çağrısı yanıtsız kalınca şikâyet olur.',
+            sec_lojistik_title: 'Takip çağrısı yanıtsız kalınca şikayet olur.',
             sec_lojistik_lead: '“Kargom nerede?” en sık aranan cümledir ve en çok kaçandır.',
             sec_lojistik_body: 'Aspalo takip numarasını alır, durumu söyler, istisna vakayı operasyona yükseltir. Çağrı merkezi şişmeden.',
             sec_lojistik_s1: 'Günde 12–35 takip sorgusu',
@@ -599,12 +599,12 @@
             meta_title_planlar: 'Planlar | Aspalo',
             meta_desc_planlar: 'Basic, Growth ve Pro. Fiyat, çağrı hacminize göre şekillenir.',
             meta_title_partnerlik: 'İş Ortaklığı | Aspalo',
-            meta_desc_partnerlik: 'Ajanslar, entegratörler ve danışmanlar için Aspalo iş ortaklığı programı. Müşterilerinize sesli ve sohbet yapay zekâsı taşıyın.',
+            meta_desc_partnerlik: 'Ajanslar, entegratörler ve danışmanlar için Aspalo iş ortaklığı programı. Müşterilerinize sesli ve sohbet yapay zekası taşıyın.',
             meta_title_sss: 'S.S.S | Aspalo',
             meta_desc_sss: 'Aspalo hakkında en sık sorulan sorular.',
 
             partner_eyebrow: 'İş Ortaklığı',
-            partner_title: 'Müşterilerinize yapay zekâ taşıyın. Birlikte büyüyün.',
+            partner_title: 'Müşterilerinize yapay zeka taşıyın. Birlikte büyüyün.',
             partner_sub: 'Ajanslar, entegratörler ve sektör danışmanları Aspalo’yu zaten güvendikleri işletmelere götürebilir. Siz ilişkiyi getirirsiniz. Ürün, kurulum ve destek bizde kalır.',
             partner_cta: 'Ortak olun',
             partner_cta_sales: 'Satış ekibiyle görüşün',
@@ -612,7 +612,7 @@
             partner_visual_1t: 'Siz',
             partner_visual_1p: 'Güven ve mevcut müşteri ilişkisi',
             partner_visual_2t: 'Aspalo',
-            partner_visual_2p: 'Sesli ve sohbet yapay zekâsı, kurulum, panel',
+            partner_visual_2p: 'Sesli ve sohbet yapay zekası, kurulum, panel',
             partner_visual_3t: 'Müşteri',
             partner_visual_3p: '7/24 karşılanan arama, kayıt, randevu',
             partner_why_badge: 'Neden Aspalo',
@@ -621,7 +621,7 @@
             partner_why_1t: 'Tekrarlayan gelir',
             partner_why_1p: 'Kapalı anlaşmalarda pay. Müşteri kaldıkça katkı devam eder.',
             partner_why_2t: 'Satabileceğiniz bir asistan',
-            partner_why_2p: 'Sesli yapay zekâ ve sohbet asistanı. Aynı senaryo, aynı kayıt, aynı panel.',
+            partner_why_2p: 'Sesli yapay zeka ve sohbet asistanı. Aynı senaryo, aynı kayıt, aynı panel.',
             partner_why_3t: 'Kurulum desteği',
             partner_why_3p: 'Hattı bağlarız, senaryoyu birlikte kurarız. Siz hesabı yönetirsiniz.',
             partner_why_4t: 'Satış ve pazarlama seti',
@@ -651,7 +651,7 @@
             partner_ben_1t: 'Gelir paylaşımı',
             partner_ben_1p: 'Getirdiğiniz veya birlikte kapattığınız anlaşmalarda net pay.',
             partner_ben_2t: 'Ortak pazarlama',
-            partner_ben_2p: 'Referans hikâyesi, ortak yayın ve etkinlik alanı.',
+            partner_ben_2p: 'Referans hikayesi, ortak yayın ve etkinlik alanı.',
             partner_ben_3t: 'Öncelikli destek',
             partner_ben_3p: 'Kayıtlı fırsatlarda teslimat ve satış ekibine doğrudan hat.',
             partner_ben_4t: 'Ürün eğitimi',
