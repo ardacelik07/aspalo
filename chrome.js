@@ -17,6 +17,15 @@
 
     var solutionsOpen = (page === 'ses' || page === 'sohbet');
 
+    var langSwitch = function (extraClass) {
+        return ''
+            + '<div class="lang-switch' + (extraClass ? ' ' + extraClass : '') + '" role="group" data-i18n-aria="lang_switch_aria" aria-label="Dil seçimi">'
+            + '<div class="lang-switch-track">'
+            + '<button type="button" class="lang-btn active" data-lang="tr" aria-pressed="true" aria-label="Türkçe" data-i18n-aria="lang_tr">TR</button>'
+            + '<button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English" data-i18n-aria="lang_en">EN</button>'
+            + '</div></div>';
+    };
+
     var nav = ''
         + '<nav class="navbar site-nav" id="site-nav">'
         + '<div class="container nav-container">'
@@ -32,10 +41,7 @@
         + '<a href="/planlar/" class="nav-link' + active('planlar') + '"' + current('planlar') + ' data-i18n="nav_plans">Planlar</a>'
         + '<a href="/partnerlik/" class="nav-link' + active('partnerlik') + '"' + current('partnerlik') + ' data-i18n="nav_partners">İş Ortaklığı</a>'
         + '<a href="/sss/" class="nav-link' + active('sss') + '"' + current('sss') + ' data-i18n="nav_sss">S.S.S</a>'
-        + '<div class="lang-switch" role="group" data-i18n-aria="lang_switch_aria" aria-label="Dil seçimi">'
-        + '<button type="button" class="lang-btn active" data-lang="tr" aria-pressed="true" data-i18n="lang_tr">Türkçe</button>'
-        + '<button type="button" class="lang-btn" data-lang="en" aria-pressed="false" data-i18n="lang_en">English</button>'
-        + '</div>'
+        + langSwitch()
         + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Görüşme Ayarla</a>'
         + '</div>'
         + '<button class="mobile-menu-btn" data-i18n-aria="menu_aria" aria-label="Menü" aria-expanded="false" aria-controls="mobile-nav">'
@@ -53,10 +59,7 @@
         + '<a href="/planlar/" class="' + active('planlar').trim() + '"' + current('planlar') + ' data-i18n="nav_plans">Planlar</a>'
         + '<a href="/partnerlik/" class="' + active('partnerlik').trim() + '"' + current('partnerlik') + ' data-i18n="nav_partners">İş Ortaklığı</a>'
         + '<a href="/sss/" class="' + active('sss').trim() + '"' + current('sss') + ' data-i18n="nav_sss">S.S.S</a>'
-        + '<div class="lang-switch lang-switch--mobile" role="group" data-i18n-aria="lang_switch_aria" aria-label="Dil seçimi">'
-        + '<button type="button" class="lang-btn active" data-lang="tr" aria-pressed="true" data-i18n="lang_tr">Türkçe</button>'
-        + '<button type="button" class="lang-btn" data-lang="en" aria-pressed="false" data-i18n="lang_en">English</button>'
-        + '</div>'
+        + langSwitch('lang-switch--mobile')
         + '<a href="#" class="btn btn-nav" data-open-demo data-i18n="nav_cta">Görüşme Ayarla</a>'
         + '</div></nav>';
 

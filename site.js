@@ -358,6 +358,7 @@
         var timeEl = root.querySelector('[data-hero-time]');
         var playBtns = root.querySelectorAll('[data-hero-play]');
         var currentId = root.getAttribute('data-industry') || 'healthcare';
+        var lastVideoId = HERO_DEMOS[currentId] ? currentId : 'healthcare';
         var fs = document.querySelector('[data-hero-fs]');
         if (!fs) {
             fs = document.createElement('div');
@@ -381,13 +382,17 @@
         }
 
         function load(id) {
-            var next = HERO_DEMOS[id] ? id : currentId;
-            if (!HERO_DEMOS[id] && !HERO_DEMOS[currentId]) next = 'healthcare';
-            if (!HERO_DEMOS[id]) {
-                currentId = next;
-                root.setAttribute('data-industry', currentId);
+            if (id === 'custom') {
+                currentId = 'custom';
+                root.setAttribute('data-industry', 'custom');
+                root.classList.add('is-custom');
+                closeFullscreen();
                 return;
             }
+            root.classList.remove('is-custom');
+            var next = HERO_DEMOS[id] ? id : lastVideoId;
+            if (!HERO_DEMOS[next]) next = 'healthcare';
+            lastVideoId = next;
             var demo = demoOf(next);
             currentId = next;
             root.setAttribute('data-industry', currentId);
@@ -1244,7 +1249,8 @@
         'Sağlık': 'healthcare',
         Lojistik: 'logistics',
         'E-Ticaret': 'support',
-        'Otel Konaklama': 'hotel'
+        'Otel Konaklama': 'hotel',
+        'Sektörünüze özel': 'custom'
     };
 
     var sectorHeroStarted = false;
@@ -1258,16 +1264,17 @@
 
     function applySectorCopy(sector) {
         var slug = SECTOR_MAP[sector];
-        if (!slug) return;
-        document.querySelectorAll('[data-sec]').forEach(function (el) {
-            var part = el.getAttribute('data-sec');
-            var key = 'sec_' + slug + '_' + part;
-            if (el.hasAttribute('data-i18n-html') || el.getAttribute('data-sec-html') === '1') {
-                el.innerHTML = t(key);
-            } else {
-                el.textContent = t(key);
-            }
-        });
+        if (slug) {
+            document.querySelectorAll('[data-sec]').forEach(function (el) {
+                var part = el.getAttribute('data-sec');
+                var key = 'sec_' + slug + '_' + part;
+                if (el.hasAttribute('data-i18n-html') || el.getAttribute('data-sec-html') === '1') {
+                    el.innerHTML = t(key);
+                } else {
+                    el.textContent = t(key);
+                }
+            });
+        }
         document.querySelectorAll('.sector-chip').forEach(function (chip) {
             chip.classList.toggle('active', chip.getAttribute('data-sector') === sector);
             chip.setAttribute('aria-pressed', chip.getAttribute('data-sector') === sector ? 'true' : 'false');
