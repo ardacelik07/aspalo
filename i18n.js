@@ -202,6 +202,9 @@
             footer_phone_alt_label: 'Telefon (2)',
             footer_phone_alt2_label: 'Telefon (3)',
             footer_copy: 'Tüm hakları saklıdır.',
+            footer_social_aria: 'Sosyal medya',
+            footer_social_linkedin: 'LinkedIn',
+            footer_social_instagram: 'Instagram',
 
             modal_close: 'Kapat',
             modal_title: 'Sayılarınızı Birlikte İnceleyelim',
@@ -909,6 +912,9 @@
             footer_phone_alt_label: 'Phone (2)',
             footer_phone_alt2_label: 'Phone (3)',
             footer_copy: 'All rights reserved.',
+            footer_social_aria: 'Social media',
+            footer_social_linkedin: 'LinkedIn',
+            footer_social_instagram: 'Instagram',
 
             modal_close: 'Close',
             modal_title: "Let's Look at Your Numbers",

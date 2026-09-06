@@ -2108,11 +2108,44 @@ img, video { max-width: 100%; height: auto; }
     stroke-width: 2.2;
     filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
 }
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
 .footer-base {
     border-top: 1px solid rgba(248, 250, 252, 0.08);
     padding: 18px 0 22px;
     font-size: 0.8rem;
     color: rgba(248, 250, 252, 0.4);
+}
+.footer-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+.footer-social-sep {
+    width: 1px;
+    height: 12px;
+    background: rgba(248, 250, 252, 0.28);
+}
+.footer-social-link {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    color: rgba(248, 250, 252, 0.88);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+    color: #F8FAFC;
+    transform: translateY(-1px);
+}
+.footer-social-link:focus-visible {
+    outline: 2px solid #38BDF8;
+    outline-offset: 3px;
 }
 
 /* Section helpers -------------------------------------------------------- */
