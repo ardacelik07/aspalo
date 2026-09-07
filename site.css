@@ -1221,6 +1221,7 @@ img, video { max-width: 100%; height: auto; }
     }
 }
 .home-logos {
+    display: none;
     background: var(--paper-alt);
     padding: 8px 0 64px;
 }
