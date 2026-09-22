@@ -352,6 +352,9 @@
             home_ind_custom: 'Senaryo, dil, kayıt. Size göre.',
             home_ind_calc: 'Sektörünüze göre yıllık kaybı hesaplayın →',
             customers_label: 'Bize güvenen kurumlar',
+            collab_label: 'Katıldığımız iş birliği programları',
+            collab_netgsm: 'Netgsm',
+            collab_btm: 'BTM Bilgiyi Ticarileştirme Merkezi',
 
             compare_badge: 'İnsan mı, Aspalo mu?',
             compare_title: 'Ekibiniz zor vakalara odaklansın.',
@@ -1062,6 +1065,9 @@
             home_ind_custom: 'Script, language, records. Built for you.',
             home_ind_calc: 'Calculate yearly loss for your industry →',
             customers_label: 'Organizations that trust us',
+            collab_label: 'Collaboration programs we participate in',
+            collab_netgsm: 'Netgsm',
+            collab_btm: 'BTM Bilgiyi Ticarileştirme Merkezi',
 
             compare_badge: 'Human or Aspalo?',
             compare_title: 'Let your team focus on the hard cases.',
