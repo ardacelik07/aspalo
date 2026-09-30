@@ -86,7 +86,8 @@
         + '<a href="/sektorler/" data-i18n="nav_sectors">Sektörler</a>'
         + '<a href="/planlar/" data-i18n="nav_plans">Planlar</a>'
         + '<a href="/partnerlik/" data-i18n="nav_partners">İş Ortaklığı</a>'
-        + '<a href="/sss/" data-i18n="nav_sss">S.S.S</a></div>'
+        + '<a href="/sss/" data-i18n="nav_sss">S.S.S</a>'
+        + '<a href="/cerez-politikasi/" data-i18n="cookie_policy">Çerez Politikası</a></div>'
         + '<div class="footer-col"><h4 data-i18n="footer_col_contact">İletişim</h4>'
         + '<a href="mailto:info@aspalo.com">info@aspalo.com</a>'
         + '<a href="tel:+905427820043">+90 542 782 00 43</a>'
@@ -94,7 +95,11 @@
         + '<a href="tel:+908502423250">+90 850 242 32 50</a></div>'
         + '</div>'
         + '<div class="footer-wave" aria-hidden="true"></div>'
-        + '<div class="container footer-base">© <span id="footer-year">2026</span> Aspalo. <span data-i18n="footer_copy">Tüm hakları saklıdır.</span></div>'
+        + '<div class="container footer-base"><p>© <span id="footer-year">2026</span> Aspalo. <span data-i18n="footer_copy">Tüm hakları saklıdır.</span></p>'
+        + '<div class="footer-legal">'
+        + '<a href="/cerez-politikasi/" data-i18n="cookie_policy">Çerez Politikası</a>'
+        + '<button type="button" class="footer-cookie-btn" data-open-cookies data-i18n="cookie_settings">Çerez ayarları</button>'
+        + '</div></div>'
         + '</footer>';
 
     function placeFooter() {
