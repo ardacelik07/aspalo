@@ -61,7 +61,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Randevu', en: 'Appointment' }, v: { tr: 'Alındı', en: 'Booked' } },
                 { k: 'CRM', v: { tr: 'Güncellendi', en: 'Updated' } },
-                { k: 'SMS', v: { tr: 'Gönderildi', en: 'Sent' } }
+                { k: 'CRM', v: { tr: 'Güncellendi', en: 'Updated' } }
             ],
             ints: [
                 { icon: 'hubspot', name: 'HubSpot' },
@@ -133,7 +133,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Gezme', en: 'Viewing' }, v: { tr: 'Kilitlendi', en: 'Booked' } },
                 { k: 'CRM', v: { tr: 'Lead', en: 'Lead' } },
-                { k: 'SMS', v: { tr: 'Adres', en: 'Address' } }
+                { k: { tr: 'E-posta', en: 'Email' }, v: { tr: 'Adres', en: 'Address' } }
             ],
             ints: [
                 { icon: 'hubspot', name: 'HubSpot' },
@@ -169,7 +169,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Servis', en: 'Service' }, v: { tr: 'Alındı', en: 'Booked' } },
                 { k: 'DMS', v: { tr: 'İş emri', en: 'Work order' } },
-                { k: 'SMS', v: { tr: 'Hatırlatma', en: 'Reminder' } }
+                { k: 'CRM', v: { tr: 'Kayıt', en: 'Record' } }
             ],
             ints: [
                 { icon: 'salesforce', name: 'Salesforce' },
@@ -205,7 +205,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Takip', en: 'Tracking' }, v: { tr: 'Bulundu', en: 'Found' } },
                 { k: 'WMS', v: { tr: 'Güncellendi', en: 'Updated' } },
-                { k: 'SMS', v: { tr: 'Link', en: 'Link' } }
+                { k: { tr: 'E-posta', en: 'Email' }, v: { tr: 'Takip', en: 'Tracking' } }
             ],
             ints: [
                 { icon: 'slack', name: 'Slack' },
@@ -241,7 +241,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Masa', en: 'Table' }, v: { tr: 'Ayrıldı', en: 'Held' } },
                 { k: { tr: 'Rezervasyon', en: 'Book' }, v: { tr: 'Yazıldı', en: 'Written' } },
-                { k: 'SMS', v: { tr: 'Onay', en: 'Confirm' } }
+                { k: 'CRM', v: { tr: 'Onay', en: 'Confirm' } }
             ],
             ints: [
                 { icon: 'sheets', name: 'Google Calendar' },
@@ -277,7 +277,7 @@
                 { k: 'ADA', v: { tr: 'Karşıladı', en: 'Answered' } },
                 { k: { tr: 'Sipariş', en: 'Order' }, v: { tr: 'Netleşti', en: 'Resolved' } },
                 { k: 'CRM', v: { tr: 'Not', en: 'Noted' } },
-                { k: 'SMS', v: { tr: 'Takip', en: 'Tracking' } }
+                { k: { tr: 'Panel', en: 'Panel' }, v: { tr: 'Takip', en: 'Tracking' } }
             ],
             ints: [
                 { icon: 'hubspot', name: 'HubSpot' },

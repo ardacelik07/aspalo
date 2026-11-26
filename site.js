@@ -36,7 +36,7 @@
             + '<div class="form-group"><label for="demo-email" data-i18n="form_email">E-posta *</label><input type="email" id="demo-email" name="email" required autocomplete="email" data-i18n-placeholder="form_email_ph"></div>'
             + '<div class="form-group"><label for="demo-company" data-i18n="form_company">Şirket adı</label><input type="text" id="demo-company" name="company" autocomplete="organization" data-i18n-placeholder="form_company_ph"></div>'
             + '<div class="form-group"><label for="demo-phone" data-i18n="form_phone">Telefon numarası</label><input type="tel" id="demo-phone" name="phone" autocomplete="tel" data-i18n-placeholder="form_phone_ph"></div>'
-            + '<p class="form-disclaimer" data-i18n-html="form_disclaimer_html">Devam ederek <a href="#">Şartlar</a> ve <a href="#">Gizlilik Politikası</a>\'nı kabul etmiş olursunuz.</p>'
+            + '<p class="form-disclaimer" data-i18n-html="form_disclaimer_html">Devam ederek <a href="/kullanim-kosullari/">Kullanım Koşulları</a>, <a href="/gizlilik/">Gizlilik ve KVKK</a> ve <a href="/cerez-politikasi/">Çerez Politikası</a>\'nı kabul etmiş olursunuz.</p>'
             + '<div class="form-actions"><button type="button" class="btn-back" id="btn-back" data-i18n="form_back">Geri</button><button type="button" class="btn-confirm" id="btn-confirm" data-i18n="form_confirm">Onayla</button></div>'
             + '</div></div></div></div></div>'
             + '<div id="live-demo-modal" class="live-demo-modal"><div class="live-demo-overlay" data-close-live-demo></div><div class="live-demo-content">'
@@ -206,7 +206,7 @@
                 { role: 'user', tr: 'Evet, geçen yıl Dr. Demir\'e gitmiştim.', en: 'Yes. I saw Dr. Demir last year.' },
                 { role: 'ai', tr: 'Anladım. Yarın 14:30 veya 16:00 uygun. Hangisini istersiniz?', en: 'Understood. Tomorrow 14:30 or 16:00 is open. Which do you prefer?' },
                 { role: 'user', tr: '14:30 olsun. Adım Ayşe Kaya.', en: '14:30 works. My name is Ayşe Kaya.', meta: { name: true } },
-                { role: 'ai', tr: 'Teşekkürler Ayşe Hanım. Teyit SMS\'i için telefonunuzu alabilir miyim?', en: 'Thank you, Ayşe. May I take your number for the confirmation text?' },
+                { role: 'ai', tr: 'Teşekkürler Ayşe Hanım. Teyit için telefonunuzu alabilir miyim?', en: 'Thank you, Ayşe. May I take your number for the confirmation?' },
                 { role: 'user', tr: '0532 441 19 08', en: '0532 441 19 08' },
                 { role: 'ai', tr: '14:30, Dr. Demir. Kaydı oluşturuyorum.', en: '14:30 with Dr. Demir. I\'m creating the record now.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Randevunuz alındı. Takvim ve özet CRM\'e düştü.', en: 'Your appointment is booked. The calendar and summary are in the CRM.', meta: { status: 'crm' } },
@@ -233,7 +233,7 @@
                 { role: 'ai', tr: 'Mehmet Bey, yarın 11:00 Moda 3+1. Randevuyu işliyorum.', en: 'Mehmet, tomorrow 11:00 at the Moda 3-bed. I\'m locking the viewing.', meta: { status: 'processing' } },
                 { role: 'ai', tr: 'Gezme saati kilitlendi. Danışmana ve CRM\'e düştü.', en: 'The viewing is booked. It\'s with the agent and in the CRM.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'Tamam, orada olurum.', en: 'Good. I\'ll be there.' },
-                { role: 'ai', tr: 'Adres ve kat planını SMS ile gönderiyorum. İyi günler.', en: 'I\'m sending the address and floor plan by SMS. Have a good day.', meta: { status: 'done' } }
+                { role: 'ai', tr: 'Adres ve kat planını e-posta ve CRM kaydına düşürüyorum. İyi günler.', en: 'I\'m sending the address and floor plan by email and to the CRM. Have a good day.', meta: { status: 'done' } }
             ]
         },
         {
@@ -290,7 +290,7 @@
                 { role: 'ai', tr: '10:00–12:00 olarak daraltıyorum. Kapıda kim imza atacak?', en: 'I\'ll narrow it to 10:00–12:00. Who will sign at the door?' },
                 { role: 'user', tr: 'Ben olacağım, 0542 119 33 70', en: 'I will. 0542 119 33 70' },
                 { role: 'ai', tr: 'Tercihinizi sürücüye ve CRM\'e yazıyorum.', en: 'I\'m writing the preference to the driver and the CRM.', meta: { status: 'crm' } },
-                { role: 'ai', tr: 'Güncellendi. Yarın 10:00–12:00, SMS ile link gelecek.', en: 'Updated. Tomorrow 10:00–12:00. You\'ll get the tracking link by SMS.', meta: { status: 'booked' } },
+                { role: 'ai', tr: 'Güncellendi. Yarın 10:00–12:00, takip kaydı panelde.', en: 'Updated. Tomorrow 10:00–12:00. The tracking record is in the panel.', meta: { status: 'booked' } },
                 { role: 'user', tr: 'Teşekkürler.', en: 'Thank you.' },
                 { role: 'ai', tr: 'Rica ederim. Başka bir gönderi var mı?', en: 'You\'re welcome. Any other shipment I can check?' },
                 { role: 'user', tr: 'Yok.', en: 'No.' },
@@ -309,7 +309,7 @@
                 { role: 'user', tr: 'Yarın elime geçer mi? Deniz Koç.', en: 'Will I have it tomorrow? Deniz Koç.', meta: { name: true } },
                 { role: 'ai', tr: 'İstanbul içi evet, 18:00 öncesi. Adres aynı mı, Kadıköy, Caferağa?', en: 'In Istanbul, yes, before 18:00. Same address, Kadıköy, Caferağa?' },
                 { role: 'user', tr: 'Evet, aynı.', en: 'Yes, same address.' },
-                { role: 'ai', tr: 'Takip numarasını SMS ve e-postaya düşürüyorum.', en: 'I\'m sending the tracking number by SMS and email.' },
+                { role: 'ai', tr: 'Takip numarasını e-posta ve CRM kaydına düşürüyorum.', en: 'I\'m writing the tracking number to email and the CRM.' },
                 { role: 'user', tr: 'İade süresi ne kadar?', en: 'How long is the return window?' },
                 { role: 'ai', tr: 'Teslimden sonra 14 gün, kutusu açılmamışsa. Kaydı not ettim.', en: '14 days after delivery if unopened. I\'ve noted that on the file.' },
                 { role: 'ai', tr: 'Sipariş hareketi CRM\'e işlendi. Takip: ASP-7A19-882.', en: 'The order movement is in the CRM. Tracking: ASP-7A19-882.', meta: { status: 'crm' } },
@@ -329,12 +329,12 @@
                 { role: 'user', tr: 'Bu akşam 20:30, dört kişilik teras masası var mı?', en: 'Do you have a terrace table for four tonight at 20:30?', meta: { intent: true, status: 'listening' } },
                 { role: 'ai', tr: 'Bakıyorum. Terasta 20:30 için dört kişilik masa açık.', en: 'Checking now. A terrace table for four is open at 20:30.' },
                 { role: 'user', tr: 'Harika. Selin Arı.', en: 'Perfect. Selin Arı.', meta: { name: true } },
-                { role: 'ai', tr: 'Selin Hanım, hatırlatma SMS\'i için telefonunuzu da alayım.', en: 'Selin, may I take your number for a reminder text?' },
+                { role: 'ai', tr: 'Selin Hanım, rezervasyon kaydı için telefonunuzu da alayım.', en: 'Selin, may I take your number for the reservation record?' },
                 { role: 'user', tr: '0536 902 14 77', en: '0536 902 14 77' },
                 { role: 'ai', tr: 'Alerji veya özel istek var mı?', en: 'Any allergies or special requests?' },
                 { role: 'user', tr: 'Pencereye yakın olsun yeter.', en: 'Near the window is enough.' },
                 { role: 'ai', tr: '20:30, teras, dört kişi. Masayı ayırıyorum.', en: '20:30, terrace, four guests. I\'m holding the table.', meta: { status: 'processing' } },
-                { role: 'ai', tr: 'Rezervasyon alındı. Onay SMS\'i ve CRM kaydı düştü.', en: 'The table is booked. Confirmation SMS and CRM are in.', meta: { status: 'crm' } },
+                { role: 'ai', tr: 'Rezervasyon alındı. Onay ve CRM kaydı düştü.', en: 'The table is booked. Confirmation and CRM are in.', meta: { status: 'crm' } },
                 { role: 'user', tr: 'Teşekkürler.', en: 'Thank you.' },
                 { role: 'ai', tr: 'Bu akşam sizi bekleriz. Afiyet olsun.', en: 'We\'ll see you tonight. Enjoy your evening.', meta: { status: 'done' } }
             ]
@@ -747,7 +747,6 @@
             var out = String(text || '');
             if (loc === 'tr-TR') {
                 out = out.replace(/Dr\./g, 'Doktor');
-                out = out.replace(/SMS/g, 'es em es');
                 out = out.replace(/CRM/g, 'si ar em');
                 out = out.replace(/m²/g, 'metrekare');
                 out = out.replace(/\bTL\b/g, 'lira');
