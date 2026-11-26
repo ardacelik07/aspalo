@@ -1,24 +1,28 @@
 # Aspalo
 
-> Aspalo, işletmelerin gelen ve giden telefon çağrılarını 7/24 yanıtlayan, randevu alan, soruları cevaplayan, lead skorlayan ve CRM'e (HubSpot, Salesforce, Google Sheets, Slack, Microsoft Teams) entegre çalışan bir yapay zeka sesli asistanıdır. Türkiye merkezli, çok dilli altyapıya sahiptir.
+> Aspalo, işletmelerin telefonlarına gelen çağrıları 7/24 karşılayan, randevu alan, soruları cevaplayan, lead skorlayan ve CRM'e (HubSpot, Salesforce, Google Sheets, Slack, Microsoft Teams) entegre çalışan bir yapay zeka asistanı yazılımıdır. Faturalama aylık aboneliktir. Türkiye merkezli, çok dilli altyapıya sahiptir.
 
 Aspalo hiçbir çağrıyı cevapsız bırakmaz: mesai dışı, meşgul veya yoğun saatlerde gelen aramaları insan operatör gibi yanıtlar, potansiyel müşterileri analiz eder, randevu planlar ve süreci satışa taşır. Emlak, Otomotiv, Sağlık, Lojistik, E-Ticaret ve Otel Konaklama gibi sektörlere önceden uyumlu senaryolarla gelir.
 
 ## Sayfalar
 
 - [Ana Sayfa](https://aspalo.com/): Ürün özeti, canlı sesli AI demosu, İnsan vs Aspalo karşılaştırması ve kurulum adımları.
-- [Ses](https://aspalo.com/cozumlerimiz/ses/): 7/24 AI çağrı asistanı.
-- [Sohbet](https://aspalo.com/cozumlerimiz/sohbet/): Web ve mesajlaşma asistanı.
+- [Ses](https://aspalo.com/cozumlerimiz/ses/): Gelen çağrıları karşılayan AI asistan yazılımı.
+- [Sohbet](https://aspalo.com/cozumlerimiz/sohbet/): Web ve mesajlaşmada gelen yazıları yanıtlayan asistan yazılımı.
 - [Sektörler](https://aspalo.com/sektorler/): Sektöre özel senaryolar ve kaçırılan çağrı hesaplayıcısı.
-- [Planlar](https://aspalo.com/planlar/): Basic, Growth ve Pro paketleri.
+- [Planlar](https://aspalo.com/planlar/): Basic, Growth ve Pro aylık yazılım abonelikleri.
 - [Partnerlik](https://aspalo.com/partnerlik/): Ajans ve entegratör programı.
 - [S.S.S.](https://aspalo.com/sss/): Sık sorulan sorular.
+- [Gizlilik ve KVKK](https://aspalo.com/gizlilik/): Gizlilik metni (hazırlanıyor).
+- [Çerez Politikası](https://aspalo.com/cerez-politikasi/): Çerez envanteri.
+- [Kullanım Koşulları](https://aspalo.com/kullanim-kosullari/): Abonelik koşulları (hazırlanıyor).
+- [Künye](https://aspalo.com/kunye/): İletişim ve künye.
 
 ## Sektörler ve Kullanım Senaryoları
 
 - Emlak: Portföy bilgisi ve görüşme randevusu
 - Otomotiv: Servis randevusu ve test sürüşü
-- Sağlık: Hasta kaydı ve randevu hatırlatma
+- Sağlık: Hasta kaydı ve randevu alma
 - Lojistik: Kargo takibi ve müşteri hizmetleri
 - E-Ticaret: Sipariş desteği ve iade yönetimi
 - Otel Konaklama: Rezervasyon ve misafir hizmetleri
